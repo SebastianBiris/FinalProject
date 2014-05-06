@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FinalProject
+namespace ModelLayer
 {
     class WorkingHours
     {
+        
         double _totalHoursWorked;
 
 
