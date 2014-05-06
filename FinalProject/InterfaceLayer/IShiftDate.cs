@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InterfaceLayer
 {
-    class IShiftDate
+    public interface IShiftDate
     {
     }
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace InterfaceLayer
 {
-    class IRole
+    public interface IRole
     {
+        string roleType { get; }
     }
 }
