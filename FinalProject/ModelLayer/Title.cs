@@ -8,20 +8,20 @@ using InterfaceLayer;
 
 namespace ModelLayer
 {
-    class Title
+   public class Title : ITitle
     {
-        string _possition;
+        string _position;
 
      
-        public Title(string possition)
+        public Title(string position)
         {
-            _possition = possition;
+            _position = position;
         }
         #region Properties // MAL
-        public string Possition
+        public string Position
         {
-            get { return _possition; }
-            set { _possition = value; }
+            get { return _position; }
+            set { _position = value; }
         #endregion
         }
 

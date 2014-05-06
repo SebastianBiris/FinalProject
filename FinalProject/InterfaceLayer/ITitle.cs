@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace InterfaceLayer
 {
-    class ITitle
+   public interface ITitle
     {
+        string Position { get; }
+
     }
+         
+    
+
+    
 }
