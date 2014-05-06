@@ -93,6 +93,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ControllerLayer\ControllerLayer.csproj">
+      <Project>{038b6098-b6ac-4c5d-9e85-f871a89a201f}</Project>
+      <Name>ControllerLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InterfaceLayer\InterfaceLayer.csproj">
+      <Project>{1a4d70a4-5c93-48ca-af11-79c25ce14b92}</Project>
+      <Name>InterfaceLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

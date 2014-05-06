@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using ModelLayer;
-using InterfaceLayer;
-
-namespace ControllerLayer
+namespace InterfaceLayer
 {
-    class Controller
+    class ITitle
     {
-
     }
 }

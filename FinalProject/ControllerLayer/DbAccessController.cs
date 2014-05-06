@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 using ModelLayer;
 using InterfaceLayer;
 
+
 namespace ControllerLayer
 {
-    class Controller
+    class DbAccessController
     {
 
     }
