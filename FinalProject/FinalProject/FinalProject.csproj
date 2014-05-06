@@ -53,6 +53,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Role.cs" />
     <Compile Include="StaffMember.cs" />
     <Compile Include="Status.cs" />
     <Page Include="MainWindow.xaml">
