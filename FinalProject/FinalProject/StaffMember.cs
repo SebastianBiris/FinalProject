@@ -12,17 +12,17 @@ namespace FinalProject
         int _userId;
         string _phoneNumber;
         string _password;
-        string _name;
+        string _staffMemberName;
         string _email;
 
         public StaffMember(int cpr, int userId, string phoneNumber, string password,
-            string name, string email)
+            string staffMemberName, string email)
         {
             _cpr = cpr;
             _userId = userId;
             _phoneNumber = phoneNumber;
             _password = password;
-            _name = name;
+            _staffMemberName = staffMemberName;
             _email = email;
         }
         #region Properties //MAL
@@ -48,8 +48,8 @@ namespace FinalProject
         }
         public string Name
         {
-            get { return _name; }
-            set { _name = value; }
+            get { return _staffMemberName; }
+            set { _staffMemberName = value; }
         }
         public string Email
         {

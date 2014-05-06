@@ -8,5 +8,17 @@ namespace FinalProject
 {
     class Role
     {
+        string _roleType;
+        public Role(string roleType)
+        {
+            _roleType = roleType;
+        }
+        #region Properties //MAL
+        public string RoleType
+        {
+            get { return _roleType; }
+            set { _roleType = value; }
+        #endregion
+        }
     }
 }

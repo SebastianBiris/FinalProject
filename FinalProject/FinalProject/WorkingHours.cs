@@ -8,5 +8,19 @@ namespace FinalProject
 {
     class WorkingHours
     {
+        double _totalHoursWorked;
+
+
+        public WorkingHours(double totalHoursWorked)
+        {
+            _totalHoursWorked = totalHoursWorked;
+        }
+        #region Properties //MAL
+        public double TotalHoursWorked
+        {
+            get { return _totalHoursWorked; }
+            set { _totalHoursWorked = value; }
+        #endregion
+        }
     }
 }

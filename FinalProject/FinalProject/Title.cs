@@ -8,5 +8,20 @@ namespace FinalProject
 {
     class Title
     {
+        string _possition;
+
+     
+        public Title(string possition)
+        {
+            _possition = possition;
+        }
+        #region Properties // MAL
+        public string Possition
+        {
+            get { return _possition; }
+            set { _possition = value; }
+        #endregion
+        }
+
     }
 }
