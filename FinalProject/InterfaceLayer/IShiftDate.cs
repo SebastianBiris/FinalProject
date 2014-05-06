@@ -8,6 +8,6 @@ namespace InterfaceLayer
 {
     public interface IShiftDate
     {
-        DateTime dateWorked { get; }
+        DateTime DateWorked { get; }
     }
 }

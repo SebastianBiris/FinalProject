@@ -8,7 +8,7 @@ using InterfaceLayer;
 
 namespace ModelLayer
 {
-    class WorkingHours
+   public class WorkingHours: IWorkingHours
     {
         
         double _actualHoursWorked;

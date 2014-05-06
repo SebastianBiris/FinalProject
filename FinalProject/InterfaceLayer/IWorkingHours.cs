@@ -8,6 +8,6 @@ namespace InterfaceLayer
 {
     public interface IWorkingHours
     {
-        double actualHoursWorked { get; }
+        double ActualHoursWorked { get; }
     }
 }

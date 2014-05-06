@@ -8,7 +8,7 @@ using InterfaceLayer;
 
 namespace ModelLayer
 {
-    class StaffMember
+   public   class StaffMember : IStaffMember
     {
         int _cpr;
         int _staffMemeberId;

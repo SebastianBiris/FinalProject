@@ -8,6 +8,6 @@ namespace InterfaceLayer
 {
     public interface IRole
     {
-        string roleType { get; }
+        string RoleType { get; }
     }
 }

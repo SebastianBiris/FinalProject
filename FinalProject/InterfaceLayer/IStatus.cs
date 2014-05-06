@@ -8,8 +8,8 @@ namespace InterfaceLayer
 {
     public interface IStatus
     {
-        string statusDiscription { get; }
-        string statusType { get; }
+        string StatusDiscription { get; }
+        string StatusType { get; }
 
     }
 }

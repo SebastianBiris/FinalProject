@@ -8,7 +8,7 @@ using InterfaceLayer;
 
 namespace ModelLayer
 {
-    class Shift
+  public  class Shift:IShift
     {
         string _shiftType;
         string _shiftDiscription;

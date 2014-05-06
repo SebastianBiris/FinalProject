@@ -8,7 +8,7 @@ using InterfaceLayer;
 
 namespace ModelLayer
 {
-    class Role
+    public class Role:IRole
     {
         string _roleType;
 

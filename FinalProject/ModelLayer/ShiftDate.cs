@@ -8,7 +8,7 @@ using InterfaceLayer;
 
 namespace ModelLayer
 {
-   public class ShiftDate
+   public class ShiftDate: IShiftDate
    {
         DateTime _dateWorked;
 
