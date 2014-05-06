@@ -8,5 +8,9 @@ namespace InterfaceLayer
 {
    public interface IShift
     {
+       string shiftType { get; }
+       string shiftDiscription { get; }
+       double shiftHours { get; }
     }
 }
+
