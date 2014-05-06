@@ -10,19 +10,19 @@ namespace ModelLayer
 {
     class Status
     {
-        string _statusDiscriotion;
+        string _statusDiscription;
         string _statusType;
 
         public Status(string statusDiscription, string statusType)
         {
-            _statusDiscriotion = statusDiscription;
+            _statusDiscription = statusDiscription;
             _statusType = statusType;
         }
         #region Properties //MAL
         public string StatusDiscriotion
         {
-            get { return _statusDiscriotion; }
-            set { _statusDiscriotion = value; }
+            get { return _statusDiscription; }
+            set { _statusDiscription = value; }
         }
         public string StatusType
         {

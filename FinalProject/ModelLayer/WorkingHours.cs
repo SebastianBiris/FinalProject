@@ -11,18 +11,18 @@ namespace ModelLayer
     class WorkingHours
     {
         
-        double _totalHoursWorked;
+        double _actualHoursWorked;
 
 
-        public WorkingHours(double totalHoursWorked)
+        public WorkingHours(double actualHoursWorked)
         {
-            _totalHoursWorked = totalHoursWorked;
+            _actualHoursWorked = actualHoursWorked;
         }
         #region Properties //MAL
         public double TotalHoursWorked
         {
-            get { return _totalHoursWorked; }
-            set { _totalHoursWorked = value; }
+            get { return _actualHoursWorked; }
+            set { _actualHoursWorked = value; }
         #endregion
         }
     }

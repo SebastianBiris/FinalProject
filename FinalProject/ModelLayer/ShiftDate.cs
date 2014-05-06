@@ -8,8 +8,22 @@ using InterfaceLayer;
 
 namespace ModelLayer
 {
-    class ShiftDate
-    {
+   public class ShiftDate
+   {
+        DateTime _dateWorked;
 
-    }
+       public ShiftDate(DateTime dateWorked)
+       {
+           _dateWorked = dateWorked;
+       }
+
+       #region Properties
+
+       public DateTime DateWorked
+       {
+           get { return _dateWorked; }
+           set { _dateWorked = value ; }
+       }
+       #endregion
+   }
 }

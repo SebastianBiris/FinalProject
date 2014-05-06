@@ -17,8 +17,8 @@ namespace ModelLayer
         string _staffMemberName;
         string _email;
 
-        public StaffMember(int cpr, int userId, string phoneNumber, string password,
-            string staffMemberName, string email)
+        public StaffMember(int userId, string staffMemberName,int cpr, string phoneNumber,
+                           string email, string password)
         {
             _cpr = cpr;
             _userId = userId;
