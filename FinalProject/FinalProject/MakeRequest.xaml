@@ -46,7 +46,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="370,19,0,0" TextWrapping="Wrap" Text="                                   Request shift change" VerticalAlignment="Top" Height="26" Width="300" FontWeight="Bold" Background="#FFECE8E8"/>
         <TextBox x:Name="txtShiftChangeRequest" HorizontalAlignment="Left" Height="146" Margin="370,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" BorderBrush="#FFD42E25" Background="{x:Null}"/>
         <Label Content="* Please remember to specify the dates and staff members" HorizontalAlignment="Left" Margin="357,341,0,0" VerticalAlignment="Top" Height="25" Width="335"/>
-        <Label Content="* Write your request below:" HorizontalAlignment="Left" Margin="370,64,0,0" VerticalAlignment="Top" Width="161"/>
+        <Label Content="* Type your request below:" HorizontalAlignment="Left" Margin="370,64,0,0" VerticalAlignment="Top" Width="161"/>
         <Button x:Name="btnSubmitShiftChange" Content="Submit&#xA;Request" HorizontalAlignment="Left" Margin="410,300,0,0" VerticalAlignment="Top" Width="86" Height="35" FontWeight="Bold">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
