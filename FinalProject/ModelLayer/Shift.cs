@@ -27,7 +27,7 @@ namespace ModelLayer
             get { return _shiftType; }
             set { _shiftType = value; }
         }
-        public string Discription
+        public string ShiftDiscription
         {
             get { return _shiftDiscription; }
             set { _shiftDiscription = value; }

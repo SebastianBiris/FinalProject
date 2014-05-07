@@ -8,7 +8,7 @@ using InterfaceLayer;
 
 namespace ModelLayer
 {
-    class Status
+   public class Status
     {
         string _statusDiscription;
         string _statusType;

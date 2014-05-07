@@ -8,7 +8,7 @@ using InterfaceLayer;
 
 namespace ModelLayer
 {
-   public   class StaffMember : IStaffMember
+   public   class StaffMember 
     {
         int _cpr;
         int _staffMemeberId;
@@ -28,16 +28,18 @@ namespace ModelLayer
             _email = email;
         }
         #region Properties //MAL
-        public int Cpr
+
+       public int StaffMemeberId
+        {
+            get { return _staffMemeberId; }
+            set { _staffMemeberId = value; }
+        } 
+       public int Cpr
         {
             get { return _cpr; }
             set { _cpr = value; }
         }
-        public int UserId
-        {
-            get { return _staffMemeberId; }
-            set { _staffMemeberId = value; }
-        }
+       
         public string PhoneNumber
         {
             get { return _phoneNumber; }
