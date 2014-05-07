@@ -11,10 +11,12 @@ namespace ModelLayer
    public class ShiftDate: IShiftDate
    {
         DateTime _dateWorked;
+        List<Shift> myShift;
 
        public ShiftDate(DateTime dateWorked)
        {
            _dateWorked = dateWorked;
+           myShift = new List<Shift>();
        }
 
        #region Properties
@@ -25,5 +27,13 @@ namespace ModelLayer
            set { _dateWorked = value ; }
        }
        #endregion
+
+       #region Methods //**Sebi**
+       public void addOrder(Shift anShift)
+       {
+           myShift.Add(anShift);
+       }
+       #endregion
+
    }
 }
