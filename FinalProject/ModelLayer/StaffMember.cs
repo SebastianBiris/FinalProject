@@ -11,17 +11,17 @@ namespace ModelLayer
     class StaffMember
     {
         int _cpr;
-        int _userId;
+        int _staffMemeberId;
         string _phoneNumber;
         string _password;
         string _staffMemberName;
         string _email;
 
-        public StaffMember(int userId, string staffMemberName,int cpr, string phoneNumber,
+        public StaffMember(int staffMemeberId, string staffMemberName,int cpr, string phoneNumber,
                            string email, string password)
         {
             _cpr = cpr;
-            _userId = userId;
+            _staffMemeberId = staffMemeberId;
             _phoneNumber = phoneNumber;
             _password = password;
             _staffMemberName = staffMemberName;
@@ -35,8 +35,8 @@ namespace ModelLayer
         }
         public int UserId
         {
-            get { return _userId; }
-            set { _userId = value; }
+            get { return _staffMemeberId; }
+            set { _staffMemeberId = value; }
         }
         public string PhoneNumber
         {
