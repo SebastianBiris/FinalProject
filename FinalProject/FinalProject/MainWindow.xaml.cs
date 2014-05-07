@@ -10,15 +10,12 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-using ControllerLayer;
 
 namespace FinalProject
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LoginWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -27,9 +24,9 @@ namespace FinalProject
             InitializeComponent();
         }
 
-        private void BtnLogin_Click(object sender, RoutedEventArgs e)
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            ForgetPasswordWindow W = new ForgetPasswordWindow();
+
         }
     }
 }
