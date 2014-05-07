@@ -12,11 +12,13 @@ namespace ModelLayer
     {
         string _statusDiscription;
         string _statusType;
+        List<StaffMember> myStaffMember;
 
         public Status(string statusDiscription, string statusType)
         {
             _statusDiscription = statusDiscription;
             _statusType = statusType;
+            myStaffMember = new List<StaffMember>();
         }
         #region Properties //MAL
         public string StatusDiscriotion
@@ -30,6 +32,14 @@ namespace ModelLayer
             set { _statusType = value; }
         #endregion
         }
+
+        #region Methods //**Sebi**
+        public void addOrder(StaffMember anOrder)
+        {
+            myStaffMember.Add(anOrder);
+        }
+        #endregion
+
 
     }
 }

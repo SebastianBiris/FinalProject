@@ -11,10 +11,12 @@ namespace ModelLayer
     public class Role:IRole
     {
         string _roleType;
+        List<StaffMember> myStaffMember;
 
         public Role(string roleType)
         {
             _roleType = roleType;
+            myStaffMember = new List<StaffMember>();
         }
 
         #region Properties //MAL
@@ -25,5 +27,12 @@ namespace ModelLayer
 
         #endregion
         }
+        #region Methods //**Sebi**
+        public void addOrder(StaffMember anOrder)
+        {
+            myStaffMember.Add(anOrder);
+        }
+        #endregion
+
     }
 }
