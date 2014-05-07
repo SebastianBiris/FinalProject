@@ -16,6 +16,7 @@ namespace ModelLayer
         string _password;
         string _staffMemberName;
         string _email;
+        List<ShiftDate> myShiftDate;
 
         public StaffMember(int staffMemeberId, string staffMemberName,int cpr, string phoneNumber,
                            string email, string password)
@@ -26,6 +27,7 @@ namespace ModelLayer
             _password = password;
             _staffMemberName = staffMemberName;
             _email = email;
+            myShiftDate = new List<ShiftDate>();
         }
         #region Properties //MAL
 
@@ -61,5 +63,12 @@ namespace ModelLayer
             set { _email = value; }
         #endregion
         }
+        #region Methods //**Sebi**
+        public void addOrder(ShiftDate anShiftDate)
+        {
+            myShiftDate.Add(anShiftDate);
+        }
+        #endregion
+
     }
 }
