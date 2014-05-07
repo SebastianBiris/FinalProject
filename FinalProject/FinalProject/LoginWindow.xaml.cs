@@ -26,5 +26,10 @@ namespace FinalProject
         {
             InitializeComponent();
         }
+
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            ForgetPasswordWindow W = new ForgetPasswordWindow();
+        }
     }
 }
