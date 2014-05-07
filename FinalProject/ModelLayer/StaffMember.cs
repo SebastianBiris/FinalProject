@@ -64,7 +64,7 @@ namespace ModelLayer
         #endregion
         }
         #region Methods //**Sebi**
-        public void addOrder(ShiftDate anShiftDate)
+        public void addShiftDate(ShiftDate anShiftDate)
         {
             myShiftDate.Add(anShiftDate);
         }

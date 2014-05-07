@@ -27,7 +27,7 @@ namespace ModelLayer
         }
 
         #region Methods //**Sebi**
-        public void addOrder(StaffMember anStaffMember)
+        public void addSaffMemberinTitle(StaffMember anStaffMember)
         {
             myStaffMember.Add(anStaffMember);
         }

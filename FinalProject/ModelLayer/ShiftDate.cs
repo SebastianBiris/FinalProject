@@ -29,11 +29,10 @@ namespace ModelLayer
        #endregion
 
        #region Methods //**Sebi**
-       public void addOrder(Shift anShift)
+       public void addShift(Shift anShift)
        {
            myShift.Add(anShift);
        }
        #endregion
-
    }
 }

@@ -13,13 +13,14 @@ namespace ModelLayer
         string _shiftType;
         string _shiftDiscription;
         double _shiftHours;
-
+        WorkingHours myWorkingHours;
     
         public Shift(string shiftType, string shiftDiscription, double shiftHours)
         {
             _shiftType = shiftType;
             _shiftDiscription = shiftDiscription;
             _shiftHours = shiftHours;
+           
         }
         #region Properties //MAL
         public string ShiftType
@@ -38,5 +39,15 @@ namespace ModelLayer
             set { _shiftHours = value; }
 #endregion
         }
+        #region Methods //**Sebi**
+     
+        public double calculateActualHours()
+        {
+            double actualHoursWorked= myWorkingHours.ActualHoursWorked;
+            double actualHoursInShift;
+            actualHoursInShift = _shiftHours - actualHoursWorked;
+            return actualHoursInShift;
+        }
+        #endregion
     }
 }
