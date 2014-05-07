@@ -22,6 +22,8 @@ namespace FinalProject
         public ForgetPasswordWindow()
         {
             InitializeComponent();
+            txtforgotPassword.Focus();
+            
         }
     }
 }

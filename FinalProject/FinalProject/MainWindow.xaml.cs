@@ -22,11 +22,21 @@ namespace FinalProject
         public MainWindow()
         {
             InitializeComponent();
+            txtUserId.Focus();
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnForgotPassword_Click(object sender, RoutedEventArgs e)
+        {
+            ForgetPasswordWindow w = new ForgetPasswordWindow();
+            
+            this.Hide();
+            w.ShowDialog();
+            this.Show();
         }
     }
 }
