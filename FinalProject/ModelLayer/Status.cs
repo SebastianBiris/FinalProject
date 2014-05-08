@@ -8,7 +8,7 @@ using InterfaceLayer;
 
 namespace ModelLayer
 {
-   public class Status
+   public class Status : IStatus
     {
         string _statusDiscription;
         string _statusType;
@@ -21,7 +21,7 @@ namespace ModelLayer
             myStaffMember = new List<StaffMember>();
         }
         #region Properties //MAL
-        public string StatusDiscriotion
+        public string StatusDiscription
         {
             get { return _statusDiscription; }
             set { _statusDiscription = value; }
@@ -30,8 +30,9 @@ namespace ModelLayer
         {
             get { return _statusType; }
             set { _statusType = value; }
-        #endregion
         }
+        #endregion
+        
 
         #region Methods //**Sebi**
         public void addStaffMemberinStatus(StaffMember anStaffMember)

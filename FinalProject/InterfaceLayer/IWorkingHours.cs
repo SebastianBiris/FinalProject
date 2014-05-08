@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace InterfaceLayer
 {
-    public interface IWorkingHours
+  public  interface IWorkingHours2
     {
-
-        double ActualHoursWorked { get; }
-
+      double ActualHoursWorked {get;set;}
     }
 }

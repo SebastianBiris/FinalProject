@@ -8,7 +8,7 @@ using InterfaceLayer;
 
 namespace ModelLayer
 {
-   public   class StaffMember 
+   public   class StaffMember : IStaffMember
     {
         int _cpr;
         int _staffMemeberId;
@@ -30,18 +30,16 @@ namespace ModelLayer
             myShiftDate = new List<ShiftDate>();
         }
         #region Properties //MAL
-
-       public int StaffMemeberId
-        {
-            get { return _staffMemeberId; }
-            set { _staffMemeberId = value; }
-        } 
-       public int Cpr
+        public int Cpr
         {
             get { return _cpr; }
             set { _cpr = value; }
         }
-       
+        public int StaffMemeberId
+        {
+            get { return _staffMemeberId; }
+            set { _staffMemeberId = value; }
+        }
         public string PhoneNumber
         {
             get { return _phoneNumber; }
@@ -52,7 +50,7 @@ namespace ModelLayer
             get { return _password; }
             set { _password = value; }
         }
-        public string Name
+        public string StaffMemberName
         {
             get { return _staffMemberName; }
             set { _staffMemberName = value; }
@@ -61,8 +59,10 @@ namespace ModelLayer
         {
             get { return _email; }
             set { _email = value; }
-        #endregion
         }
+
+        #endregion
+        
         #region Methods //**Sebi**
         public void addShiftDate(ShiftDate anShiftDate)
         {

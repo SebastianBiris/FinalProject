@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace InterfaceLayer
 {
-    public interface IStaffMember
+   public interface IStaffMember
     {
 
-        int Cpr {get;}
-        int StaffMemsberId { get; }
-        string PhoneNumber { get; }
-        string Password { get; }
-        string StaffMemberName { get; }
-        string Email { get; }
-
+        int Cpr { get; set; }
+        string Email { get; set; }
+        string Password { get; set; }
+        string PhoneNumber { get; set; }
+        string StaffMemberName { get; set; }
+        int StaffMemeberId { get; set; }
     }
 }
