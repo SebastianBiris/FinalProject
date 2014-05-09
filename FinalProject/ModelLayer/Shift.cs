@@ -13,7 +13,7 @@ namespace ModelLayer
         string _shiftType;
         string _shiftDiscription;
         double _shiftHours;
-        WorkingHours myWorkingHours;
+       
     
         public Shift(string shiftType, string shiftDiscription, double shiftHours)
         {
@@ -43,9 +43,10 @@ namespace ModelLayer
      
         public double calculateActualHours()
         {
-            double actualHoursWorked= myWorkingHours.ActualHoursWorked;
+            WorkingHours myWorkingHours = new WorkingHours(2);
+            double actualHoursWorked1 =myWorkingHours.ActualHoursWorked;
             double actualHoursInShift;
-            actualHoursInShift = _shiftHours - actualHoursWorked;
+            actualHoursInShift = _shiftHours - actualHoursWorked1;
             return actualHoursInShift;
         }
         #endregion
