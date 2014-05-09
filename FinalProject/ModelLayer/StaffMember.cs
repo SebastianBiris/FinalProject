@@ -17,6 +17,7 @@ namespace ModelLayer
         string _staffMemberName;
         string _email;
         List<ShiftDate> myShiftDate;
+     //  public Role myrole;
 
         public StaffMember(int staffMemeberId, string staffMemberName,int cpr, string phoneNumber,
                            string email, string password)
@@ -29,6 +30,7 @@ namespace ModelLayer
             _email = email;
             myShiftDate = new List<ShiftDate>();
         }
+       
         #region Properties //MAL
         public int Cpr
         {

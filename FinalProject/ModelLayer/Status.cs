@@ -11,13 +11,13 @@ namespace ModelLayer
    public class Status : IStatus
     {
         string _statusDiscription;
-        string _statusType;
+     //   string _statusType;
         List<StaffMember> myStaffMember;
 
-        public Status(string statusDiscription, string statusType)
+        public Status(string statusDiscription )//string statusType
         {
             _statusDiscription = statusDiscription;
-            _statusType = statusType;
+           // _statusType = statusType;
             myStaffMember = new List<StaffMember>();
         }
         #region Properties //MAL
@@ -26,11 +26,11 @@ namespace ModelLayer
             get { return _statusDiscription; }
             set { _statusDiscription = value; }
         }
-        public string StatusType
-        {
-            get { return _statusType; }
-            set { _statusType = value; }
-        }
+        //public string StatusType
+        //{
+        //    get { return _statusType; }
+        //    set { _statusType = value; }
+        //}
         #endregion
         
 
