@@ -48,6 +48,7 @@
     <Compile Include="Status.cs" />
     <Compile Include="Title.cs" />
     <Compile Include="Week.cs" />
+    <Compile Include="WeekList.cs" />
     <Compile Include="WorkingHours.cs" />
   </ItemGroup>
   <ItemGroup>
