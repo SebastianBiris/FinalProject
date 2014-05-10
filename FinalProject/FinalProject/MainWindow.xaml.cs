@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
+using System.Data.SqlClient;
+
 
 namespace FinalProject
 {
@@ -19,15 +22,40 @@ namespace FinalProject
     /// </summary>
     public partial class MainWindow : Window
     {
+        const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
+        SqlConnection con = new SqlConnection(DB_CONNECTION);
+        SqlCommand cmd=new SqlCommand();
+
+
         public MainWindow()
         {
             InitializeComponent();
             txtUserId.Focus();
+            
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {   
+                SqlCommand SelectCommand = new SqlCommand("select * from StaffMember where cpr ='" + this.txtUserId.Text + "'and staffPassword ='" + this.passPassword.Password+ "';", con);
+                SqlDataReader myReader;
+                con.Open();
+                myReader = SelectCommand.ExecuteReader();
+                int count = 0;
 
+                while (myReader.Read())
+                { count =count +1; }
+                if (count == 1)
+                { MessageBox.Show("User and password are correct"); }
+                else if(count>1)
+                {MessageBox.Show("Duplicated User or password. Access denied.");}
+                else
+                {MessageBox.Show("User or password is not correct.Plase try again .");}
+                con.Close();}
+            
+              catch(Exception ex)
+               {MessageBox.Show(ex.Message);}
         }
 
         private void btnForgotPassword_Click(object sender, RoutedEventArgs e)
