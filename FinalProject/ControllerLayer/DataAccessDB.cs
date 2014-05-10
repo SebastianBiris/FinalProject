@@ -42,6 +42,7 @@ namespace ControllerLayer
 
             return true;
         }
+
         #region View Title from DB
         // Chris
         public List<Title> ViewTitlesFromDB()
@@ -218,18 +219,100 @@ namespace ControllerLayer
         }
         #endregion
 
-        //#region View Contact Info By Staff From DB
+        #region View Contact Info By STaff From DB //**Sebi**
 
-        //public List<StaffMember> ViewContactInfoByStaff()
-        //{
-        //    SqlDataReader dataReader = null;
-        //    string phoneNumber;
-        //    string password;
-        //    string staffMemberName;
-        //    string email;
-        //}
 
-        //#endregion
+        public List<StaffMember> ViewContactInfoByStaff()
+        {
+             SqlDataReader dataReader = null;
+            string staffMemberName,phoneNo,email,password;
+            int staffMemberId,cpr;
+            List<StaffMember> returnStaffMemberList = new List<StaffMember>();
+            cmd.Parameters.Clear();
+            cmd.CommandText = "SP_ViewContactInfoByStaff";
 
-    }
+            try
+            {
+                con.Open();
+                dataReader = cmd.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    staffMemberName = dataReader["staffMemberName"].ToString();
+                    phoneNo = dataReader["phoneNoe"].ToString();
+                    email = dataReader["email"].ToString();
+                    staffMemberId = int.Parse(dataReader["staffMemberId"].ToString());
+                    cpr = int.Parse(dataReader["cpr"].ToString());
+                    password = dataReader["password"].ToString();
+
+                  returnStaffMemberList.Add(new StaffMember(staffMemberId,staffMemberName,cpr,phoneNo,email,password));
+                }
+                return returnStaffMemberList;
+            }
+            catch (SqlException ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                if (dataReader != null)
+                {
+                    dataReader.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+        }
+        
+        #endregion
+
+    #region View Shift From DB //**Sebi**
+   
+     public List<Shift>  ViewShiftFromDB()
+        {
+            SqlDataReader dataReader = null;
+            string shiftType;
+            string shiftDiscription;
+            double shiftHours;
+            List<Shift> returnShiftList = new List<Shift>();
+
+            cmd.Parameters.Clear();
+            cmd.CommandText = "SP_ViewShift";
+            try
+            {
+                con.Open();
+                dataReader = cmd.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    shiftType = dataReader["shiftType"].ToString();
+                    shiftDiscription = dataReader["shiftDiscription"].ToString();
+                    shiftHours = double.Parse(dataReader["shiftHours"].ToString());
+                    returnShiftList.Add(new Shift(shiftType,shiftDiscription,shiftHours));
+                }
+                return returnShiftList;
+            }
+            catch (SqlException ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                if (dataReader != null)
+                {
+                    dataReader.Close();
+                }
+                    if (con.State == ConnectionState.Open)
+                     {
+                        con.Close();
+                     }
+            }
+        }  
+    
+    #endregion
+}
 }
