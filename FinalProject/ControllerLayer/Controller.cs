@@ -26,7 +26,6 @@ namespace ControllerLayer
         //Title currentTitle;
         //Status currentStatus;
         //Role currentRole;
-
       //  DbAccessController myDbAccessController;
 
         #region properties //**Sebi**
