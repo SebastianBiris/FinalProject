@@ -45,7 +45,6 @@
     <Compile Include="Shift.cs" />
     <Compile Include="ShiftDate.cs" />
     <Compile Include="StaffMember.cs" />
-    <Compile Include="Status.cs" />
     <Compile Include="Title.cs" />
     <Compile Include="Week.cs" />
     <Compile Include="WeekList.cs" />

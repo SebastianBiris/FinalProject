@@ -17,7 +17,6 @@ namespace ControllerLayer
         List<StaffMember> staffMembers;
         List<WorkingHours> workingHours;
         List<Title> titles;
-        List<Status> statuses;
         List<Role> roles;
 
         //Shift currentShift;
@@ -38,7 +37,7 @@ namespace ControllerLayer
             staffMembers = new List<StaffMember>();
             workingHours = new List<WorkingHours>();
             titles = new List<Title>();
-            statuses = new List<Status>();
+           
             roles = new List<Role>();
         }
 
@@ -98,19 +97,6 @@ namespace ControllerLayer
             }
         }
 
-        public List<IStatus> Statuses
-        {
-            get
-            {
-                List<IStatus> resultList = new List<IStatus>();
-
-                foreach (Status status in statuses)
-                {
-                    resultList.Add((IStatus)status);
-                }
-                return resultList;
-            }
-        }
 
         public List<ITitle> Titles
         {
