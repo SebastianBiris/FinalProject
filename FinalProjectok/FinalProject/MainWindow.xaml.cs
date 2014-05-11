@@ -35,7 +35,8 @@ namespace FinalProject
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
-        {
+        { TabWindow myTab= new TabWindow();
+            
             try
             {   
                 SqlCommand SelectCommand = new SqlCommand("select * from StaffMember where cpr ='" + this.txtUserId.Text + "'and staffPassword ='" + this.passPassword.Password+ "';", con);
@@ -47,7 +48,11 @@ namespace FinalProject
                 while (myReader.Read())
                 { count =count +1; }
                 if (count == 1)
-                { MessageBox.Show("User and password are correct"); }
+                { 
+                this.Close();
+                myTab.Show();
+                
+                }
                 else if(count>1)
                 {MessageBox.Show("Duplicated User or password. Access denied.");}
                 else

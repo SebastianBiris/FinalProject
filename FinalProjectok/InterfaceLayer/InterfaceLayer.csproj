@@ -43,6 +43,7 @@
     <Compile Include="IShift.cs" />
     <Compile Include="IShiftDate.cs" />
     <Compile Include="IStaffMember.cs" />
+    <Compile Include="IStatus.cs" />
     <Compile Include="ITitle.cs" />
     <Compile Include="IWorkingHours.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

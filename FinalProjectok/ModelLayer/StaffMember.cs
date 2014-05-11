@@ -16,14 +16,11 @@ namespace ModelLayer
         string _password;
         string _staffMemberName;
         string _email;
-        string _statusDescription;
-
-        
         List<ShiftDate> myShiftDate;
      //  public Role myrole;
 
         public StaffMember(int staffMemeberId, string staffMemberName,int cpr, string phoneNumber,
-                           string email, string password,string statusDescription)
+                           string email, string password)
         {
             _cpr = cpr;
             _staffMemeberId = staffMemeberId;
@@ -31,19 +28,11 @@ namespace ModelLayer
             _password = password;
             _staffMemberName = staffMemberName;
             _email = email;
-            _statusDescription = statusDescription;
             myShiftDate = new List<ShiftDate>();
         }
        
         #region Properties //MAL
-
-        public string StatusDescription
-        {
-            get { return _statusDescription; }
-            set { _statusDescription = value; }
-        }
-       
-       public int Cpr
+        public int Cpr
         {
             get { return _cpr; }
             set { _cpr = value; }
