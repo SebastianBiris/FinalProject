@@ -51,7 +51,7 @@ namespace FinalProject
                 if (count == 1)
                 {
                   
-                    MessageBox.Show("Your Password has been send to this email " + txtforgotPassword.Text);
+                    MessageBox.Show("Your Password has been sent to this email " + txtforgotPassword.Text);
                     
                     SmtpClient staff = new SmtpClient();
                     staff.Port = 587;
@@ -62,7 +62,7 @@ namespace FinalProject
                     staff.UseDefaultCredentials = false;
                     staff.Credentials = new NetworkCredential("gertrudssystem@gmail.com", "HappyPuppy");
 
-                    MailMessage mm = new MailMessage("gertrudssystem@gmail.com", txtforgotPassword.Text, "Forgotten Password", "Your Password is " + forgotenPassword);
+                    MailMessage mm = new MailMessage("gertrudssystem@gmail.com ", txtforgotPassword.Text, "Forgotten Password", "Your Password is " + forgotenPassword);
                     staff.Send(mm);
                     mm.IsBodyHtml = true;
                     mm.BodyEncoding = Encoding.UTF8;
