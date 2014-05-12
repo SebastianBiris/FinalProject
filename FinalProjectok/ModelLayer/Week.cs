@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace ModelLayer
 {
-    class Week
+    public class Week
     {
         public static DateTime GetFirstDayOfWeek(int year, int week, DayOfWeek firstDayOfWeek)
         {

@@ -9,8 +9,8 @@ using InterfaceLayer;
 
 namespace ControllerLayer
 {
-    class Controller
-    {
+   public  class Controller
+    { 
         //lists for GUI
         List<Shift> shifts;
         List<ShiftDate> shiftDates;
@@ -18,6 +18,8 @@ namespace ControllerLayer
         List<WorkingHours> workingHours;
         List<Title> titles;
         List<Role> roles;
+        List<Week> weeks;
+ 
 
         //Shift currentShift;
         //ShiftDate currentShiftDate;
@@ -38,6 +40,16 @@ namespace ControllerLayer
             workingHours = new List<WorkingHours>();
             titles = new List<Title>();
             roles = new List<Role>();
+         
+
+           
+        }
+       
+
+        public DateTime GetWeeks(int year,DayOfWeek thursday)
+        {
+            thursday = DayOfWeek.Thursday;
+            return Week.GetWeekOneDayOne(year, thursday);
         }
 
         public List<IShift> Shifts
