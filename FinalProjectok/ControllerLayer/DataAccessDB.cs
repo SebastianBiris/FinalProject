@@ -130,50 +130,6 @@ namespace ControllerLayer
         }
         #endregion
 
-        #region View Work Status from DB
-        //Chris
-        public List<Status> ViewStatusFromDB()
-        {
-            SqlDataReader dataReader = null;
-
-            string statusDiscription;
-            List<Status> returStatusesList = new List<Status>();
-
-            cmd.Parameters.Clear();
-            cmd.CommandText = "SP_ViewWorkStatus";
-
-            try
-            {
-                con.Open();
-                dataReader = cmd.ExecuteReader();
-
-                while (dataReader.Read())
-                {
-                    statusDiscription = dataReader["statusDescription"].ToString();
-                    returStatusesList.Add(new Status(statusDiscription));
-                }
-                return returStatusesList;
-            }
-            catch (SqlException ex)
-            {
-
-                throw ex;
-            }
-            finally
-            {
-                if (dataReader != null)
-                {
-                    dataReader.Close();
-                }
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-            }
-        }
-        
-        #endregion
-
         #region View Working Hours From DB
         //MAL
 
@@ -224,7 +180,7 @@ namespace ControllerLayer
 	        public List<StaffMember> ViewContactInfoByStaff()
 	        {
 	             SqlDataReader dataReader = null;
-	            string staffMemberName,phoneNo,email,password;
+	            string staffMemberName,phoneNo,email,password,statusDescription;
 	            int staffMemberId,cpr;
 	            List<StaffMember> returnStaffMemberList = new List<StaffMember>();
 	            cmd.Parameters.Clear();
@@ -242,8 +198,9 @@ namespace ControllerLayer
                     staffMemberId = int.Parse(dataReader["staffMemberId"].ToString());
                     cpr = int.Parse(dataReader["cpr"].ToString());
                     password = dataReader["password"].ToString();
+                    statusDescription = dataReader["statusDescription"].ToString();
 
-                  returnStaffMemberList.Add(new StaffMember(staffMemberId,staffMemberName,cpr,phoneNo,email,password));
+                  returnStaffMemberList.Add(new StaffMember(staffMemberId,staffMemberName,cpr,phoneNo,email,password,statusDescription));
                 }
                 return returnStaffMemberList;
             }

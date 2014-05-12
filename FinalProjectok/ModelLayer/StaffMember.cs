@@ -16,11 +16,12 @@ namespace ModelLayer
         string _password;
         string _staffMemberName;
         string _email;
+        string _statusDescription;
         List<ShiftDate> myShiftDate;
      //  public Role myrole;
 
         public StaffMember(int staffMemeberId, string staffMemberName,int cpr, string phoneNumber,
-                           string email, string password)
+                           string email, string password,string statusDescription)
         {
             _cpr = cpr;
             _staffMemeberId = staffMemeberId;
