@@ -16,12 +16,18 @@ namespace ModelLayer
         string _password;
         string _staffMemberName;
         string _email;
-        string _statusDescription;
+        string _statusDescription;       
         List<ShiftDate> myShiftDate;
+        List<Title> _myTitle;
+
+     
+        List<Role> _myRole;
+
+       
      //  public Role myrole;
 
         public StaffMember(int staffMemeberId, string staffMemberName,int cpr, string phoneNumber,
-                           string email, string password,string statusDescription)
+                           string email, string password,string statusDescription,List<Title> myTitle,List<Role> myRole)
         {
             _cpr = cpr;
             _staffMemeberId = staffMemeberId;
@@ -29,6 +35,9 @@ namespace ModelLayer
             _password = password;
             _staffMemberName = staffMemberName;
             _email = email;
+            _myTitle = myTitle;
+            _myRole = myRole;
+            _statusDescription = statusDescription;
             myShiftDate = new List<ShiftDate>();
         }
        
@@ -63,7 +72,21 @@ namespace ModelLayer
             get { return _email; }
             set { _email = value; }
         }
-
+         public List<Role> MyRole
+        {
+            get { return _myRole; }
+            set { _myRole = value; }
+        } 
+       public List<Title> MyTitle
+        {
+            get { return _myTitle; }
+            set { _myTitle = value; }
+        }
+       public string StatusDescription
+       {
+           get { return _statusDescription; }
+           set { _statusDescription = value; }
+       }
         #endregion
         
         #region Methods //**Sebi**

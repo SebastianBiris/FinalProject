@@ -11,11 +11,15 @@ namespace ModelLayer
    public class Title : ITitle
     {
         string _position;
+        int _id;
+
+       
         List<StaffMember> myStaffMember;
      
-        public Title(string position)
+        public Title(string position, int id)
         {
             _position = position;
+            _id = id;
             myStaffMember = new List<StaffMember>();
         }
         #region Properties // MAL
@@ -23,8 +27,15 @@ namespace ModelLayer
         {
             get { return _position; }
             set { _position = value; }
-        #endregion
         }
+      
+       public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+        #endregion
+       
 
         #region Methods //**Sebi**
         public void addSaffMemberinTitle(StaffMember anStaffMember)

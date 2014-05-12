@@ -48,7 +48,7 @@ namespace ControllerLayer
         {
             SqlDataReader dataReader = null;
             string position;
-
+            int titleId;
             List<Title> returnTitlesList = new List<Title>();
 
             cmd.Parameters.Clear();
@@ -61,7 +61,8 @@ namespace ControllerLayer
                 while (dataReader.Read())
                 {
                     position = dataReader["position"].ToString();
-                    returnTitlesList.Add(new Title(position));
+                    titleId = int.Parse(dataReader["titleID"].ToString());
+                    returnTitlesList.Add(new Title(position,titleId));
                 }
                 return returnTitlesList;
             }
@@ -91,6 +92,7 @@ namespace ControllerLayer
         {
             SqlDataReader dataReader = null;
             string roleType;
+            int roleId;
 
             List<Role> returnRolesList = new List<Role>();
 
@@ -106,8 +108,8 @@ namespace ControllerLayer
                 while (dataReader.Read())
                 {
                     roleType = dataReader["roleType"].ToString();
-
-                    returnRolesList.Add(new Role(roleType));
+                    roleId = int.Parse(dataReader["roleID"].ToString());
+                    returnRolesList.Add(new Role(roleType,roleId));
                 }
                 return returnRolesList;
             }
@@ -180,11 +182,13 @@ namespace ControllerLayer
 	        public List<StaffMember> ViewContactInfoByStaff()
 	        {
 	             SqlDataReader dataReader = null;
-	            string staffMemberName,phoneNo,email,password,statusDescription;
-	            int staffMemberId,cpr;
+	            string staffMemberName,phoneNo,email,password,statusDescription,position,role;
+	            int staffMemberId,cpr,roleId,titleId;
 	            List<StaffMember> returnStaffMemberList = new List<StaffMember>();
+                List<Title> returnTitle = new List<Title>();
+                List<Role> returnRole = new List<Role>();
 	            cmd.Parameters.Clear();
-	            cmd.CommandText = "SP_ViewContactInfoByStaff";
+	            cmd.CommandText = "SP_ViewContactInfo";
             try
             {
                 con.Open();
@@ -199,8 +203,13 @@ namespace ControllerLayer
                     cpr = int.Parse(dataReader["cpr"].ToString());
                     password = dataReader["password"].ToString();
                     statusDescription = dataReader["statusDescription"].ToString();
-
-                  returnStaffMemberList.Add(new StaffMember(staffMemberId,staffMemberName,cpr,phoneNo,email,password,statusDescription));
+                    roleId = int.Parse(dataReader["roleID"].ToString());
+                    titleId = int.Parse(dataReader["titleID"].ToString());
+                    position = dataReader["position"].ToString();
+                    role = dataReader["role"].ToString();
+                    returnRole.Add(new Role(role,roleId));
+                    returnTitle.Add(new Title(position,titleId));
+                  returnStaffMemberList.Add(new StaffMember(staffMemberId,staffMemberName,cpr,phoneNo,email,password,statusDescription,returnTitle,returnRole));
                 }
                 return returnStaffMemberList;
             }
