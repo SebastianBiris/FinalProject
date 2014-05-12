@@ -94,6 +94,7 @@ namespace ModelLayer
         {
             myShiftDate.Add(anShiftDate);
         }
+
         #endregion
 
     }
