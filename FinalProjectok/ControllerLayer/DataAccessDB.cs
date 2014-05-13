@@ -14,7 +14,7 @@ namespace ControllerLayer
 {
    public class DataAccessDB
     {
-        const string DB_CONNECTION = @"Data Source ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
+       const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
         SqlConnection con;
         SqlCommand cmd;
 

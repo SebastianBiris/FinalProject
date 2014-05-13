@@ -18,7 +18,7 @@ namespace ControllerLayer
         List<WorkingHours> workingHours;
         List<Title> titles;
         List<Role> roles;
-        List<Week> weeks;
+      
 
         DataAccessDB myDataAccessDb;
 
