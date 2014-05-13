@@ -19,7 +19,8 @@ namespace ControllerLayer
         List<Title> titles;
         List<Role> roles;
         List<Week> weeks;
- 
+
+        DataAccessDB myDataAccessDb;
 
         //Shift currentShift;
         //ShiftDate currentShiftDate;
@@ -28,10 +29,7 @@ namespace ControllerLayer
         //Title currentTitle;
         //Status currentStatus;
         //Role currentRole;
-
-      //  DbAccessController myDbAccessController;
-
-        #region properties //**Sebi**
+       
         public Controller()
         {
             shifts = new List<Shift>();
@@ -40,11 +38,10 @@ namespace ControllerLayer
             workingHours = new List<WorkingHours>();
             titles = new List<Title>();
             roles = new List<Role>();
-         
-
-           
+            myDataAccessDb = new DataAccessDB();
         }
-       
+
+        #region properties //**Sebi**
 
         public DateTime GetWeeks(int year,DayOfWeek thursday)
         {
@@ -136,5 +133,32 @@ namespace ControllerLayer
         }
 
         #endregion
+
+
+        //chris
+        public void CreateStaffMember(string staffMemberName,string cpr, string phoneNumber,string email, string password,string statusDescription,int titleId,int roleId)
+        {
+            int staffMemberNo;
+            try
+            {
+                staffMemberNo = myDataAccessDb.AddNewStaffMemberInDB(staffMemberName, cpr, phoneNumber, email, password,statusDescription, titleId, roleId);
+                StaffMember myStaffMember = new StaffMember(staffMemberNo, staffMemberName, cpr, phoneNumber, email, password, statusDescription, titleId, roleId);
+                staffMembers.Add(myStaffMember);
+            }
+            catch 
+            {
+                throw new Exception("Data wasn`t saved correctly");
+            }
+        }
+
+       //Chris
+       public void DeleteStaffMember(StaffMember selectedMember)
+       {
+           foreach (StaffMember sm in StaffMembers)  //IStaffMember ???
+           {
+               staffMembers.Remove(selectedMember);
+           }
+       }
+
     }
 }

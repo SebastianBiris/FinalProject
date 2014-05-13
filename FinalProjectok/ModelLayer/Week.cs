@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Globalization;
 using System.Windows;
 
+using InterfaceLayer;
+
 namespace ModelLayer
 {
     public class Week

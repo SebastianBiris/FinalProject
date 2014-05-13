@@ -4,11 +4,15 @@ namespace InterfaceLayer
    public interface IStaffMember
     {
 
-        int Cpr { get; set; }
-        string Email { get; set; }
-        string Password { get; set; }
-        string PhoneNumber { get; set; }
-        string StaffMemberName { get; set; }
-        int StaffMemeberId { get; set; }
+        string Cpr { get;}
+        string Email { get; }
+        string Password { get; }
+        string PhoneNumber { get;}
+        string StaffMemberName { get; }
+        int StaffMemeberId { get;}
+        string StatusDescription { get; }
+        int TitleId { get; }
+        int RoleId { get; }
     }
+    
 }

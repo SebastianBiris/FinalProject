@@ -12,8 +12,7 @@ using InterfaceLayer;
 
 namespace ControllerLayer
 {
-
-    public class DataAccessDB
+   public class DataAccessDB
     {
         const string DB_CONNECTION = @"Data Source ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
         SqlConnection con;
@@ -179,7 +178,7 @@ namespace ControllerLayer
 
 	    #region View Contact Info By STaff From DB //**Sebi**
 	
-	
+	/*
 	        public List<StaffMember> ViewContactInfoByStaff()
 	        {
 	             SqlDataReader dataReader = null;
@@ -230,7 +229,7 @@ namespace ControllerLayer
                 }
             }
         }
-        
+        */
         #endregion
 
         #region View Shift From DB //**Sebi**
@@ -278,7 +277,106 @@ namespace ControllerLayer
         }  
     
     #endregion
+
+     #region View Contact Info from DB //Chris 13.05
+
+     public List<StaffMember> GetStaffMembersFromDB()
+     {
+         SqlDataReader dataReader = null;
+         string cpr;
+         int staffMemberId;
+         string phoneNumber;
+         string password;
+         string staffMemberName;
+         string email;
+         string statusDescription;
+         int titleId;
+         int roleId;
+
+         List<StaffMember> returnStaffMembersList = new List<StaffMember>();
+         cmd.Parameters.Clear();
+         cmd.CommandText = "SP_ViewContactInfo";
+
+         try
+         {
+             con.Open();
+             dataReader = cmd.ExecuteReader();
+             while (dataReader.Read())
+             {
+                 staffMemberName = dataReader["staffMemberName"].ToString();
+                 phoneNumber = dataReader["phoneNo"].ToString();
+                 email = dataReader["email"].ToString();
+                 staffMemberId = int.Parse(dataReader["staffMemberID"].ToString());
+                 cpr = dataReader["cpr"].ToString();
+                 password = dataReader["password"].ToString();
+                 statusDescription = dataReader["statusDescription"].ToString();
+                 roleId = int.Parse(dataReader["roleID"].ToString());
+                 titleId = int.Parse(dataReader["titleID"].ToString());
+
+                 returnStaffMembersList.Add(new StaffMember(staffMemberId, staffMemberName, cpr, phoneNumber, email, password, statusDescription, titleId, roleId));
+             }
+             return returnStaffMembersList;
+         }
+         catch (SqlException ex)
+         {
+             throw ex;
+         }
+         finally
+         {
+             if (dataReader != null)
+             {
+                 dataReader.Close();
+             }
+             if (con.State == ConnectionState.Open)
+             {
+                 con.Close();
+             }
+         }
+     }
+     #endregion
+
+     #region Add New Staff Member to DB // chris 13.05
+     public int AddNewStaffMemberInDB(string staffMemberName, string cpr, string phoneNumber, string email,
+                                     string password, string statusDescription, int titleId, int roleId)
+        {
+            cmd.CommandText = "SP_CreateNewStaffMember";
+            cmd.Parameters.Clear();
+
+            SqlParameter par = new SqlParameter("@staffmemberID",SqlDbType.Int);
+            par.Value = -1;
+            par.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(par);
+            cmd.Parameters.AddWithValue("@staffMemberName", staffMemberName);
+            cmd.Parameters.AddWithValue("@cpr", cpr);  //CPR was nvarchar in DB & int in VS
+            cmd.Parameters.AddWithValue("@phoneNo", phoneNumber);
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@staffPassword", password);
+            cmd.Parameters.AddWithValue("@statusDescription",statusDescription);
+            cmd.Parameters.AddWithValue("@titleID", titleId);
+            cmd.Parameters.AddWithValue("@roleID", roleId);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return int.Parse(cmd.Parameters["@staffmemberID"].Value.ToString());
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+        }
+        #endregion
+    
     }
 }
 
   
+
+

@@ -14,13 +14,13 @@ namespace ModelLayer
         int _id;
 
        
-        List<StaffMember> myStaffMember;
+       // List<StaffMember> myStaffMember;
      
         public Title(string position, int id)
         {
             _position = position;
             _id = id;
-            myStaffMember = new List<StaffMember>();
+         //   myStaffMember = new List<StaffMember>();
         }
         #region Properties // MAL
         public string Position
@@ -38,10 +38,10 @@ namespace ModelLayer
        
 
         #region Methods //**Sebi**
-        public void addSaffMemberinTitle(StaffMember anStaffMember)
-        {
-            myStaffMember.Add(anStaffMember);
-        }
+        //public void addSaffMemberinTitle(StaffMember anStaffMember)
+        //{
+        //    myStaffMember.Add(anStaffMember);
+        //}
         #endregion
 
     }

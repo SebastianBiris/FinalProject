@@ -14,13 +14,13 @@ namespace ModelLayer
         int _id;
 
         
-        List<StaffMember> myStaffMember;
+       // List<StaffMember> myStaffMember;
 
         public Role(string roleType,int id)
         {
             _roleType = roleType;
             _id = id;
-            myStaffMember = new List<StaffMember>();
+           // myStaffMember = new List<StaffMember>();
         }
 
         #region Properties //MAL
@@ -39,10 +39,10 @@ namespace ModelLayer
         #endregion
        
         #region Methods //**Sebi**
-        public void addStaffMemberinRole(StaffMember anStaffMember)
-        {
-            myStaffMember.Add(anStaffMember);
-        }
+        //public void addStaffMemberinRole(StaffMember anStaffMember)
+        //{
+        //    myStaffMember.Add(anStaffMember);
+        //}
         #endregion
 
     }

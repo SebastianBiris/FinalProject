@@ -10,24 +10,20 @@ namespace ModelLayer
 {
    public   class StaffMember : IStaffMember
     {
-        int _cpr;
+        string _cpr;
         int _staffMemeberId;
         string _phoneNumber;
         string _password;
         string _staffMemberName;
         string _email;
-        string _statusDescription;       
+        string _statusDescription;
+        int _titleId;
+        int _roleId;
         List<ShiftDate> myShiftDate;
-        List<Title> _myTitle;
+    
 
-     
-        List<Role> _myRole;
-
-       
-     //  public Role myrole;
-
-        public StaffMember(int staffMemeberId, string staffMemberName,int cpr, string phoneNumber,
-                           string email, string password,string statusDescription,List<Title> myTitle,List<Role> myRole)
+        public StaffMember(int staffMemeberId, string staffMemberName,string cpr, string phoneNumber,
+                           string email, string password, string statusDescription, int titleId, int roleId)
         {
             _cpr = cpr;
             _staffMemeberId = staffMemeberId;
@@ -35,14 +31,14 @@ namespace ModelLayer
             _password = password;
             _staffMemberName = staffMemberName;
             _email = email;
-            _myTitle = myTitle;
-            _myRole = myRole;
+            _titleId = titleId;
+            _roleId = roleId;
             _statusDescription = statusDescription;
             myShiftDate = new List<ShiftDate>();
         }
        
         #region Properties //MAL
-        public int Cpr
+        public string Cpr
         {
             get { return _cpr; }
             set { _cpr = value; }
@@ -72,20 +68,20 @@ namespace ModelLayer
             get { return _email; }
             set { _email = value; }
         }
-         public List<Role> MyRole
-        {
-            get { return _myRole; }
-            set { _myRole = value; }
-        } 
-       public List<Title> MyTitle
-        {
-            get { return _myTitle; }
-            set { _myTitle = value; }
-        }
        public string StatusDescription
        {
            get { return _statusDescription; }
            set { _statusDescription = value; }
+       }
+       public int RoleId
+       {
+           get { return _roleId; }
+           set { _roleId = value; }
+       }
+       public int TitleId
+       {
+           get { return _titleId; }
+           set { _titleId = value; }
        }
         #endregion
         
