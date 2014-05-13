@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
 
+using ControllerLayer;
+
 
 namespace FinalProject
 {
@@ -25,7 +27,7 @@ namespace FinalProject
         const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
         SqlConnection con = new SqlConnection(DB_CONNECTION);
         SqlCommand cmd=new SqlCommand();
-
+        
 
         public MainWindow()
         {

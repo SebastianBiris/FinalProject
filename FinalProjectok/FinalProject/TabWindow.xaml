@@ -11,7 +11,7 @@
                         <GradientStop Color="#FFCDCDCD" Offset="1"/>
                     </LinearGradientBrush>
                 </TabItem.Background>
-                <Grid Background="White">
+                <Grid x:Name="myGrid" Background="White">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
