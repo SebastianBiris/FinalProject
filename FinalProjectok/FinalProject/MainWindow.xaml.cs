@@ -38,6 +38,7 @@ namespace FinalProject
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         { TabWindow myTab= new TabWindow();
+        StaffInfo myStaff = new StaffInfo();
             
             try
             {   
@@ -53,6 +54,12 @@ namespace FinalProject
                 { 
                 this.Close();
                 myTab.Show();
+                if (txtUserId.Text == "1306943371")
+                {
+                    myTab.Close();
+                    this.Close();
+                    myStaff.Show();
+                }
                 
                 }
                 else if(count>1)
