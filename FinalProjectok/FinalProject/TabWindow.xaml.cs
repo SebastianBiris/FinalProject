@@ -74,7 +74,7 @@ namespace FinalProject
             InitializeComponent();
             myController = new Controller();
             myWeekDates = new List<DateTime>();
-            DrawButtons();
+         //  DrawButtons();
         }
         public List<DateTime> myWeekDates { get; set; }
         public List<IWeekList> allWeeksList = new List<IWeekList>();
@@ -285,6 +285,46 @@ namespace FinalProject
                 }
             }
 
+        }
+
+        private void btnForward_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Button button in drawButtons)
+            {
+                myGrid.Children.Remove(button);
+            }
+            drawButtons.Clear();
+            myWeekDates.Clear();
+            int tempweekNo = (int)lbWeekNo.Content;
+           int YearNo = (int)lbYearNo.Content;
+            if (tempweekNo == 52)
+            {
+                lbYearNo.Content = (YearNo + 1);
+                lbWeekNo.Content = 1;
+                offSetForYearChange += 52;
+
+                for (int i = 0; i < 7; i++)
+                {
+                    myWeekDates.Add(
+                        allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
+                    ColumnHeaderButtons[i].Content =
+                        allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1))
+                            .ToShortDateString();
+                }
+            }
+            else
+            {
+                lbWeekNo.Content = (tempweekNo + 1);
+
+                for (int i = 0; i < 7; i++)
+                {
+                    myWeekDates.Add(
+                        allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
+                    ColumnHeaderButtons[i].Content =
+                        allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1))
+                            .ToShortDateString();
+                }
+            }
         }
     }
 }
