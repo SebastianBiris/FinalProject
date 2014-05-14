@@ -35,6 +35,7 @@ namespace FinalProject
         public List<Button> drawButtons = new List<Button>();
         public List<Button> ColumnHeaderButtons { get; set; }
 
+       
         public int[,] Matrix =
         { 
             {4, 2, 2, 2, 2, 2, 2, 2, 7, 8},
@@ -76,7 +77,7 @@ namespace FinalProject
             DrawButtons();
         }
         public List<DateTime> myWeekDates { get; set; }
-
+        public List<IWeekList> allWeeksList = new List<IWeekList>();
 
 
         public void FillTheWeeks()
@@ -99,13 +100,13 @@ namespace FinalProject
                     }
 
 
-                    myController.GetWeekList(year, firstDayOfTheFirstWeekOfTheYear.AddDays(0 + offset),
+                  allWeeksList.Add(myController.GetWeekList(year, firstDayOfTheFirstWeekOfTheYear.AddDays(0 + offset),
                         firstDayOfTheFirstWeekOfTheYear.AddDays(1 + offset),
                         firstDayOfTheFirstWeekOfTheYear.AddDays(2 + offset),
                         firstDayOfTheFirstWeekOfTheYear.AddDays(3 + offset),
                         firstDayOfTheFirstWeekOfTheYear.AddDays(4 + offset),
                         firstDayOfTheFirstWeekOfTheYear.AddDays(5 + offset),
-                        firstDayOfTheFirstWeekOfTheYear.AddDays(6 + offset));
+                        firstDayOfTheFirstWeekOfTheYear.AddDays(6 + offset)));
                     offset += 7;
                 }
                 YearOffSet++;
