@@ -8,7 +8,7 @@ using InterfaceLayer;
 
 namespace ModelLayer
 {
-   public class WeekList :IWeekList
+   public class WeekList
     {
         public DateTime _day1, _day2, _day3, _day4, _day5, _day6, _day7;
         int _year;

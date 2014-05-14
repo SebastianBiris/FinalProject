@@ -10,7 +10,7 @@ using InterfaceLayer;
 
 namespace ModelLayer
 {
-    public class Week : IWeek
+    public class Week
     {
         public static DateTime GetFirstDayOfWeek(int year, int week, DayOfWeek firstDayOfWeek)
         {

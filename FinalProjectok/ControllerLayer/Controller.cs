@@ -20,9 +20,9 @@ namespace ControllerLayer
         List<Role> roles;
 
         List<WeekList> weekList;
-        IWeekList myWeekList1;
+        WeekList myWeekList1;
 
-       // List<Week> weeks;
+        List<Week> weeks;
         StaffMember selectedStaffMember;
 
 
@@ -202,11 +202,11 @@ namespace ControllerLayer
        }
 
 
-       public IWeekList GetWeekList(int year, DateTime day1, DateTime day2, DateTime day3, DateTime day4, DateTime day5, DateTime day6, DateTime day7)
+       public void GetWeekList(int year, DateTime day1, DateTime day2, DateTime day3, DateTime day4, DateTime day5, DateTime day6, DateTime day7)
        {
 
            myWeekList1 = new WeekList(year, day1, day2, day3, day4, day5, day6, day7);
-            return myWeekList1;
+           //  return myWeekList1;
 
        }
 
