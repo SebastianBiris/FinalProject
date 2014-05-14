@@ -37,7 +37,7 @@ namespace ModelLayer
         #endregion
 
         #region get week of year //**Sebi**
-        public static int GetWeekOfYear()
+        public  int GetWeekOfYear()
         {
            CultureInfo currentCulture = CultureInfo.CurrentCulture;
            int weekNo = currentCulture.Calendar.GetWeekOfYear(DateTime.Now,currentCulture.DateTimeFormat.CalendarWeekRule,currentCulture.DateTimeFormat.FirstDayOfWeek);

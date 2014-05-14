@@ -19,6 +19,9 @@ namespace ControllerLayer
         List<Title> titles;
         List<Role> roles;
 
+        List<WeekList> weekList;
+        WeekList myWeekList1;
+
         List<Week> weeks;
         StaffMember selectedStaffMember;
 
@@ -43,16 +46,13 @@ namespace ControllerLayer
             roles = new List<Role>();
             myDataAccessDb = new DataAccessDB();
             GetAllStaffFromDB();
-
+            weekList = new List<WeekList>();
+            
         }
 
         #region properties //**Sebi**
 
-        public DateTime GetWeeks(int year,DayOfWeek thursday)
-        {
-            thursday = DayOfWeek.Thursday;
-            return Week.GetWeekOneDayOne(year, thursday);
-        }
+      
 
         public List<IShift> Shifts
         {
@@ -180,6 +180,34 @@ namespace ControllerLayer
            workingHours = myDataAccessDb.ViewWorkingHoursFromDB();
            titles = myDataAccessDb.ViewTitlesFromDB();
            roles = myDataAccessDb.ViewRoleFromDb();
+       }
+
+       public void GetDay(string day)
+       {
+           myWeekList1.GetDay(day);
+
+
+       }
+
+       public int GetWeeksOfYear()
+       {
+           Week currentWeek = new Week();
+
+           return currentWeek.GetWeekOfYear();
+       }
+       public DateTime GetWeeks(int year, DayOfWeek thursday)
+       {
+           thursday = DayOfWeek.Thursday;
+           return Week.GetWeekOneDayOne(year, thursday);
+       }
+
+
+       public void GetWeekList(int year, DateTime day1, DateTime day2, DateTime day3, DateTime day4, DateTime day5, DateTime day6, DateTime day7)
+       {
+
+           myWeekList1 = new WeekList(year, day1, day2, day3, day4, day5, day6, day7);
+           //  return myWeekList1;
+
        }
 
 
