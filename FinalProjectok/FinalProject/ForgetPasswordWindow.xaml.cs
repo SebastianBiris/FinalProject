@@ -26,23 +26,26 @@ namespace FinalProject
     /// </summary>
     public partial class ForgetPasswordWindow : Window
     {
-        const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
+        Controller myController = new Controller();
+       // DataAccessDB myAccessDb = new DataAccessDB();
+       const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
         SqlConnection con = new SqlConnection(DB_CONNECTION);
         SqlCommand cmd = new SqlCommand();
 
         public ForgetPasswordWindow()
         {
             InitializeComponent();
-
+          //  myAccessDb.ConnectToDB();
             txtforgotPassword.Focus();
             
         }
 
         private void btnSendPassword_Click(object sender, RoutedEventArgs e)
         {
+           
             try
-            {   con.Open();
-                SqlCommand forgotEmail = new SqlCommand("select staffPassword from StaffMember where email =  '" + this.txtforgotPassword.Text + "';", con);
+            {  con.Open();
+                SqlCommand forgotEmail = new SqlCommand("select staffPassword from StaffMember where email =  '" + this.txtforgotPassword.Text + "';",con);
                 object forgotenPassword = forgotEmail.ExecuteScalar();
                 SqlDataReader myReader;
                 

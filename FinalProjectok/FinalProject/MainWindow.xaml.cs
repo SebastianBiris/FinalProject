@@ -38,7 +38,7 @@ namespace FinalProject
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         { TabWindow myTab= new TabWindow();
-        StaffInfo myStaff = new StaffInfo();
+            StaffInfo myStaffWin = new StaffInfo();
             
             try
             {   
@@ -54,13 +54,12 @@ namespace FinalProject
                 { 
                 this.Close();
                 myTab.Show();
-                if (txtUserId.Text == "1306943371")
-                {
-                    myTab.Close();
-                    this.Close();
-                    myStaff.Show();
-                }
-                
+                    if (txtUserId.Text == "1")
+                    {
+                        myTab.Close();
+                        this.Close();
+                        myStaffWin.Show();
+                    }
                 }
                 else if(count>1)
                 {MessageBox.Show("Duplicated User or password. Access denied.");}

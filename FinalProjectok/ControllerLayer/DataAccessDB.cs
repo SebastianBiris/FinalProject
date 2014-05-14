@@ -14,7 +14,7 @@ namespace ControllerLayer
 {
    public class DataAccessDB
     {
-        const string DB_CONNECTION = @"Data Source ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
+       const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
         SqlConnection con;
         SqlCommand cmd;
 
@@ -135,7 +135,7 @@ namespace ControllerLayer
         #region View Working Hours From DB
         //MAL
 
-        public List<WorkingHours> VieWorkingHoursFromDB()
+        public List<WorkingHours> ViewWorkingHoursFromDB()
         {
             SqlDataReader dataReader = null;
             string actualHoursWorked;
@@ -238,8 +238,8 @@ namespace ControllerLayer
         {
             SqlDataReader dataReader = null;
             string shiftType;
-            string shiftDiscription;
-            double shiftHours;
+            string shiftDescription;
+            double shiftHour;
             List<Shift> returnShiftList = new List<Shift>();
 
             cmd.Parameters.Clear();
@@ -252,9 +252,9 @@ namespace ControllerLayer
                 while (dataReader.Read())
                 {
                     shiftType = dataReader["shiftType"].ToString();
-                    shiftDiscription = dataReader["shiftDiscription"].ToString();
-                    shiftHours = double.Parse(dataReader["shiftHours"].ToString());
-                    returnShiftList.Add(new Shift(shiftType,shiftDiscription,shiftHours));
+                    shiftDescription = dataReader["shiftDescription"].ToString();
+                    shiftHour = double.Parse(dataReader["shiftHour"].ToString());
+                    returnShiftList.Add(new Shift(shiftType,shiftDescription,shiftHour));
                 }
                 return returnShiftList;
             }
@@ -290,12 +290,12 @@ namespace ControllerLayer
          string staffMemberName;
          string email;
          string statusDescription;
-         int titleId;
-         int roleId;
+        string position;
+        string roleType;
 
          List<StaffMember> returnStaffMembersList = new List<StaffMember>();
          cmd.Parameters.Clear();
-         cmd.CommandText = "SP_ViewContactInfo";
+         cmd.CommandText = "SP_ViewContactInfo2";
 
          try
          {
@@ -308,12 +308,13 @@ namespace ControllerLayer
                  email = dataReader["email"].ToString();
                  staffMemberId = int.Parse(dataReader["staffMemberID"].ToString());
                  cpr = dataReader["cpr"].ToString();
-                 password = dataReader["password"].ToString();
+                 password = dataReader["staffPassword"].ToString();
                  statusDescription = dataReader["statusDescription"].ToString();
-                 roleId = int.Parse(dataReader["roleID"].ToString());
-                 titleId = int.Parse(dataReader["titleID"].ToString());
+                 roleType = dataReader["roleType"].ToString();
+                position = dataReader["position"].ToString();
 
-                 returnStaffMembersList.Add(new StaffMember(staffMemberId, staffMemberName, cpr, phoneNumber, email, password, statusDescription, titleId, roleId));
+                 returnStaffMembersList.Add(new StaffMember(staffMemberId, staffMemberName, cpr, phoneNumber, email, password, statusDescription, position, roleType));
+                 
              }
              return returnStaffMembersList;
          }
@@ -373,6 +374,17 @@ namespace ControllerLayer
             }
         }
         #endregion
+
+       public void ConnectToDB()
+     {
+         const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
+         SqlConnection con = new SqlConnection(DB_CONNECTION);
+         SqlCommand cmd = new SqlCommand();
+         con = new SqlConnection(DB_CONNECTION);
+         cmd = new SqlCommand();
+         cmd.Connection = con;
+         cmd.CommandType = CommandType.StoredProcedure;
+       }
     
     }
 }

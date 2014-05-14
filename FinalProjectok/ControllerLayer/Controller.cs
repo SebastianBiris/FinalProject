@@ -19,6 +19,7 @@ namespace ControllerLayer
         List<Title> titles;
         List<Role> roles;
         List<Week> weeks;
+        StaffMember selectedStaffMember;
 
         DataAccessDB myDataAccessDb;
 
@@ -39,6 +40,8 @@ namespace ControllerLayer
             titles = new List<Title>();
             roles = new List<Role>();
             myDataAccessDb = new DataAccessDB();
+            GetAllStaffFromDB();
+
         }
 
         #region properties //**Sebi**
@@ -142,7 +145,9 @@ namespace ControllerLayer
             try
             {
                 staffMemberNo = myDataAccessDb.AddNewStaffMemberInDB(staffMemberName, cpr, phoneNumber, email, password,statusDescription, titleId, roleId);
-                StaffMember myStaffMember = new StaffMember(staffMemberNo, staffMemberName, cpr, phoneNumber, email, password, statusDescription, titleId, roleId);
+                StaffMember myStaffMember = new StaffMember(staffMemberNo, staffMemberName, cpr, phoneNumber, email,
+                    password, statusDescription, titleId, roleId);
+                    
                 staffMembers.Add(myStaffMember);
             }
             catch 
@@ -159,6 +164,22 @@ namespace ControllerLayer
                staffMembers.Remove(selectedMember);
            }
        }
+
+       public IStaffMember SelectedStaffMember
+       {
+           get { return (IStaffMember)selectedStaffMember; }
+           set { selectedStaffMember = (StaffMember)value; }
+       }
+
+       public void GetAllStaffFromDB()
+       {
+           staffMembers = myDataAccessDb.GetStaffMembersFromDB();
+           shifts = myDataAccessDb.ViewShiftFromDB();
+           workingHours = myDataAccessDb.ViewWorkingHoursFromDB();
+           titles = myDataAccessDb.ViewTitlesFromDB();
+           roles = myDataAccessDb.ViewRoleFromDb();
+       }
+
 
     }
 }

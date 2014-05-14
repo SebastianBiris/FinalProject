@@ -57,6 +57,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddStaffMember.xaml.cs">
+      <DependentUpon>AddStaffMember.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StaffInfo.xaml.cs">
       <DependentUpon>StaffInfo.xaml</DependentUpon>
     </Compile>
@@ -66,6 +69,10 @@
     <Compile Include="ViewContact.xaml.cs">
       <DependentUpon>ViewContact.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddStaffMember.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ForgetPasswordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

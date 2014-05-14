@@ -12,18 +12,34 @@ namespace ModelLayer
     {
         string _cpr;
         int _staffMemeberId;
+        int _titleId;
+        int _roleId;
         string _phoneNumber;
         string _password;
         string _staffMemberName;
         string _email;
         string _statusDescription;
-        int _titleId;
-        int _roleId;
+        string _position;
+        string _roleType;
         List<ShiftDate> myShiftDate;
     
 
+       public  StaffMember(int staffMemeberId, string staffMemberName,string cpr, string phoneNumber,
+                           string email, string password, string statusDescription, int titleId, int roleID)
+       {
+           _cpr = cpr;
+           _staffMemeberId = staffMemeberId;
+           _phoneNumber = phoneNumber;
+           _password = password;
+           _staffMemberName = staffMemberName;
+           _email = email;
+           _titleId = titleId;
+           _roleId = roleID;
+           _statusDescription = statusDescription;
+       }
+
         public StaffMember(int staffMemeberId, string staffMemberName,string cpr, string phoneNumber,
-                           string email, string password, string statusDescription, int titleId, int roleId)
+                           string email, string password, string statusDescription,  string position,string roleType)
         {
             _cpr = cpr;
             _staffMemeberId = staffMemeberId;
@@ -31,8 +47,8 @@ namespace ModelLayer
             _password = password;
             _staffMemberName = staffMemberName;
             _email = email;
-            _titleId = titleId;
-            _roleId = roleId;
+            _position = position;
+            _roleType = roleType;
             _statusDescription = statusDescription;
             myShiftDate = new List<ShiftDate>();
         }
@@ -73,19 +89,37 @@ namespace ModelLayer
            get { return _statusDescription; }
            set { _statusDescription = value; }
        }
+       public string RoleType
+       {
+           get { return _roleType; }
+           set { _roleType = value; }
+       }
+       public string Position
+       {
+           get { return _position; }
+           set { _position = value; }
+       }
+
        public int RoleId
        {
            get { return _roleId; }
            set { _roleId = value; }
        }
+
        public int TitleId
        {
            get { return _titleId; }
            set { _titleId = value; }
        }
-        #endregion
-        
-        #region Methods //**Sebi**
+
+       #endregion
+
+       public override string ToString()
+       {
+           return StaffMemberName;
+       }
+
+       #region Methods //**Sebi**
         public void addShiftDate(ShiftDate anShiftDate)
         {
             myShiftDate.Add(anShiftDate);

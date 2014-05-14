@@ -11,8 +11,8 @@ namespace InterfaceLayer
         string StaffMemberName { get; }
         int StaffMemeberId { get;}
         string StatusDescription { get; }
-        int TitleId { get; }
-        int RoleId { get; }
+        string Position { get; }
+        string RoleType { get; }
     }
     
 }

@@ -19,12 +19,11 @@
         <TextBox x:Name="txtRole" HorizontalAlignment="Left" Height="23" Margin="157,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
         <TextBox x:Name="txtStatus" HorizontalAlignment="Left" Height="23" Margin="157,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
         <TextBox x:Name="txtTilte" HorizontalAlignment="Left" Height="23" Margin="157,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="383,12,0,0" VerticalAlignment="Top" Height="308" Width="188"/>
-        <Button x:Name="btnLoad" Content="Load" HorizontalAlignment="Left" Margin="27,338,0,0" VerticalAlignment="Top" Width="73" RenderTransformOrigin="0.213,0"/>
-        <Button x:Name="btnAddStaffMember" Content="Add" HorizontalAlignment="Left" Margin="145,338,0,0" VerticalAlignment="Top" Width="73" RenderTransformOrigin="0.213,0"/>
+        <Button x:Name="btnAddStaffMember" Content="Add New Staff Member" HorizontalAlignment="Left" Margin="84,338,0,0" VerticalAlignment="Top" Width="134" RenderTransformOrigin="0.213,0" Click="btnAddStaffMember_Click"/>
         <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="261,338,0,0" VerticalAlignment="Top" Width="73" RenderTransformOrigin="0.213,0"/>
         <Button x:Name="btnRemove" Content="Remove" HorizontalAlignment="Left" Margin="383,338,0,0" VerticalAlignment="Top" Width="73" RenderTransformOrigin="0.213,0"/>
-        <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="498,338,0,0" VerticalAlignment="Top" Width="73" RenderTransformOrigin="0.213,0"/>
+        <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="498,338,0,0" VerticalAlignment="Top" Width="73" RenderTransformOrigin="0.213,0" Click="btnClear_Click"/>
+        <ListBox x:Name="listboxStaff" HorizontalAlignment="Left" Height="308" Margin="383,12,0,0" VerticalAlignment="Top" Width="188" SelectionChanged="listboxStaff_SelectionChanged"/>
 
     </Grid>
 </Window>
