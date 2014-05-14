@@ -74,6 +74,8 @@ namespace FinalProject
             InitializeComponent();
             myController = new Controller();
             myWeekDates = new List<DateTime>();
+            lbWeekNo.Content = myController.GetWeeksOfYear();
+            lbYearNo.Content = DateTime.Now.Year;
          //  DrawButtons();
         }
         public List<DateTime> myWeekDates { get; set; }
@@ -253,8 +255,8 @@ namespace FinalProject
             { myGrid.Children.Remove(button); }
             drawButtons.Clear();
             myWeekDates.Clear();
-            int tempWeekNo = (int)lbWeekNo.Content;
-            int yearNo = (int)lbYearNo.Content;
+           int tempWeekNo = (int)lbWeekNo.Content;
+           int yearNo = (int)lbYearNo.Content;
             if (tempWeekNo == 1)
             {
                 lbYearNo.Content = (yearNo - 1);
@@ -295,7 +297,7 @@ namespace FinalProject
             }
             drawButtons.Clear();
             myWeekDates.Clear();
-            int tempweekNo = (int)lbWeekNo.Content;
+           int tempweekNo = (int)lbWeekNo.Content;
            int YearNo = (int)lbYearNo.Content;
             if (tempweekNo == 52)
             {
