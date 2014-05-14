@@ -242,13 +242,12 @@ namespace FinalProject
         }
 
 
-        private void Previous_Click(object sender, RoutedEventArgs e)
-        { }
 
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+
+
+        private void btnPrevious_Click(object sender, RoutedEventArgs e)
         {
-
-
 
             foreach (Button button in drawButtons)
             { myGrid.Children.Remove(button); }
@@ -264,11 +263,28 @@ namespace FinalProject
 
                 for (int i = 0; i < 7; i++)
                 {
-
+                    myWeekDates.Add(allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
+                    ColumnHeaderButtons[i].Content = allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
 
 
                 }
+
             }
+            else
+            {
+
+                lbWeekNo.Content = (tempWeekNo - 1);
+
+                for (int i = 0; i < 7; i++)
+                {
+                    myWeekDates.Add(
+                         allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
+                    ColumnHeaderButtons[i].Content =
+                        allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1))
+                            .ToShortDateString();
+                }
+            }
+
         }
     }
 }
