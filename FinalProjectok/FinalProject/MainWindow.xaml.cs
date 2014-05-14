@@ -39,6 +39,7 @@ namespace FinalProject
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         { //TabWindow myTab= new TabWindow();
             StaffInfo myStaffWin = new StaffInfo();
+            ViewContact myViewContactWin = new ViewContact();
             
             try
             {   
@@ -59,6 +60,11 @@ namespace FinalProject
                         //myTab.Close();
                         this.Close();
                         myStaffWin.Show();
+                    }
+                    else if (txtUserId.Text != "1")
+                    {
+                        this.Close();
+                        myViewContactWin.Show();
                     }
                 }
                 else if(count>1)

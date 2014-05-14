@@ -8,17 +8,17 @@
         <Label Content="Email:" HorizontalAlignment="Left" Margin="27,128,0,0" VerticalAlignment="Top" Width="73" Height="25" RenderTransformOrigin="0.493,1.64"/>
         <Label Content="PhoneNo:" HorizontalAlignment="Left" Margin="27,89,0,0" VerticalAlignment="Top" Width="73" Height="25" RenderTransformOrigin="0.493,1.64"/>
         <Label Content="Password:" HorizontalAlignment="Left" Margin="27,169,0,0" VerticalAlignment="Top" Width="73" Height="25" RenderTransformOrigin="0.493,1.64"/>
-        <Label Content="Role:" HorizontalAlignment="Left" Margin="27,212,0,0" VerticalAlignment="Top" Width="73" Height="25" RenderTransformOrigin="0.493,1.64"/>
-        <Label Content="Status" HorizontalAlignment="Left" Margin="27,253,0,0" VerticalAlignment="Top" Width="73" Height="25" RenderTransformOrigin="0.493,1.64"/>
-        <Label Content="Title:" HorizontalAlignment="Left" Margin="27,295,0,0" VerticalAlignment="Top" Width="73" Height="25" RenderTransformOrigin="0.493,1.64"/>
+        <Label Content="Role:" HorizontalAlignment="Left" Margin="27,253,0,0" VerticalAlignment="Top" Width="73" Height="25" RenderTransformOrigin="0.493,1.64"/>
+        <Label Content="Status" HorizontalAlignment="Left" Margin="27,314,0,0" VerticalAlignment="Top" Width="73" Height="25" RenderTransformOrigin="0.493,1.64"/>
+        <Label Content="Title:" HorizontalAlignment="Left" Margin="27,213,0,0" VerticalAlignment="Top" Width="73" Height="25" RenderTransformOrigin="0.493,1.64"/>
         <TextBox x:Name="txtName1" HorizontalAlignment="Left" Height="23" Margin="157,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
         <TextBox x:Name="txtCpr1" HorizontalAlignment="Left" Height="23" Margin="157,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
         <TextBox x:Name="txtPhoneNumber1" HorizontalAlignment="Left" Height="23" Margin="157,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
         <TextBox x:Name="txtEmail1" HorizontalAlignment="Left" Height="23" Margin="157,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
         <TextBox x:Name="txtPassword1" HorizontalAlignment="Left" Height="23" Margin="157,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
-        <TextBox x:Name="txtStatus1" HorizontalAlignment="Left" Height="23" Margin="157,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
-        <ComboBox x:Name="cbTitle" HorizontalAlignment="Left" Margin="157,298,0,0" VerticalAlignment="Top" Width="167" SelectionChanged="ComboBox_SelectionChanged_1"/>
-        <ComboBox x:Name="cbRole" HorizontalAlignment="Left" Margin="157,212,0,0" VerticalAlignment="Top" Width="167" SelectionChanged="ComboBox_SelectionChanged"/>
-        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="178,341,0,0" VerticalAlignment="Top" Width="74" Click="btnSave_Click"/>
+        <TextBox x:Name="txtStatus1" HorizontalAlignment="Left" Height="62" Margin="157,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
+        <ComboBox x:Name="cbTitle" HorizontalAlignment="Left" Margin="157,216,0,0" VerticalAlignment="Top" Width="167" SelectionChanged="ComboBox_SelectionChanged_1"/>
+        <ComboBox x:Name="cbRole" HorizontalAlignment="Left" Margin="157,256,0,0" VerticalAlignment="Top" Width="167" SelectionChanged="ComboBox_SelectionChanged"/>
+        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="425,267,0,0" VerticalAlignment="Top" Width="74" Click="btnSave_Click"/>
     </Grid>
 </Window>

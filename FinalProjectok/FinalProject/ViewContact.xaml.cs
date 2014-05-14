@@ -22,11 +22,15 @@ namespace FinalProject
     /// </summary>
     public partial class ViewContact : Window
     {
+        Controller myController = new Controller();
+
+        
         public ViewContact()
         {
             InitializeComponent();
 
-
+            dataGridContactInfo.ItemsSource = myController.StaffMembers;
+            
         }
     }
 }

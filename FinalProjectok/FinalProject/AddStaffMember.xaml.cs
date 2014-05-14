@@ -71,6 +71,7 @@ namespace FinalProject
             else 
             {
                 MessageBox.Show("Please pick a role");
+                return;
             }
             if (cbTitle.SelectedIndex == 0)
             {
@@ -95,6 +96,7 @@ namespace FinalProject
             else
             {
                 MessageBox.Show("Please pick a title");
+                return;
             }
 
             myController.CreateStaffMember(name,cpr,phoneNo,email,password,status,title,role);

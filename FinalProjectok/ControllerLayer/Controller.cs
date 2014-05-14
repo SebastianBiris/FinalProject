@@ -45,7 +45,7 @@ namespace ControllerLayer
             titles = new List<Title>();
             roles = new List<Role>();
             myDataAccessDb = new DataAccessDB();
-            GetAllStaffFromDB();
+            GetAllFromDB();
             weekList = new List<WeekList>();
             
         }
@@ -173,7 +173,7 @@ namespace ControllerLayer
            set { selectedStaffMember = (StaffMember)value; }
        }
 
-       public void GetAllStaffFromDB()
+       public void GetAllFromDB()
        {
            staffMembers = myDataAccessDb.GetStaffMembersFromDB();
            shifts = myDataAccessDb.ViewShiftFromDB();
