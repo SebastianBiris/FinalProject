@@ -30,7 +30,8 @@ namespace FinalProject
             InitializeComponent();
 
             dataGridContactInfo.ItemsSource = myController.StaffMembers;
-            
+            listBoxContactStaff.ItemsSource = null;
+            listBoxContactStaff.ItemsSource = myController.StaffMembers;
         }
     }
 }

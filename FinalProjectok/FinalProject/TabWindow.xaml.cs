@@ -77,6 +77,8 @@ namespace FinalProject
             lbWeekNo.Content = myController.GetWeeksOfYear();
             lbYearNo.Content = DateTime.Now.Year;
             DrawButtons();
+            listBoxStaffInfo.ItemsSource = null;
+            listBoxStaffInfo.ItemsSource = myController.StaffMembers;
         }
         public List<DateTime> myWeekDates { get; set; }
         public List<IWeekList> allWeeksList = new List<IWeekList>();

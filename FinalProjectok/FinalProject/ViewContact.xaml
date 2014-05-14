@@ -5,8 +5,13 @@
     <Grid Background="#FFC7C3C3">
         <DataGrid x:Name="dataGridContactInfo" HorizontalAlignment="Left" Margin="19,35,0,0" VerticalAlignment="Top" Height="202" Width="553" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="StaffMemberName" Binding="{Binding StaffMemberName}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding StaffMemberName}"/>
                 <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber }"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email }"/>
+                
+                <DataGridTextColumn Header="Staff Title" Binding="{Binding Position  }"/>
+                <DataGridTextColumn Header="Staff Role" Binding="{Binding RoleType }"/>
+                <DataGridTextColumn Header="Work Status" Binding="{Binding StatusDescription }"/>
             </DataGrid.Columns>
         </DataGrid>
 
