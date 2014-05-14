@@ -11,10 +11,12 @@
                         <GradientStop Color="#FFCDCDCD" Offset="1"/>
                     </LinearGradientBrush>
                 </TabItem.Background>
-                <Grid x:Name="myGrid" Background="White">
+                <Grid x:Name="myGrid" Background="White" Margin="0,7,0,-7">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
+                    <Label x:Name="lbWeekNo" Content="" HorizontalAlignment="Left" Margin="545,36,0,0" VerticalAlignment="Top" Width="48" RenderTransformOrigin="1.346,1.078"/>
+                    <Label x:Name="lbYearNo" Content="" HorizontalAlignment="Left" Margin="563,10,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="requestTab" Header="Requests" Height="22" VerticalAlignment="Top" Margin="-1,0,-3,0">

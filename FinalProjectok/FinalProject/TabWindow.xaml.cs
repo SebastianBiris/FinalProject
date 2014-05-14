@@ -238,8 +238,8 @@ namespace FinalProject
 
                 }
             }
+        
         }
-
 
 
         private void Previous_Click(object sender, RoutedEventArgs e)
@@ -248,26 +248,26 @@ namespace FinalProject
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+       
+       
+            foreach (Button button in drawButtons )
+            { myGrid.Children.Remove(button); }
+            drawButtons.Clear();
+            myWeekDates.Clear();
+            int tempWeekNo= (int)lbWeekNo.Content;
+            int yearNo = (int)lbYearNo.Content;
+            if (tempWeekNo == 1)
+           { lbYearNo.Content = (yearNo - 1);
+             lbWeekNo.Content = 52;
+             offSetForYearChange -= 52;
+
+            for (int i = 0; i < 7; i++)
+            {
+
+
+
+            }
+ }
         }
-        //{
-        //    foreach (Button button in drawButtons)
-        //    { myGrid.Children.Remove(button); }
-        //    drawButtons.Clear();
-        //    myWeekDates.Clear();
-        //    int tempWeekNo= (int)lbWeekNo.Content;
-        //    int yearNo = (int)lbYearNo.Content;
-        //    if (tempWeekNo == 1)
-        //    { lbYearNo.Content = (yearNo - 1);
-        //    lbWeekNo.Content = 52;
-        //    offSetForYearChange -= 52;
-
-        //    for (int i = 0; i < 7; i++)
-        //    {
-
-
-
-        //    }
-
-        //}
     }
-}
+
