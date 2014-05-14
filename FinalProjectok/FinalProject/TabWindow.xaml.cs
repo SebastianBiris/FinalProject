@@ -35,7 +35,7 @@ namespace FinalProject
         public List<Button> drawButtons = new List<Button>();
         public List<Button> ColumnHeaderButtons { get; set; }
 
-       
+
         public int[,] Matrix =
         { 
             {4, 2, 2, 2, 2, 2, 2, 2, 7, 8},
@@ -86,7 +86,7 @@ namespace FinalProject
             for (int j = 0; j < 5; j++)
             {
                 int year = 2014 + YearOffSet;
-                DateTime firstDayOfTheFirstWeekOfTheYear = myController.GetWeeks(year,DayOfWeek.Thursday);
+                DateTime firstDayOfTheFirstWeekOfTheYear = myController.GetWeeks(year, DayOfWeek.Thursday);
                 for (int i = 0; i < 54; i++)
                 {
                     DateTime first = myController.GetWeeks((year + 1), DayOfWeek.Thursday);
@@ -100,13 +100,13 @@ namespace FinalProject
                     }
 
 
-                  allWeeksList.Add(myController.GetWeekList(year, firstDayOfTheFirstWeekOfTheYear.AddDays(0 + offset),
-                        firstDayOfTheFirstWeekOfTheYear.AddDays(1 + offset),
-                        firstDayOfTheFirstWeekOfTheYear.AddDays(2 + offset),
-                        firstDayOfTheFirstWeekOfTheYear.AddDays(3 + offset),
-                        firstDayOfTheFirstWeekOfTheYear.AddDays(4 + offset),
-                        firstDayOfTheFirstWeekOfTheYear.AddDays(5 + offset),
-                        firstDayOfTheFirstWeekOfTheYear.AddDays(6 + offset)));
+                    allWeeksList.Add(myController.GetWeekList(year, firstDayOfTheFirstWeekOfTheYear.AddDays(0 + offset),
+                          firstDayOfTheFirstWeekOfTheYear.AddDays(1 + offset),
+                          firstDayOfTheFirstWeekOfTheYear.AddDays(2 + offset),
+                          firstDayOfTheFirstWeekOfTheYear.AddDays(3 + offset),
+                          firstDayOfTheFirstWeekOfTheYear.AddDays(4 + offset),
+                          firstDayOfTheFirstWeekOfTheYear.AddDays(5 + offset),
+                          firstDayOfTheFirstWeekOfTheYear.AddDays(6 + offset)));
                     offset += 7;
                 }
                 YearOffSet++;
@@ -238,7 +238,7 @@ namespace FinalProject
 
                 }
             }
-        
+
         }
 
 
@@ -248,26 +248,28 @@ namespace FinalProject
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-       
-       
-            foreach (Button button in drawButtons )
+
+
+            foreach (Button button in drawButtons)
             { myGrid.Children.Remove(button); }
             drawButtons.Clear();
             myWeekDates.Clear();
-            int tempWeekNo= (int)lbWeekNo.Content;
+            int tempWeekNo = (int)lbWeekNo.Content;
             int yearNo = (int)lbYearNo.Content;
             if (tempWeekNo == 1)
-           { lbYearNo.Content = (yearNo - 1);
-             lbWeekNo.Content = 52;
-             offSetForYearChange -= 52;
-
-            for (int i = 0; i < 7; i++)
             {
+                lbYearNo.Content = (yearNo - 1);
+                lbWeekNo.Content = 52;
+                offSetForYearChange -= 52;
+
+                for (int i = 0; i < 7; i++)
+                {
 
 
 
+                }
             }
- }
         }
     }
+}
 
