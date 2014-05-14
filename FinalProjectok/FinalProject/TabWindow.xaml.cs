@@ -76,7 +76,7 @@ namespace FinalProject
             myWeekDates = new List<DateTime>();
             lbWeekNo.Content = myController.GetWeeksOfYear();
             lbYearNo.Content = DateTime.Now.Year;
-         //  DrawButtons();
+            DrawButtons();
         }
         public List<DateTime> myWeekDates { get; set; }
         public List<IWeekList> allWeeksList = new List<IWeekList>();
@@ -142,38 +142,42 @@ namespace FinalProject
             int dateCounter = 0;
             for (int i = 0; i <= 26; i++)
             {
-                myGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
-                myGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+                myGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(2, GridUnitType.Auto) });
+                myGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(2, GridUnitType.Auto) });
                 for (int j = 0; j <= 9; j++)
                 {
                     dateCounter++;
-                    if (Matrix[i, j] == 4)
+                    if (Matrix[i, j] == 3)
                     {
                         Button cellButtons = new Button
                         {
-                            Height = 34,
-                            Width = 130,
+                            Height = 20,
+                            Width = 70,
                             Background = new SolidColorBrush(Colors.AliceBlue),
+                            Foreground = new SolidColorBrush(Colors.Black),
+                            IsEnabled = true,
+                            Content = "3",
+                            HorizontalContentAlignment = HorizontalAlignment.Center,
+                            VerticalContentAlignment = VerticalAlignment.Center,
 
                         };
                         cellButtons.SetValue(Grid.RowProperty, i);
                         cellButtons.SetValue(Grid.ColumnProperty, j);
                         myGrid.Children.Add(cellButtons);
-                        cellButtons.MouseDoubleClick += MachingTheData;
-                        cellButtons.Name = "R" + i + "C" + j;
+
                     }
                     else if (Matrix[i, j] == 2)
                     {
-                        string dayHack = "Day" + (dateCounter - 1);
+
                         Button columnHeaderButton = new Button
                         {
-                            Name = dayHack,
-                            Height = 34,
-                            Width = 130,
+
+                            Height = 20,
+                            Width = 70,
                             Background = new SolidColorBrush(Colors.Azure),
                             Foreground = new SolidColorBrush(Colors.Black),
                             IsEnabled = true,
-                            Content = "X",
+                            Content = "2",
                             HorizontalContentAlignment = HorizontalAlignment.Center,
                             VerticalContentAlignment = VerticalAlignment.Center,
 
@@ -182,7 +186,7 @@ namespace FinalProject
                         columnHeaderButton.SetValue(Grid.RowProperty, i);
                         columnHeaderButton.SetValue(Grid.ColumnProperty, j);
                         myGrid.Children.Add(columnHeaderButton);
-                        //   ColumnHeaderButtons.Add(columnHeaderButton);
+                        //    ColumnHeaderButtons.Add(columnHeaderButton);
 
 
 
@@ -191,40 +195,39 @@ namespace FinalProject
                     else if (Matrix[i, j] == 6)
                     {
 
-                        Button rowHeaderButton = new Button
+                        Button columnHeaderButton = new Button
                         {
-                            Name = "something",
-                            Height = 34,
-                            Width = 130,
+
+                            Height = 20,
+                            Width = 70,
                             Background = new SolidColorBrush(Colors.Azure),
                             Foreground = new SolidColorBrush(Colors.Black),
                             IsEnabled = true,
-                            Content = "X",
+                            Content = "6",
                             HorizontalContentAlignment = HorizontalAlignment.Center,
                             VerticalContentAlignment = VerticalAlignment.Center,
 
                         };
                         //Add shift
-                        rowHeaderButton.SetValue(Grid.RowProperty, i);
-                        rowHeaderButton.SetValue(Grid.ColumnProperty, j);
-                        myGrid.Children.Add(rowHeaderButton);
-
+                        columnHeaderButton.SetValue(Grid.RowProperty, i);
+                        columnHeaderButton.SetValue(Grid.ColumnProperty, j);
+                        myGrid.Children.Add(columnHeaderButton);
                     }
 
                     else if (Matrix[i, j] == 1)
                     {
-                        string dayHack = "Day" + (dateCounter - 1);
+
                         Button columnHeaderButton = new Button
                         {
-                            Name = dayHack,
-                            Height = 34,
-                            Width = 130,
+
+                            Height = 20,
+                            Width = 70,
                             Background = new SolidColorBrush(Colors.Azure),
                             Foreground = new SolidColorBrush(Colors.Black),
                             IsEnabled = true,
-                            Content = "X",
-                            HorizontalContentAlignment = HorizontalAlignment.Center,
-                            VerticalContentAlignment = VerticalAlignment.Center,
+                            Content = "Name",
+                            HorizontalContentAlignment = HorizontalAlignment.Left,
+                            VerticalContentAlignment = VerticalAlignment.Top,
 
                         };
 
@@ -233,10 +236,127 @@ namespace FinalProject
                         myGrid.Children.Add(columnHeaderButton);
 
 
-
-
                     }
+                    else if (Matrix[i, j] == 9)
+                    {
 
+                        Button columnHeaderButton = new Button
+                        {
+
+                            Height = 20,
+                            Width = 70,
+                            Background = new SolidColorBrush(Colors.Azure),
+                            Foreground = new SolidColorBrush(Colors.Black),
+                            IsEnabled = true,
+                            Content = "9",
+                            HorizontalContentAlignment = HorizontalAlignment.Center,
+                            VerticalContentAlignment = VerticalAlignment.Center,
+
+                        };
+                        columnHeaderButton.SetValue(Grid.RowProperty, i);
+                        columnHeaderButton.SetValue(Grid.ColumnProperty, j);
+                        myGrid.Children.Add(columnHeaderButton);
+                    }
+                    else if (Matrix[i, j] == 4)
+                    {
+
+                        Button columnHeaderButton = new Button
+                        {
+
+                            Height = 20,
+                            Width = 70,
+                            Background = new SolidColorBrush(Colors.Azure),
+                            Foreground = new SolidColorBrush(Colors.Black),
+                            IsEnabled = true,
+                            Content = "4",
+                            HorizontalContentAlignment = HorizontalAlignment.Center,
+                            VerticalContentAlignment = VerticalAlignment.Center,
+
+                        };
+                        columnHeaderButton.SetValue(Grid.RowProperty, i);
+                        columnHeaderButton.SetValue(Grid.ColumnProperty, j);
+                        myGrid.Children.Add(columnHeaderButton);
+                    }
+                    else if (Matrix[i, j] == 10)
+                    {
+
+                        Button columnHeaderButton = new Button
+                        {
+
+                            Height = 20,
+                            Width = 70,
+                            Background = new SolidColorBrush(Colors.Azure),
+                            Foreground = new SolidColorBrush(Colors.Black),
+                            IsEnabled = true,
+                            Content = "10",
+                            HorizontalContentAlignment = HorizontalAlignment.Center,
+                            VerticalContentAlignment = VerticalAlignment.Center,
+
+                        };
+                        columnHeaderButton.SetValue(Grid.RowProperty, i);
+                        columnHeaderButton.SetValue(Grid.ColumnProperty, j);
+                        myGrid.Children.Add(columnHeaderButton);
+                    }
+                    else if (Matrix[i, j] == 8)
+                    {
+
+                        Button columnHeaderButton = new Button
+                        {
+
+                            Height = 20,
+                            Width = 70,
+                            Background = new SolidColorBrush(Colors.Azure),
+                            Foreground = new SolidColorBrush(Colors.Black),
+                            IsEnabled = true,
+                            Content = "8",
+                            HorizontalContentAlignment = HorizontalAlignment.Center,
+                            VerticalContentAlignment = VerticalAlignment.Center,
+
+                        };
+                        columnHeaderButton.SetValue(Grid.RowProperty, i);
+                        columnHeaderButton.SetValue(Grid.ColumnProperty, j);
+                        myGrid.Children.Add(columnHeaderButton);
+                    }
+                    else if (Matrix[i, j] == 7)
+                    {
+
+                        Button columnHeaderButton = new Button
+                        {
+
+                            Height = 20,
+                            Width = 70,
+                            Background = new SolidColorBrush(Colors.Azure),
+                            Foreground = new SolidColorBrush(Colors.Black),
+                            IsEnabled = true,
+                            Content = "7",
+                            HorizontalContentAlignment = HorizontalAlignment.Center,
+                            VerticalContentAlignment = VerticalAlignment.Center,
+
+                        };
+                        columnHeaderButton.SetValue(Grid.RowProperty, i);
+                        columnHeaderButton.SetValue(Grid.ColumnProperty, j);
+                        myGrid.Children.Add(columnHeaderButton);
+                    }
+                    else if (Matrix[i, j] == 5)
+                    {
+
+                        Button columnHeaderButton = new Button
+                        {
+
+                            Height = 20,
+                            Width = 70,
+                            Background = new SolidColorBrush(Colors.Azure),
+                            Foreground = new SolidColorBrush(Colors.Black),
+                            IsEnabled = true,
+                            Content = "5",
+                            HorizontalContentAlignment = HorizontalAlignment.Center,
+                            VerticalContentAlignment = VerticalAlignment.Center,
+
+                        };
+                        columnHeaderButton.SetValue(Grid.RowProperty, i);
+                        columnHeaderButton.SetValue(Grid.ColumnProperty, j);
+                        myGrid.Children.Add(columnHeaderButton);
+                    }
 
                 }
             }
