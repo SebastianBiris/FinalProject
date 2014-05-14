@@ -25,6 +25,8 @@ namespace FinalProject
         public ViewContact()
         {
             InitializeComponent();
+
+
         }
     }
 }

@@ -18,8 +18,10 @@ namespace ControllerLayer
         List<WorkingHours> workingHours;
         List<Title> titles;
         List<Role> roles;
+
         List<Week> weeks;
         StaffMember selectedStaffMember;
+
 
         DataAccessDB myDataAccessDb;
 
