@@ -73,10 +73,11 @@ namespace FinalProject
 
         private void btnForgotPassword_Click(object sender, RoutedEventArgs e)
         {
+            TabWindow nt = new TabWindow();
             ForgetPasswordWindow w = new ForgetPasswordWindow();
-            TabWindow tbwindow = new TabWindow();
+            
             this.Hide();
-            tbwindow.ShowDialog();
+            nt.ShowDialog();
             this.Show();
         }
     }
