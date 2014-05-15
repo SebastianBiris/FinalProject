@@ -22,11 +22,9 @@
                     </DataGrid>
 
                     <TextBlock HorizontalAlignment="Left" Margin="19,10,0,0" TextWrapping="Wrap" Text="Staff member's information:" VerticalAlignment="Top" Width="279" Height="20" FontWeight="Bold" Foreground="#FFCD2929"/>
-                    <ListBox x:Name="listBoxContactStaff" HorizontalAlignment="Left" Height="142" Margin="19,267,0,0" VerticalAlignment="Top" Width="189" BorderBrush="#FF6778A8" />
+                    <ListBox x:Name="listBoxContactStaff" HorizontalAlignment="Left" Height="142" Margin="19,267,0,0" VerticalAlignment="Top" Width="189" BorderBrush="#FF6778A8"/>
                     <TextBox x:Name="txtContactStaff" HorizontalAlignment="Left" Height="98" Margin="240,277,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="430" BorderBrush="#FF6575A6"/>
-<<<<<<< HEAD
-=======
-                    <Button x:Name="btnSubmitMail" Content="Submit mail" HorizontalAlignment="Left" Margin="349,380,0,0" VerticalAlignment="Top" Width="105" Height="29" FontWeight="Bold" Foreground="#FF131313" BorderBrush="#FF151515" Click="btnSubmitMail_Click">
+                    <Button Content="Submit mail" HorizontalAlignment="Left" Margin="349,380,0,0" VerticalAlignment="Top" Width="105" Height="29" FontWeight="Bold" Foreground="#FF131313" BorderBrush="#FF151515">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="Black" Offset="0"/>
@@ -34,10 +32,8 @@
                             </LinearGradientBrush>
                         </Button.Background>
                     </Button>
->>>>>>> c4949e2b5855b209570b5bc2e13d4e0acc9f1557
                     <TextBlock HorizontalAlignment="Left" Margin="240,252,0,0" TextWrapping="Wrap" Text="Type your request below:" VerticalAlignment="Top" Width="279" Height="20" FontWeight="Bold" Foreground="#FFCD2929"/>
                     <TextBlock HorizontalAlignment="Left" Margin="19,247,0,0" TextWrapping="Wrap" Text="Select a staff member:" VerticalAlignment="Top" Width="172" Height="20" FontWeight="Bold" Foreground="#FFCD2929"/>
-                    <Button Content="Send Message" HorizontalAlignment="Left" Margin="375,392,0,0" VerticalAlignment="Top" Width="114" Height="31"/>
                 </Grid>
 
 

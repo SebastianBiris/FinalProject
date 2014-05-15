@@ -34,7 +34,7 @@ namespace FinalProject
         int offSetForYearChange;
         public List<Button> drawButtons = new List<Button>();
         public List<Button> ColumnHeaderButtons { get; set; }
-        int nr = -1;
+
 
         public int[,] Matrix =
         { 
@@ -77,12 +77,22 @@ namespace FinalProject
             lbWeekNo.Content = myController.GetWeeksOfYear();
             lbYearNo.Content = DateTime.Now.Year;
             DrawButtons();
-            listBoxStaffInfo.ItemsSource = null;
-            listBoxStaffInfo.ItemsSource = myController.StaffMembers;
+            lsitboxStaffinformation.ItemsSource = null;
+            lsitboxStaffinformation.ItemsSource = myController.StaffMembers;
             listboxStaff.ItemsSource = null;
             listboxStaff.ItemsSource = myController.StaffMembers;
-            FillTheWeeks();
-            GetWeek();
+
+            ListBoxRequests.ItemsSource = null;
+            List<IMessage> myList = new List<IMessage>();
+            foreach (IMessage myMessage in myController.Messages)
+            {
+                if (myMessage.StaffMemberId == 6)
+                {
+                    myList.Add(myMessage);
+                }
+                ListBoxRequests.ItemsSource = myList;
+
+            }
         }
         public List<DateTime> myWeekDates { get; set; }
         public List<IWeekList> allWeeksList = new List<IWeekList>();
@@ -123,10 +133,10 @@ namespace FinalProject
 
         }
 
-        public void GetWeek()
+        public int GetWeek()
         {
             WeekNow = myController.GetWeeksOfYear();
-           
+            return WeekNow;
         }
 
 
@@ -136,11 +146,10 @@ namespace FinalProject
         {
             var getSelectedButton = (Button)sender;
             string str = getSelectedButton.Name;
-          //  RowNumber = Convert.ToInt16(str[1] - 48);
-           // ColumnNumber = Convert.ToInt16(str[3] - 48);
+            RowNumber = Convert.ToInt16(str[1] - 48);
+            ColumnNumber = Convert.ToInt16(str[3] - 48);
             //            SelectDateTime1 = DayOfWeek[ColumnNumber - 1];
-            ForgetPasswordWindow forg = new ForgetPasswordWindow();
-            forg.ShowDialog();
+
 
         }
 
@@ -199,7 +208,7 @@ namespace FinalProject
 
                     }
 
-                    else if (Matrix[i, j] == 6 && i <= myController.StaffMembers.Count + 1)
+                    else if (Matrix[i, j] == 6)
                     {
 
                         Button columnHeaderButton = new Button
@@ -219,35 +228,32 @@ namespace FinalProject
                         columnHeaderButton.SetValue(Grid.RowProperty, i);
                         columnHeaderButton.SetValue(Grid.ColumnProperty, j);
                         myGrid.Children.Add(columnHeaderButton);
-                        columnHeaderButton.MouseDoubleClick += MachingTheData;
                     }
 
                     else if (Matrix[i, j] == 1)
                     {
-                        if (nr < myController.StaffMembers.Count - 1)
+
+                        Button columnHeaderButton = new Button
                         {
-                            nr++;
-                            Button columnHeaderButton = new Button
-                            {
 
-                                Height = 20,
-                                Width = 70,
-                                Background = new SolidColorBrush(Colors.Azure),
-                                Foreground = new SolidColorBrush(Colors.Black),
-                                IsEnabled = true,
-                                Content = myController.StaffMembers[nr].StaffMemberName,
-                                HorizontalContentAlignment = HorizontalAlignment.Left,
-                                VerticalContentAlignment = VerticalAlignment.Top,
+                            Height = 20,
+                            Width = 70,
+                            Background = new SolidColorBrush(Colors.Azure),
+                            Foreground = new SolidColorBrush(Colors.Black),
+                            IsEnabled = true,
+                            Content = "Name",
+                            HorizontalContentAlignment = HorizontalAlignment.Left,
+                            VerticalContentAlignment = VerticalAlignment.Top,
 
-                            };
+                        };
 
-                            columnHeaderButton.SetValue(Grid.RowProperty, i);
-                            columnHeaderButton.SetValue(Grid.ColumnProperty, j);
-                            myGrid.Children.Add(columnHeaderButton);
-                        }
+                        columnHeaderButton.SetValue(Grid.RowProperty, i);
+                        columnHeaderButton.SetValue(Grid.ColumnProperty, j);
+                        myGrid.Children.Add(columnHeaderButton);
+
 
                     }
-                    else if (Matrix[i, j] == 9 && i <= myController.StaffMembers.Count + 1)
+                    else if (Matrix[i, j] == 9)
                     {
 
                         Button columnHeaderButton = new Button
@@ -287,7 +293,7 @@ namespace FinalProject
                         columnHeaderButton.SetValue(Grid.ColumnProperty, j);
                         myGrid.Children.Add(columnHeaderButton);
                     }
-                    else if (Matrix[i, j] == 10 && i <= myController.StaffMembers.Count + 1)
+                    else if (Matrix[i, j] == 10)
                     {
 
                         Button columnHeaderButton = new Button
@@ -382,7 +388,7 @@ namespace FinalProject
         {
 
             foreach (Button button in drawButtons)
-            { 
+            {
                 myGrid.Children.Remove(button);
             }
 
@@ -390,7 +396,7 @@ namespace FinalProject
             myWeekDates.Clear();
             int tempWeekNo = (int)lbWeekNo.Content;
             int yearNo = (int)lbYearNo.Content;
-            
+
             if (tempWeekNo == 1)
             {
                 lbYearNo.Content = (yearNo - 1);
@@ -401,7 +407,7 @@ namespace FinalProject
                 {
                     myWeekDates.Add(
                         allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
-                    ColumnHeaderButtons[i].Content = 
+                    ColumnHeaderButtons[i].Content =
                         allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
 
 
@@ -433,8 +439,8 @@ namespace FinalProject
             }
             drawButtons.Clear();
             myWeekDates.Clear();
-           int tempweekNo = (int)lbWeekNo.Content;
-           int YearNo = (int)lbYearNo.Content;
+            int tempweekNo = (int)lbWeekNo.Content;
+            int YearNo = (int)lbYearNo.Content;
             if (tempweekNo == 52)
             {
                 lbYearNo.Content = (YearNo + 1);
@@ -499,6 +505,46 @@ namespace FinalProject
             txtStatus.Text = lbStaffMember.StatusDescription;
             txtTilte.Text = lbStaffMember.Position;
         }
+
+        //private void ListBoxRequests_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    //IMessage myMessage = (IMessage) ListBoxRequests.SelectedItem;
+        //    //myController.SelectedMessage = myMessage;
+        //    List<IMessage> myList = new List<IMessage>();
+        //    IStaffMember lbStaffMember = (IStaffMember)lsitboxStaffinformation.SelectedItem;
+        //    myController.SelectedStaffMember = lbStaffMember;
+
+        //   foreach (IMessage myMessage in myController.Messages)
+
+        //    {
+        //        if (myController.SelectedStaffMember.StaffMemeberId == myMessage.StaffMemberId)
+        //        {
+        //            myList.Add(myMessage);
+        //        }
+        //        ListBoxRequests.ItemsSource = myList; 
+
+        //    }
+        //}
+
+        private void lsitboxStaffinformation_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+        //     //IMessage myMessage = (IMessage) ListBoxRequests.SelectedItem;
+        //    //myController.SelectedMessage = myMessage;
+        //    List<IMessage> myList = new List<IMessage>();
+        //    IStaffMember lbStaffMember = (IStaffMember)lsitboxStaffinformation.SelectedItem;
+        //    myController.SelectedStaffMember = lbStaffMember;
+
+        //   foreach (IMessage myMessage in myController.Messages)
+            
+        //    {
+        //        if (myMessage.StaffMemberId == 6)
+        //        {
+        //            myList.Add(myMessage);
+        //        }
+        //        ListBoxRequests.ItemsSource = myList;
+
+        //}
+    }
     }
 }
 
