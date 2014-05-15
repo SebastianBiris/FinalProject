@@ -34,7 +34,7 @@ namespace FinalProject
         int offSetForYearChange;
         public List<Button> drawButtons = new List<Button>();
         public List<Button> ColumnHeaderButtons { get; set; }
-       
+        int nr = -1;
 
         public int[,] Matrix =
         { 
@@ -81,6 +81,8 @@ namespace FinalProject
             listBoxStaffInfo.ItemsSource = myController.StaffMembers;
             listboxStaff.ItemsSource = null;
             listboxStaff.ItemsSource = myController.StaffMembers;
+            FillTheWeeks();
+            GetWeek();
         }
         public List<DateTime> myWeekDates { get; set; }
         public List<IWeekList> allWeeksList = new List<IWeekList>();
@@ -121,10 +123,10 @@ namespace FinalProject
 
         }
 
-        public int GetWeek()
+        public void GetWeek()
         {
             WeekNow = myController.GetWeeksOfYear();
-            return WeekNow;
+           
         }
 
 
@@ -134,10 +136,11 @@ namespace FinalProject
         {
             var getSelectedButton = (Button)sender;
             string str = getSelectedButton.Name;
-            RowNumber = Convert.ToInt16(str[1] - 48);
-            ColumnNumber = Convert.ToInt16(str[3] - 48);
+          //  RowNumber = Convert.ToInt16(str[1] - 48);
+           // ColumnNumber = Convert.ToInt16(str[3] - 48);
             //            SelectDateTime1 = DayOfWeek[ColumnNumber - 1];
-
+            ForgetPasswordWindow forg = new ForgetPasswordWindow();
+            forg.ShowDialog();
 
         }
 
@@ -196,7 +199,7 @@ namespace FinalProject
 
                     }
 
-                    else if (Matrix[i, j] == 6)
+                    else if (Matrix[i, j] == 6 && i <= myController.StaffMembers.Count + 1)
                     {
 
                         Button columnHeaderButton = new Button
@@ -216,32 +219,35 @@ namespace FinalProject
                         columnHeaderButton.SetValue(Grid.RowProperty, i);
                         columnHeaderButton.SetValue(Grid.ColumnProperty, j);
                         myGrid.Children.Add(columnHeaderButton);
+                        columnHeaderButton.MouseDoubleClick += MachingTheData;
                     }
 
                     else if (Matrix[i, j] == 1)
                     {
-
-                        Button columnHeaderButton = new Button
+                        if (nr < myController.StaffMembers.Count - 1)
                         {
+                            nr++;
+                            Button columnHeaderButton = new Button
+                            {
 
-                            Height = 20,
-                            Width = 70,
-                            Background = new SolidColorBrush(Colors.Azure),
-                            Foreground = new SolidColorBrush(Colors.Black),
-                            IsEnabled = true,
-                            Content = "Name",
-                            HorizontalContentAlignment = HorizontalAlignment.Left,
-                            VerticalContentAlignment = VerticalAlignment.Top,
+                                Height = 20,
+                                Width = 70,
+                                Background = new SolidColorBrush(Colors.Azure),
+                                Foreground = new SolidColorBrush(Colors.Black),
+                                IsEnabled = true,
+                                Content = myController.StaffMembers[nr].StaffMemberName,
+                                HorizontalContentAlignment = HorizontalAlignment.Left,
+                                VerticalContentAlignment = VerticalAlignment.Top,
 
-                        };
+                            };
 
-                        columnHeaderButton.SetValue(Grid.RowProperty, i);
-                        columnHeaderButton.SetValue(Grid.ColumnProperty, j);
-                        myGrid.Children.Add(columnHeaderButton);
-
+                            columnHeaderButton.SetValue(Grid.RowProperty, i);
+                            columnHeaderButton.SetValue(Grid.ColumnProperty, j);
+                            myGrid.Children.Add(columnHeaderButton);
+                        }
 
                     }
-                    else if (Matrix[i, j] == 9)
+                    else if (Matrix[i, j] == 9 && i <= myController.StaffMembers.Count + 1)
                     {
 
                         Button columnHeaderButton = new Button
@@ -281,7 +287,7 @@ namespace FinalProject
                         columnHeaderButton.SetValue(Grid.ColumnProperty, j);
                         myGrid.Children.Add(columnHeaderButton);
                     }
-                    else if (Matrix[i, j] == 10)
+                    else if (Matrix[i, j] == 10 && i <= myController.StaffMembers.Count + 1)
                     {
 
                         Button columnHeaderButton = new Button
