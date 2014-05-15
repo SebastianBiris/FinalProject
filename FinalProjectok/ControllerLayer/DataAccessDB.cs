@@ -398,7 +398,7 @@ namespace ControllerLayer
                dataReader = cmd.ExecuteReader();
                while (dataReader.Read())
                {
-                   messageId = (int.Parse(dataReader["messageId"].ToString())); //todo
+                   messageId = (int.Parse(dataReader["messageId"].ToString())); 
                    staffMemberId = (int.Parse(dataReader["staffMemberId"].ToString()));
                    message = dataReader["newMessage"].ToString();
                    returnMessagesList.Add(new Message(messageId, message, staffMemberId));

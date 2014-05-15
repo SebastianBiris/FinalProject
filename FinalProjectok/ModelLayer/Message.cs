@@ -39,5 +39,10 @@ namespace ModelLayer
            get { return _staffMemberId; }
            set { _staffMemberId = value; }
        }
+
+       public override string ToString()
+       {
+           return MessageId.ToString() + "  " + StaffMemberId.ToString() + "  " + InboxMessage;
+       }
     }
 }

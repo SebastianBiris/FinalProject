@@ -24,6 +24,7 @@ namespace ControllerLayer
 
        // List<Week> weeks;
         StaffMember selectedStaffMember;
+        Message selectedMessage;
 
 
         DataAccessDB myDataAccessDb;
@@ -45,9 +46,9 @@ namespace ControllerLayer
             titles = new List<Title>();
             roles = new List<Role>();
             myDataAccessDb = new DataAccessDB();
-            GetAllFromDB();
             weekList = new List<WeekList>();
             messages = new List<Message>();
+            GetAllFromDB();
         }
 
         #region properties //**Sebi**
@@ -143,9 +144,9 @@ namespace ControllerLayer
            get
            {
                List<IMessage> resultList = new List<IMessage>();
-               foreach (Message tempMessage in messages)
+               foreach (IMessage tempMessage in messages)
                {
-                   resultList.Add((IMessage)messages);
+                   resultList.Add(tempMessage);
                }
                return resultList;
            }
@@ -180,12 +181,20 @@ namespace ControllerLayer
                staffMembers.Remove(selectedMember);
            }
        }
-
+       //Majd
        public IStaffMember SelectedStaffMember
        {
            get { return (IStaffMember)selectedStaffMember; }
            set { selectedStaffMember = (StaffMember)value; }
        }
+       //Chris
+       public Message SelectedMessage
+       {
+           get { return  selectedMessage; }
+           set { selectedMessage = value; }
+       }
+       
+    
 
        public void GetAllFromDB()
        {

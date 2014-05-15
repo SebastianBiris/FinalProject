@@ -110,7 +110,7 @@
                     </LinearGradientBrush>
                 </TabItem.Background>
                 <Grid Background="White" Margin="0,0,1,1">
-                    <ListBox x:Name="listBoxStaffInfo" HorizontalAlignment="Left" Height="138" Margin="10,269,0,0" VerticalAlignment="Top" Width="115"/>
+                    <ListBox x:Name="listBoxStaffInfo" HorizontalAlignment="Left" Height="138" Margin="10,269,0,0" VerticalAlignment="Top" Width="115" SelectionChanged="listBoxStaffInfo_SelectionChanged"/>
                     <ListBox x:Name="ListBoxRequests" HorizontalAlignment="Left" Height="204" Margin="10,10,0,0" VerticalAlignment="Top" Width="658"/>
                     <TextBox x:Name="txtRespon" HorizontalAlignment="Left" Height="138" Margin="154,269,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="514"/>
 
