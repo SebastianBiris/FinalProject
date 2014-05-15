@@ -376,11 +376,15 @@ namespace FinalProject
         {
 
             foreach (Button button in drawButtons)
-            { myGrid.Children.Remove(button); }
+            { 
+                myGrid.Children.Remove(button);
+            }
+
             drawButtons.Clear();
             myWeekDates.Clear();
-           int tempWeekNo = (int)lbWeekNo.Content;
-           int yearNo = (int)lbYearNo.Content;
+            int tempWeekNo = (int)lbWeekNo.Content;
+            int yearNo = (int)lbYearNo.Content;
+            
             if (tempWeekNo == 1)
             {
                 lbYearNo.Content = (yearNo - 1);
@@ -389,8 +393,10 @@ namespace FinalProject
 
                 for (int i = 0; i < 7; i++)
                 {
-                    myWeekDates.Add(allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
-                    ColumnHeaderButtons[i].Content = allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
+                    myWeekDates.Add(
+                        allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
+                    ColumnHeaderButtons[i].Content = 
+                        allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
 
 
                 }
