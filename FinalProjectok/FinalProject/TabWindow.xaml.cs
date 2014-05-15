@@ -34,13 +34,8 @@ namespace FinalProject
         int offSetForYearChange;
         public List<Button> drawButtons = new List<Button>();
         public List<Button> ColumnHeaderButtons { get; set; }
-<<<<<<< HEAD
-        int nr = -1;
-=======
-
->>>>>>> 4eba1dce25b591f9d811fb55a4bfb88860a6a661
-
-        public int[,] Matrix =
+      int nr = -1;
+          public int[,] Matrix =
         { 
             {4, 2, 2, 2, 2, 2, 2, 2, 7, 8},
             {5, 3, 3, 3, 3, 3, 3, 3, 9,10},
@@ -81,27 +76,12 @@ namespace FinalProject
             lbWeekNo.Content = myController.GetWeeksOfYear();
             lbYearNo.Content = DateTime.Now.Year;
             DrawButtons();
-            lsitboxStaffinformation.ItemsSource = null;
-            lsitboxStaffinformation.ItemsSource = myController.StaffMembers;
+            listBoxStaffInfo.ItemsSource = null;
+            listBoxStaffInfo.ItemsSource = myController.StaffMembers;
             listboxStaff.ItemsSource = null;
             listboxStaff.ItemsSource = myController.StaffMembers;
-<<<<<<< HEAD
             FillTheWeeks();
             GetWeek();
-=======
-
-            ListBoxRequests.ItemsSource = null;
-            List<IMessage> myList = new List<IMessage>();
-            foreach (IMessage myMessage in myController.Messages)
-            {
-                if (myMessage.StaffMemberId == 6)
-                {
-                    myList.Add(myMessage);
-                }
-                ListBoxRequests.ItemsSource = myList;
-
-            }
->>>>>>> 4eba1dce25b591f9d811fb55a4bfb88860a6a661
         }
         public List<DateTime> myWeekDates { get; set; }
         public List<IWeekList> allWeeksList = new List<IWeekList>();
@@ -401,7 +381,7 @@ namespace FinalProject
         {
 
             foreach (Button button in drawButtons)
-            {
+            { 
                 myGrid.Children.Remove(button);
             }
 
@@ -409,7 +389,7 @@ namespace FinalProject
             myWeekDates.Clear();
             int tempWeekNo = (int)lbWeekNo.Content;
             int yearNo = (int)lbYearNo.Content;
-
+            
             if (tempWeekNo == 1)
             {
                 lbYearNo.Content = (yearNo - 1);
@@ -420,7 +400,7 @@ namespace FinalProject
                 {
                     myWeekDates.Add(
                         allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
-                    ColumnHeaderButtons[i].Content =
+                    ColumnHeaderButtons[i].Content = 
                         allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
 
 
@@ -452,8 +432,8 @@ namespace FinalProject
             }
             drawButtons.Clear();
             myWeekDates.Clear();
-            int tempweekNo = (int)lbWeekNo.Content;
-            int YearNo = (int)lbYearNo.Content;
+           int tempweekNo = (int)lbWeekNo.Content;
+           int YearNo = (int)lbYearNo.Content;
             if (tempweekNo == 52)
             {
                 lbYearNo.Content = (YearNo + 1);
@@ -518,46 +498,6 @@ namespace FinalProject
             txtStatus.Text = lbStaffMember.StatusDescription;
             txtTilte.Text = lbStaffMember.Position;
         }
-
-        //private void ListBoxRequests_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    //IMessage myMessage = (IMessage) ListBoxRequests.SelectedItem;
-        //    //myController.SelectedMessage = myMessage;
-        //    List<IMessage> myList = new List<IMessage>();
-        //    IStaffMember lbStaffMember = (IStaffMember)lsitboxStaffinformation.SelectedItem;
-        //    myController.SelectedStaffMember = lbStaffMember;
-
-        //   foreach (IMessage myMessage in myController.Messages)
-
-        //    {
-        //        if (myController.SelectedStaffMember.StaffMemeberId == myMessage.StaffMemberId)
-        //        {
-        //            myList.Add(myMessage);
-        //        }
-        //        ListBoxRequests.ItemsSource = myList; 
-
-        //    }
-        //}
-
-        private void lsitboxStaffinformation_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-        //     //IMessage myMessage = (IMessage) ListBoxRequests.SelectedItem;
-        //    //myController.SelectedMessage = myMessage;
-        //    List<IMessage> myList = new List<IMessage>();
-        //    IStaffMember lbStaffMember = (IStaffMember)lsitboxStaffinformation.SelectedItem;
-        //    myController.SelectedStaffMember = lbStaffMember;
-
-        //   foreach (IMessage myMessage in myController.Messages)
-            
-        //    {
-        //        if (myMessage.StaffMemberId == 6)
-        //        {
-        //            myList.Add(myMessage);
-        //        }
-        //        ListBoxRequests.ItemsSource = myList;
-
-        //}
-    }
     }
 }
 
