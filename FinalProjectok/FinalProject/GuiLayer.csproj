@@ -60,9 +60,6 @@
     <Compile Include="AddStaffMember.xaml.cs">
       <DependentUpon>AddStaffMember.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StaffInfo.xaml.cs">
-      <DependentUpon>StaffInfo.xaml</DependentUpon>
-    </Compile>
     <Compile Include="TabWindow.xaml.cs">
       <DependentUpon>TabWindow.xaml</DependentUpon>
     </Compile>
@@ -89,10 +86,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MakeRequest.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="StaffInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="ViewContact" Height="450" Width="600">
     <Grid Background="#FFC7C3C3">
-        <DataGrid x:Name="dataGridContactInfo" HorizontalAlignment="Left" Margin="19,35,0,0" VerticalAlignment="Top" Height="202" Width="553" AutoGenerateColumns="False">
+        <DataGrid x:Name="dataGridContactInfo" HorizontalAlignment="Left" Margin="0,40,0,0" VerticalAlignment="Top" Height="202" Width="582" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding StaffMemberName}"/>
                 <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber }"/>

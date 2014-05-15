@@ -37,8 +37,22 @@ namespace FinalProject
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
-        { //TabWindow myTab= new TabWindow();
-            StaffInfo myStaffWin = new StaffInfo();
+        { TabWindow myTab= new TabWindow();
+        
+
+        if (txtUserId.Text == "1")
+        {
+            myTab.ShowDialog();
+           // myTab.scheduleTab.Visibility = Visibility.Visible;
+            myTab.tab1.Visibility = Visibility.Collapsed;
+        }
+        //else if (txtUserId.Text != "1")
+        //{
+         
+         
+
+        //}
+            
             ViewContact myViewContactWin = new ViewContact();
             
             try
@@ -59,7 +73,7 @@ namespace FinalProject
                     {
                         //myTab.Close();
                         this.Close();
-                        myStaffWin.Show();
+                       
                     }
                     else if (txtUserId.Text != "1")
                     {
