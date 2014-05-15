@@ -38,22 +38,10 @@ namespace FinalProject
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         { TabWindow myTab= new TabWindow();
+            TabForStaff myTabForStaff = new TabForStaff();
+
+         
         
-
-        if (txtUserId.Text == "1")
-        {
-            myTab.ShowDialog();
-           // myTab.scheduleTab.Visibility = Visibility.Visible;
-            myTab.tab1.Visibility = Visibility.Collapsed;
-        }
-        //else if (txtUserId.Text != "1")
-        //{
-         
-         
-
-        //}
-            
-            ViewContact myViewContactWin = new ViewContact();
             
             try
             {   
@@ -71,14 +59,14 @@ namespace FinalProject
                 //myTab.Show();
                     if (txtUserId.Text == "1")
                     {
-                        //myTab.Close();
+                        
                         this.Close();
-                       
+                        myTab.Show();
                     }
                     else if (txtUserId.Text != "1")
                     {
                         this.Close();
-                        myViewContactWin.Show();
+                        myTabForStaff.Show();
                     }
                 }
                 else if(count>1)

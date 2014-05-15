@@ -46,92 +46,32 @@
                         <GradientStop Color="#FFCDCDCD" Offset="1"/>
                     </LinearGradientBrush>
                 </TabItem.Background>
-                <Grid Background="White" Margin="0,10,1,2">
+                <Grid Background="White" Margin="0,0,1,12">
                     <Label Content="Name:" HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top" Width="73" Height="25"/>
                     <Label Content="Cpr:" HorizontalAlignment="Left" Margin="27,50,0,0" VerticalAlignment="Top" Width="73" Height="25"/>
                     <Label Content="Email:" HorizontalAlignment="Left" Margin="27,128,0,0" VerticalAlignment="Top" Width="73" Height="25" RenderTransformOrigin="0.493,1.64"/>
                     <Label Content="PhoneNo:" HorizontalAlignment="Left" Margin="27,89,0,0" VerticalAlignment="Top" Width="73" Height="25" RenderTransformOrigin="0.493,1.64"/>
                     <Label Content="Password:" HorizontalAlignment="Left" Margin="27,169,0,0" VerticalAlignment="Top" Width="73" Height="25" RenderTransformOrigin="0.493,1.64"/>
                     <Label Content="Role:" HorizontalAlignment="Left" Margin="27,212,0,0" VerticalAlignment="Top" Width="73" Height="25" RenderTransformOrigin="0.493,1.64"/>
-                    <Label Content="Status" HorizontalAlignment="Left" Margin="27,253,0,0" VerticalAlignment="Top" Width="73" Height="25" RenderTransformOrigin="0.493,1.64"/>
-                    <Label Content="Title:" HorizontalAlignment="Left" Margin="27,295,0,0" VerticalAlignment="Top" Width="73" Height="25" RenderTransformOrigin="0.493,1.64"/>
+                    <Label Content="Status" HorizontalAlignment="Left" Margin="27,295,0,0" VerticalAlignment="Top" Width="73" Height="25" RenderTransformOrigin="0.493,1.64"/>
+                    <Label Content="Title:" HorizontalAlignment="Left" Margin="27,253,0,0" VerticalAlignment="Top" Width="73" Height="25" RenderTransformOrigin="0.493,1.64"/>
                     <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="157,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
                     <TextBox x:Name="txtCpr" HorizontalAlignment="Left" Height="23" Margin="157,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
                     <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Height="23" Margin="157,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
                     <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="157,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
                     <TextBox x:Name="txtPassword" HorizontalAlignment="Left" Height="23" Margin="157,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
                     <TextBox x:Name="txtRole" HorizontalAlignment="Left" Height="23" Margin="157,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
-                    <TextBox x:Name="txtStatus" HorizontalAlignment="Left" Height="23" Margin="157,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
-                    <TextBox x:Name="txtTilte" HorizontalAlignment="Left" Height="23" Margin="157,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
-                    <Button x:Name="btnAddStaffMember" Content="Add New Staff Member" HorizontalAlignment="Left" Margin="84,338,0,0" VerticalAlignment="Top" Width="134" RenderTransformOrigin="0.213,0" Click="btnAddStaffMember_Click"/>
-                    <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="261,338,0,0" VerticalAlignment="Top" Width="73" RenderTransformOrigin="0.213,0"/>
-                    <Button x:Name="btnRemove" Content="Remove" HorizontalAlignment="Left" Margin="384,338,0,0" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.213,0"/>
-                    <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="498,338,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="0.213,0" Click="btnClear_Click"/>
-                    <ListBox x:Name="listboxStaff" HorizontalAlignment="Left" Height="308" Margin="384,12,0,0" VerticalAlignment="Top" Width="188" SelectionChanged="listboxStaff_SelectionChanged"/>
+                    <TextBox x:Name="txtStatus" HorizontalAlignment="Left" Height="75" Margin="157,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
+                    <TextBox x:Name="txtTilte" HorizontalAlignment="Left" Height="24" Margin="157,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
+                    <Button x:Name="btnAddStaffMember" Content="Add New Staff Member" HorizontalAlignment="Left" Margin="58,394,0,0" VerticalAlignment="Top" Width="134" RenderTransformOrigin="0.213,0" Click="btnAddStaffMember_Click"/>
+                    <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="251,394,0,0" VerticalAlignment="Top" Width="73" RenderTransformOrigin="0.213,0"/>
+                    <Button x:Name="btnRemove" Content="Remove" HorizontalAlignment="Left" Margin="384,394,0,0" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.213,0"/>
+                    <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="501,394,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="0.213,0" Click="btnClear_Click"/>
+                    <ListBox x:Name="listboxStaff" HorizontalAlignment="Left" Height="360" Margin="384,12,0,0" VerticalAlignment="Top" Width="188" SelectionChanged="listboxStaff_SelectionChanged"/>
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="574"/>
                     </Grid.ColumnDefinitions>
-                </Grid>
-            </TabItem>
-            <TabItem x:Name="tab1" Header="fuck majd" Margin="-2,0">
-                <TabItem.Background>
-                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
-                        <GradientStop Color="#FFCDCDCD" Offset="1"/>
-                    </LinearGradientBrush>
-                </TabItem.Background>
-                <Grid Background="White" Margin="0,10,1,2">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    
-                </Grid>
-            </TabItem>
-            <TabItem x:Name="contactsTab_Copy1" Header="Staff Information" Margin="-2,0">
-                <TabItem.Background>
-                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
-                        <GradientStop Color="#FFCDCDCD" Offset="1"/>
-                    </LinearGradientBrush>
-                </TabItem.Background>
-                <Grid Background="White" Margin="0,10,1,2">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-
-                </Grid>
-            </TabItem>
-            <TabItem x:Name="contactsTab_Copy2" Header="Staff Information" Margin="-2,0">
-                <TabItem.Background>
-                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
-                        <GradientStop Color="#FFCDCDCD" Offset="1"/>
-                    </LinearGradientBrush>
-                </TabItem.Background>
-                <Grid Background="White" Margin="0,10,1,2">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-
-                </Grid>
-            </TabItem>
-            <TabItem x:Name="contactsTab_Copy3" Header="Staff Information" Margin="-2,0">
-                <TabItem.Background>
-                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
-                        <GradientStop Color="#FFCDCDCD" Offset="1"/>
-                    </LinearGradientBrush>
-                </TabItem.Background>
-                <Grid Background="White" Margin="0,10,1,2">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-
                 </Grid>
             </TabItem>
         </TabControl>
