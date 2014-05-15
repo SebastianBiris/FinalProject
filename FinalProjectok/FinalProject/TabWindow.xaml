@@ -30,13 +30,13 @@
                     </LinearGradientBrush>
                 </TabItem.Background>
                 <Grid Background="White" Margin="0,0,1,1">
+                    <ListBox x:Name="listBoxStaffInfo" HorizontalAlignment="Left" Height="283" Margin="10,269,0,0" VerticalAlignment="Top" Width="121"/>
                     <ListBox x:Name="ListBoxRequests" HorizontalAlignment="Left" Height="204" Margin="10,10,0,0" VerticalAlignment="Top" Width="753"/>
                     <TextBox x:Name="txtRespon" HorizontalAlignment="Left" Height="236" Margin="154,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="609"/>
                     <Button x:Name="btnSend" Content="Send" HorizontalAlignment="Left" Margin="688,571,0,0" VerticalAlignment="Top" Width="75"/>
                     <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="688,234,0,0" VerticalAlignment="Top" Width="75"/>
                     <Label Content="New Message" HorizontalAlignment="Left" Margin="154,269,0,0" VerticalAlignment="Top" Width="124"/>
                     <Label Content="Staff Members" HorizontalAlignment="Left" Margin="10,234,0,0" VerticalAlignment="Top" Width="88"/>
-                    <ListBox x:Name="lsitboxStaffinformation" HorizontalAlignment="Left" Height="276" Margin="10,294,0,0" VerticalAlignment="Top" Width="96" SelectionChanged="lsitboxStaffinformation_SelectionChanged"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="staffInfoTab" Header="Staff Information" Height="22" VerticalAlignment="Top" Margin="-2,0">
