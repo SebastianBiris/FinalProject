@@ -21,9 +21,7 @@ namespace ControllerLayer
         List<Message> messages;
         List<WeekList> weekList;
         IWeekList myWeekList1;
-        List<IWeekList> myWeekList;
 
-       
        // List<Week> weeks;
         StaffMember selectedStaffMember;
         Message selectedMessage;
@@ -51,7 +49,6 @@ namespace ControllerLayer
             weekList = new List<WeekList>();
             messages = new List<Message>();
             GetAllFromDB();
-            myWeekList = new List<IWeekList>();
         }
 
         #region properties //**Sebi**
@@ -176,7 +173,7 @@ namespace ControllerLayer
             }
         }
 
-       //chris & Majd 15.05
+        // chris & Majd 15.05
        public void CreateNewMessage(string inboxMessage, int staffMemberId)
        {
            int messageId;
@@ -191,7 +188,8 @@ namespace ControllerLayer
            {
                throw new Exception("Data wasn`t sent correctly");
            }
-       } 
+       }
+
        
 
        //Chris
@@ -214,8 +212,6 @@ namespace ControllerLayer
            get { return  selectedMessage; }
            set { selectedMessage = value; }
        }
-
-       
        
     
 
@@ -256,11 +252,7 @@ namespace ControllerLayer
             return myWeekList1;
 
        }
-       public List<IWeekList> MyWeekList
-       {
-           get { return myWeekList; }
-           set { myWeekList = value; }
-       }
+
 
     }
 }

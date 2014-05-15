@@ -378,7 +378,7 @@ namespace ControllerLayer
         }
         #endregion
 
-     #region View Inbox Messages from DB  //chris 15.05
+     #region View Inbox Messages from DB
 
        public List<Message> ViewMessagesFromDB()
        {
@@ -425,7 +425,7 @@ namespace ControllerLayer
 
      #endregion
 
-       #region Add new Message to DB //chris & Majd 15.05
+        #region Add new Message to DB //chris & Majd 15.05
 
        public int AddMessageInDB( string inboxMessage, int staffMemberId)
        {
@@ -461,7 +461,7 @@ namespace ControllerLayer
 
        #endregion
 
-       public void ConnectToDB()
+     public void ConnectToDB()
      {
          const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
          SqlConnection con = new SqlConnection(DB_CONNECTION);
