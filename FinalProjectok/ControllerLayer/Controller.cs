@@ -18,7 +18,7 @@ namespace ControllerLayer
         List<WorkingHours> workingHours;
         List<Title> titles;
         List<Role> roles;
-
+        List<Message> messages;
         List<WeekList> weekList;
         IWeekList myWeekList1;
 
@@ -47,7 +47,7 @@ namespace ControllerLayer
             myDataAccessDb = new DataAccessDB();
             GetAllFromDB();
             weekList = new List<WeekList>();
-            
+            messages = new List<Message>();
         }
 
         #region properties //**Sebi**
@@ -137,6 +137,20 @@ namespace ControllerLayer
             }
         }
 
+       //chris 15.05
+       public List<IMessage> Messages
+       {
+           get
+           {
+               List<IMessage> resultList = new List<IMessage>();
+               foreach (Message tempMessage in messages)
+               {
+                   resultList.Add((IMessage)messages);
+               }
+               return resultList;
+           }
+       }
+
         #endregion
 
 
@@ -180,6 +194,7 @@ namespace ControllerLayer
            workingHours = myDataAccessDb.ViewWorkingHoursFromDB();
            titles = myDataAccessDb.ViewTitlesFromDB();
            roles = myDataAccessDb.ViewRoleFromDb();
+           messages = myDataAccessDb.ViewMessagesFromDB();
        }
 
        public void GetDay(string day)

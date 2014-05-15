@@ -22,6 +22,7 @@ namespace ModelLayer
         string _position;
         string _roleType;
         List<ShiftDate> myShiftDate;
+        List<Message> myInboxMessages;
     
 
        public  StaffMember(int staffMemeberId, string staffMemberName,string cpr, string phoneNumber,
@@ -51,6 +52,7 @@ namespace ModelLayer
             _roleType = roleType;
             _statusDescription = statusDescription;
             myShiftDate = new List<ShiftDate>();
+            myInboxMessages = new List<Message>();
         }
        
         #region Properties //MAL

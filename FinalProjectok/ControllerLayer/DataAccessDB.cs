@@ -292,7 +292,10 @@ namespace ControllerLayer
          string statusDescription;
         string position;
         string roleType;
+        // int messageId;
+        // string message;
 
+        // List<Message>returnMessagesList = new List<Message>();
          List<StaffMember> returnStaffMembersList = new List<StaffMember>();
          cmd.Parameters.Clear();
          cmd.CommandText = "SP_ViewContactInfo2";
@@ -312,7 +315,7 @@ namespace ControllerLayer
                  statusDescription = dataReader["statusDescription"].ToString();
                  roleType = dataReader["roleType"].ToString();
                 position = dataReader["position"].ToString();
-
+                // returnMessagesList.Add(new Message(messageId,message,staffMemberId));
                  returnStaffMembersList.Add(new StaffMember(staffMemberId, staffMemberName, cpr, phoneNumber, email, password, statusDescription, position, roleType));
                  
              }
@@ -375,7 +378,54 @@ namespace ControllerLayer
         }
         #endregion
 
-       public void ConnectToDB()
+     #region View Inbox Messages from DB
+
+       public List<Message> ViewMessagesFromDB()
+       {
+           SqlDataReader dataReader = null;
+
+           int messageId, staffMemberId;
+           string message;
+
+           List<Message> returnMessagesList = new List<Message>();
+
+           cmd.Parameters.Clear();
+           cmd.CommandText = "SP_ViewMessages";
+
+           try
+           {
+               con.Open();
+               dataReader = cmd.ExecuteReader();
+               while (dataReader.Read())
+               {
+                   messageId = (int.Parse(dataReader["messageId"].ToString())); //todo
+                   staffMemberId = (int.Parse(dataReader["staffMemberId"].ToString()));
+                   message = dataReader["newMessage"].ToString();
+                   returnMessagesList.Add(new Message(messageId, message, staffMemberId));
+               }
+               return returnMessagesList;
+           }
+           catch (SqlException ex)
+           {
+
+               throw ex;
+           }
+           finally
+           {
+               if(dataReader != null)
+               {
+                   dataReader.Close();
+               }
+               if (con.State == ConnectionState.Open)
+               {
+                   con.Close();
+               }
+           }
+       }
+
+     #endregion
+
+     public void ConnectToDB()
      {
          const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
          SqlConnection con = new SqlConnection(DB_CONNECTION);

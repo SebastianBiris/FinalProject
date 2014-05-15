@@ -24,6 +24,7 @@ namespace FinalProject
     public partial class StaffInfo : Window
     {
         Controller myController = new Controller();
+//IMessage myMessage;
 
         public StaffInfo()
         {
@@ -32,7 +33,11 @@ namespace FinalProject
             txtName.Focus();
 
             listboxStaff.ItemsSource = null;
-            listboxStaff.ItemsSource = myController.StaffMembers;
+            //if (myController.SelectedStaffMember.StaffMemeberId == myMessage.StaffMemberId)
+            //{
+            //    listboxStaff.ItemsSource = myController.StaffMembers;
+            //}
+            
 
         }
 
@@ -56,6 +61,10 @@ namespace FinalProject
             IStaffMember lbStaffMember = (IStaffMember)listboxStaff.SelectedItem;
             myController.SelectedStaffMember = lbStaffMember;
 
+            if(myController.SelectedStaffMember.StaffMemeberId !=1)
+            {
+                
+            }
             txtCpr.Text = lbStaffMember.Cpr;
             txtEmail.Text = lbStaffMember.Email;
             txtName.Text = lbStaffMember.StaffMemberName;
