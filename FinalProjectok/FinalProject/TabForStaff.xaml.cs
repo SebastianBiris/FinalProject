@@ -39,22 +39,31 @@ namespace FinalProject
         }
 
         private void listBoxStaffInfo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        { 
             //IMessage myMessage = (IMessage) ListBoxRequests.SelectedItem;
             //myController.SelectedMessage = myMessage;
             List<IMessage> myList = new List<IMessage>();
             IStaffMember lbStaffMember = (IStaffMember)listBoxStaffInfo.SelectedItem;
             myController.SelectedStaffMember = lbStaffMember;
-
+           
             foreach (IMessage myMessage in myController.Messages)
             {
-                if (myController.SelectedStaffMember.StaffMemeberId == myMessage.StaffMemberId)
-                {
+                 if (myController.SelectedStaffMember.StaffMemeberId == myMessage.StaffMemberId)
+                 {
                     myList.Add(myMessage);
-                }
+                 }
                 ListBoxRequests.ItemsSource = myList;
-
             }
+
+           
         }
+
+        private void btnSubmitMail_Click(object sender, RoutedEventArgs e)
+        {
+            string message = txtShiftChangeRequest.Text;
+        }
+
+    
+      
     }
 }

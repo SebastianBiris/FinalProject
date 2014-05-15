@@ -34,8 +34,9 @@ namespace FinalProject
         int offSetForYearChange;
         public List<Button> drawButtons = new List<Button>();
         public List<Button> ColumnHeaderButtons { get; set; }
-      int nr = -1;
-          public int[,] Matrix =
+        int nr = -1;
+
+        public int[,] Matrix =
         { 
             {4, 2, 2, 2, 2, 2, 2, 2, 7, 8},
             {5, 3, 3, 3, 3, 3, 3, 3, 9,10},
