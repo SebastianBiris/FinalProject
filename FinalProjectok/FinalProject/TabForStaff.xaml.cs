@@ -56,13 +56,5 @@ namespace FinalProject
 
             }
         }
-
-        private void btnSubmitMail_Click(object sender, RoutedEventArgs e)
-        {
-            string message = txtShiftChangeRequest.Text;
-        }
-
-    
-      
     }
 }
