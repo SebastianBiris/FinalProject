@@ -37,9 +37,11 @@ namespace FinalProject
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
-        { //TabWindow myTab= new TabWindow();
-            StaffInfo myStaffWin = new StaffInfo();
-            ViewContact myViewContactWin = new ViewContact();
+        { TabWindow myTab= new TabWindow();
+            TabForStaff myTabForStaff = new TabForStaff();
+
+         
+        
             
             try
             {   
@@ -57,14 +59,14 @@ namespace FinalProject
                 //myTab.Show();
                     if (txtUserId.Text == "1")
                     {
-                        //myTab.Close();
+                        
                         this.Close();
-                        myStaffWin.Show();
+                        myTab.Show();
                     }
                     else if (txtUserId.Text != "1")
                     {
                         this.Close();
-                        myViewContactWin.Show();
+                        myTabForStaff.Show();
                     }
                 }
                 else if(count>1)

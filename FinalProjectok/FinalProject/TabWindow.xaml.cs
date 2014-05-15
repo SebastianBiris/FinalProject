@@ -34,7 +34,7 @@ namespace FinalProject
         int offSetForYearChange;
         public List<Button> drawButtons = new List<Button>();
         public List<Button> ColumnHeaderButtons { get; set; }
-
+       
 
         public int[,] Matrix =
         { 
@@ -79,6 +79,8 @@ namespace FinalProject
             DrawButtons();
             listBoxStaffInfo.ItemsSource = null;
             listBoxStaffInfo.ItemsSource = myController.StaffMembers;
+            listboxStaff.ItemsSource = null;
+            listboxStaff.ItemsSource = myController.StaffMembers;
         }
         public List<DateTime> myWeekDates { get; set; }
         public List<IWeekList> allWeeksList = new List<IWeekList>();
@@ -374,11 +376,15 @@ namespace FinalProject
         {
 
             foreach (Button button in drawButtons)
-            { myGrid.Children.Remove(button); }
+            { 
+                myGrid.Children.Remove(button);
+            }
+
             drawButtons.Clear();
             myWeekDates.Clear();
-           int tempWeekNo = (int)lbWeekNo.Content;
-           int yearNo = (int)lbYearNo.Content;
+            int tempWeekNo = (int)lbWeekNo.Content;
+            int yearNo = (int)lbYearNo.Content;
+            
             if (tempWeekNo == 1)
             {
                 lbYearNo.Content = (yearNo - 1);
@@ -387,8 +393,10 @@ namespace FinalProject
 
                 for (int i = 0; i < 7; i++)
                 {
-                    myWeekDates.Add(allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
-                    ColumnHeaderButtons[i].Content = allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
+                    myWeekDates.Add(
+                        allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
+                    ColumnHeaderButtons[i].Content = 
+                        allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
 
 
                 }
@@ -449,6 +457,41 @@ namespace FinalProject
                             .ToShortDateString();
                 }
             }
+        }
+
+        private void btnAddStaffMember_Click(object sender, RoutedEventArgs e)
+        {
+            AddStaffMember nuWin = new AddStaffMember();
+            this.Close();
+            nuWin.Show();
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            txtName.Clear();
+            txtCpr.Clear();
+            txtEmail.Clear();
+            txtPassword.Clear();
+            txtPhoneNumber.Clear();
+            txtRole.Clear();
+            txtStatus.Clear();
+            txtTilte.Clear();
+            txtName.Focus();
+        }
+
+        private void listboxStaff_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            IStaffMember lbStaffMember = (IStaffMember)listboxStaff.SelectedItem;
+            myController.SelectedStaffMember = lbStaffMember;
+
+            txtCpr.Text = lbStaffMember.Cpr;
+            txtEmail.Text = lbStaffMember.Email;
+            txtName.Text = lbStaffMember.StaffMemberName;
+            txtPassword.Text = lbStaffMember.Password;
+            txtPhoneNumber.Text = lbStaffMember.PhoneNumber;
+            txtRole.Text = lbStaffMember.RoleType;
+            txtStatus.Text = lbStaffMember.StatusDescription;
+            txtTilte.Text = lbStaffMember.Position;
         }
     }
 }

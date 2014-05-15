@@ -11,27 +11,26 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 using ControllerLayer;
 using InterfaceLayer;
 
 namespace FinalProject
 {
     /// <summary>
-    /// Interaction logic for ViewContact.xaml
+    /// Interaction logic for TabForStaff.xaml
     /// </summary>
-    public partial class ViewContact : Window
+    public partial class TabForStaff : Window
     {
-        Controller myController = new Controller();
+        Controller myController;
 
-        
-        public ViewContact()
+        public TabForStaff()
         {
             InitializeComponent();
-
-            dataGridContactInfo.ItemsSource = myController.StaffMembers;
-            listBoxContactStaff.ItemsSource = null;
-            listBoxContactStaff.ItemsSource = myController.StaffMembers;
+            myController = new Controller();
+            listBoxStaffInfo.ItemsSource = null;
+           listBoxStaffInfo.ItemsSource = myController.StaffMembers;
+           listBoxContactStaff.ItemsSource = myController.StaffMembers;
+           dataGridContactInfo.ItemsSource = myController.StaffMembers;
         }
     }
 }

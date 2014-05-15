@@ -60,14 +60,11 @@
     <Compile Include="AddStaffMember.xaml.cs">
       <DependentUpon>AddStaffMember.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StaffInfo.xaml.cs">
-      <DependentUpon>StaffInfo.xaml</DependentUpon>
+    <Compile Include="TabForStaff.xaml.cs">
+      <DependentUpon>TabForStaff.xaml</DependentUpon>
     </Compile>
     <Compile Include="TabWindow.xaml.cs">
       <DependentUpon>TabWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewContact.xaml.cs">
-      <DependentUpon>ViewContact.xaml</DependentUpon>
     </Compile>
     <Page Include="AddStaffMember.xaml">
       <SubType>Designer</SubType>
@@ -88,11 +85,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MakeRequest.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="StaffInfo.xaml">
+    <Page Include="TabForStaff.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -100,17 +93,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewContact.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MakeRequest.xaml.cs">
-      <DependentUpon>MakeRequest.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
