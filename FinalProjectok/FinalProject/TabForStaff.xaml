@@ -116,7 +116,7 @@
 
                     <Label Content="New Message" HorizontalAlignment="Left" Margin="154,234,0,0" VerticalAlignment="Top" Width="124"/>
                     <Label Content="Staff Members" HorizontalAlignment="Left" Margin="10,234,0,0" VerticalAlignment="Top" Width="88"/>
-                    <Button x:Name="btnSend" Content="Send" HorizontalAlignment="Left" Margin="583,234,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btnSend" Content="Send" HorizontalAlignment="Left" Margin="583,234,0,0" VerticalAlignment="Top" Width="75" Click="btnSend_Click"/>
                     <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="457,234,0,0" VerticalAlignment="Top" Width="75"/>
                 </Grid>
             </TabItem>
