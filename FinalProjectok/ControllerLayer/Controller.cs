@@ -173,6 +173,24 @@ namespace ControllerLayer
             }
         }
 
+       //chris & Majd 15.05
+       public void CreateNewMessage(string inboxMessage, int staffMemberId)
+       {
+           int messageId;
+           try
+           {
+               messageId = myDataAccessDb.AddMessageInDB(inboxMessage, staffMemberId);
+               Message myMessages = new Message(messageId,inboxMessage,staffMemberId);
+
+               messages.Add(myMessages);
+           }
+           catch 
+           {
+               throw new Exception("Data wasn`t sent correctly");
+           }
+       } 
+       
+
        //Chris
        public void DeleteStaffMember(StaffMember selectedMember)
        {
