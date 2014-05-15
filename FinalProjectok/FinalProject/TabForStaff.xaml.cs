@@ -32,5 +32,13 @@ namespace FinalProject
            listBoxContactStaff.ItemsSource = myController.StaffMembers;
            dataGridContactInfo.ItemsSource = myController.StaffMembers;
         }
+
+        private void btnSubmitMail_Click(object sender, RoutedEventArgs e)
+        {
+            string message = txtShiftChangeRequest.Text;
+        }
+
+    
+      
     }
 }
