@@ -425,42 +425,6 @@ namespace ControllerLayer
 
      #endregion
 
-        #region Add new Message to DB //chris & Majd 15.05
-
-       public int AddMessageInDB( string inboxMessage, int staffMemberId)
-       {
-           cmd.CommandText = "SP_SendMessage";
-           cmd.Parameters.Clear();
-
-           SqlParameter par = new SqlParameter();
-           par.Value = -1;
-           par.Direction = ParameterDirection.Output;
-           cmd.Parameters.Add(par);
-
-           cmd.Parameters.AddWithValue("@newMessage", inboxMessage);
-           cmd.Parameters.AddWithValue("staffMemberId", staffMemberId);
-           try
-           {
-               con.Open();
-               cmd.ExecuteNonQuery();
-               return int.Parse(cmd.Parameters["@messageId"].Value.ToString());
-           }
-           catch (SqlException ex)
-           {
-
-               throw ex;
-           }
-           finally
-           {
-               if (con.State == ConnectionState.Open)
-               {
-                   con.Close();
-               }
-           }
-       }
-
-       #endregion
-
      public void ConnectToDB()
      {
          const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
