@@ -15,11 +15,11 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Label x:Name="lbWeekNo" Content="" HorizontalAlignment="Left" Margin="508,35,0,0" VerticalAlignment="Top" Width="48" RenderTransformOrigin="1.346,1.078"/>
-                    <Label x:Name="lbYearNo" Content="" HorizontalAlignment="Left" Margin="503,4,0,0" VerticalAlignment="Top" Width="53" RenderTransformOrigin="-0.479,0.562"/>
-                    <Button x:Name="btnPrevious" Content="Previous Week" HorizontalAlignment="Left" Margin="383,35,0,0" VerticalAlignment="Top" Width="101" RenderTransformOrigin="0.191,-0.102" Click="btnPrevious_Click"/>
-                    <Button x:Name="btnForward" Content="Next Week" HorizontalAlignment="Left" Margin="583,35,0,0" VerticalAlignment="Top" Width="75" Click="btnForward_Click"/>
-                    <Grid x:Name="myGrid" HorizontalAlignment="Left" Height="566" Margin="25,66,0,0" VerticalAlignment="Top" Width="781"/>
+                    <Label x:Name="lbWeekNo" Content="" HorizontalAlignment="Left" Margin="144,134,0,0" VerticalAlignment="Top" Width="48" RenderTransformOrigin="1.346,1.078"/>
+                    <Label x:Name="lbYearNo" Content="" HorizontalAlignment="Left" Margin="139,103,0,0" VerticalAlignment="Top" Width="53" RenderTransformOrigin="-0.479,0.562"/>
+                    <Button x:Name="btnPrevious" Content="Previous Week" HorizontalAlignment="Left" Margin="19,134,0,0" VerticalAlignment="Top" Width="101" RenderTransformOrigin="0.191,-0.102" Click="btnPrevious_Click"/>
+                    <Button x:Name="btnForward" Content="Next Week" HorizontalAlignment="Left" Margin="219,134,0,0" VerticalAlignment="Top" Width="75" Click="btnForward_Click"/>
+                    <Grid x:Name="myGrid" HorizontalAlignment="Left" Height="436" Margin="25,203,0,0" VerticalAlignment="Top" Width="770"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="requestTab" Header="Requests" Height="22" VerticalAlignment="Top" Margin="-1,0,-3,0">

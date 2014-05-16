@@ -11,8 +11,8 @@ namespace ControllerLayer
 {
    public  class Controller
     { 
-        //lists for GUI
-        List<Shift> shifts;
+     
+        List<Shift> shift;
         List<ShiftDate> shiftDates;
         List<StaffMember> staffMembers;
         List<WorkingHours> workingHours;
@@ -20,28 +20,24 @@ namespace ControllerLayer
         List<Role> roles;
         List<Message> messages;
         List<WeekList> weekList;
-        IWeekList myWeekList1;
         List<IWeekList> myWeekList;
 
-       
-       // List<Week> weeks;
+        WeekList myWeekList1;
+        List<IShift>shifts;
+
+        
+     
         StaffMember selectedStaffMember;
         Message selectedMessage;
 
 
         DataAccessDB myDataAccessDb;
 
-        //Shift currentShift;
-        //ShiftDate currentShiftDate;
-        //StaffMember currentStaffMember;
-        //WorkingHours currentWorkingHours;
-        //Title currentTitle;
-        //Status currentStatus;
-        //Role currentRole;
+      
        
         public Controller()
         {
-            shifts = new List<Shift>();
+            shift = new List<Shift>();
             shiftDates = new List<ShiftDate>();
             staffMembers = new List<StaffMember>();
             workingHours = new List<WorkingHours>();
@@ -52,6 +48,7 @@ namespace ControllerLayer
             messages = new List<Message>();
             GetAllFromDB();
             myWeekList = new List<IWeekList>();
+            shifts = new List<IShift>();
         }
 
         #region properties //**Sebi**
@@ -98,6 +95,19 @@ namespace ControllerLayer
                 }
                 return resultList;
             }
+        }
+
+        public List<IWeekList> WeekLists
+        {
+            get
+            { List<IWeekList> resultlist = new List<IWeekList>();
+
+            foreach (WeekList weeklist in weekList)
+            {
+                resultlist.Add((IWeekList)weeklist);
+            }
+            return resultlist;
+ }
         }
 
         public List<IStaffMember> StaffMembers
@@ -202,7 +212,7 @@ namespace ControllerLayer
        public void GetAllFromDB()
        {
            staffMembers = myDataAccessDb.GetStaffMembersFromDB();
-           shifts = myDataAccessDb.ViewShiftFromDB();
+           shift = myDataAccessDb.ViewShiftFromDB();
            workingHours = myDataAccessDb.ViewWorkingHoursFromDB();
            titles = myDataAccessDb.ViewTitlesFromDB();
            roles = myDataAccessDb.ViewRoleFromDb();
@@ -232,15 +242,13 @@ namespace ControllerLayer
        public IWeekList GetWeekList(int year, DateTime day1, DateTime day2, DateTime day3, DateTime day4, DateTime day5, DateTime day6, DateTime day7)
        {
 
-           myWeekList1 = new WeekList(year, day1, day2, day3, day4, day5, day6, day7);
-            return myWeekList1;
-
+          myWeekList1 = new WeekList(year, day1, day2, day3, day4, day5, day6, day7);
+          return myWeekList1;
        }
        public List<IWeekList> MyWeekList
        {
            get { return myWeekList; }
            set { myWeekList = value; }
        }
-
     }
 }

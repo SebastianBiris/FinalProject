@@ -34,6 +34,7 @@ namespace FinalProject
         int offSetForYearChange;
         public List<Button> drawButtons = new List<Button>();
         public List<Button> ColumnHeaderButtons { get; set; }
+        public List<string> days = new List<string> {"", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
         int nr = -1;
 
         public int[,] Matrix =
@@ -146,7 +147,7 @@ namespace FinalProject
 
         public void DrawButtons()
         {
-            int dateCounter = 0;
+            int dateCounter = -10;
             for (int i = 0; i <= 26; i++)
             {
                 myGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(2, GridUnitType.Auto) });
@@ -156,6 +157,7 @@ namespace FinalProject
                     dateCounter++;
                     if (Matrix[i, j] == 3)
                     {
+                        string dayHack = "Day" + dateCounter;
                         Button cellButtons = new Button
                         {
                             Height = 20,
@@ -163,7 +165,7 @@ namespace FinalProject
                             Background = new SolidColorBrush(Colors.AliceBlue),
                             Foreground = new SolidColorBrush(Colors.Black),
                             IsEnabled = true,
-                            Content = "3",
+                            Content = "The date",//allWeeksList[WeekNow-1].GetDay(dayHack).ToShortDateString(),
                             HorizontalContentAlignment = HorizontalAlignment.Center,
                             VerticalContentAlignment = VerticalAlignment.Center,
 
@@ -184,7 +186,7 @@ namespace FinalProject
                             Background = new SolidColorBrush(Colors.Azure),
                             Foreground = new SolidColorBrush(Colors.Black),
                             IsEnabled = true,
-                            Content = "2",
+                            Content = days[j],
                             HorizontalContentAlignment = HorizontalAlignment.Center,
                             VerticalContentAlignment = VerticalAlignment.Center,
 
@@ -247,7 +249,7 @@ namespace FinalProject
                         }
 
                     }
-                    else if (Matrix[i, j] == 9 && i <= myController.StaffMembers.Count + 1)
+                    else if (Matrix[i, j] == 9 && i <= myController.StaffMembers.Count + 1 && i != 1)
                     {
 
                         Button columnHeaderButton = new Button
@@ -267,27 +269,8 @@ namespace FinalProject
                         columnHeaderButton.SetValue(Grid.ColumnProperty, j);
                         myGrid.Children.Add(columnHeaderButton);
                     }
-                    else if (Matrix[i, j] == 4)
-                    {
-
-                        Button columnHeaderButton = new Button
-                        {
-
-                            Height = 20,
-                            Width = 70,
-                            Background = new SolidColorBrush(Colors.Azure),
-                            Foreground = new SolidColorBrush(Colors.Black),
-                            IsEnabled = true,
-                            Content = "4",
-                            HorizontalContentAlignment = HorizontalAlignment.Center,
-                            VerticalContentAlignment = VerticalAlignment.Center,
-
-                        };
-                        columnHeaderButton.SetValue(Grid.RowProperty, i);
-                        columnHeaderButton.SetValue(Grid.ColumnProperty, j);
-                        myGrid.Children.Add(columnHeaderButton);
-                    }
-                    else if (Matrix[i, j] == 10 && i <= myController.StaffMembers.Count + 1)
+                   
+                    else if (Matrix[i, j] == 10 && i <= myController.StaffMembers.Count + 1 && i!=1)
                     {
 
                         Button columnHeaderButton = new Button
@@ -318,7 +301,7 @@ namespace FinalProject
                             Background = new SolidColorBrush(Colors.Azure),
                             Foreground = new SolidColorBrush(Colors.Black),
                             IsEnabled = true,
-                            Content = "8",
+                            Content = "Total Real",
                             HorizontalContentAlignment = HorizontalAlignment.Center,
                             VerticalContentAlignment = VerticalAlignment.Center,
 
@@ -338,7 +321,7 @@ namespace FinalProject
                             Background = new SolidColorBrush(Colors.Azure),
                             Foreground = new SolidColorBrush(Colors.Black),
                             IsEnabled = true,
-                            Content = "7",
+                            Content = "Total Skema",
                             HorizontalContentAlignment = HorizontalAlignment.Center,
                             VerticalContentAlignment = VerticalAlignment.Center,
 
@@ -347,26 +330,7 @@ namespace FinalProject
                         columnHeaderButton.SetValue(Grid.ColumnProperty, j);
                         myGrid.Children.Add(columnHeaderButton);
                     }
-                    else if (Matrix[i, j] == 5)
-                    {
-
-                        Button columnHeaderButton = new Button
-                        {
-
-                            Height = 20,
-                            Width = 70,
-                            Background = new SolidColorBrush(Colors.Azure),
-                            Foreground = new SolidColorBrush(Colors.Black),
-                            IsEnabled = true,
-                            Content = "5",
-                            HorizontalContentAlignment = HorizontalAlignment.Center,
-                            VerticalContentAlignment = VerticalAlignment.Center,
-
-                        };
-                        columnHeaderButton.SetValue(Grid.RowProperty, i);
-                        columnHeaderButton.SetValue(Grid.ColumnProperty, j);
-                        myGrid.Children.Add(columnHeaderButton);
-                    }
+                    
 
                 }
             }
