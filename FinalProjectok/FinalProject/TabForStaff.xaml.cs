@@ -30,6 +30,9 @@ namespace FinalProject
             myController = new Controller();
             listBoxStaffInfo.ItemsSource = null;
            listBoxStaffInfo.ItemsSource = myController.StaffMembers;
+
+           listBoxStaffInfo2.ItemsSource = null;
+           listBoxStaffInfo2.ItemsSource = myController.StaffMembers;
            listBoxContactStaff.ItemsSource = myController.StaffMembers;
            dataGridContactInfo.ItemsSource = myController.StaffMembers;
 
@@ -52,15 +55,55 @@ namespace FinalProject
                  {
                     myList.Add(myMessage);
                  }
-                ListBoxRequests.ItemsSource = myList;
+                
             }
-
-           
-        }
+        
+           ListBoxRequests.ItemsSource = myList;
+         }  
 
         private void btnSubmitMail_Click(object sender, RoutedEventArgs e)
         {
-            string message = txtShiftChangeRequest.Text;
+            IStaffMember lbStaffMember2 = (IStaffMember) listBoxContactStaff.SelectedItem;
+            myController.SelectedStaffMember = lbStaffMember2;
+
+            int tempStaffId = myController.SelectedStaffMember.StaffMemeberId;
+            string message = txtContactStaff.Text;
+
+            myController.CreateNewMessage(message,tempStaffId);
+            MessageBox.Show("Your message was sent successfully.");
+            txtContactStaff.Clear();
+        }
+
+
+
+        private void btnSend_Click(object sender, RoutedEventArgs e)
+        {
+             IStaffMember lbStaffMember2 = (IStaffMember) listBoxStaffInfo2.SelectedItem;
+            myController.SelectedStaffMember = lbStaffMember2;
+
+            int tempStaffId = myController.SelectedStaffMember.StaffMemeberId;
+            string tempMessage = txtRespon.Text;
+           
+          myController.CreateNewMessage(tempMessage,tempStaffId);
+            MessageBox.Show("Your message was sent successfully.");
+                txtRespon.Clear();
+        }
+
+
+
+        private void btnSubmitShiftChange_Click(object sender, RoutedEventArgs e)
+        {
+            int tempId = 6;
+            string tempMessage = txtShiftChangeRequest.Text;
+
+            myController.CreateNewMessage(tempMessage,tempId);
+            MessageBox.Show("Your message was sent successfully.");
+            txtShiftChangeRequest.Clear();
+        }
+
+        private void btnClearShiftChange_Click(object sender, RoutedEventArgs e)
+        {
+            txtShiftChangeRequest.Clear();
         }
 
     
