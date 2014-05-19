@@ -24,9 +24,7 @@ namespace FinalProject
     /// </summary>
     public partial class TabWindow : Window
     {
-        const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
-        SqlConnection con = new SqlConnection(DB_CONNECTION);
-        SqlCommand cmd = new SqlCommand();
+     
 
         Controller myController;
 
@@ -463,6 +461,7 @@ namespace FinalProject
         {
             IStaffMember lbStaffMember = (IStaffMember)listboxStaff.SelectedItem;
             myController.SelectedStaffMember = lbStaffMember;
+            
 
             txtCpr.Text = lbStaffMember.Cpr;
             txtEmail.Text = lbStaffMember.Email;
@@ -473,71 +472,9 @@ namespace FinalProject
             txtStatus.Text = lbStaffMember.StatusDescription;
             txtTilte.Text = lbStaffMember.Position;
         }
-
-        private void btnUpdate_Click(object sender, RoutedEventArgs e)
-        {
-//            UPDATE Customers
-//SET ContactName='Alfred Schmidt', City='Hamburg'
-//WHERE CustomerName='Alfreds Futterkiste';
-
-            //("select * from StaffMember where cpr ='" + this.txtUserId.Text + "'and staffPassword ='" + this.passPassword.Password+ "';", con);
-
-            try
-            {
-                SqlCommand SelectCommand = new SqlCommand("Update StaffMember Set staffMemberName ='" + this.txtName.Text + "',phoneNo='" + this.txtPhoneNumber.Text+ "' ,email ='"+ this.txtEmail.Text+ "',staffPassword='" + this.txtPassword.Text+"' ,titleId='"+ this.txtTilte.Text+"' ,roleID= '" +this.txtRole.Text+"',cpr='"+this.txtCpr.Text+"',statusDescription='"+ this.txtStatus.Text+"'Where staffMemberName='" + myController.SelectedStaffMember.StaffMemberName +"' ;", con);
-
-                SqlDataReader myReader;
-                con.Open();
-                myReader = SelectCommand.ExecuteReader();
-                int count = 0;
-
-                while (myReader.Read())
-                { count = count + 1; }
-                if (count == 0)
-                {
-                    MessageBox.Show("updated");
-                }
-
-                else
-                { MessageBox.Show("No"); }
-                con.Close();
-            }
-
-            catch (Exception ex)
-            { MessageBox.Show(ex.Message); }
-
-
-
-        }
-
-        private void btnRemove_Click(object sender, RoutedEventArgs e)
-        {
-
-            try
-            {
-                SqlCommand SelectCommand = new SqlCommand("Delete From StaffMember Where staffMemberName ='" + this.txtName.Text + "';", con);
-                SqlDataReader myReader;
-                con.Open();
-                myReader = SelectCommand.ExecuteReader();
-                int count = 0;
-
-                while (myReader.Read())
-                { count = count + 1; }
-                if (count == 0)
-                {
-                    MessageBox.Show("A Staff Member has been Deleted");
-                }
-
-                else
-                { MessageBox.Show("Staff member is not deleted"); }
-                con.Close();
-            }
-
-            catch (Exception ex)
-            { MessageBox.Show(ex.Message); }
-
-            
-        }
+     
+       
+        
     }
 }
 

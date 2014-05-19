@@ -28,6 +28,9 @@ namespace FinalProject
         SqlConnection con = new SqlConnection(DB_CONNECTION);
         SqlCommand cmd=new SqlCommand();
 
+        int title = -1;
+        int role = -1;
+
          Controller myController = new Controller();
         public AddStaffMember()
         {
@@ -56,9 +59,9 @@ namespace FinalProject
            string email = txtEmail1.Text;
            string password = txtPassword1.Text;
            string phoneNo = txtPhoneNumber1.Text;
-            int role = -1;
+            
            string status = txtStatus1.Text;
-           int title = -1;
+          
 
             if (cbRole.SelectedIndex == 0)
             {
@@ -125,7 +128,7 @@ namespace FinalProject
                 txtName1.Text = lbStaffMember.StaffMemberName;
                 txtPassword1.Text = lbStaffMember.Password;
                 txtPhoneNumber1.Text = lbStaffMember.PhoneNumber;
-
+                
                 txtStatus1.Text = lbStaffMember.StatusDescription;
 
             }
@@ -133,9 +136,10 @@ namespace FinalProject
 
         private void btnUpdateStaff_Click(object sender, RoutedEventArgs e)
         {
+           
             try
             {
-             SqlCommand SelectCommand = new SqlCommand("Update StaffMember Set staffMemberName ='" + this.txtName1.Text + "',phoneNo='" + this.txtPhoneNumber1.Text+ "' ,email ='"+ this.txtEmail1.Text+"',staffPassword='" + this.txtPassword1.Text+"' ,titleId='"+this.cbTitle.SelectedIndex+"' ,roleID= '" +this.cbRole.SelectedIndex+"',cpr='"+this.txtCpr1.Text+"',statusDescription='"+ this.txtStatus1.Text+"'Where staffMemberName='" + myController.SelectedStaffMember.StaffMemberName +"' ;", con);
+             SqlCommand SelectCommand = new SqlCommand("Update StaffMember Set staffMemberName ='" + this.txtName1.Text + "',phoneNo='" + this.txtPhoneNumber1.Text+ "' ,email ='"+ this.txtEmail1.Text+"',staffPassword='" + this.txtPassword1.Text+"' ,StaffMember.titleId='"+ (int)cbTitle.SelectedIndex+"' ,StaffMember.roleID= '" +(int)cbRole.SelectedIndex+"',cpr='"+this.txtCpr1.Text+"',statusDescription='"+ this.txtStatus1.Text+"'From StaffMember , Title, StaffRole Where staffMemberName='" + myController.SelectedStaffMember.StaffMemberName +"'and (StaffMember.roleID = StaffRole.roleID) And( StaffMember.titleID = Title.titleID)';", con);
 
                 SqlDataReader myReader;
                 con.Open();
@@ -144,6 +148,53 @@ namespace FinalProject
 
                 while (myReader.Read())
                 { count = count + 1; }
+                if (cbRole.SelectedIndex == 0)
+                {
+                    role = 1;
+                }
+                else if (cbRole.SelectedIndex == 1)
+                {
+                    role = 2;
+                }
+                else if (cbRole.SelectedIndex == 2)
+                {
+                    role = 3;
+                }
+                else if (cbRole.SelectedIndex == 3)
+                {
+                    role = 4;
+                }
+                else
+                {
+                    MessageBox.Show("Please pick a role");
+                    return;
+                }
+                if (cbTitle.SelectedIndex == 0)
+                {
+                    title = 1;
+                }
+                else if (cbTitle.SelectedIndex == 1)
+                {
+                    title = 2;
+                }
+                else if (cbTitle.SelectedIndex == 2)
+                {
+                    title = 3;
+                }
+                else if (cbTitle.SelectedIndex == 3)
+                {
+                    title = 4;
+                }
+                else if (cbTitle.SelectedIndex == 4)
+                {
+                    title = 5;
+                }
+                else
+                {
+                    MessageBox.Show("Please pick a title");
+                    return;
+                }
+
                 if (count == 0)
                 {
                     MessageBox.Show("updated");
@@ -151,18 +202,23 @@ namespace FinalProject
 
                 else
                 { MessageBox.Show("No"); }
-                con.Close();
+               ;
             }
+
 
             catch (Exception ex)
             { MessageBox.Show(ex.Message); }
+           
+
+         
+            con.Close();
         }
 
         private void btnDeleteStaff_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                SqlCommand SelectCommand = new SqlCommand("Delete From StaffMember Where staffMemberName ='" + this.txtName1.Text + "';", con);
+                SqlCommand SelectCommand = new SqlCommand("Delete From StaffMember Where cpr ='" + this.txtCpr1.Text + "';", con);
                 SqlDataReader myReader;
                 con.Open();
                 myReader = SelectCommand.ExecuteReader();
