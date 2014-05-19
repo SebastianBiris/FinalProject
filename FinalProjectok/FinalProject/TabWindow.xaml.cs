@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 using ControllerLayer;
 using InterfaceLayer;
 
-
 namespace FinalProject
 {
     /// <summary>
