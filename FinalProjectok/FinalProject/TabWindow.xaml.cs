@@ -164,7 +164,7 @@ namespace FinalProject
                             Background = new SolidColorBrush(Colors.AliceBlue),
                             Foreground = new SolidColorBrush(Colors.Black),
                             IsEnabled = true,
-                            Content = "The date",//allWeeksList[WeekNow-1].GetDay(dayHack).ToShortDateString(),
+                            Content = dayHack,//llWeeksList[WeekNow - 1].GetDay(dayHack).ToShortDateString(),
                             HorizontalContentAlignment = HorizontalAlignment.Center,
                             VerticalContentAlignment = VerticalAlignment.Center,
 
