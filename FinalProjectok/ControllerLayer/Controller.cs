@@ -21,7 +21,7 @@ namespace ControllerLayer
         List<Message> messages;
         List<WeekList> weekList;
         List<IWeekList> myWeekList;
-
+        IWeekList myIWeekList;
         WeekList myWeekList1;
         List<IShift>shifts;
 
@@ -238,7 +238,7 @@ namespace ControllerLayer
 
        public void GetDay(string day)
        {
-           myWeekList1.GetDay(day);
+           myIWeekList.GetDay(day);
 
 
        }

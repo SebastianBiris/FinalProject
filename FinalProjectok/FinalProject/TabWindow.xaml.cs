@@ -74,15 +74,17 @@ namespace FinalProject
             InitializeComponent();
             myController = new Controller();
             myWeekDates = new List<DateTime>();
+            ColumnHeaderButtons = new List<Button>();
             lbWeekNo.Content = myController.GetWeeksOfYear();
             lbYearNo.Content = DateTime.Now.Year;
+            FillTheWeeks();
+            GetWeek();
             DrawButtons();
             listBoxStaffInfo.ItemsSource = null;
             listBoxStaffInfo.ItemsSource = myController.StaffMembers;
             listboxStaff.ItemsSource = null;
-            listboxStaff.ItemsSource = myController.StaffMembers;
-            FillTheWeeks();
-            GetWeek();
+            listboxStaff.ItemsSource = myController.StaffMembers;            
+            
         }
         public List<DateTime> myWeekDates { get; set; }
         public List<IWeekList> allWeeksList = new List<IWeekList>();
@@ -157,7 +159,7 @@ namespace FinalProject
                     dateCounter++;
                     if (Matrix[i, j] == 3)
                     {
-                        MessageBox.Show((myController.GetWeeksOfYear()).ToString());
+                    //    MessageBox.Show((myController.GetWeeksOfYear()).ToString());
                         string dayHack = "Day" + dateCounter;
                         Button cellButtons = new Button
                         {
@@ -166,7 +168,7 @@ namespace FinalProject
                             Background = new SolidColorBrush(Colors.AliceBlue),
                             Foreground = new SolidColorBrush(Colors.Black),
                             IsEnabled = true,
-                            Content = dayHack,//allWeeksList[myController.GetWeeksOfYear()].GetDay(dayHack).ToShortDateString(),
+                            Content =allWeeksList[myController.GetWeeksOfYear()].GetDay(dayHack).ToString(),
                             HorizontalContentAlignment = HorizontalAlignment.Center,
                             VerticalContentAlignment = VerticalAlignment.Center,
 
@@ -382,10 +384,12 @@ namespace FinalProject
                 for (int i = 0; i < 7; i++)
                 {
                     myWeekDates.Add(
-                         allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
-                    ColumnHeaderButtons[i].Content =
-                        allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1))
-                            .ToShortDateString();
+                         allWeeksList[(int)lbWeekNo.Content].GetDay("Day" + (i + 1)));
+                   
+                    Button craciun = new Button();
+                    craciun.Content = allWeeksList[(int)lbWeekNo.Content].GetDay("Day" + (i + 1)).ToShortDateString();
+                    ColumnHeaderButtons.Add(craciun);
+                    
                 }
             }
 
