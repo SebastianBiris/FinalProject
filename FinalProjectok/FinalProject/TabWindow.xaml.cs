@@ -142,9 +142,10 @@ namespace FinalProject
         {
             var getSelectedButton = (Button)sender;
             string str = getSelectedButton.Name;
-          //  RowNumber = Convert.ToInt16(str[1] - 48);
-           // ColumnNumber = Convert.ToInt16(str[3] - 48);
-            //            SelectDateTime1 = DayOfWeek[ColumnNumber - 1];
+            RowNumber = Convert.ToInt16(str[1] - 48);
+            ColumnNumber = Convert.ToInt16(str[3] - 48);
+            SelectDateTime1 = myWeekDates[ColumnNumber - 1];
+
             ForgetPasswordWindow forg = new ForgetPasswordWindow();
             forg.ShowDialog();
 
@@ -256,87 +257,87 @@ namespace FinalProject
                         }
 
                     }
-                    else if (Matrix[i, j] == 9 && i <= myController.StaffMembers.Count + 1 && i != 1)
-                    {
+                    //else if (Matrix[i, j] == 9 && i <= myController.StaffMembers.Count + 1 && i != 1)
+                    //{
 
-                        Button columnHeaderButton = new Button
-                        {
+                    //    Button columnHeaderButton = new Button
+                    //    {
 
-                            Height = 20,
-                            Width = 70,
-                            Background = new SolidColorBrush(Colors.Azure),
-                            Foreground = new SolidColorBrush(Colors.Black),
-                            IsEnabled = true,
-                            Content = "9",
-                            HorizontalContentAlignment = HorizontalAlignment.Center,
-                            VerticalContentAlignment = VerticalAlignment.Center,
+                    //        Height = 20,
+                    //        Width = 70,
+                    //        Background = new SolidColorBrush(Colors.Azure),
+                    //        Foreground = new SolidColorBrush(Colors.Black),
+                    //        IsEnabled = true,
+                    //        Content = "9",
+                    //        HorizontalContentAlignment = HorizontalAlignment.Center,
+                    //        VerticalContentAlignment = VerticalAlignment.Center,
 
-                        };
-                        columnHeaderButton.SetValue(Grid.RowProperty, i);
-                        columnHeaderButton.SetValue(Grid.ColumnProperty, j);
-                        myGrid.Children.Add(columnHeaderButton);
-                    }
+                    //    };
+                    //    columnHeaderButton.SetValue(Grid.RowProperty, i);
+                    //    columnHeaderButton.SetValue(Grid.ColumnProperty, j);
+                    //    myGrid.Children.Add(columnHeaderButton);
+                    //}
                    
-                    else if (Matrix[i, j] == 10 && i <= myController.StaffMembers.Count + 1 && i!=1)
-                    {
+                    //else if (Matrix[i, j] == 10 && i <= myController.StaffMembers.Count + 1 && i!=1)
+                    //{
 
-                        Button columnHeaderButton = new Button
-                        {
+                    //    Button columnHeaderButton = new Button
+                    //    {
 
-                            Height = 20,
-                            Width = 70,
-                            Background = new SolidColorBrush(Colors.Azure),
-                            Foreground = new SolidColorBrush(Colors.Black),
-                            IsEnabled = true,
-                            Content = "10",
-                            HorizontalContentAlignment = HorizontalAlignment.Center,
-                            VerticalContentAlignment = VerticalAlignment.Center,
+                    //        Height = 20,
+                    //        Width = 70,
+                    //        Background = new SolidColorBrush(Colors.Azure),
+                    //        Foreground = new SolidColorBrush(Colors.Black),
+                    //        IsEnabled = true,
+                    //        Content = "10",
+                    //        HorizontalContentAlignment = HorizontalAlignment.Center,
+                    //        VerticalContentAlignment = VerticalAlignment.Center,
 
-                        };
-                        columnHeaderButton.SetValue(Grid.RowProperty, i);
-                        columnHeaderButton.SetValue(Grid.ColumnProperty, j);
-                        myGrid.Children.Add(columnHeaderButton);
-                    }
-                    else if (Matrix[i, j] == 8)
-                    {
+                    //    };
+                    //    columnHeaderButton.SetValue(Grid.RowProperty, i);
+                    //    columnHeaderButton.SetValue(Grid.ColumnProperty, j);
+                    //    myGrid.Children.Add(columnHeaderButton);
+                    //}
+                    //else if (Matrix[i, j] == 8)
+                    //{
 
-                        Button columnHeaderButton = new Button
-                        {
+                    //    Button columnHeaderButton = new Button
+                    //    {
 
-                            Height = 20,
-                            Width = 70,
-                            Background = new SolidColorBrush(Colors.Azure),
-                            Foreground = new SolidColorBrush(Colors.Black),
-                            IsEnabled = true,
-                            Content = "Total Real",
-                            HorizontalContentAlignment = HorizontalAlignment.Center,
-                            VerticalContentAlignment = VerticalAlignment.Center,
+                    //        Height = 20,
+                    //        Width = 70,
+                    //        Background = new SolidColorBrush(Colors.Azure),
+                    //        Foreground = new SolidColorBrush(Colors.Black),
+                    //        IsEnabled = true,
+                    //        Content = "Total Real",
+                    //        HorizontalContentAlignment = HorizontalAlignment.Center,
+                    //        VerticalContentAlignment = VerticalAlignment.Center,
 
-                        };
-                        columnHeaderButton.SetValue(Grid.RowProperty, i);
-                        columnHeaderButton.SetValue(Grid.ColumnProperty, j);
-                        myGrid.Children.Add(columnHeaderButton);
-                    }
-                    else if (Matrix[i, j] == 7)
-                    {
+                    //    };
+                    //    columnHeaderButton.SetValue(Grid.RowProperty, i);
+                    //    columnHeaderButton.SetValue(Grid.ColumnProperty, j);
+                    //    myGrid.Children.Add(columnHeaderButton);
+                    //}
+                    //else if (Matrix[i, j] == 7)
+                    //{
                         
-                        Button columnHeaderButton = new Button
-                        {
+                    //    Button columnHeaderButton = new Button
+                    //    {
 
-                            Height = 20,
-                            Width = 70,
-                            Background = new SolidColorBrush(Colors.Azure),
-                            Foreground = new SolidColorBrush(Colors.Black),
-                            IsEnabled = true,
-                            Content = "Total Skema",
-                            HorizontalContentAlignment = HorizontalAlignment.Center,
-                            VerticalContentAlignment = VerticalAlignment.Center,
+                    //        Height = 20,
+                    //        Width = 70,
+                    //        Background = new SolidColorBrush(Colors.Azure),
+                    //        Foreground = new SolidColorBrush(Colors.Black),
+                    //        IsEnabled = true,
+                    //        Content = "Total Skema",
+                    //        HorizontalContentAlignment = HorizontalAlignment.Center,
+                    //        VerticalContentAlignment = VerticalAlignment.Center,
 
-                        };
-                        columnHeaderButton.SetValue(Grid.RowProperty, i);
-                        columnHeaderButton.SetValue(Grid.ColumnProperty, j);
-                        myGrid.Children.Add(columnHeaderButton);
-                    }
+                    //    };
+                    //    columnHeaderButton.SetValue(Grid.RowProperty, i);
+                    //    columnHeaderButton.SetValue(Grid.ColumnProperty, j);
+                    //    myGrid.Children.Add(columnHeaderButton);
+                    //}
                     
 
                 }
