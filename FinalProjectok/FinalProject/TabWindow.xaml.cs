@@ -99,12 +99,13 @@ namespace FinalProject
                 {
                     DateTime first = myController.GetWeeks((year + 1), DayOfWeek.Thursday);
                     DateTime second = firstDayOfTheFirstWeekOfTheYear.AddDays(1 + offset);
-
+                    
+                   
                     if (first <= second)
                     {
                         offset = 0;
 
-                        break;
+                      
                     }
 
 
@@ -146,7 +147,7 @@ namespace FinalProject
 
         public void DrawButtons()
         {
-            int dateCounter = -10;
+            int dateCounter = -11;
             for (int i = 0; i <= 26; i++)
             {
                 myGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(2, GridUnitType.Auto) });
@@ -156,6 +157,7 @@ namespace FinalProject
                     dateCounter++;
                     if (Matrix[i, j] == 3)
                     {
+                        MessageBox.Show((myController.GetWeeksOfYear()).ToString());
                         string dayHack = "Day" + dateCounter;
                         Button cellButtons = new Button
                         {
@@ -164,11 +166,16 @@ namespace FinalProject
                             Background = new SolidColorBrush(Colors.AliceBlue),
                             Foreground = new SolidColorBrush(Colors.Black),
                             IsEnabled = true,
+<<<<<<< HEAD
                             Content = dayHack,//llWeeksList[WeekNow - 1].GetDay(dayHack).ToShortDateString(),
+=======
+                            Content = dayHack,//allWeeksList[myController.GetWeeksOfYear()].GetDay(dayHack).ToShortDateString(),
+>>>>>>> 2ebacab37590702ab20dc4f4632c07abe09c5f8e
                             HorizontalContentAlignment = HorizontalAlignment.Center,
                             VerticalContentAlignment = VerticalAlignment.Center,
 
                         };
+                       
                         cellButtons.SetValue(Grid.RowProperty, i);
                         cellButtons.SetValue(Grid.ColumnProperty, j);
                         myGrid.Children.Add(cellButtons);
@@ -201,7 +208,7 @@ namespace FinalProject
                     }
 
                     else if (Matrix[i, j] == 6 && i <= myController.StaffMembers.Count + 1)
-                    {
+                    { 
 
                         Button columnHeaderButton = new Button
                         {
@@ -311,7 +318,7 @@ namespace FinalProject
                     }
                     else if (Matrix[i, j] == 7)
                     {
-
+                        
                         Button columnHeaderButton = new Button
                         {
 
@@ -422,8 +429,8 @@ namespace FinalProject
                     myWeekDates.Add(
                         allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
                     ColumnHeaderButtons[i].Content =
-                        allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1))
-                            .ToShortDateString();
+                        allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1));
+                            
                 }
             }
         }
