@@ -63,9 +63,9 @@
                     <TextBox x:Name="txtRole" HorizontalAlignment="Left" Height="23" Margin="157,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
                     <TextBox x:Name="txtStatus" HorizontalAlignment="Left" Height="75" Margin="157,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
                     <TextBox x:Name="txtTilte" HorizontalAlignment="Left" Height="24" Margin="157,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
-                    <Button x:Name="btnAddStaffMember" Content="Add New Staff Member" HorizontalAlignment="Left" Margin="58,394,0,0" VerticalAlignment="Top" Width="134" RenderTransformOrigin="0.213,0" Click="btnAddStaffMember_Click"/>
-                    <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="251,394,0,0" VerticalAlignment="Top" Width="73" RenderTransformOrigin="0.213,0"/>
-                    <Button x:Name="btnRemove" Content="Remove" HorizontalAlignment="Left" Margin="384,394,0,0" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.213,0"/>
+                    <Button x:Name="btnAddStaffMember" Content="Manage Staff Members" HorizontalAlignment="Left" Margin="58,394,0,0" VerticalAlignment="Top" Width="134" RenderTransformOrigin="0.213,0" Click="btnAddStaffMember_Click"/>
+                   
+                    
                     <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="501,394,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="0.213,0" Click="btnClear_Click"/>
                     <ListBox x:Name="listboxStaff" HorizontalAlignment="Left" Height="360" Margin="384,12,0,0" VerticalAlignment="Top" Width="188" SelectionChanged="listboxStaff_SelectionChanged"/>
 

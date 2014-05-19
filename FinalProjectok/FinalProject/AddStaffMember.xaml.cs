@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
+using System.Data.SqlClient;
 
 using  ControllerLayer;
 using InterfaceLayer;
@@ -22,11 +24,17 @@ namespace FinalProject
     /// </summary>
     public partial class AddStaffMember : Window
     {
+          const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
+        SqlConnection con = new SqlConnection(DB_CONNECTION);
+        SqlCommand cmd=new SqlCommand();
+
          Controller myController = new Controller();
         public AddStaffMember()
         {
             InitializeComponent();
 
+            listBoxStaff.ItemsSource = null;
+            listBoxStaff.ItemsSource = myController.StaffMembers;
             cbRole.ItemsSource = null;
             cbTitle.ItemsSource = null;
 
@@ -104,18 +112,82 @@ namespace FinalProject
             this.Close();
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            {
+                IStaffMember lbStaffMember = (IStaffMember)listBoxStaff.SelectedItem;
+                myController.SelectedStaffMember = lbStaffMember;
+
+                txtCpr1.Text = lbStaffMember.Cpr;
+                txtEmail1.Text = lbStaffMember.Email;
+                txtName1.Text = lbStaffMember.StaffMemberName;
+                txtPassword1.Text = lbStaffMember.Password;
+                txtPhoneNumber1.Text = lbStaffMember.PhoneNumber;
+
+                txtStatus1.Text = lbStaffMember.StatusDescription;
+
+            }
+        }
+
+        private void btnUpdateStaff_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+             SqlCommand SelectCommand = new SqlCommand("Update StaffMember Set staffMemberName ='" + this.txtName1.Text + "',phoneNo='" + this.txtPhoneNumber1.Text+ "' ,email ='"+ this.txtEmail1.Text+"',staffPassword='" + this.txtPassword1.Text+"' ,titleId='"+this.cbTitle.SelectedIndex+"' ,roleID= '" +this.cbRole.SelectedIndex+"',cpr='"+this.txtCpr1.Text+"',statusDescription='"+ this.txtStatus1.Text+"'Where staffMemberName='" + myController.SelectedStaffMember.StaffMemberName +"' ;", con);
+
+                SqlDataReader myReader;
+                con.Open();
+                myReader = SelectCommand.ExecuteReader();
+                int count = 0;
+
+                while (myReader.Read())
+                { count = count + 1; }
+                if (count == 0)
+                {
+                    MessageBox.Show("updated");
+                }
+
+                else
+                { MessageBox.Show("No"); }
+                con.Close();
+            }
+
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message); }
+        }
+
+        private void btnDeleteStaff_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                SqlCommand SelectCommand = new SqlCommand("Delete From StaffMember Where staffMemberName ='" + this.txtName1.Text + "';", con);
+                SqlDataReader myReader;
+                con.Open();
+                myReader = SelectCommand.ExecuteReader();
+                int count = 0;
+
+                while (myReader.Read())
+                { count = count + 1; }
+                if (count == 0)
+                {
+                    MessageBox.Show("A Staff Member has been Deleted");
+                }
+
+                else
+                { MessageBox.Show("Staff member is not deleted"); }
+                con.Close();
+            }
+
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message); }
 
         }
 
-        private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
+  
 
-        }
-
-        
-        
+      
 
         
     }
