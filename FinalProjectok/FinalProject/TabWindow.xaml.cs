@@ -201,7 +201,7 @@ namespace FinalProject
                     }
 
                     else if (Matrix[i, j] == 6 && i <= myController.StaffMembers.Count + 1)
-                    {
+                    { 
 
                         Button columnHeaderButton = new Button
                         {
@@ -311,7 +311,7 @@ namespace FinalProject
                     }
                     else if (Matrix[i, j] == 7)
                     {
-
+                        
                         Button columnHeaderButton = new Button
                         {
 
