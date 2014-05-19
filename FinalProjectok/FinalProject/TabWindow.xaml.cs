@@ -159,7 +159,7 @@ namespace FinalProject
                     dateCounter++;
                     if (Matrix[i, j] == 3)
                     {
-                    //    MessageBox.Show((myController.GetWeeksOfYear()).ToString());
+                  
                         string dayHack = "Day" + dateCounter;
                         Button cellButtons = new Button
                         {
@@ -168,16 +168,16 @@ namespace FinalProject
                             Background = new SolidColorBrush(Colors.AliceBlue),
                             Foreground = new SolidColorBrush(Colors.Black),
                             IsEnabled = true,
-                            Content =allWeeksList[myController.GetWeeksOfYear()].GetDay(dayHack).ToString(),
+                            Content =allWeeksList[myController.GetWeeksOfYear()-1].GetDay(dayHack).ToShortDateString(),
                             HorizontalContentAlignment = HorizontalAlignment.Center,
                             VerticalContentAlignment = VerticalAlignment.Center,
 
                         };
-                       
+                        myWeekDates.Add(allWeeksList[myController.GetWeeksOfYear() - 1].GetDay(dayHack));
                         cellButtons.SetValue(Grid.RowProperty, i);
                         cellButtons.SetValue(Grid.ColumnProperty, j);
                         myGrid.Children.Add(cellButtons);
-
+                        ColumnHeaderButtons.Add(cellButtons);
                     }
                     else if (Matrix[i, j] == 2)
                     {
@@ -195,11 +195,11 @@ namespace FinalProject
                             VerticalContentAlignment = VerticalAlignment.Center,
 
                         };
-                        // Need to add aweeks
+                  
                         columnHeaderButton.SetValue(Grid.RowProperty, i);
                         columnHeaderButton.SetValue(Grid.ColumnProperty, j);
                         myGrid.Children.Add(columnHeaderButton);
-                        //    ColumnHeaderButtons.Add(columnHeaderButton);
+              
 
 
 
@@ -353,7 +353,7 @@ namespace FinalProject
             { 
                 myGrid.Children.Remove(button);
             }
-
+            Button mybutton = new Button();
             drawButtons.Clear();
             myWeekDates.Clear();
             int tempWeekNo = (int)lbWeekNo.Content;
@@ -369,7 +369,7 @@ namespace FinalProject
                 {
                     myWeekDates.Add(
                         allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
-                    ColumnHeaderButtons[i].Content = 
+                     mybutton.Content = 
                         allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
 
 
@@ -384,11 +384,10 @@ namespace FinalProject
                 for (int i = 0; i < 7; i++)
                 {
                     myWeekDates.Add(
-                         allWeeksList[(int)lbWeekNo.Content].GetDay("Day" + (i + 1)));
-                   
-                    Button craciun = new Button();
-                    craciun.Content = allWeeksList[(int)lbWeekNo.Content].GetDay("Day" + (i + 1)).ToShortDateString();
-                    ColumnHeaderButtons.Add(craciun);
+                         allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
+                    ColumnHeaderButtons[i].Content =
+                        allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1))
+                            .ToShortDateString();
                     
                 }
             }
