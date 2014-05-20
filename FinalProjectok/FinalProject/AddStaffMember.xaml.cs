@@ -136,18 +136,9 @@ namespace FinalProject
 
         private void btnUpdateStaff_Click(object sender, RoutedEventArgs e)
         {
-           
+
             try
             {
-             SqlCommand SelectCommand = new SqlCommand("Update StaffMember Set staffMemberName ='" + this.txtName1.Text + "',phoneNo='" + this.txtPhoneNumber1.Text+ "' ,email ='"+ this.txtEmail1.Text+"',staffPassword='" + this.txtPassword1.Text+"' ,StaffMember.titleId='"+ (int)cbTitle.SelectedIndex+"' ,StaffMember.roleID= '" +(int)cbRole.SelectedIndex+"',cpr='"+this.txtCpr1.Text+"',statusDescription='"+ this.txtStatus1.Text+"'From StaffMember , Title, StaffRole Where staffMemberName='" + myController.SelectedStaffMember.StaffMemberName +"'and (StaffMember.roleID = StaffRole.roleID) And( StaffMember.titleID = Title.titleID)';", con);
-
-                SqlDataReader myReader;
-                con.Open();
-                myReader = SelectCommand.ExecuteReader();
-                int count = 0;
-
-                while (myReader.Read())
-                { count = count + 1; }
                 if (cbRole.SelectedIndex == 0)
                 {
                     role = 1;
@@ -195,15 +186,24 @@ namespace FinalProject
                     return;
                 }
 
-                if (count == 0)
-                {
-                    MessageBox.Show("updated");
-                }
+                string querry = "Update StaffMember  Set staffMemberName ='" + this.txtName1.Text + "',phoneNo='" + this.txtPhoneNumber1.Text + "',titleID='" + this.cbTitle.SelectedIndex + "' ,roleID= '" + this.cbRole.SelectedIndex + "',email ='" + this.txtEmail1.Text + "',staffPassword='" + this.txtPassword1.Text + "' ,cpr='" + this.txtCpr1.Text + "'where staffMemberName ='" + this.txtName1.Text + "';";
+                SqlCommand cmd = new SqlCommand(querry, con);
+                SqlDataReader myReader;
+                con.Open();
+                myReader = cmd.ExecuteReader();
+          
 
-                else
-                { MessageBox.Show("No"); }
-               ;
-            }
+                while (myReader.Read())
+                {}
+                 
+               
+               
+            
+
+                MessageBox.Show("saved");
+                    
+                }
+            
 
 
             catch (Exception ex)
