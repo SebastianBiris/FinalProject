@@ -24,10 +24,11 @@ namespace FinalProject
     /// </summary>
     public partial class MainWindow : Window
     {
+        Controller myController = new Controller();
         const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
         SqlConnection con = new SqlConnection(DB_CONNECTION);
         SqlCommand cmd=new SqlCommand();
-        
+        TabForStaff myTabForStaff = new TabForStaff();
 
         public MainWindow()
         {
@@ -39,8 +40,33 @@ namespace FinalProject
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         { TabWindow myTab= new TabWindow();
             TabForStaff myTabForStaff = new TabForStaff();
+            int bla=-1;
+            int blu;
 
-         
+            List<IMessage> myList = new List<IMessage>();
+            List<IStaffMember> myListStaff = new List<IStaffMember>();
+
+            foreach (IStaffMember myStaffMember in myController.StaffMembers)
+            {
+                if (myStaffMember.Cpr == txtUserId.Text)
+                {
+                    bla = myStaffMember.StaffMemeberId;
+                }
+                        }
+
+                  foreach (IMessage myMessage in myController.Messages)
+                    {  
+                      if (myMessage.StaffMemberId == bla)
+                      {
+                          myList.Add(myMessage);
+                      }
+                      
+                   }
+          
+
+
+
+            myTabForStaff.ListBoxRequests.ItemsSource = myList;
         
             
             try
