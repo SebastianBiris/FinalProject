@@ -86,7 +86,8 @@ namespace FinalProject
             listBoxStaffInfo.ItemsSource = null;
             listBoxStaffInfo.ItemsSource = myController.StaffMembers;
             listboxStaff.ItemsSource = null;
-            listboxStaff.ItemsSource = myController.StaffMembers;            
+            listboxStaff.ItemsSource = myController.StaffMembers;
+            
             
         }
         public List<DateTime> myWeekDates { get; set; }

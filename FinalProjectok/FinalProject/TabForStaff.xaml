@@ -120,7 +120,7 @@
 
                     <Label Content="Write a response to a message" HorizontalAlignment="Left" Margin="154,223,0,0" VerticalAlignment="Top" Width="172" Grid.ColumnSpan="2"/>
                     <Button x:Name="btnSend" Content="Send Message" HorizontalAlignment="Left" Margin="423,402,0,0" VerticalAlignment="Top" Width="82" Click="btnSend_Click" Grid.Column="1"/>
-                    <Button x:Name="btnDelete" Content="Delete Message" HorizontalAlignment="Left" Margin="413,196,0,0" VerticalAlignment="Top" Width="92" Grid.Column="1"/>
+                    <Button x:Name="btnDelete" Content="Delete Message" HorizontalAlignment="Left" Margin="413,196,0,0" VerticalAlignment="Top" Width="92" Grid.Column="1" Click="btnDelete_Click"/>
                     <ListBox x:Name="listBoxStaffInfo2" HorizontalAlignment="Left" Height="138" Margin="10,254,0,0" VerticalAlignment="Top" Width="115"/>
                     <Label Content=" View Messages" HorizontalAlignment="Left" Margin="154,2,0,0" VerticalAlignment="Top" Width="134" Grid.ColumnSpan="2"/>
                     <Label Content="staff members" HorizontalAlignment="Left" Margin="10,223,0,0" VerticalAlignment="Top" Width="115" Height="26"/>

@@ -35,7 +35,7 @@ namespace FinalProject
            listBoxContactStaff.ItemsSource = myController.StaffMembers;
            dataGridContactInfo.ItemsSource = myController.StaffMembers;
 
-            ListBoxRequests.ItemsSource = null;
+         
 
 
         }
@@ -88,6 +88,14 @@ namespace FinalProject
         private void btnClearShiftChange_Click(object sender, RoutedEventArgs e)
         {
             txtShiftChangeRequest.Clear();
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListBoxRequests.SelectedItem == myController.SelectedMessage)
+            {
+                
+            }
         }
 
     
