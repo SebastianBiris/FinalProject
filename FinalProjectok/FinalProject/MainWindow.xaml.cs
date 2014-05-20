@@ -24,6 +24,7 @@ namespace FinalProject
     /// </summary>
     public partial class MainWindow : Window
     {
+        DataAccessDB myDB = new DataAccessDB();
         Controller myController = new Controller();
         const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
         SqlConnection con = new SqlConnection(DB_CONNECTION);
@@ -36,6 +37,8 @@ namespace FinalProject
         {
             InitializeComponent();
             txtUserId.Focus();
+           
+            
             
         }
 

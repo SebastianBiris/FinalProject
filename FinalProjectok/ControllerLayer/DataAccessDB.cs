@@ -537,6 +537,32 @@ namespace ControllerLayer
        }
        #endregion
 
+       public int DeleteMessage(int messageId1)
+       {
+           cmd.CommandText = "SP_DeleteMessage";
+           cmd.Parameters.Clear();
+           cmd.Parameters.AddWithValue("@messageId", messageId1);
+
+           try
+           {
+               con.Open();
+               cmd.ExecuteNonQuery();
+               return int.Parse(cmd.Parameters["@messageId"].Value.ToString());
+           }
+           catch (SqlException ex)
+           {
+
+               throw ex;
+           }
+           finally
+           {
+               if (con.State == ConnectionState.Open)
+               {
+                   con.Close();
+               }
+           }
+       }
+
 
      public void ConnectToDB()
      {

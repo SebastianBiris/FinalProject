@@ -24,7 +24,7 @@ namespace FinalProject
     /// </summary>
     public partial class TabWindow : Window
     {
-     
+
 
         Controller myController;
 
@@ -36,7 +36,7 @@ namespace FinalProject
         int offSetForYearChange;
         public List<Button> drawButtons = new List<Button>();
         public List<Button> ColumnHeaderButtons { get; set; }
-        public List<string> days = new List<string> {"", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+        public List<string> days = new List<string> { "", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
         int nr = -1;
 
         public int[,] Matrix =
@@ -87,8 +87,8 @@ namespace FinalProject
             listBoxStaffInfo.ItemsSource = myController.StaffMembers;
             listboxStaff.ItemsSource = null;
             listboxStaff.ItemsSource = myController.StaffMembers;
-            
-            
+
+
         }
         public List<DateTime> myWeekDates { get; set; }
         public List<IWeekList> allWeeksList = new List<IWeekList>();
@@ -105,13 +105,13 @@ namespace FinalProject
                 {
                     DateTime first = myController.GetWeeks((year + 1), DayOfWeek.Thursday);
                     DateTime second = firstDayOfTheFirstWeekOfTheYear.AddDays(1 + offset);
-                    
-                   
+
+
                     if (first <= second)
                     {
                         offset = 0;
 
-                      
+
                     }
 
 
@@ -133,7 +133,7 @@ namespace FinalProject
         public void GetWeek()
         {
             WeekNow = myController.GetWeeksOfYear();
-           
+
         }
 
 
@@ -164,7 +164,7 @@ namespace FinalProject
                     dateCounter++;
                     if (Matrix[i, j] == 3)
                     {
-                  
+
                         string dayHack = "Day" + dateCounter;
                         Button cellButtons = new Button
                         {
@@ -173,7 +173,7 @@ namespace FinalProject
                             Background = new SolidColorBrush(Colors.AliceBlue),
                             Foreground = new SolidColorBrush(Colors.Black),
                             IsEnabled = true,
-                            Content =allWeeksList[myController.GetWeeksOfYear()-1].GetDay(dayHack).ToShortDateString(),
+                            Content = allWeeksList[myController.GetWeeksOfYear() - 1].GetDay(dayHack).ToShortDateString(),
                             HorizontalContentAlignment = HorizontalAlignment.Center,
                             VerticalContentAlignment = VerticalAlignment.Center,
 
@@ -200,18 +200,18 @@ namespace FinalProject
                             VerticalContentAlignment = VerticalAlignment.Center,
 
                         };
-                  
+
                         columnHeaderButton.SetValue(Grid.RowProperty, i);
                         columnHeaderButton.SetValue(Grid.ColumnProperty, j);
                         myGrid.Children.Add(columnHeaderButton);
-              
+
 
 
 
                     }
 
                     else if (Matrix[i, j] == 6 && i <= myController.StaffMembers.Count + 1)
-                    { 
+                    {
 
                         Button columnHeaderButton = new Button
                         {
@@ -278,7 +278,7 @@ namespace FinalProject
                     //    columnHeaderButton.SetValue(Grid.ColumnProperty, j);
                     //    myGrid.Children.Add(columnHeaderButton);
                     //}
-                   
+
                     //else if (Matrix[i, j] == 10 && i <= myController.StaffMembers.Count + 1 && i!=1)
                     //{
 
@@ -321,7 +321,7 @@ namespace FinalProject
                     //}
                     //else if (Matrix[i, j] == 7)
                     //{
-                        
+
                     //    Button columnHeaderButton = new Button
                     //    {
 
@@ -339,7 +339,7 @@ namespace FinalProject
                     //    columnHeaderButton.SetValue(Grid.ColumnProperty, j);
                     //    myGrid.Children.Add(columnHeaderButton);
                     //}
-                    
+
 
                 }
             }
@@ -355,7 +355,7 @@ namespace FinalProject
         {
 
             foreach (Button button in drawButtons)
-            { 
+            {
                 myGrid.Children.Remove(button);
             }
             Button mybutton = new Button();
@@ -363,7 +363,7 @@ namespace FinalProject
             myWeekDates.Clear();
             int tempWeekNo = (int)lbWeekNo.Content;
             int yearNo = (int)lbYearNo.Content;
-            
+
             if (tempWeekNo == 1)
             {
                 lbYearNo.Content = (yearNo - 1);
@@ -374,8 +374,8 @@ namespace FinalProject
                 {
                     myWeekDates.Add(
                         allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
-                     mybutton.Content = 
-                        allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
+                    mybutton.Content =
+                       allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
 
 
                 }
@@ -393,7 +393,7 @@ namespace FinalProject
                     ColumnHeaderButtons[i].Content =
                         allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1))
                             .ToShortDateString();
-                    
+
                 }
             }
 
@@ -407,8 +407,8 @@ namespace FinalProject
             }
             drawButtons.Clear();
             myWeekDates.Clear();
-           int tempweekNo = (int)lbWeekNo.Content;
-           int YearNo = (int)lbYearNo.Content;
+            int tempweekNo = (int)lbWeekNo.Content;
+            int YearNo = (int)lbYearNo.Content;
             if (tempweekNo == 52)
             {
                 lbYearNo.Content = (YearNo + 1);
@@ -434,7 +434,7 @@ namespace FinalProject
                         allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
                     ColumnHeaderButtons[i].Content =
                         allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1));
-                            
+
                 }
             }
         }
@@ -463,7 +463,7 @@ namespace FinalProject
         {
             IStaffMember lbStaffMember = (IStaffMember)listboxStaff.SelectedItem;
             myController.SelectedStaffMember = lbStaffMember;
-            
+
 
             txtCpr.Text = lbStaffMember.Cpr;
             txtEmail.Text = lbStaffMember.Email;
@@ -474,9 +474,26 @@ namespace FinalProject
             txtStatus.Text = lbStaffMember.StatusDescription;
             txtTilte.Text = lbStaffMember.Position;
         }
-     
-       
-        
-    }
-}
 
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            
+            int tempId = -1;
+
+            IMessage lbMessage = (IMessage)ListBoxRequests.SelectedItem;
+            myController.SelectedMessage = lbMessage;
+
+            tempId = myController.SelectedMessage.MessageId;
+
+            myController.DeleteMessage(tempId);
+            MessageBox.Show("Message deleted");
+
+
+     
+        }
+
+    }
+
+
+
+}

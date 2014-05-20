@@ -204,6 +204,12 @@ namespace ControllerLayer
             }
         }
 
+        public void DeleteMessage(int messageId)
+        {
+            myDataAccessDb.DeleteMessage(messageId);
+
+        }
+
         #region Methods
         //Chris  ***Not being used now
        public void DeleteStaffMember(StaffMember selectedMember)
@@ -236,10 +242,10 @@ namespace ControllerLayer
            set { selectedStaffMember = (StaffMember)value; }
        }
        //Chris
-       public Message SelectedMessage
+       public IMessage SelectedMessage
        {
            get { return  selectedMessage; }
-           set { selectedMessage = value; }
+           set { selectedMessage =(Message) value; }
        }
 
        public ShiftDate SelectedShiftDate
