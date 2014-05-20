@@ -49,10 +49,12 @@ namespace FinalProject
                     tempPassword = myStaffMember.Password;
                     tempEmail = myStaffMember.Email;
                 }
+             
             }
+           
                 
                   
-                    MessageBox.Show("Your Password has been sent to this email " + txtforgotPassword.Text);
+                    
                     
                     SmtpClient staff = new SmtpClient();
                     staff.Port = 587;
@@ -68,6 +70,7 @@ namespace FinalProject
                     mm.IsBodyHtml = true;
                     mm.BodyEncoding = Encoding.UTF8;
                     mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+                    MessageBox.Show("Your Password has been sent to this email " + txtforgotPassword.Text);
               
                 
           
