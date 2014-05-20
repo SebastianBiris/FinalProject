@@ -29,6 +29,7 @@ namespace ControllerLayer
      
         StaffMember selectedStaffMember;
         Message selectedMessage;
+        ShiftDate selectedShiftDate;
 
 
         DataAccessDB myDataAccessDb;
@@ -203,14 +204,31 @@ namespace ControllerLayer
             }
         }
 
-       //Chris
+        #region Methods
+        //Chris  ***Not being used now
        public void DeleteStaffMember(StaffMember selectedMember)
        {
-           foreach (StaffMember sm in StaffMembers)  //IStaffMember ???
+           foreach (StaffMember sm in StaffMembers)  
            {
                staffMembers.Remove(selectedMember);
            }
        }
+
+       //chris 19.05   *????
+       public void AddNewShiftDateInDB(int dateId, int staffMemberId, int shiftId)
+       {
+           selectedShiftDate = new ShiftDate(dateId, staffMemberId, shiftId);
+           myDataAccessDb.AddStaffMemberWorkDayInDB(dateId, staffMemberId, shiftId);
+       }
+
+       public void AddNewShiftDate(int dateId, DateTime dateWorked, IStaffMember sm, int staffId) //????? GUI Layer
+       {
+           ShiftDate nuShiftDate = new ShiftDate(dateId, dateWorked, (StaffMember)sm, staffId);
+           shiftDates.Add(nuShiftDate);
+       }
+        #endregion
+
+
        //Majd
        public IStaffMember SelectedStaffMember
        {
@@ -223,8 +241,12 @@ namespace ControllerLayer
            get { return  selectedMessage; }
            set { selectedMessage = value; }
        }
-       
-    
+
+       public ShiftDate SelectedShiftDate
+       {
+           get { return selectedShiftDate; }
+           set { selectedShiftDate = value; }
+       }
 
        public void GetAllFromDB()
        {
@@ -234,6 +256,7 @@ namespace ControllerLayer
            titles = myDataAccessDb.ViewTitlesFromDB();
            roles = myDataAccessDb.ViewRoleFromDb();
            messages = myDataAccessDb.ViewMessagesFromDB();
+           shiftDates = myDataAccessDb.ViewShiftDatesFromDB();
        }
 
        public void GetDay(string day)

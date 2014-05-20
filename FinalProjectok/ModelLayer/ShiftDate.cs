@@ -11,28 +11,78 @@ namespace ModelLayer
    public class ShiftDate: IShiftDate
    {
         DateTime _dateWorked;
-        List<Shift> myShift;
+        int _dateId;
+        int _staffMemberId;  //chris 19.05
+        int _shiftId;
+        StaffMember myStaffMember;
 
-       public ShiftDate(DateTime dateWorked)
-       {
-           _dateWorked = dateWorked;
-           myShift = new List<Shift>();
-       }
+        public ShiftDate(int dateId, DateTime dateWorked, StaffMember actualStaffMember, int staffMemberId) //working with method inside StaffMember
+        {
+            _dateId = dateId;
+            myStaffMember = actualStaffMember;//chris 19.05
+            myStaffMember.AddShiftDate(this);
+            _staffMemberId = staffMemberId;
+            _dateWorked = dateWorked;
+        }
+
+        public ShiftDate(int dateId, DateTime dateWorked, int staffMemberId)  //Chris 19.05 For Viewing WorkDay from DB
+        {
+            _dateId = dateId;
+            _dateWorked = dateWorked;
+            _staffMemberId = staffMemberId;
+        }
+
+        public ShiftDate(int dateId, int staffMemberId, int shiftId)  //Chris 19.05 For saving staffMemberWorkDay to DB 
+        {
+            _dateId = dateId;
+            _staffMemberId = staffMemberId;
+            _shiftId = shiftId;
+        }
 
        #region Properties
+
+        public int DateId  //chris 19.05
+        {
+            get { return _dateId; }
+            set { _dateId = value; }
+        }
+
+        public int StaffMemberId
+        {
+            get { return _staffMemberId; }
+            set { _staffMemberId = value; }
+        }
+
+        public int ShiftId
+        {
+            get { return _shiftId; }
+            set { _shiftId = value; }
+        }
 
        public DateTime DateWorked
        {
            get { return _dateWorked; }
            set { _dateWorked = value ; }
        }
-       #endregion
 
-       #region Methods //**Sebi**
-       public void addShift(Shift anShift)
+       //chris 19.05
+       public StaffMember MyStaffMember
        {
-           myShift.Add(anShift);
+           get { return myStaffMember; }
+           set { myStaffMember = value; }
+       }
+
+       public IStaffMember MyIStaffMember
+       {
+           get { return (IStaffMember)myStaffMember; }
        }
        #endregion
+
+       public override string ToString()
+       {
+           return "date Worked -" + DateWorked.ToShortDateString() + "   staff id-" + myStaffMember.StaffMemberName;
+       }
+
+     
    }
 }

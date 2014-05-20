@@ -21,7 +21,9 @@ namespace ModelLayer
         string _statusDescription;
         string _position;
         string _roleType;
+
         List<ShiftDate> myShiftDate;
+        List<Shift> myShift;
        // List<Message> myInboxMessages;
     
 
@@ -52,7 +54,8 @@ namespace ModelLayer
             _roleType = roleType;
             _statusDescription = statusDescription;
             myShiftDate = new List<ShiftDate>();
-          //  myInboxMessages = new List<Message>();
+            myShift = new List<Shift>();
+          //  myInboxMessages = new List<Message>(); 
         }
        
         #region Properties //MAL
@@ -122,9 +125,14 @@ namespace ModelLayer
        }
 
        #region Methods //**Sebi**
-        public void addShiftDate(ShiftDate anShiftDate)
+        public void AddShiftDate(ShiftDate anShiftDate)
         {
             myShiftDate.Add(anShiftDate);
+        }
+
+        public void AddShift(Shift anShift)
+        {
+            myShift.Add(anShift);
         }
 
         #endregion

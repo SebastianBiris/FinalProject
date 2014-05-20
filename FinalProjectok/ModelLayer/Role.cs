@@ -14,13 +14,13 @@ namespace ModelLayer
         int _id;
 
         
-       // List<StaffMember> myStaffMember;
+       
 
         public Role(string roleType,int id)
         {
             _roleType = roleType;
             _id = id;
-           // myStaffMember = new List<StaffMember>();
+           
         }
 
         #region Properties //MAL

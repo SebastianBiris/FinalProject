@@ -10,19 +10,37 @@ namespace ModelLayer
 {
   public  class Shift:IShift
     {
+        int _shiftId;
         string _shiftType;
         string _shiftDiscription;
         double _shiftHours;
-       
-    
-        public Shift(string shiftType, string shiftDiscription, double shiftHours)
+        StaffMember myStaffMember;
+
+        public Shift(int shiftId, string shiftType, string shiftDiscription, double shiftHours)
         {
+            _shiftId = shiftId;
             _shiftType = shiftType;
             _shiftDiscription = shiftDiscription;
             _shiftHours = shiftHours;
-           
         }
+        public Shift(int shiftId, string shiftType, string shiftDiscription, double shiftHours, StaffMember tempStaffMember)
+        {
+            _shiftId = shiftId;
+            _shiftType = shiftType;
+            _shiftDiscription = shiftDiscription;
+            _shiftHours = shiftHours;
+            myStaffMember = tempStaffMember;
+            myStaffMember.AddShift(this);
+        }
+
         #region Properties //MAL
+
+        public int ShiftId
+        {
+            get { return _shiftId; }
+            set { _shiftId = value; }
+        }
+
         public string ShiftType
         {
             get { return _shiftType; }
@@ -37,8 +55,20 @@ namespace ModelLayer
         {
             get { return _shiftHours; }
             set { _shiftHours = value; }
-#endregion
         }
+
+        public StaffMember MyStaffMember
+        {
+            get { return myStaffMember; }
+            set { myStaffMember = value; }
+        }
+
+        public IStaffMember MyIStaffMember
+        {
+            get { return (IStaffMember)myStaffMember; }
+        }
+        #endregion
+
         #region Methods //**Sebi**
      
         public double calculateActualHours()

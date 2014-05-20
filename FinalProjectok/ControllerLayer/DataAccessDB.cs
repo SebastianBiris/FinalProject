@@ -26,8 +26,6 @@ namespace ControllerLayer
             cmd=new SqlCommand();
             cmd.Connection = con;
             cmd.CommandType = CommandType.StoredProcedure;
-
-
      }
 
         public bool loginCheck(string staffMemberName, string staffPassowrd)
@@ -42,6 +40,7 @@ namespace ControllerLayer
 
             return true;
         }
+
         #region View Title from DB
         // Chris
         public List<Title> ViewTitlesFromDB()
@@ -237,6 +236,7 @@ namespace ControllerLayer
      public List<Shift>  ViewShiftFromDB()
         {
             SqlDataReader dataReader = null;
+            int shiftId;
             string shiftType;
             string shiftDescription;
             double shiftHour;
@@ -251,10 +251,11 @@ namespace ControllerLayer
 
                 while (dataReader.Read())
                 {
+                    shiftId = int.Parse(dataReader["shiftID"].ToString());
                     shiftType = dataReader["shiftType"].ToString();
                     shiftDescription = dataReader["shiftDescription"].ToString();
                     shiftHour = double.Parse(dataReader["shiftHour"].ToString());
-                    returnShiftList.Add(new Shift(shiftType,shiftDescription,shiftHour));
+                    returnShiftList.Add(new Shift(shiftId, shiftType, shiftDescription, shiftHour));
                 }
                 return returnShiftList;
             }
@@ -461,6 +462,80 @@ namespace ControllerLayer
 
        #endregion
 
+       #region Add Staff Member Work Day  //chris 19.05
+       //constructor is inside shiftDate class
+       public void AddStaffMemberWorkDayInDB(int dateId, int staffMemberId, int shiftId)  // ????
+       {
+           cmd.CommandText = "SP_CreateStaffMemberWorkDay1";
+           cmd.Parameters.Clear();
+           cmd.Parameters.AddWithValue("@dateId", dateId);
+           cmd.Parameters.AddWithValue("@staffMemberId", staffMemberId);
+           cmd.Parameters.AddWithValue("@shiftId", shiftId);
+           try
+           {
+               con.Open();
+               cmd.ExecuteNonQuery();
+           }
+           catch (SqlException ex)
+           {
+
+               throw ex;
+           }
+           finally
+           {
+               if (con.State == ConnectionState.Open)
+               {
+                   con.Close();
+               }
+           }
+       }
+       #endregion
+
+       #region View Staff Member Shift Dates  //chris 19.05
+
+       public List<ShiftDate> ViewShiftDatesFromDB()
+       {
+           SqlDataReader dataReader = null;
+           int dateId;
+           DateTime dateWorked;
+           int staffMemberId;
+
+           List<ShiftDate> returnShiftDateslist = new List<ShiftDate>();
+           cmd.Parameters.Clear();
+           cmd.CommandText = "SP_ViewStaffMemberWorkDay";
+
+           try
+           {
+               con.Open();
+               dataReader = cmd.ExecuteReader();
+               while (dataReader.Read())
+               {
+                   dateId = (int.Parse(dataReader["dateID"].ToString()));
+                   staffMemberId = (int.Parse(dataReader["staffMemberID"].ToString()));
+                   dateWorked = (DateTime)dataReader["actualDate"];
+                   returnShiftDateslist.Add(new ShiftDate(dateId, dateWorked, staffMemberId));
+               }
+               return returnShiftDateslist;
+           }
+           catch (SqlException ex)
+           {
+
+               throw ex;
+           }
+           finally
+           {
+               if (dataReader != null)
+               {
+                   dataReader.Close();
+               }
+
+               if (con.State == ConnectionState.Open)
+               {
+                   con.Close();
+               }
+           }
+       }
+       #endregion
 
 
      public void ConnectToDB()

@@ -10,6 +10,8 @@ namespace InterfaceLayer
     {
 
         DateTime DateWorked { get; }
+        int DateId { get; }
+        IStaffMember MyIStaffMember { get; }
 
     }
 }
