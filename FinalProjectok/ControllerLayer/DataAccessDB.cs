@@ -537,6 +537,7 @@ namespace ControllerLayer
        }
        #endregion
 
+       #region Delete Messages From DB //majd 
        public int DeleteMessage(int messageId1)
        {
            cmd.CommandText = "SP_DeleteMessage";
@@ -562,9 +563,76 @@ namespace ControllerLayer
                }
            }
        }
+       #endregion
+
+       #region Delete Staffmember From DB //majd
+
+       public string DeleteStaffMember(string cpr)
+       {
+           cmd.CommandText = "SP_DeleteStaffMember";
+           cmd.Parameters.Clear();
+           cmd.Parameters.AddWithValue("@cpr", cpr);
+
+           try
+           {
+               con.Open();
+               cmd.ExecuteNonQuery();
+               return (cmd.Parameters["@cpr"].Value.ToString());
+           }
+           catch (SqlException ex)
+           {
+
+               throw ex;
+           }
+           finally
+           {
+               if (con.State == ConnectionState.Open)
+               {
+                   con.Close();
+               }
+           }
+       }
+       #endregion
+
+       #region UpDate StaffMember in DB// Majd
+       public int UpDateStaffMember(int staffMemberId,string staffMemberName, string cpr, string phoneNumber, string email,
+                                       string password, string statusDescription, int titleId, int roleId)
+       {
+           cmd.CommandText = "SP_UpdateStaffMember";
+           cmd.Parameters.Clear();        
+           
+           cmd.Parameters.AddWithValue("@staffmemberID",staffMemberId );
+           cmd.Parameters.AddWithValue("@staffMemberName", staffMemberName);
+           cmd.Parameters.AddWithValue("@cpr", cpr);  
+           cmd.Parameters.AddWithValue("@phoneNo", phoneNumber);
+           cmd.Parameters.AddWithValue("@email", email);
+           cmd.Parameters.AddWithValue("@staffPassword", password);
+           cmd.Parameters.AddWithValue("@statusDescription", statusDescription);
+           cmd.Parameters.AddWithValue("@titleID", titleId);
+           cmd.Parameters.AddWithValue("@roleID", roleId);
+           try
+           {
+               con.Open();
+               cmd.ExecuteNonQuery();
+               return int.Parse(cmd.Parameters["@staffmemberID"].Value.ToString());
+           }
+           catch (SqlException ex)
+           {
+               throw ex;
+           }
+           finally
+           {
+               if (con.State == ConnectionState.Open)
+               {
+                   con.Close();
+               }
+           }
+       }
+       #endregion
 
 
-     public void ConnectToDB()
+
+       public void ConnectToDB()
      {
          const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
          SqlConnection con = new SqlConnection(DB_CONNECTION);
@@ -574,7 +642,12 @@ namespace ControllerLayer
          cmd.Connection = con;
          cmd.CommandType = CommandType.StoredProcedure;
        }
-    
+
+
+       internal int AddNewStaffMemberInDB(int staffMemberId, string staffMemberName, string cpr, string phoneNumber, string email, string password, string statusDescription, int titleId, int roleId)
+       {
+           throw new NotImplementedException();
+       }
     }
 }
 

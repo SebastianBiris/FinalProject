@@ -203,7 +203,7 @@ namespace ControllerLayer
                 throw ex;
             }
         }
-
+        //MAjd
         public void DeleteMessage(int messageId)
         {
             myDataAccessDb.DeleteMessage(messageId);
@@ -211,13 +211,14 @@ namespace ControllerLayer
         }
 
         #region Methods
-        //Chris  ***Not being used now
-       public void DeleteStaffMember(StaffMember selectedMember)
+          //Majd
+       public void DeleteStaffMember(string cpr)
        {
-           foreach (StaffMember sm in StaffMembers)  
-           {
-               staffMembers.Remove(selectedMember);
-           }
+           myDataAccessDb.DeleteStaffMember(cpr);
+       }
+       public void UpdateStaffMember(int staffMemberID, string staffMemberName, string cpr, string phoneNumber, string email, string password, string statusDescription, int titleId, int roleId)
+       {
+            myDataAccessDb.UpDateStaffMember(staffMemberID, staffMemberName,cpr,phoneNumber,email,password,statusDescription,titleId,roleId);
        }
 
        //chris 19.05   *????

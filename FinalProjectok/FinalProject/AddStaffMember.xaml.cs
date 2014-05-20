@@ -24,9 +24,7 @@ namespace FinalProject
     /// </summary>
     public partial class AddStaffMember : Window
     {
-          const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
-        SqlConnection con = new SqlConnection(DB_CONNECTION);
-        SqlCommand cmd=new SqlCommand();
+       
 
         int title = -1;
         int role = -1;
@@ -137,11 +135,22 @@ namespace FinalProject
 
         private void btnUpdateStaff_Click(object sender, RoutedEventArgs e)
         {
-            int Id = myController.SelectedStaffMember.StaffMemeberId;
+            IStaffMember lbStaffMember = (IStaffMember)listBoxStaff.SelectedItem;
+            myController.SelectedStaffMember = lbStaffMember;
+
+            int staffId = myController.SelectedStaffMember.StaffMemeberId;
+            string name = txtName1.Text;
+            string cpr = txtCpr1.Text;
+           string email = txtEmail1.Text;
+           string password = txtPassword1.Text;
+           string phoneNo = txtPhoneNumber1.Text;
+            
+           string status = txtStatus1.Text;
+
            
 
-            try
-            {
+            
+           
                 if (cbRole.SelectedIndex == 0)
                 {
                     role = 1;
@@ -188,66 +197,35 @@ namespace FinalProject
                     MessageBox.Show("Please pick a title");
                     return;
                 }
+                myController.UpdateStaffMember(staffId,name, cpr, phoneNo, email, password, status, title, role);
+                MessageBox.Show("Staff member updated");
+                this.Close();
+            
+                }
 
-                string querry = "Update StaffMember  Set staffMemberName ='" + this.txtName1.Text + "',phoneNo='" + this.txtPhoneNumber1.Text + "',titleID='" + title + "' ,roleID= '" + role + "',email ='" + this.txtEmail1.Text + "',staffPassword='" + this.txtPassword1.Text + "' ,cpr='" + this.txtCpr1.Text + "',statusDescription='" + this.txtStatus1.Text + "'where staffMemberID ='" +  Id + "';";
-                SqlCommand cmd = new SqlCommand(querry, con);
-                SqlDataReader myReader;
-                con.Open();
-                myReader = cmd.ExecuteReader();
+        private void btnDeleteStaff_Click(object sender, RoutedEventArgs e)
+        {
+            string tempCpr = "";
+            
+            IStaffMember lbStaffMember = (IStaffMember)listBoxStaff.SelectedItem;
+            myController.SelectedStaffMember = lbStaffMember;
+
+            tempCpr = myController.SelectedStaffMember.Cpr;
+
+            myController.DeleteStaffMember(tempCpr);
+            MessageBox.Show("Staff Member has been deleted");
+
+        }
+    }
+}
           
 
-                while (myReader.Read())
-                {}
+             
                  
                
                
             
 
-                MessageBox.Show("saved");
-                    
-                }
-            
+               
+ 
 
-
-            catch (Exception ex)
-            { MessageBox.Show(ex.Message); }
-           
-
-         
-            con.Close();
-        }
-
-        private void btnDeleteStaff_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                SqlCommand SelectCommand = new SqlCommand("Delete From StaffMember Where cpr ='" + this.txtCpr1.Text + "';", con);
-                SqlDataReader myReader;
-                con.Open();
-                myReader = SelectCommand.ExecuteReader();
-                int count = 0;
-
-                while (myReader.Read())
-                { count = count + 1; }
-                if (count == 0)
-                {
-                    MessageBox.Show("A Staff Member has been Deleted");
-                }
-
-                else
-                { MessageBox.Show("Staff member is not deleted"); }
-                con.Close();
-            }
-
-            catch (Exception ex)
-            { MessageBox.Show(ex.Message); }
-
-        }
-
-  
-
-      
-
-        
-    }
-}

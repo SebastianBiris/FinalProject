@@ -27,35 +27,30 @@ namespace FinalProject
     public partial class ForgetPasswordWindow : Window
     {
         Controller myController = new Controller();
-       // DataAccessDB myAccessDb = new DataAccessDB();
-       const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
-        SqlConnection con = new SqlConnection(DB_CONNECTION);
-        SqlCommand cmd = new SqlCommand();
+       
 
         public ForgetPasswordWindow()
         {
             InitializeComponent();
-          //  myAccessDb.ConnectToDB();
+          
             txtforgotPassword.Focus();
             
         }
 
         private void btnSendPassword_Click(object sender, RoutedEventArgs e)
         {
-           
-            try
-            {  con.Open();
-                SqlCommand forgotEmail = new SqlCommand("select staffPassword from StaffMember where email =  '" + this.txtforgotPassword.Text + "';",con);
-                object forgotenPassword = forgotEmail.ExecuteScalar();
-                SqlDataReader myReader;
-                
-                myReader = forgotEmail.ExecuteReader();
-                int count = 0;
+            string tempEmail = "";
+            string tempPassword = "";
 
-                while (myReader.Read())
-                { count = count + 1; }
-                if (count == 1)
+            foreach (IStaffMember myStaffMember in myController.StaffMembers)
+            {
+                if (txtforgotPassword.Text == myStaffMember.Email)
                 {
+                    tempPassword = myStaffMember.Password;
+                    tempEmail = myStaffMember.Email;
+                }
+            }
+                
                   
                     MessageBox.Show("Your Password has been sent to this email " + txtforgotPassword.Text);
                     
@@ -68,24 +63,15 @@ namespace FinalProject
                     staff.UseDefaultCredentials = false;
                     staff.Credentials = new NetworkCredential("gertrudssystem@gmail.com", "HappyPuppy");
 
-                    MailMessage mm = new MailMessage("gertrudssystem@gmail.com ", txtforgotPassword.Text, "Forgotten Password", "Your Password is " + forgotenPassword);
+                    MailMessage mm = new MailMessage("gertrudssystem@gmail.com ", txtforgotPassword.Text, "Forgotten Password", "Your Password is " + tempPassword);
                     staff.Send(mm);
                     mm.IsBodyHtml = true;
                     mm.BodyEncoding = Encoding.UTF8;
                     mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
               
-                }
-                else
-                {
-                    MessageBox.Show("Fuck u");
-                }
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            } 
-        }
+                
+          
+}
             
     }
 }
