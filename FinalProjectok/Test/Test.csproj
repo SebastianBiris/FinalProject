@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>d376e87e-dd5f-4122-b07d-4e7d82d69ef3</ProjectGuid>
+    <ProjectGuid>{A5B4A711-0EDF-405F-87D6-A146B0BF1345}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Test</RootNamespace>
@@ -50,8 +50,18 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="ControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ControllerLayer\ControllerLayer.csproj">
+      <Project>{038b6098-b6ac-4c5d-9e85-f871a89a201f}</Project>
+      <Name>ControllerLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ModelLayer\ModelLayer.csproj">
+      <Project>{5da153eb-7900-4d59-9bec-2ab067380838}</Project>
+      <Name>ModelLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
