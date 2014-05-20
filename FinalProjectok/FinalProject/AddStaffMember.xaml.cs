@@ -129,6 +129,7 @@ namespace FinalProject
                 txtPassword1.Text = lbStaffMember.Password;
                 txtPhoneNumber1.Text = lbStaffMember.PhoneNumber;
                 
+                
                 txtStatus1.Text = lbStaffMember.StatusDescription;
 
             }
@@ -136,6 +137,8 @@ namespace FinalProject
 
         private void btnUpdateStaff_Click(object sender, RoutedEventArgs e)
         {
+            int Id = myController.SelectedStaffMember.StaffMemeberId;
+           
 
             try
             {
@@ -186,7 +189,7 @@ namespace FinalProject
                     return;
                 }
 
-                string querry = "Update StaffMember  Set staffMemberName ='" + this.txtName1.Text + "',phoneNo='" + this.txtPhoneNumber1.Text + "',titleID='" + this.cbTitle.SelectedIndex + "' ,roleID= '" + this.cbRole.SelectedIndex + "',email ='" + this.txtEmail1.Text + "',staffPassword='" + this.txtPassword1.Text + "' ,cpr='" + this.txtCpr1.Text + "'where staffMemberName ='" + this.txtName1.Text + "';";
+                string querry = "Update StaffMember  Set staffMemberName ='" + this.txtName1.Text + "',phoneNo='" + this.txtPhoneNumber1.Text + "',titleID='" + title + "' ,roleID= '" + role + "',email ='" + this.txtEmail1.Text + "',staffPassword='" + this.txtPassword1.Text + "' ,cpr='" + this.txtCpr1.Text + "',statusDescription='" + this.txtStatus1.Text + "'where staffMemberID ='" +  Id + "';";
                 SqlCommand cmd = new SqlCommand(querry, con);
                 SqlDataReader myReader;
                 con.Open();
