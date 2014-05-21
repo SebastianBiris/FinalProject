@@ -38,40 +38,9 @@ namespace FinalProject
         public List<Button> ColumnHeaderButtons { get; set; }
         public List<string> days = new List<string> { "", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
         int nr = -1;
-
-        public int[,] Matrix =
-        { 
-            {4, 2, 2, 2, 2, 2, 2, 2, 7, 8},
-            {5, 3, 3, 3, 3, 3, 3, 3, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            {1, 6, 6, 6, 6, 6, 6, 6, 9,10},
-            
-            
-        };
+       const int i = 27, j = 8;
+       string[,] Matrix= new string [i,j];
+       
         public TabWindow()
         {
             InitializeComponent();
@@ -143,9 +112,9 @@ namespace FinalProject
         {
             var getSelectedButton = (Button)sender;
             string str = getSelectedButton.Name;
-            RowNumber = Convert.ToInt16(str[1] - 48);
-            ColumnNumber = Convert.ToInt16(str[3] - 48);
-            SelectDateTime1 = myWeekDates[ColumnNumber - 1];
+            //RowNumber = Convert.ToInt16(str[1] - 48);
+            //ColumnNumber = Convert.ToInt16(str[3] - 48);
+            //SelectDateTime1 = myWeekDates[ColumnNumber - 1];
 
             ForgetPasswordWindow forg = new ForgetPasswordWindow();
             forg.ShowDialog();
@@ -154,202 +123,77 @@ namespace FinalProject
 
         public void DrawButtons()
         {
-            int dateCounter = -11;
+            int dateCounter = -9;
             for (int i = 0; i <= 26; i++)
             {
-                myGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(2, GridUnitType.Auto) });
-                myGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(2, GridUnitType.Auto) });
-                for (int j = 0; j <= 9; j++)
+               
+                for (int j = 0; j <= 7; j++)
                 {
                     dateCounter++;
-                    if (Matrix[i, j] == 3)
+                    if (i == 1 && j != 0)
                     {
-
                         string dayHack = "Day" + dateCounter;
-                        Button cellButtons = new Button
-                        {
-                            Height = 20,
-                            Width = 70,
-                            Background = new SolidColorBrush(Colors.AliceBlue),
-                            Foreground = new SolidColorBrush(Colors.Black),
-                            IsEnabled = true,
-                            Content = allWeeksList[myController.GetWeeksOfYear() - 1].GetDay(dayHack).ToShortDateString(),
-                            HorizontalContentAlignment = HorizontalAlignment.Center,
-                            VerticalContentAlignment = VerticalAlignment.Center,
-
-                        };
+                        Matrix[i, j] = allWeeksList[myController.GetWeeksOfYear() - 1].GetDay(dayHack).ToShortDateString();
                         myWeekDates.Add(allWeeksList[myController.GetWeeksOfYear() - 1].GetDay(dayHack));
-                        cellButtons.SetValue(Grid.RowProperty, i);
-                        cellButtons.SetValue(Grid.ColumnProperty, j);
-                        myGrid.Children.Add(cellButtons);
-                        ColumnHeaderButtons.Add(cellButtons);
                     }
-                    else if (Matrix[i, j] == 2)
+                    else if (i == 0 && j != 0&&j!=8&&j!=9)
                     {
-
-                        Button columnHeaderButton = new Button
-                        {
-
-                            Height = 20,
-                            Width = 70,
-                            Background = new SolidColorBrush(Colors.Azure),
-                            Foreground = new SolidColorBrush(Colors.Black),
-                            IsEnabled = true,
-                            Content = days[j],
-                            HorizontalContentAlignment = HorizontalAlignment.Center,
-                            VerticalContentAlignment = VerticalAlignment.Center,
-
-                        };
-
-                        columnHeaderButton.SetValue(Grid.RowProperty, i);
-                        columnHeaderButton.SetValue(Grid.ColumnProperty, j);
-                        myGrid.Children.Add(columnHeaderButton);
-
-
-
-
+                        Matrix[i, j] = days[j];
                     }
 
-                    else if (Matrix[i, j] == 6 && i <= myController.StaffMembers.Count + 1)
-                    {
-
-                        Button columnHeaderButton = new Button
-                        {
-
-                            Height = 20,
-                            Width = 70,
-                            Background = new SolidColorBrush(Colors.Azure),
-                            Foreground = new SolidColorBrush(Colors.Black),
-                            IsEnabled = true,
-                            Content = "6",
-                            HorizontalContentAlignment = HorizontalAlignment.Center,
-                            VerticalContentAlignment = VerticalAlignment.Center,
-
-                        };
-                        //Add shift
-                        columnHeaderButton.SetValue(Grid.RowProperty, i);
-                        columnHeaderButton.SetValue(Grid.ColumnProperty, j);
-                        myGrid.Children.Add(columnHeaderButton);
-                        columnHeaderButton.MouseDoubleClick += MachingTheData;
-                    }
-
-                    else if (Matrix[i, j] == 1)
+                    else if (j == 0 && i != 0 && i != 1)
                     {
                         if (nr < myController.StaffMembers.Count - 1)
                         {
                             nr++;
-                            Button columnHeaderButton = new Button
-                            {
-
-                                Height = 20,
-                                Width = 70,
-                                Background = new SolidColorBrush(Colors.Azure),
-                                Foreground = new SolidColorBrush(Colors.Black),
-                                IsEnabled = true,
-                                Content = myController.StaffMembers[nr].StaffMemberName,
-                                HorizontalContentAlignment = HorizontalAlignment.Left,
-                                VerticalContentAlignment = VerticalAlignment.Top,
-
-                            };
-
-                            columnHeaderButton.SetValue(Grid.RowProperty, i);
-                            columnHeaderButton.SetValue(Grid.ColumnProperty, j);
-                            myGrid.Children.Add(columnHeaderButton);
+                            Matrix[i, j] = myController.StaffMembers[nr].StaffMemberName;
                         }
-
                     }
-                    //else if (Matrix[i, j] == 9 && i <= myController.StaffMembers.Count + 1 && i != 1)
-                    //{
-
-                    //    Button columnHeaderButton = new Button
-                    //    {
-
-                    //        Height = 20,
-                    //        Width = 70,
-                    //        Background = new SolidColorBrush(Colors.Azure),
-                    //        Foreground = new SolidColorBrush(Colors.Black),
-                    //        IsEnabled = true,
-                    //        Content = "9",
-                    //        HorizontalContentAlignment = HorizontalAlignment.Center,
-                    //        VerticalContentAlignment = VerticalAlignment.Center,
-
-                    //    };
-                    //    columnHeaderButton.SetValue(Grid.RowProperty, i);
-                    //    columnHeaderButton.SetValue(Grid.ColumnProperty, j);
-                    //    myGrid.Children.Add(columnHeaderButton);
-                    //}
-
-                    //else if (Matrix[i, j] == 10 && i <= myController.StaffMembers.Count + 1 && i!=1)
-                    //{
-
-                    //    Button columnHeaderButton = new Button
-                    //    {
-
-                    //        Height = 20,
-                    //        Width = 70,
-                    //        Background = new SolidColorBrush(Colors.Azure),
-                    //        Foreground = new SolidColorBrush(Colors.Black),
-                    //        IsEnabled = true,
-                    //        Content = "10",
-                    //        HorizontalContentAlignment = HorizontalAlignment.Center,
-                    //        VerticalContentAlignment = VerticalAlignment.Center,
-
-                    //    };
-                    //    columnHeaderButton.SetValue(Grid.RowProperty, i);
-                    //    columnHeaderButton.SetValue(Grid.ColumnProperty, j);
-                    //    myGrid.Children.Add(columnHeaderButton);
-                    //}
-                    //else if (Matrix[i, j] == 8)
-                    //{
-
-                    //    Button columnHeaderButton = new Button
-                    //    {
-
-                    //        Height = 20,
-                    //        Width = 70,
-                    //        Background = new SolidColorBrush(Colors.Azure),
-                    //        Foreground = new SolidColorBrush(Colors.Black),
-                    //        IsEnabled = true,
-                    //        Content = "Total Real",
-                    //        HorizontalContentAlignment = HorizontalAlignment.Center,
-                    //        VerticalContentAlignment = VerticalAlignment.Center,
-
-                    //    };
-                    //    columnHeaderButton.SetValue(Grid.RowProperty, i);
-                    //    columnHeaderButton.SetValue(Grid.ColumnProperty, j);
-                    //    myGrid.Children.Add(columnHeaderButton);
-                    //}
-                    //else if (Matrix[i, j] == 7)
-                    //{
-
-                    //    Button columnHeaderButton = new Button
-                    //    {
-
-                    //        Height = 20,
-                    //        Width = 70,
-                    //        Background = new SolidColorBrush(Colors.Azure),
-                    //        Foreground = new SolidColorBrush(Colors.Black),
-                    //        IsEnabled = true,
-                    //        Content = "Total Skema",
-                    //        HorizontalContentAlignment = HorizontalAlignment.Center,
-                    //        VerticalContentAlignment = VerticalAlignment.Center,
-
-                    //    };
-                    //    columnHeaderButton.SetValue(Grid.RowProperty, i);
-                    //    columnHeaderButton.SetValue(Grid.ColumnProperty, j);
-                    //    myGrid.Children.Add(columnHeaderButton);
-                    //}
-
-
                 }
             }
-
+            for (int i = 0; i <= 26; i++)
+            {
+                myGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(2, GridUnitType.Auto) });
+                myGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(2, GridUnitType.Auto) });
+                for (int j = 0; j <= 7; j++)
+                {   if (i == 1 && j != 0)
+                {
+                    Button cellButtons = new Button
+                    {
+                        Height = 20,
+                        Width = 70,
+                        Background = new SolidColorBrush(Colors.Azure),
+                        Foreground = new SolidColorBrush(Colors.Black),
+                        IsEnabled = true,
+                        Content = Matrix[i,j],
+                        HorizontalContentAlignment = HorizontalAlignment.Center,
+                        VerticalContentAlignment = VerticalAlignment.Center,
+                    };
+                    cellButtons.SetValue(Grid.RowProperty, i);
+                    cellButtons.SetValue(Grid.ColumnProperty, j);
+                    myGrid.Children.Add(cellButtons);
+                    ColumnHeaderButtons.Add(cellButtons);          
+                    }
+                    else if(i<= myController.StaffMembers.Count+1)
+                {
+                    Button cellButtons = new Button
+                    {
+                        Height = 20,
+                        Width = 70,
+                        Background = new SolidColorBrush(Colors.Azure),
+                        Foreground = new SolidColorBrush(Colors.Black),
+                        IsEnabled = true,
+                        Content = Matrix[i,j],
+                        HorizontalContentAlignment = HorizontalAlignment.Center,
+                        VerticalContentAlignment = VerticalAlignment.Center,
+                    };
+                    cellButtons.SetValue(Grid.RowProperty, i);
+                    cellButtons.SetValue(Grid.ColumnProperty, j);
+                    myGrid.Children.Add(cellButtons);
+                 }
+                }
+            }
         }
-
-
-
-
-
 
         private void btnPrevious_Click(object sender, RoutedEventArgs e)
         {
@@ -363,7 +207,6 @@ namespace FinalProject
             myWeekDates.Clear();
             int tempWeekNo = (int)lbWeekNo.Content;
             int yearNo = (int)lbYearNo.Content;
-
             if (tempWeekNo == 1)
             {
                 lbYearNo.Content = (yearNo - 1);
@@ -372,31 +215,20 @@ namespace FinalProject
 
                 for (int i = 0; i < 7; i++)
                 {
-                    myWeekDates.Add(
-                        allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
-                    mybutton.Content =
-                       allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
-
-
+                    myWeekDates.Add(allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
+                    mybutton.Content =allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
                 }
-
             }
             else
             {
-
                 lbWeekNo.Content = (tempWeekNo - 1);
 
                 for (int i = 0; i < 7; i++)
                 {
-                    myWeekDates.Add(
-                         allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
-                    ColumnHeaderButtons[i].Content =
-                        allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1))
-                            .ToShortDateString();
-
+                    myWeekDates.Add(allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
+                   ColumnHeaderButtons[i].Content =allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
                 }
             }
-
         }
 
         private void btnForward_Click(object sender, RoutedEventArgs e)
@@ -417,11 +249,8 @@ namespace FinalProject
 
                 for (int i = 0; i < 7; i++)
                 {
-                    myWeekDates.Add(
-                        allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
-                    ColumnHeaderButtons[i].Content =
-                        allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1))
-                            .ToShortDateString();
+                    myWeekDates.Add(allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
+                    ColumnHeaderButtons[i].Content = allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
                 }
             }
             else
@@ -434,7 +263,6 @@ namespace FinalProject
                         allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
                     ColumnHeaderButtons[i].Content =
                         allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1));
-
                 }
             }
         }
@@ -488,8 +316,16 @@ namespace FinalProject
             myController.DeleteMessage(tempId);
             MessageBox.Show("Message deleted");
 
+        }
 
-     
+        public void RemoveButtons()
+        {
+            for (int i = drawButtons.Count - 1; i >= 0; i--)
+            {
+                Button btn = drawButtons[i];
+                myGrid.Children.Remove(btn);
+                drawButtons.RemoveAt(i);
+            }
         }
 
     }

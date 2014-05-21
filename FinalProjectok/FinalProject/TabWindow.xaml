@@ -15,11 +15,11 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Label x:Name="lbWeekNo" Content="" HorizontalAlignment="Left" Margin="144,134,0,0" VerticalAlignment="Top" Width="48" RenderTransformOrigin="1.346,1.078"/>
-                    <Label x:Name="lbYearNo" Content="" HorizontalAlignment="Left" Margin="139,103,0,0" VerticalAlignment="Top" Width="53" RenderTransformOrigin="-0.479,0.562"/>
-                    <Button x:Name="btnPrevious" Content="Previous Week" HorizontalAlignment="Left" Margin="19,134,0,0" VerticalAlignment="Top" Width="101" RenderTransformOrigin="0.191,-0.102" Click="btnPrevious_Click"/>
-                    <Button x:Name="btnForward" Content="Next Week" HorizontalAlignment="Left" Margin="219,134,0,0" VerticalAlignment="Top" Width="75" Click="btnForward_Click"/>
-                    <Grid x:Name="myGrid" HorizontalAlignment="Left" Height="384" Margin="25,203,0,-48" VerticalAlignment="Top" Width="740"/>
+                    <Label x:Name="lbWeekNo" Content="" HorizontalAlignment="Left" Margin="144,64,0,0" VerticalAlignment="Top" Width="48" RenderTransformOrigin="1.346,1.078"/>
+                    <Label x:Name="lbYearNo" Content="" HorizontalAlignment="Left" Margin="139,33,0,0" VerticalAlignment="Top" Width="53" RenderTransformOrigin="-0.479,0.562"/>
+                    <Button x:Name="btnPrevious" Content="Previous Week" HorizontalAlignment="Left" Margin="19,64,0,0" VerticalAlignment="Top" Width="101" RenderTransformOrigin="0.191,-0.102" Click="btnPrevious_Click"/>
+                    <Button x:Name="btnForward" Content="Next Week" HorizontalAlignment="Left" Margin="219,64,0,0" VerticalAlignment="Top" Width="75" Click="btnForward_Click"/>
+                    <Grid x:Name="myGrid" HorizontalAlignment="Left" Height="429" Margin="19,110,0,0" VerticalAlignment="Top" Width="740"/>
                     <Label Content="Shift Type:&#xD;&#xA;A  08:30-17:30      H  15:30-23:30        AL  11:00-20:00&#xD;&#xA;E  10:00-17:30     HB  10:02-02:00       SD  10:00-16:00&#xD;&#xA;C  17:30-01:30    CW  17:30-03:30      DA  12:00-17:30&#xD;&#xA;D  11:00-17:30     AT  17:30-22:30       GS  09:00-17:30&#xD;&#xA;G  08:30-16:00     AF  20:00-02:30&#xD;&#xA;" HorizontalAlignment="Left" Margin="410,0,0,0" VerticalAlignment="Top" Height="129" Width="356"/>
                 </Grid>
             </TabItem>
