@@ -644,10 +644,10 @@ namespace ControllerLayer
        }
 
 
-       internal int AddNewStaffMemberInDB(int staffMemberId, string staffMemberName, string cpr, string phoneNumber, string email, string password, string statusDescription, int titleId, int roleId)
-       {
-           throw new NotImplementedException();
-       }
+       //internal int AddNewStaffMemberInDB(int staffMemberId, string staffMemberName, string cpr, string phoneNumber, string email, string password, string statusDescription, int titleId, int roleId)
+       //{
+       //    throw new NotImplementedException();
+       //}
     }
 }
 
