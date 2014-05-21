@@ -19,9 +19,10 @@
         <TextBox x:Name="txtStatus1" HorizontalAlignment="Left" Height="62" Margin="157,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
         <ComboBox x:Name="cbTitle" HorizontalAlignment="Left" Margin="157,216,0,0" VerticalAlignment="Top" Width="167" />
         <ComboBox x:Name="cbRole" HorizontalAlignment="Left" Margin="157,256,0,0" VerticalAlignment="Top" Width="167" />
-        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="291,393,0,0" VerticalAlignment="Top" Width="74" Click="btnSave_Click"/>
-        <Button x:Name="btnUpdateStaff" Content="Update" HorizontalAlignment="Left" Margin="399,393,0,0" VerticalAlignment="Top" Width="75" Click="btnUpdateStaff_Click"/>
+        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="224,393,0,0" VerticalAlignment="Top" Width="74" Click="btnSave_Click"/>
+        <Button x:Name="btnUpdateStaff" Content="Update" HorizontalAlignment="Left" Margin="379,393,0,0" VerticalAlignment="Top" Width="75" Click="btnUpdateStaff_Click"/>
         <Button x:Name="btnDeleteStaff" Content="Delete" HorizontalAlignment="Left" Margin="506,393,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteStaff_Click"/>
         <ListBox x:Name="listBoxStaff" HorizontalAlignment="Left" Height="276" Margin="390,73,0,0" VerticalAlignment="Top" Width="191" SelectionChanged="ListBox_SelectionChanged"/>
+        <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="69,393,0,0" VerticalAlignment="Top" Width="75" Click="btnClear_Click"/>
     </Grid>
 </Window>

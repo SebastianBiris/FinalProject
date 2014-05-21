@@ -144,9 +144,15 @@ namespace FinalProject
            string email = txtEmail1.Text;
            string password = txtPassword1.Text;
            string phoneNo = txtPhoneNumber1.Text;
+
             
            string status = txtStatus1.Text;
 
+           if (txtName1.Text == "")
+           {
+               MessageBox.Show("Must Fill");
+               return;
+           }
            
 
             
@@ -215,6 +221,19 @@ namespace FinalProject
             myController.DeleteStaffMember(tempCpr);
             MessageBox.Show("Staff Member has been deleted");
 
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            txtCpr1.Clear();
+            txtEmail1.Clear();
+            txtName1.Clear();
+            txtPassword1.Clear();
+            txtPhoneNumber1.Clear();
+            txtStatus1.Clear();
+            cbRole.ItemsSource = null;
+            cbTitle.ItemsSource = null;
+            txtName1.Focus();
         }
     }
 }
