@@ -13,8 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Net;
 using System.Net.Mail;
-using System.Data;
-using System.Data.SqlClient;
+
 
 using ControllerLayer;
 using InterfaceLayer;
@@ -52,9 +51,7 @@ namespace FinalProject
              
             }
            
-                
-                  
-                    
+                            
                     
                     SmtpClient staff = new SmtpClient();
                     staff.Port = 587;
