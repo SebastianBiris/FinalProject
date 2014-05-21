@@ -30,10 +30,6 @@ namespace FinalProject
             myController = new Controller();
           
 
-           listBoxStaffInfo2.ItemsSource = null;
-           listBoxStaffInfo2.ItemsSource = myController.StaffMembers;
-           listBoxContactStaff.ItemsSource = myController.StaffMembers;
-           dataGridContactInfo.ItemsSource = myController.StaffMembers;
 
          
 
@@ -92,10 +88,15 @@ namespace FinalProject
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (ListBoxRequests.SelectedItem == myController.SelectedMessage)
-            {
-                
-            }
+            int tempId = -1;
+
+            IMessage lbMessage = (IMessage)ListBoxRequests.SelectedItem;
+            myController.SelectedMessage = lbMessage;
+
+            tempId = myController.SelectedMessage.MessageId;
+
+            myController.DeleteMessage(tempId);
+            MessageBox.Show("Message deleted");
         }
         public void TestingStuff()
         {

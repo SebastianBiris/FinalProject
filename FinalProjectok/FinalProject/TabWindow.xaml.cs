@@ -52,8 +52,6 @@ namespace FinalProject
             FillTheWeeks();
             GetWeek();
             DrawButtons();
-            listBoxStaffInfo.ItemsSource = null;
-            listBoxStaffInfo.ItemsSource = myController.StaffMembers;
             listboxStaff.ItemsSource = null;
             listboxStaff.ItemsSource = myController.StaffMembers;
 
@@ -304,7 +302,7 @@ namespace FinalProject
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
-        {
+        { 
             
             int tempId = -1;
 
@@ -326,6 +324,19 @@ namespace FinalProject
                 myGrid.Children.Remove(btn);
                 drawButtons.RemoveAt(i);
             }
+        }
+
+        private void btnSend1_Click(object sender, RoutedEventArgs e)
+        {   
+            IStaffMember lbStaffMember2 = (IStaffMember)listBoxStaffInfo.SelectedItem;
+            myController.SelectedStaffMember = lbStaffMember2;
+
+            int tempStaffId = myController.SelectedStaffMember.StaffMemeberId;
+            string tempMessage = txtRespon.Text;
+
+            myController.CreateNewMessage(tempMessage, tempStaffId);
+            MessageBox.Show("Your message was sent successfully.");
+            txtRespon.Clear();
         }
 
     }

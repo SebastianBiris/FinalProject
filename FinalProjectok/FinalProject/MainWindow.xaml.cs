@@ -23,7 +23,7 @@ namespace FinalProject
     /// Interaction logic for LoginWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
+    {//majd
         DataAccessDB myDB = new DataAccessDB();
         Controller myController = new Controller();
 
@@ -47,7 +47,7 @@ namespace FinalProject
             int tempId = -1;
             string tempCpr = "";
             string tempName = "";
-
+            List<IStaffMember> theStaffmeber = new List<IStaffMember>();
             List<IMessage> myList = new List<IMessage>();
             foreach (IStaffMember myStaffMember in myController.StaffMembers)
             {
@@ -56,6 +56,10 @@ namespace FinalProject
                     tempId = myStaffMember.StaffMemeberId;
                     tempName = myStaffMember.StaffMemberName;
                     tempCpr = myStaffMember.Cpr;
+                }
+                if (myStaffMember.Cpr != txtUserId.Text)
+                {
+                    theStaffmeber.Add(myStaffMember);
                 }
             }
 
@@ -67,9 +71,15 @@ namespace FinalProject
                 }
 
             }
-
+            myTabWindow.listBoxStaffInfo.ItemsSource = theStaffmeber;
             myTabForStaff.ListBoxRequests.ItemsSource = myList;
             myTabWindow.ListBoxRequests.ItemsSource = myList;
+
+
+            myTabForStaff.listBoxStaffInfo2.ItemsSource = theStaffmeber; ;
+           myTabForStaff.listBoxContactStaff.ItemsSource = theStaffmeber;
+           myTabForStaff.dataGridContactInfo.ItemsSource = theStaffmeber;
+            
 
             if (tempCpr == "1")
             {
