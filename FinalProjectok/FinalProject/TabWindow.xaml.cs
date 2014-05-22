@@ -59,7 +59,7 @@ namespace FinalProject
         }
         public List<DateTime> myWeekDates { get; set; }
         public List<IWeekList> allWeeksList = new List<IWeekList>();
-
+        public List<IShiftDate> myIShift = new List<IShiftDate>();
 
         public void FillTheWeeks()
         {
@@ -146,6 +146,16 @@ namespace FinalProject
                             nr++;
                             Matrix[i, j] = myController.StaffMembers[nr].StaffMemberName;
                         }
+                    }
+                    else if(i>1&&j>0)
+                    {
+                        for (int a = 0; a < myController.ShiftDates.Count;a++ )
+                        { if (Matrix[i, 0] == myController.ShiftDates[a].StaffMemberName && Matrix[1, j] == myController.ShiftDates[a].ActualDate.ToShortDateString())
+                            {
+                                Matrix[i, j] = myController.ShiftDates[a].ShiftType;
+                            }
+                        }
+                        
                     }
                 }
             }

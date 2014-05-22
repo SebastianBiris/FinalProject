@@ -15,6 +15,11 @@ namespace ModelLayer
         int _staffMemberId;  //chris 19.05
         int _shiftId;
         StaffMember myStaffMember;
+        string _staffMemberName;
+        DateTime _actualDate;
+        string _shiftType;
+
+     
 
         public ShiftDate(int dateId, DateTime dateWorked, StaffMember actualStaffMember, int staffMemberId) //working with method inside StaffMember
         {
@@ -30,6 +35,11 @@ namespace ModelLayer
             _dateId = dateId;
             _dateWorked = dateWorked;
             _staffMemberId = staffMemberId;
+        }
+        public ShiftDate(string staffMemberName, string shiftType, DateTime actualDate)
+        { _staffMemberName = staffMemberName;
+        _shiftType = shiftType;
+        _actualDate = actualDate;
         }
 
         public ShiftDate(int dateId, int staffMemberId, int shiftId)  //Chris 19.05 For saving staffMemberWorkDay to DB 
@@ -63,6 +73,22 @@ namespace ModelLayer
        {
            get { return _dateWorked; }
            set { _dateWorked = value ; }
+       }
+
+       public string StaffMemberName
+       {
+           get { return _staffMemberName; }
+           set { _staffMemberName = value; }
+       }
+       public DateTime ActualDate
+       {
+           get { return _actualDate; }
+           set { _actualDate = value; }
+       }
+       public string ShiftType
+       {
+           get { return _shiftType; }
+           set { _shiftType = value; }
        }
 
        //chris 19.05

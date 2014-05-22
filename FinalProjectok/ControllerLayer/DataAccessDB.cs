@@ -496,13 +496,13 @@ namespace ControllerLayer
        public List<ShiftDate> ViewShiftDatesFromDB()
        {
            SqlDataReader dataReader = null;
-           int dateId;
-           DateTime dateWorked;
-           int staffMemberId;
+           string staffMemberName;
+           DateTime actualDate;
+           string shiftType;
 
            List<ShiftDate> returnShiftDateslist = new List<ShiftDate>();
            cmd.Parameters.Clear();
-           cmd.CommandText = "SP_ViewStaffMemberWorkDay";
+           cmd.CommandText = "SP_ViewAssignedShifts";
 
            try
            {
@@ -510,10 +510,10 @@ namespace ControllerLayer
                dataReader = cmd.ExecuteReader();
                while (dataReader.Read())
                {
-                   dateId = (int.Parse(dataReader["dateID"].ToString()));
-                   staffMemberId = (int.Parse(dataReader["staffMemberID"].ToString()));
-                   dateWorked = (DateTime)dataReader["actualDate"];
-                   returnShiftDateslist.Add(new ShiftDate(dateId, dateWorked, staffMemberId));
+                   staffMemberName = (dataReader["staffMemberName"].ToString());
+                   shiftType = (dataReader["shiftType"].ToString());
+                   actualDate = (DateTime)dataReader["actualDate"];
+                   returnShiftDateslist.Add(new ShiftDate(staffMemberName, shiftType, actualDate));
                }
                return returnShiftDateslist;
            }
@@ -630,8 +630,7 @@ namespace ControllerLayer
        }
        #endregion
 
-
-
+      
        public void ConnectToDB()
      {
          const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";

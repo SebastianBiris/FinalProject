@@ -29,7 +29,7 @@ namespace ControllerLayer
      
         StaffMember selectedStaffMember;
         Message selectedMessage;
-        ShiftDate selectedShiftDate;
+        IShiftDate selectedShiftDate;
 
 
         DataAccessDB myDataAccessDb;
@@ -47,9 +47,10 @@ namespace ControllerLayer
             myDataAccessDb = new DataAccessDB();
             weekList = new List<WeekList>();
             messages = new List<Message>();
-            GetAllFromDB();
+            
             myWeekList = new List<IWeekList>();
             shifts = new List<IShift>();
+            GetAllFromDB();
         }
 
         #region properties //**Sebi**
@@ -234,7 +235,7 @@ namespace ControllerLayer
            shiftDates.Add(nuShiftDate);
        }
         #endregion
-
+       //public void ViewShift()
 
        //Majd
        public IStaffMember SelectedStaffMember
@@ -249,7 +250,7 @@ namespace ControllerLayer
            set { selectedMessage =(Message) value; }
        }
 
-       public ShiftDate SelectedShiftDate
+       public IShiftDate SelectedShiftDate
        {
            get { return selectedShiftDate; }
            set { selectedShiftDate = value; }

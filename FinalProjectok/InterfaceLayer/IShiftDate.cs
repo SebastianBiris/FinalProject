@@ -12,6 +12,12 @@ namespace InterfaceLayer
         DateTime DateWorked { get; }
         int DateId { get; }
         IStaffMember MyIStaffMember { get; }
+        int StaffMemberId { get; }
+        int ShiftId { get; }
+        string StaffMemberName { get; }
+        DateTime ActualDate { get; }
+        string ShiftType { get; }
 
+     
     }
 }
