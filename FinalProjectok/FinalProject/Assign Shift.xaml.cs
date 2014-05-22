@@ -33,7 +33,9 @@ namespace FinalProject
              
             foreach (IShift myShift in myController.Shift)
             {
-                lbShiftType.ItemsSource = myShift.ShiftType;
+                myIshift.Add(myShift);
+
+                lbShiftType.ItemsSource = myIshift;
                 
       
             }
@@ -41,7 +43,13 @@ namespace FinalProject
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //IShift myshds =(IShift)lbShiftType.SelectedItem;
+            //myController.Selectedshift = myshds;
+
+            //int tempIs = myController.Selectedshift.ShiftId;
+
+
+            this.Hide();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

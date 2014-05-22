@@ -137,8 +137,13 @@ namespace FinalProject
             //MessageBox.Show(tempDateId+" "+tempStaffId+" "+tempShiftId );
             IShift cbShift =(IShift) myWindow.lbShiftType.SelectedItem;
        //     tempShiftId = myController.Selectedshift.ShiftId;
+
+            IShift myshds = (IShift)shiftWindow.lbShiftType.SelectedItem;
+            myController.Selectedshift = myshds;
+
+            int tempIs = myController.Selectedshift.ShiftId;
       
-            myController.AddNewShiftDateInDB(tempDateId, tempStaffId, 3);
+            myController.AddNewShiftDateInDB(tempDateId, tempStaffId, tempIs);
          
         }
 
