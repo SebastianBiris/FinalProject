@@ -91,7 +91,10 @@ namespace FinalProject
                 this.Close();
                 myTabForStaff.Show();
             }
-
+            if (tempCpr != "2")
+            {
+                myTabForStaff.btnManageSchedule.Visibility = Visibility.Hidden;
+            }
         }
 
         private void btnForgotPassword_Click(object sender, RoutedEventArgs e)

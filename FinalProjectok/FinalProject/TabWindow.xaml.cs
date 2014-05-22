@@ -134,7 +134,7 @@ namespace FinalProject
                         Matrix[i, j] = allWeeksList[myController.GetWeeksOfYear() - 1].GetDay(dayHack).ToShortDateString();
                         myWeekDates.Add(allWeeksList[myController.GetWeeksOfYear() - 1].GetDay(dayHack));
                     }
-                    else if (i == 0 && j != 0&&j!=8&&j!=9)
+                    else if (i == 0 && j != 0 && j!=8 && j!=9)
                     {
                         Matrix[i, j] = days[j];
                     }
