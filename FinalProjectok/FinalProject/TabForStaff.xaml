@@ -125,10 +125,10 @@
                     <Label Content="*Select a staff member to attach the message to this person. Include the date &amp; your name in the message." HorizontalAlignment="Left" Margin="10,402,0,0" VerticalAlignment="Top" Width="576" RenderTransformOrigin="-0.532,7.462" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
+            <Grid Background="#FFE5E5E5" Height="483" Width="766">
+                <Button x:Name="btnManageSchedule" Content="Button" HorizontalAlignment="Left" Margin="674,450,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.68,1.455"/>
+            </Grid>
         </TabControl>
-        <Grid Background="#FFE5E5E5" Margin="10,30,0,0">
-            <Button x:Name="btnManageSchedule" Content="Button" HorizontalAlignment="Left" Margin="674,450,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.68,1.455"/>
-        </Grid>
 
     </Grid>
 </Window>
