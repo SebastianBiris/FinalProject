@@ -108,15 +108,38 @@ namespace FinalProject
 
         public void MachingTheData(object sender, MouseButtonEventArgs e)
         {
+            Assign_Shift myWindow = new Assign_Shift();
+            int tempDateId = -1;
+            int tempStaffId = -1;
+            int tempShiftId = -1;
+            Assign_Shift shiftWindow = new Assign_Shift();
+            shiftWindow.ShowDialog();
             var getSelectedButton = (Button)sender;
             string str = getSelectedButton.Name;
-            //RowNumber = Convert.ToInt16(str[1] - 48);
-            //ColumnNumber = Convert.ToInt16(str[3] - 48);
-            //SelectDateTime1 = myWeekDates[ColumnNumber - 1];
 
-            ForgetPasswordWindow forg = new ForgetPasswordWindow();
-            forg.ShowDialog();
-
+          //  int tempRowNr1 = Convert.ToInt16(str[1] - 48);
+            //int tempRowNr2 = Convert.ToInt16(str[2] - 48);
+            RowNumber = Convert.ToInt16(str[1] - 48);
+            ColumnNumber = Convert.ToInt16(str[3] - 48);
+            foreach (IShiftDate myShift in myController.ShiftIds)
+            {
+                if (Matrix[1, ColumnNumber] == myShift.DateWorked.ToShortDateString())
+                { tempDateId = myShift.DateId; }
+            }
+            foreach (IStaffMember myStaff in myController.StaffMembers)
+            {
+                if (Matrix[RowNumber, 0] == myStaff.StaffMemberName)
+                { tempStaffId = myStaff.StaffMemeberId; }
+            }
+            //foreach( )
+            //    if (myWindow.cbShifttype. == cbShift.ShiftType)
+            //    { tempShiftId = cbShift.ShiftId; }
+            //MessageBox.Show(tempDateId+" "+tempStaffId+" "+tempShiftId );
+            IShift cbShift =(IShift) myWindow.lbShiftType.SelectedItem;
+       //     tempShiftId = myController.Selectedshift.ShiftId;
+      
+            myController.AddNewShiftDateInDB(tempDateId, tempStaffId, 3);
+         
         }
 
         public void DrawButtons()
@@ -182,7 +205,7 @@ namespace FinalProject
                     myGrid.Children.Add(cellButtons);
                     ColumnHeaderButtons.Add(cellButtons);          
                     }
-                    else if(i<= myController.StaffMembers.Count+1)
+                    else if(i<= myController.StaffMembers.Count+1&& !(j != 0  && i != 0 && i != 1))
                 {
                     Button cellButtons = new Button
                     {
@@ -198,7 +221,27 @@ namespace FinalProject
                     cellButtons.SetValue(Grid.RowProperty, i);
                     cellButtons.SetValue(Grid.ColumnProperty, j);
                     myGrid.Children.Add(cellButtons);
+                   
                  }
+                else if (j != 0  && i != 0 && i != 1&&i<= myController.StaffMembers.Count+1)
+                {
+                    Button cellButtons = new Button
+                    {
+                        Height = 20,
+                        Width = 70,
+                        Background = new SolidColorBrush(Colors.Azure),
+                        Foreground = new SolidColorBrush(Colors.Black),
+                        IsEnabled = true,
+                        Content = Matrix[i, j],
+                        HorizontalContentAlignment = HorizontalAlignment.Center,
+                        VerticalContentAlignment = VerticalAlignment.Center,
+                    };
+                    cellButtons.SetValue(Grid.RowProperty, i);
+                    cellButtons.SetValue(Grid.ColumnProperty, j);
+                    myGrid.Children.Add(cellButtons);
+                    cellButtons.MouseDoubleClick += MachingTheData;
+                    cellButtons.Name = "R" + i + "C" + j;
+                    }
                 }
             }
         }

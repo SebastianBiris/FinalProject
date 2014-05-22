@@ -16,7 +16,9 @@ namespace ModelLayer
         int _shiftId;
         StaffMember myStaffMember;
         string _staffMemberName;
+
         DateTime _actualDate;
+
         string _shiftType;
 
      

@@ -60,6 +60,9 @@
     <Compile Include="AddStaffMember.xaml.cs">
       <DependentUpon>AddStaffMember.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Assign Shift.xaml.cs">
+      <DependentUpon>Assign Shift.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TabForStaff.xaml.cs">
       <DependentUpon>TabForStaff.xaml</DependentUpon>
     </Compile>
@@ -67,6 +70,10 @@
       <DependentUpon>TabWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="AddStaffMember.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assign Shift.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

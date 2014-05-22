@@ -80,5 +80,9 @@ namespace ModelLayer
             return actualHoursInShift;
         }
         #endregion
+        public override string ToString()
+        {
+            return ShiftType;
+        }
     }
 }

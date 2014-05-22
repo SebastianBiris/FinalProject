@@ -10,8 +10,8 @@ using InterfaceLayer;
 namespace ControllerLayer
 {
    public  class Controller
-    { 
-     
+    {
+
         List<Shift> shift;
         List<ShiftDate> shiftDates;
         List<StaffMember> staffMembers;
@@ -24,9 +24,12 @@ namespace ControllerLayer
         IWeekList myIWeekList;
         WeekList myWeekList1;
         List<IShift>shifts;
+        List<ShiftDate> shiftIds;
 
-        
-     
+
+
+
+        IShift selectedShift;
         StaffMember selectedStaffMember;
         Message selectedMessage;
         IShiftDate selectedShiftDate;
@@ -40,6 +43,7 @@ namespace ControllerLayer
         {
             shift = new List<Shift>();
             shiftDates = new List<ShiftDate>();
+            shiftIds = new List<ShiftDate>();
             staffMembers = new List<StaffMember>();
             workingHours = new List<WorkingHours>();
             titles = new List<Title>();
@@ -47,7 +51,6 @@ namespace ControllerLayer
             myDataAccessDb = new DataAccessDB();
             weekList = new List<WeekList>();
             messages = new List<Message>();
-            
             myWeekList = new List<IWeekList>();
             shifts = new List<IShift>();
             GetAllFromDB();
@@ -69,6 +72,21 @@ namespace ControllerLayer
                 }
                 return resultList;
             }
+        }
+        public List<ShiftDate> ShiftIds
+        {
+            get { return shiftIds; }
+            set { shiftIds = value; }
+        }
+        public List<Shift> Shift
+        {
+            get { return shift; }
+            set { shift = value; }
+        }
+        public IShift Selectedshift
+        {
+            get { return selectedShift; }
+            set { selectedShift = (Shift)value; }
         }
 
         public List<IShiftDate> ShiftDates
@@ -264,7 +282,8 @@ namespace ControllerLayer
            titles = myDataAccessDb.ViewTitlesFromDB();
            roles = myDataAccessDb.ViewRoleFromDb();
            messages = myDataAccessDb.ViewMessagesFromDB();
-           shiftDates = myDataAccessDb.ViewShiftDatesFromDB();
+           shiftDates = myDataAccessDb.ViewAssignedShiftDatesFromDB();
+           shiftIds = myDataAccessDb.ViewShiftDatesFromDB();
        }
 
        public void GetDay(string day)

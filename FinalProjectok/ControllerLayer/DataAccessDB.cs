@@ -28,18 +28,6 @@ namespace ControllerLayer
             cmd.CommandType = CommandType.StoredProcedure;
      }
 
-        public bool loginCheck(string staffMemberName, string staffPassowrd)
-        {
-            cmd.CommandText = "SP_Login";
-            cmd.Parameters.Clear();
-
-            SqlParameter param = new SqlParameter("@UserName", SqlDbType.Int);
-            param.Value = -1;
-            param.Direction = ParameterDirection.Output; // I want to get something back
-            cmd.Parameters.Add(param);
-
-            return true;
-        }
 
         #region View Title from DB
         // Chris
@@ -493,7 +481,7 @@ namespace ControllerLayer
 
        #region View Staff Member Shift Dates  //chris 19.05
 
-       public List<ShiftDate> ViewShiftDatesFromDB()
+       public List<ShiftDate> ViewAssignedShiftDatesFromDB()
        {
            SqlDataReader dataReader = null;
            string staffMemberName;
@@ -537,6 +525,48 @@ namespace ControllerLayer
        }
        #endregion
 
+       public List<ShiftDate> ViewShiftDatesFromDB()
+       {
+           SqlDataReader dataReader = null;
+           int dateId;
+           DateTime dateWorked;
+           int staffMemberId;
+
+           List<ShiftDate> returnShiftDatesIdlist = new List<ShiftDate>();
+           cmd.Parameters.Clear();
+           cmd.CommandText = "SP_ViewStaffMemberWorkDay";
+
+           try
+           {
+               con.Open();
+               dataReader = cmd.ExecuteReader();
+               while (dataReader.Read())
+               {
+                   dateId = (int.Parse(dataReader["dateID"].ToString()));
+                   staffMemberId = (int.Parse(dataReader["staffMemberID"].ToString()));
+                   dateWorked = (DateTime)dataReader["actualDate"];
+                   returnShiftDatesIdlist.Add(new ShiftDate(dateId, dateWorked, staffMemberId));
+               }
+               return returnShiftDatesIdlist;
+           }
+           catch (SqlException ex)
+           {
+
+               throw ex;
+           }
+           finally
+           {
+               if (dataReader != null)
+               {
+                   dataReader.Close();
+               }
+
+               if (con.State == ConnectionState.Open)
+               {
+                   con.Close();
+               }
+           }
+       }
        #region Delete Messages From DB //majd 
        public int DeleteMessage(int messageId1)
        {
