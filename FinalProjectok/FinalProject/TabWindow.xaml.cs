@@ -116,10 +116,12 @@ namespace FinalProject
             shiftWindow.ShowDialog();
             var getSelectedButton = (Button)sender;
             string str = getSelectedButton.Name;
-
-          //  int tempRowNr1 = Convert.ToInt16(str[1] - 48);
-            //int tempRowNr2 = Convert.ToInt16(str[2] - 48);
-            RowNumber = Convert.ToInt16(str[1] - 48);
+            
+            int tempRowNr1 = Convert.ToInt16(str[1] - 48);
+            int tempRowNr2 = Convert.ToInt16(str[2] - 48);
+            if (tempRowNr1 * 10 + tempRowNr2 < 27)
+            { RowNumber = tempRowNr1 * 10 + tempRowNr2; }
+            else { RowNumber = Convert.ToInt16(str[1] - 48); }
             ColumnNumber = Convert.ToInt16(str[3] - 48);
             foreach (IShiftDate myShift in myController.ShiftIds)
             {
