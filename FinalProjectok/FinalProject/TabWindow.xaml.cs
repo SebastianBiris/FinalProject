@@ -27,7 +27,6 @@ namespace FinalProject
 
 
         Controller myController;
-
         int RowNumber;
         int ColumnNumber;
         int YearOffSet;
@@ -51,7 +50,6 @@ namespace FinalProject
             lbYearNo.Content = DateTime.Now.Year;
             FillTheWeeks();
             GetWeek();
-            
             listboxStaff.ItemsSource = null;
             listboxStaff.ItemsSource = myController.StaffMembers;
             DrawButtons();
@@ -72,15 +70,10 @@ namespace FinalProject
                 {
                     DateTime first = myController.GetWeeks((year + 1), DayOfWeek.Thursday);
                     DateTime second = firstDayOfTheFirstWeekOfTheYear.AddDays(1 + offset);
-
-
                     if (first <= second)
                     {
                         offset = 0;
-
-
                     }
-
 
                     allWeeksList.Add(myController.GetWeekList(year, firstDayOfTheFirstWeekOfTheYear.AddDays(0 + offset),
                           firstDayOfTheFirstWeekOfTheYear.AddDays(1 + offset),
@@ -92,7 +85,6 @@ namespace FinalProject
                     offset += 7;
                 }
                 YearOffSet++;
-
             }
 
         }
@@ -102,10 +94,6 @@ namespace FinalProject
             WeekNow = myController.GetWeeksOfYear();
 
         }
-
-
-
-
         public void MachingTheData(object sender, MouseButtonEventArgs e)
         {
             Assign_Shift myWindow = new Assign_Shift();
@@ -139,11 +127,10 @@ namespace FinalProject
                 { tempStaffId = myStaff.StaffMemeberId; }
             }
             IShift cbShift =(IShift) myWindow.lbShiftType.SelectedItem;
-            IShift myshds = (IShift)shiftWindow.lbShiftType.SelectedItem;
-            myController.Selectedshift = myshds;
-            int tempIs = myController.Selectedshift.ShiftId;
-            myController.AddNewShiftDateInDB(tempDateId, tempStaffId, tempIs);
-            DrawButtons();
+            IShift myshifts = (IShift)shiftWindow.lbShiftType.SelectedItem;
+            myController.Selectedshift = myshifts;
+            int tempId = myController.Selectedshift.ShiftId;
+            myController.AddNewShiftDateInDB(tempDateId, tempStaffId, tempId);
         }
         public void DrawButtons()
         {
