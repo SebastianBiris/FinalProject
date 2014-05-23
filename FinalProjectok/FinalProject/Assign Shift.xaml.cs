@@ -41,16 +41,6 @@ namespace FinalProject
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //IShift myshds =(IShift)lbShiftType.SelectedItem;
-            //myController.Selectedshift = myshds;
-
-            //int tempIs = myController.Selectedshift.ShiftId;
-
-
-            this.Hide();
-        }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {

@@ -1,12 +1,11 @@
 ﻿<Window x:Class="FinalProject.Assign_Shift"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Assign_Shift" Height="534.566" Width="486.357">
+        Title="Assign_Shift" Height="594.267" Width="502.775">
     <Grid Margin="0,0,25,21">
-        <Label Content="Shift Type:&#xA;A  08:30-17:30      H  15:30-23:30        AL  11:00-20:00&#xA;E  10:00-17:30     HB  10:02-02:00       SD  10:00-16:00&#xA;C  17:30-01:30    CW  17:30-03:30      DA  12:00-17:30&#xA;D  11:00-17:30     AT  17:30-22:30       GS  09:00-17:30&#xA;G  08:30-16:00     AF  20:00-02:30&#xA;" HorizontalAlignment="Left" Margin="55,24,0,0" VerticalAlignment="Top" Height="129" Width="356"/>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="66,401,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="263,401,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <ListBox x:Name="lbShiftType" HorizontalAlignment="Left" Height="243" Margin="114,153,0,0" VerticalAlignment="Top" Width="162"/>
+        <Label Content="Shift Type:&#xA;A  08:30-17:30      H  15:30-23:30        AL  11:00-20:00&#xA;E  10:00-17:30     HB  10:02-02:00       SD  10:00-16:00&#xA;C  17:30-01:30    CW  17:30-03:30      DA  12:00-17:30&#xA;D  11:00-17:30     AT  17:30-22:30       GS  09:00-17:30&#xA;G  08:30-16:00     AF  20:00-02:30&#xA;" HorizontalAlignment="Left" Margin="52,0,0,0" VerticalAlignment="Top" Height="129" Width="356"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="159,474,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <ListBox x:Name="lbShiftType" HorizontalAlignment="Left" Height="327" Margin="114,110,0,0" VerticalAlignment="Top" Width="162"/>
 
     </Grid>
 </Window>
