@@ -207,6 +207,7 @@ namespace ControllerLayer
         }
 
         //chris & Majd 15.05
+
         public void CreateNewMessage(string inboxMessage, int staffMemberId)
         {
             int messageId;
@@ -256,11 +257,13 @@ namespace ControllerLayer
        //public void ViewShift()
 
        //Majd
+
        public IStaffMember SelectedStaffMember
        {
            get { return (IStaffMember)selectedStaffMember; }
            set { selectedStaffMember = (StaffMember)value; }
        }
+
        //Chris
        public IMessage SelectedMessage
        {

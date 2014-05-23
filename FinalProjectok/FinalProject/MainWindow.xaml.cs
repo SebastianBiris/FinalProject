@@ -76,7 +76,7 @@ namespace FinalProject
             myTabWindow.ListBoxRequests.ItemsSource = myList;
 
 
-            myTabForStaff.listBoxStaffInfo2.ItemsSource = theStaffmeber; ;
+            myTabForStaff.listBoxStaffInfo2.ItemsSource = theStaffmeber; 
            myTabForStaff.listBoxContactStaff.ItemsSource = theStaffmeber;
            myTabForStaff.dataGridContactInfo.ItemsSource = theStaffmeber;
             
