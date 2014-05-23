@@ -29,8 +29,8 @@ namespace FinalProject
         public Assign_Shift()
         {
             InitializeComponent();
-            
-             
+
+            myWindow.DrawButtons();
             foreach (IShift myShift in myController.Shift)
             {
                 myIshift.Add(myShift);
@@ -54,7 +54,8 @@ namespace FinalProject
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            myWindow.DrawButtons();
+           
+            this.Hide();
         }
     }
 }

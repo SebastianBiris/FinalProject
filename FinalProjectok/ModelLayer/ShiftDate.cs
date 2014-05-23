@@ -32,11 +32,11 @@ namespace ModelLayer
             _dateWorked = dateWorked;
         }
 
-        public ShiftDate(int dateId, DateTime dateWorked, int staffMemberId)  //Chris 19.05 For Viewing WorkDay from DB
+        public ShiftDate(int dateId, DateTime dateWorked)  //Chris 19.05 For Viewing WorkDay from DB
         {
             _dateId = dateId;
             _dateWorked = dateWorked;
-            _staffMemberId = staffMemberId;
+            
         }
         public ShiftDate(string staffMemberName, string shiftType, DateTime actualDate)
         { _staffMemberName = staffMemberName;

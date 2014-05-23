@@ -543,9 +543,8 @@ namespace ControllerLayer
                while (dataReader.Read())
                {
                    dateId = (int.Parse(dataReader["dateID"].ToString()));
-                   staffMemberId = (int.Parse(dataReader["staffMemberID"].ToString()));
                    dateWorked = (DateTime)dataReader["actualDate"];
-                   returnShiftDatesIdlist.Add(new ShiftDate(dateId, dateWorked, staffMemberId));
+                   returnShiftDatesIdlist.Add(new ShiftDate(dateId, dateWorked));
                }
                return returnShiftDatesIdlist;
            }
