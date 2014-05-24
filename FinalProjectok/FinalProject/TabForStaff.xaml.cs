@@ -214,7 +214,7 @@ namespace FinalProject
                         myGrid.Children.Add(cellButtons);
                         ColumnHeaderButtons.Add(cellButtons);
                     }
-                    else if (i <= myController.StaffMembers.Count + 1 && !(j != 0 && i != 0 && i != 1))
+                    else if (i <= myController.StaffMembers.Count + 1 )
                     {
                         Button cellButtons = new Button
                         {
@@ -232,24 +232,7 @@ namespace FinalProject
                         myGrid.Children.Add(cellButtons);
 
                     }
-                    else if (j != 0 && i != 0 && i != 1 && i <= myController.StaffMembers.Count + 1)
-                    {
-                        Button cellButtons = new Button
-                        {
-                            Height = 20,
-                            Width = 70,
-                            Background = new SolidColorBrush(Colors.Azure),
-                            Foreground = new SolidColorBrush(Colors.Black),
-                            IsEnabled = true,
-                            Content = Matrix[i, j],
-                            HorizontalContentAlignment = HorizontalAlignment.Center,
-                            VerticalContentAlignment = VerticalAlignment.Center,
-                        };
-                        cellButtons.SetValue(Grid.RowProperty, i);
-                        cellButtons.SetValue(Grid.ColumnProperty, j);
-                        myGrid.Children.Add(cellButtons);
-                      
-                    }
+                   
                 }
             }
         }

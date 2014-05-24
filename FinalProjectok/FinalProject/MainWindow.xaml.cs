@@ -51,7 +51,7 @@ namespace FinalProject
             List<IMessage> myList = new List<IMessage>();
             foreach (IStaffMember myStaffMember in myController.StaffMembers)
             {
-                if (myStaffMember.Cpr == txtUserId.Text)
+                if (myStaffMember.Cpr == txtUserId.Text && myStaffMember.Password == passPassword.Password)
                 {
                     tempId = myStaffMember.StaffMemeberId;
                     tempName = myStaffMember.StaffMemberName;
@@ -86,12 +86,15 @@ namespace FinalProject
                 this.Close();
                 myTabWindow.Show();
             }
+
+            else if(tempCpr!= "")
+             {   this.Close();
+           myTabForStaff.Show();}
             else
             {
-                this.Close();
-                myTabForStaff.Show();
+                MessageBox.Show("Invalid user or password.Please try again.");
             }
-            if (tempCpr != "2")
+              if (tempCpr != "2")
             {
                 myTabForStaff.btnManageSchedule.Visibility = Visibility.Hidden;
             }
