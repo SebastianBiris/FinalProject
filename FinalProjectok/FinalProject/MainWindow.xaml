@@ -24,8 +24,8 @@
                 </LinearGradientBrush>
             </Label.Background>
         </Label>
-        <TextBox x:Name="txtUserId" HorizontalAlignment="Left" Height="27" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" Margin="202,29,0,0" Text="1"/>
-        <PasswordBox x:Name="passPassword" HorizontalAlignment="Left" Margin="202,99,0,0" VerticalAlignment="Top" Height="26" Width="114" Password="1"/>
+        <TextBox x:Name="txtUserId" HorizontalAlignment="Left" Height="27" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" Margin="202,29,0,0"/>
+        <PasswordBox x:Name="passPassword" HorizontalAlignment="Left" Margin="202,99,0,0" VerticalAlignment="Top" Height="26" Width="114"/>
         <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="220,165,0,0" VerticalAlignment="Top" Width="75" Click="btnLogin_Click"/>
         <Button x:Name="btnForgotPassword" Content="Forgot Password?" HorizontalAlignment="Left" Margin="202,223,0,0" VerticalAlignment="Top" Width="114" Click="btnForgotPassword_Click"/>
 

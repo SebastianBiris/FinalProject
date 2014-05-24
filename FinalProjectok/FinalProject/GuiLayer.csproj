@@ -63,6 +63,9 @@
     <Compile Include="Assign Shift.xaml.cs">
       <DependentUpon>Assign Shift.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ManageSchedule.xaml.cs">
+      <DependentUpon>ManageSchedule.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TabForStaff.xaml.cs">
       <DependentUpon>TabForStaff.xaml</DependentUpon>
     </Compile>
@@ -89,6 +92,10 @@
       <DependentUpon>ForgetPasswordWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManageSchedule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

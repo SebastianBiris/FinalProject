@@ -4,8 +4,7 @@
         Title="TabForStaff" Height="566.94" Width="786.418" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,-8,-3">
         <TabControl HorizontalAlignment="Left" Height="538" Margin="10,2,0,0" VerticalAlignment="Top" Width="776">
-            <TabItem x:Name="workScheduleStaff" Header="Schedule" Margin="0,0,-2,-1"/>
-            <TabItem x:Name="contactInfoStaff" Header="Contacts">
+            <TabItem x:Name="contactInfoStaff" Header="Contacts" Margin="64,0,-64,0">
                 <Grid Background="#FFC7C3C3">
                     <DataGrid x:Name="dataGridContactInfo" HorizontalAlignment="Left" Margin="0,40,0,0" VerticalAlignment="Top" Height="202" Width="670" AutoGenerateColumns="False">
                         <DataGrid.Columns>
@@ -36,7 +35,7 @@
 
 
             </TabItem>
-            <TabItem x:Name="makeRequestStaff" Header="Make Request" Margin="-2,-2,-2,-1">
+            <TabItem x:Name="makeRequestStaff" Header="Make Request" Margin="62,0,-62,0">
                 <Grid>
                     <Border BorderBrush="#FFD83117" BorderThickness="1" HorizontalAlignment="Left" Height="191" Margin="5,64,0,0" VerticalAlignment="Top" Width="349" Background="#FFEAACA9"/>
                     <TextBlock HorizontalAlignment="Left" Margin="5,19,0,0" TextWrapping="Wrap" Text="                                   Request time off" VerticalAlignment="Top" Height="26" Width="340" FontWeight="Bold" Background="#FFECE8E8"/>
@@ -100,7 +99,7 @@
                     </Button>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="inboxStaff" Header="Inbox" Margin="-2,-2,-2,-1">
+            <TabItem x:Name="inboxStaff" Header="Inbox" Margin="62,0,-66,-2">
                 <TabItem.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                         <GradientStop Color="#FFF0F0F0" Offset="0"/>
@@ -125,9 +124,26 @@
                     <Label Content="*Select a staff member to attach the message to this person. Include the date &amp; your name in the message." HorizontalAlignment="Left" Margin="10,402,0,0" VerticalAlignment="Top" Width="576" RenderTransformOrigin="-0.532,7.462" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
-            <Grid Background="#FFE5E5E5" Height="483" Width="766">
-                <Button x:Name="btnManageSchedule" Content="Button" HorizontalAlignment="Left" Margin="674,450,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.68,1.455"/>
-            </Grid>
+            <TabItem x:Name="scheduleTab" Header="Schedule" Margin="-187,0,183,-2">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="#FFCDCDCD" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="White" Margin="0,3,1,1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid x:Name="myGrid" HorizontalAlignment="Left" Height="345" Margin="43,112,0,0" VerticalAlignment="Top" Width="676"/>
+                    <Label Content="Shift Type:&#xA;A  08:30-17:30      H  15:30-23:30        AL  11:00-20:00&#xA;E  10:00-17:30     HB  10:02-02:00       SD  10:00-16:00&#xA;C  17:30-01:30    CW  17:30-03:30      DA  12:00-17:30&#xA;D  11:00-17:30     AT  17:30-22:30       GS  09:00-17:30&#xA;G  08:30-16:00     AF  20:00-02:30&#xA;" HorizontalAlignment="Left" Margin="410,0,0,0" VerticalAlignment="Top" Height="129" Width="356"/>
+                    <Button x:Name="btnManageSchedule" Content="Manage Schedule" HorizontalAlignment="Left" Margin="322,476,0,0" VerticalAlignment="Top" Width="113" Click="btnManageSchedule_Click"/>
+                    <Label x:Name="lbWeekNo" Content="" HorizontalAlignment="Left" Margin="160,67,0,0" VerticalAlignment="Top" Width="48" RenderTransformOrigin="1.346,1.078"/>
+                    <Label x:Name="lbYearNo" Content="" HorizontalAlignment="Left" Margin="155,36,0,0" VerticalAlignment="Top" Width="53" RenderTransformOrigin="-0.479,0.562"/>
+                    <Button x:Name="btnPrevious" Content="Previous Week" HorizontalAlignment="Left" Margin="35,67,0,0" VerticalAlignment="Top" Width="101" RenderTransformOrigin="0.191,-0.102" Click="btnPrevious_Click"/>
+                    <Button x:Name="btnForward" Content="Next Week" HorizontalAlignment="Left" Margin="235,67,0,0" VerticalAlignment="Top" Width="75" Click="btnForward_Click"/>
+                </Grid>
+            </TabItem>
         </TabControl>
 
     </Grid>
