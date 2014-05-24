@@ -235,6 +235,12 @@ namespace FinalProject
             cbTitle.ItemsSource = null;
             txtName1.Focus();
         }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            System.Environment.Exit(1);
+        }
     }
 }
           

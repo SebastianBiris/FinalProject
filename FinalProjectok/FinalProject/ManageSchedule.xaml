@@ -10,6 +10,7 @@
         <Button x:Name="btnPrevious" Content="Previous Week" HorizontalAlignment="Left" Margin="35,67,0,0" VerticalAlignment="Top" Width="101" RenderTransformOrigin="0.191,-0.102" Click="btnPrevious_Click"/>
         <Button x:Name="btnForward" Content="Next Week" HorizontalAlignment="Left" Margin="235,67,0,0" VerticalAlignment="Top" Width="75" Click="btnForward_Click"/>
         <Grid x:Name="myGrid" HorizontalAlignment="Left" Height="319" Margin="35,137,0,0" VerticalAlignment="Top" Width="731"/>
+        <Button x:Name="BtnClose" Content="Close" HorizontalAlignment="Left" Margin="529,475,0,0" VerticalAlignment="Top" Width="75" Height="34" Click="BtnClose_Click"/>
 
     </Grid>
 </Window>

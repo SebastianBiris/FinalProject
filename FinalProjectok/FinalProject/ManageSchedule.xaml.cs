@@ -321,5 +321,11 @@ namespace FinalProject
             this.Close();
           
         }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            System.Environment.Exit(1);
+        }
     }
 }

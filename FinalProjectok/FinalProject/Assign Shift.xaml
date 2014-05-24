@@ -6,6 +6,7 @@
         <Label Content="Shift Type:&#xA;A  08:30-17:30      H  15:30-23:30        AL  11:00-20:00&#xA;E  10:00-17:30     HB  10:02-02:00       SD  10:00-16:00&#xA;C  17:30-01:30    CW  17:30-03:30      DA  12:00-17:30&#xA;D  11:00-17:30     AT  17:30-22:30       GS  09:00-17:30&#xA;G  08:30-16:00     AF  20:00-02:30&#xA;" HorizontalAlignment="Left" Margin="52,0,0,0" VerticalAlignment="Top" Height="129" Width="356"/>
         <Button Content="Save" HorizontalAlignment="Left" Margin="159,474,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
         <ListBox x:Name="lbShiftType" HorizontalAlignment="Left" Height="327" Margin="114,110,0,0" VerticalAlignment="Top" Width="162"/>
+        <Button x:Name="BtnClose" Content="Close" HorizontalAlignment="Left" Margin="369,474,0,0" VerticalAlignment="Top" Width="75" Click="BtnClose_Click"/>
 
     </Grid>
 </Window>

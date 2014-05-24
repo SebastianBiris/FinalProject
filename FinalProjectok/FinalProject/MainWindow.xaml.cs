@@ -102,7 +102,7 @@ namespace FinalProject
 
         private void btnForgotPassword_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.Close();
             w.Show();
            
         }

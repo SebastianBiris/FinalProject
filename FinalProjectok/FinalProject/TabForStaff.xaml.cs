@@ -377,6 +377,14 @@ namespace FinalProject
             ManageSchedule myWindow = new ManageSchedule();
             myWindow.ShowDialog();
         }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            System.Environment.Exit(1);
+        }
+
+    
     
       
     }

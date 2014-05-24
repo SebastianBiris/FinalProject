@@ -1,8 +1,8 @@
 ﻿<Window x:Class="FinalProject.AddStaffMember"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="AddStaffMember" Height="455" Width="618">
-    <Grid>
+        Title="AddStaffMember" Height="514.701" Width="652.328">
+    <Grid Margin="0,0,2,8">
         <Label Content="Name:" HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top" Width="73" Height="25"/>
         <Label Content="Cpr:" HorizontalAlignment="Left" Margin="27,50,0,0" VerticalAlignment="Top" Width="73" Height="25"/>
         <Label Content="Email:" HorizontalAlignment="Left" Margin="27,128,0,0" VerticalAlignment="Top" Width="73" Height="25" RenderTransformOrigin="0.493,1.64"/>
@@ -19,10 +19,11 @@
         <TextBox x:Name="txtStatus1" HorizontalAlignment="Left" Height="62" Margin="157,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
         <ComboBox x:Name="cbTitle" HorizontalAlignment="Left" Margin="157,216,0,0" VerticalAlignment="Top" Width="167" />
         <ComboBox x:Name="cbRole" HorizontalAlignment="Left" Margin="157,256,0,0" VerticalAlignment="Top" Width="167" />
-        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="224,393,0,0" VerticalAlignment="Top" Width="74" Click="btnSave_Click"/>
-        <Button x:Name="btnUpdateStaff" Content="Update" HorizontalAlignment="Left" Margin="379,393,0,0" VerticalAlignment="Top" Width="75" Click="btnUpdateStaff_Click"/>
-        <Button x:Name="btnDeleteStaff" Content="Delete" HorizontalAlignment="Left" Margin="506,393,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteStaff_Click"/>
+        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="127,366,0,0" VerticalAlignment="Top" Width="74" Click="btnSave_Click"/>
+        <Button x:Name="btnUpdateStaff" Content="Update" HorizontalAlignment="Left" Margin="234,366,0,0" VerticalAlignment="Top" Width="75" Click="btnUpdateStaff_Click" RenderTransformOrigin="-0.251,0.832"/>
+        <Button x:Name="btnDeleteStaff" Content="Delete" HorizontalAlignment="Left" Margin="347,366,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteStaff_Click"/>
         <ListBox x:Name="listBoxStaff" HorizontalAlignment="Left" Height="276" Margin="390,73,0,0" VerticalAlignment="Top" Width="191" SelectionChanged="ListBox_SelectionChanged"/>
-        <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="69,393,0,0" VerticalAlignment="Top" Width="75" Click="btnClear_Click"/>
+        <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="27,366,0,0" VerticalAlignment="Top" Width="75" Click="btnClear_Click"/>
+        <Button x:Name="BtnClose" Content="Close" HorizontalAlignment="Left" Margin="506,434,0,0" VerticalAlignment="Top" Width="75" Click="BtnClose_Click"/>
     </Grid>
 </Window>
