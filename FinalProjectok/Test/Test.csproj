@@ -58,6 +58,10 @@
       <Project>{038b6098-b6ac-4c5d-9e85-f871a89a201f}</Project>
       <Name>ControllerLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\InterfaceLayer\InterfaceLayer.csproj">
+      <Project>{1a4d70a4-5c93-48ca-af11-79c25ce14b92}</Project>
+      <Name>InterfaceLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ModelLayer\ModelLayer.csproj">
       <Project>{5da153eb-7900-4d59-9bec-2ab067380838}</Project>
       <Name>ModelLayer</Name>
