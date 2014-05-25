@@ -120,6 +120,18 @@ namespace ControllerLayer
             ShiftDate nuShiftDate = new ShiftDate(dateId, dateWorked, (StaffMember)sm, staffId);
             shiftDates.Add(nuShiftDate);
         }
+
+        //25.05
+        public int NumberOfStaffMembers()
+        {
+            return staffMembers.Count;
+        }
+
+        public int NumberOfMessages()
+        {
+            return messages.Count;
+        }
+
         #endregion
       
         //Majd
