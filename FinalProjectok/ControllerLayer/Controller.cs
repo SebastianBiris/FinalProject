@@ -95,10 +95,7 @@ namespace ControllerLayer
         }
 
         //Majd
-        public void DeleteStaffMemberShifts(int staffMemberId)
-        {
-            myDataAccessDb.DeleteStaffMemberShift(staffMemberId);
-        }
+ 
         public void DeleteStaffMember(int staffMemberId)
         {
             myDataAccessDb.DeleteStaffMember(staffMemberId);

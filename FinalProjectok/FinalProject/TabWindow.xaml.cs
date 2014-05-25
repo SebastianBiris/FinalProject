@@ -129,8 +129,16 @@ namespace FinalProject
             IShift cbShift =(IShift) myWindow.lbShiftType.SelectedItem;
             IShift myshifts = (IShift)shiftWindow.lbShiftType.SelectedItem;
             myController.Selectedshift = myshifts;
-            int tempId = myController.Selectedshift.ShiftId;
-            myController.AddNewShiftDateInDB(tempDateId, tempStaffId, tempId);
+            if (myController.Selectedshift != null)
+            { tempShiftId = myController.Selectedshift.ShiftId; }
+            if (tempShiftId != -1)
+            {
+                myController.AddNewShiftDateInDB(tempDateId, tempStaffId, tempShiftId);
+
+            }
+
+            myController.GetAllFromDB();
+            DrawButtons();
         }
         public void DrawButtons()
         {

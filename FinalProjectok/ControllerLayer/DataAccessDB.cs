@@ -601,6 +601,7 @@ namespace ControllerLayer
            cmd.CommandText = "SP_DeleteStaffMember";
            cmd.Parameters.Clear();
            cmd.Parameters.AddWithValue("@staffMemberID", staffMemberId);
+          
 
            try
            {
@@ -622,33 +623,7 @@ namespace ControllerLayer
            }
        }
        #endregion
-       #region Delete Staff Member Shift
-       public string DeleteStaffMemberShift(int staffMemberId)
-       {
-           cmd.CommandText = "SP_DeleteStaffMemberShifts";
-           cmd.Parameters.Clear();
-           cmd.Parameters.AddWithValue("@staffMemberID", staffMemberId);
-
-           try
-           {
-               con.Open();
-               cmd.ExecuteNonQuery();
-               return (cmd.Parameters["@staffMemberID"].Value.ToString());
-           }
-           catch (SqlException ex)
-           {
-
-               throw ex;
-           }
-           finally
-           {
-               if (con.State == ConnectionState.Open)
-               {
-                   con.Close();
-               }
-           }
-       }
-       #endregion
+    
 
        #region UpDate StaffMember in DB// Majd
        public int UpDateStaffMember(int staffMemberId,string staffMemberName, string cpr, string phoneNumber, string email,

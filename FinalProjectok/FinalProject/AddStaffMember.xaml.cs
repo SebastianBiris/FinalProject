@@ -219,7 +219,6 @@ namespace FinalProject
             tempId = myController.SelectedStaffMember.StaffMemeberId;
             if (tempId != -1)
             {
-                myController.DeleteStaffMemberShifts(tempId);
                   myController.DeleteStaffMember(tempId);
             MessageBox.Show("Staff Member has been deleted");
             }
