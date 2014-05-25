@@ -211,15 +211,23 @@ namespace FinalProject
 
         private void btnDeleteStaff_Click(object sender, RoutedEventArgs e)
         {
-            string tempCpr = "";
+            int tempId = -1;
             
             IStaffMember lbStaffMember = (IStaffMember)listBoxStaff.SelectedItem;
             myController.SelectedStaffMember = lbStaffMember;
-
-            tempCpr = myController.SelectedStaffMember.Cpr;
-
-            myController.DeleteStaffMember(tempCpr);
+            
+            tempId = myController.SelectedStaffMember.StaffMemeberId;
+            if (tempId != -1)
+            {
+                myController.DeleteStaffMemberShifts(tempId);
+                  myController.DeleteStaffMember(tempId);
             MessageBox.Show("Staff Member has been deleted");
+            }
+            else
+            {
+                MessageBox.Show("Staff Member has not been deleted successfully");
+            }
+          
 
         }
 

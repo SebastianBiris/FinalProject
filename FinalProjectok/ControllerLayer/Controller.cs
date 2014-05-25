@@ -9,7 +9,7 @@ using InterfaceLayer;
 
 namespace ControllerLayer
 {
-   public  class Controller
+    public class Controller
     {
 
         List<Shift> shift;
@@ -23,22 +23,15 @@ namespace ControllerLayer
         List<IWeekList> myWeekList;
         IWeekList myIWeekList;
         WeekList myWeekList1;
-        List<IShift>shifts;
+        List<IShift> shifts;
         List<ShiftDate> shiftIds;
-
-
-
 
         IShift selectedShift;
         StaffMember selectedStaffMember;
         Message selectedMessage;
         IShiftDate selectedShiftDate;
-
-
         DataAccessDB myDataAccessDb;
 
-      
-       
         public Controller()
         {
             shift = new List<Shift>();
@@ -56,9 +49,144 @@ namespace ControllerLayer
             GetAllFromDB();
         }
 
-        #region properties //**Sebi**
+        #region Methods
 
+        //chris
+        public void CreateStaffMember(string staffMemberName, string cpr, string phoneNumber, string email, string password, string statusDescription, int titleId, int roleId)
+        {
+            int staffMemberNo;
+            try
+            {
+                staffMemberNo = myDataAccessDb.AddNewStaffMemberInDB(staffMemberName, cpr, phoneNumber, email, password, statusDescription, titleId, roleId);
+                StaffMember myStaffMember = new StaffMember(staffMemberNo, staffMemberName, cpr, phoneNumber, email,
+                    password, statusDescription, titleId, roleId);
+
+                staffMembers.Add(myStaffMember);
+            }
+            catch
+            {
+                throw new Exception("Data wasn`t saved correctly");
+            }
+        }
+
+        //chris & Majd 15.05
+
+        public void CreateNewMessage(string inboxMessage, int staffMemberId)
+        {
+            int messageId;
+            try
+            {
+                messageId = myDataAccessDb.AddMessageInDB(inboxMessage, staffMemberId);
+                Message myMessages = new Message(messageId, inboxMessage, staffMemberId);
+
+                messages.Add(myMessages);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        //MAjd
+        public void DeleteMessage(int messageId)
+        {
+            myDataAccessDb.DeleteMessage(messageId);
+
+        }
+
+        //Majd
+        public void DeleteStaffMemberShifts(int staffMemberId)
+        {
+            myDataAccessDb.DeleteStaffMemberShift(staffMemberId);
+        }
+        public void DeleteStaffMember(int staffMemberId)
+        {
+            myDataAccessDb.DeleteStaffMember(staffMemberId);
+        }
+        public void UpdateStaffMember(int staffMemberID, string staffMemberName, string cpr, string phoneNumber, string email, string password, string statusDescription, int titleId, int roleId)
+        {
+            myDataAccessDb.UpDateStaffMember(staffMemberID, staffMemberName, cpr, phoneNumber, email, password, statusDescription, titleId, roleId);
+        }
+
+        //chris 19.05 
+        public void AddNewShiftDateInDB(int dateId, int staffMemberId, int shiftId)
+        {
+            selectedShiftDate = new ShiftDate(dateId, staffMemberId, shiftId);
+            myDataAccessDb.AddStaffMemberWorkDayInDB(dateId, staffMemberId, shiftId);
+        }
+
+        public void AddNewShiftDate(int dateId, DateTime dateWorked, IStaffMember sm, int staffId) //????? GUI Layer
+        {
+            ShiftDate nuShiftDate = new ShiftDate(dateId, dateWorked, (StaffMember)sm, staffId);
+            shiftDates.Add(nuShiftDate);
+        }
+        #endregion
       
+        //Majd
+
+        public IStaffMember SelectedStaffMember
+        {
+            get { return (IStaffMember)selectedStaffMember; }
+            set { selectedStaffMember = (StaffMember)value; }
+        }
+
+        //Chris
+        public IMessage SelectedMessage
+        {
+            get { return selectedMessage; }
+            set { selectedMessage = (Message)value; }
+        }
+
+        public IShiftDate SelectedShiftDate
+        {
+            get { return selectedShiftDate; }
+            set { selectedShiftDate = value; }
+        }
+
+        public void GetAllFromDB()
+        {
+            staffMembers = myDataAccessDb.GetStaffMembersFromDB();
+            shift = myDataAccessDb.ViewShiftFromDB();
+            workingHours = myDataAccessDb.ViewWorkingHoursFromDB();
+            titles = myDataAccessDb.ViewTitlesFromDB();
+            roles = myDataAccessDb.ViewRoleFromDb();
+            messages = myDataAccessDb.ViewMessagesFromDB();
+            shiftDates = myDataAccessDb.ViewAssignedShiftDatesFromDB();
+            shiftIds = myDataAccessDb.ViewShiftDatesFromDB();
+        }
+
+        public void GetDay(string day) 
+        {
+            myIWeekList.GetDay(day);
+        }
+
+        public int GetWeeksOfYear()
+        {
+            Week currentWeek = new Week();
+
+            return currentWeek.GetWeekOfYear();
+        }
+        public DateTime GetWeeks(int year, DayOfWeek thursday)
+        {
+            thursday = DayOfWeek.Thursday;
+            return Week.GetWeekOneDayOne(year, thursday);
+        }
+
+
+        public IWeekList GetWeekList(int year, DateTime day1, DateTime day2, DateTime day3, DateTime day4, DateTime day5, DateTime day6, DateTime day7)
+        {
+
+            myWeekList1 = new WeekList(year, day1, day2, day3, day4, day5, day6, day7);
+            return myWeekList1;
+        }
+        public List<IWeekList> MyWeekList
+        {
+            get { return myWeekList; }
+            set { myWeekList = value; }
+        }
+        #region Properties //**Sebi**
+
+
 
         public List<IShift> Shifts
         {
@@ -120,14 +248,15 @@ namespace ControllerLayer
         public List<IWeekList> WeekLists
         {
             get
-            { List<IWeekList> resultlist = new List<IWeekList>();
-
-            foreach (WeekList weeklist in weekList)
             {
-                resultlist.Add((IWeekList)weeklist);
+                List<IWeekList> resultlist = new List<IWeekList>();
+
+                foreach (WeekList weeklist in weekList)
+                {
+                    resultlist.Add((IWeekList)weeklist);
+                }
+                return resultlist;
             }
-            return resultlist;
- }
         }
 
         public List<IStaffMember> StaffMembers
@@ -161,7 +290,8 @@ namespace ControllerLayer
 
         public List<IWorkingHours2> WorkingHours
         {
-            get {
+            get
+            {
                 List<IWorkingHours2> resultList = new List<IWorkingHours2>();
                 foreach (WorkingHours workinHours in workingHours)
                 {
@@ -171,154 +301,21 @@ namespace ControllerLayer
             }
         }
 
-       //chris 15.05
-       public List<IMessage> Messages
-       {
-           get
-           {
-               List<IMessage> resultList = new List<IMessage>();
-               foreach (IMessage tempMessage in messages)
-               {
-                   resultList.Add(tempMessage);
-               }
-               return resultList;
-           }
-       }
+        //chris 15.05
+        public List<IMessage> Messages
+        {
+            get
+            {
+                List<IMessage> resultList = new List<IMessage>();
+                foreach (IMessage tempMessage in messages)
+                {
+                    resultList.Add(tempMessage);
+                }
+                return resultList;
+            }
+        }
 
         #endregion
 
-
-        //chris
-        public void CreateStaffMember(string staffMemberName,string cpr, string phoneNumber,string email, string password,string statusDescription,int titleId,int roleId)
-        {
-            int staffMemberNo;
-            try
-            {
-                staffMemberNo = myDataAccessDb.AddNewStaffMemberInDB(staffMemberName, cpr, phoneNumber, email, password,statusDescription, titleId, roleId);
-                StaffMember myStaffMember = new StaffMember(staffMemberNo, staffMemberName, cpr, phoneNumber, email,
-                    password, statusDescription, titleId, roleId);
-                    
-                staffMembers.Add(myStaffMember);
-            }
-            catch 
-            {
-                throw new Exception("Data wasn`t saved correctly");
-            }
-        }
-
-        //chris & Majd 15.05
-
-        public void CreateNewMessage(string inboxMessage, int staffMemberId)
-        {
-            int messageId;
-            try
-            {
-                messageId = myDataAccessDb.AddMessageInDB(inboxMessage, staffMemberId);
-                Message myMessages = new Message(messageId, inboxMessage, staffMemberId);
-
-                messages.Add(myMessages);
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
-        }
-        //MAjd
-        public void DeleteMessage(int messageId)
-        {
-            myDataAccessDb.DeleteMessage(messageId);
-
-        }
-
-        #region Methods
-          //Majd
-       public void DeleteStaffMember(string cpr)
-       {
-           myDataAccessDb.DeleteStaffMember(cpr);
-       }
-       public void UpdateStaffMember(int staffMemberID, string staffMemberName, string cpr, string phoneNumber, string email, string password, string statusDescription, int titleId, int roleId)
-       {
-            myDataAccessDb.UpDateStaffMember(staffMemberID, staffMemberName,cpr,phoneNumber,email,password,statusDescription,titleId,roleId);
-       }
-
-       //chris 19.05   *????
-       public void AddNewShiftDateInDB(int dateId, int staffMemberId, int shiftId)
-       {
-           selectedShiftDate = new ShiftDate(dateId, staffMemberId, shiftId);
-           myDataAccessDb.AddStaffMemberWorkDayInDB(dateId, staffMemberId, shiftId);
-       }
-
-       public void AddNewShiftDate(int dateId, DateTime dateWorked, IStaffMember sm, int staffId) //????? GUI Layer
-       {
-           ShiftDate nuShiftDate = new ShiftDate(dateId, dateWorked, (StaffMember)sm, staffId);
-           shiftDates.Add(nuShiftDate);
-       }
-        #endregion
-       //public void ViewShift()
-
-       //Majd
-
-       public IStaffMember SelectedStaffMember
-       {
-           get { return (IStaffMember)selectedStaffMember; }
-           set { selectedStaffMember = (StaffMember)value; }
-       }
-
-       //Chris
-       public IMessage SelectedMessage
-       {
-           get { return  selectedMessage; }
-           set { selectedMessage =(Message) value; }
-       }
-
-       public IShiftDate SelectedShiftDate
-       {
-           get { return selectedShiftDate; }
-           set { selectedShiftDate = value; }
-       }
-
-       public void GetAllFromDB()
-       {
-           staffMembers = myDataAccessDb.GetStaffMembersFromDB();
-           shift = myDataAccessDb.ViewShiftFromDB();
-           workingHours = myDataAccessDb.ViewWorkingHoursFromDB();
-           titles = myDataAccessDb.ViewTitlesFromDB();
-           roles = myDataAccessDb.ViewRoleFromDb();
-           messages = myDataAccessDb.ViewMessagesFromDB();
-           shiftDates = myDataAccessDb.ViewAssignedShiftDatesFromDB();
-           shiftIds = myDataAccessDb.ViewShiftDatesFromDB();
-       }
-
-       public void GetDay(string day)
-       {
-           myIWeekList.GetDay(day);
-
-
-       }
-
-       public int GetWeeksOfYear()
-       {
-           Week currentWeek = new Week();
-
-           return currentWeek.GetWeekOfYear();
-       }
-       public DateTime GetWeeks(int year, DayOfWeek thursday)
-       {
-           thursday = DayOfWeek.Thursday;
-           return Week.GetWeekOneDayOne(year, thursday);
-       }
-
-
-       public IWeekList GetWeekList(int year, DateTime day1, DateTime day2, DateTime day3, DateTime day4, DateTime day5, DateTime day6, DateTime day7)
-       {
-
-          myWeekList1 = new WeekList(year, day1, day2, day3, day4, day5, day6, day7);
-          return myWeekList1;
-       }
-       public List<IWeekList> MyWeekList
-       {
-           get { return myWeekList; }
-           set { myWeekList = value; }
-       }
     }
 }

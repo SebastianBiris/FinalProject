@@ -596,17 +596,44 @@ namespace ControllerLayer
 
        #region Delete Staffmember From DB //majd
 
-       public string DeleteStaffMember(string cpr)
+       public string DeleteStaffMember(int staffMemberId)
        {
            cmd.CommandText = "SP_DeleteStaffMember";
            cmd.Parameters.Clear();
-           cmd.Parameters.AddWithValue("@cpr", cpr);
+           cmd.Parameters.AddWithValue("@staffMemberID", staffMemberId);
 
            try
            {
                con.Open();
                cmd.ExecuteNonQuery();
-               return (cmd.Parameters["@cpr"].Value.ToString());
+               return (cmd.Parameters["@staffMemberID"].Value.ToString());
+           }
+           catch (SqlException ex)
+           {
+
+               throw ex;
+           }
+           finally
+           {
+               if (con.State == ConnectionState.Open)
+               {
+                   con.Close();
+               }
+           }
+       }
+       #endregion
+       #region Delete Staff Member Shift
+       public string DeleteStaffMemberShift(int staffMemberId)
+       {
+           cmd.CommandText = "SP_DeleteStaffMemberShifts";
+           cmd.Parameters.Clear();
+           cmd.Parameters.AddWithValue("@staffMemberID", staffMemberId);
+
+           try
+           {
+               con.Open();
+               cmd.ExecuteNonQuery();
+               return (cmd.Parameters["@staffMemberID"].Value.ToString());
            }
            catch (SqlException ex)
            {

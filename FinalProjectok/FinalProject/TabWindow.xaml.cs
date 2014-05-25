@@ -272,7 +272,7 @@ namespace FinalProject
             }
         }
 
-        public btnForward_Click(object sender, RoutedEventArgs e)
+        private void btnForward_Click(object sender, RoutedEventArgs e)
         {
            
             foreach (Button button in drawButtons)
