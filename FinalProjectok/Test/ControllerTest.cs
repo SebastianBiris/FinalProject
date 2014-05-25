@@ -21,7 +21,7 @@ namespace Test
 
         //}
 
-        [TestMethod]
+        [TestMethod]  // Not working yet. Majd is making changes
         public void DeleteStaffMemberTest()
         {
             Controller myController = new Controller();
@@ -33,29 +33,47 @@ namespace Test
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
-        public void DeleteMessagesTest()
-        {
+        //[TestMethod]
+        //public void DeleteMessagesTest()
+        //{
 
+        //    Controller myController = new Controller();
+        //    int expected = myController.NumberOfMessages() - 1;
+        //    myController.DeleteMessage(myController.Messages[0].MessageId);
+        //    myController.GetAllFromDB();
+        //    int actual = myController.NumberOfMessages();
+        //    Assert.AreEqual(expected, actual);
+        //}
+
+        //[TestMethod]
+        //public void CreateNewMessagesTest()
+        //{
+
+        //    Controller myController = new Controller();
+        //    int expected = myController.NumberOfMessages() + 1;
+        //    myController.CreateNewMessage("Hey we are unit testing messages", 10);
+        //    myController.GetAllFromDB();
+        //    int actual = myController.NumberOfMessages();
+
+        //    Assert.AreEqual(expected, actual);
+        //}
+
+        [TestMethod]
+        public void CreateStaffMember()
+        {
             Controller myController = new Controller();
-            int expected = myController.NumberOfMessages() - 1;
-            myController.DeleteMessage(myController.Messages[0].MessageId);
+            int expected = myController.NumberOfStaffMembers() + 1;
+            myController.CreateStaffMember("Amy Johnson","1111811111","18006569","AMY@hotmail.dk","coolPassword","Full time. Just can not work on sundays.",3,1);
             myController.GetAllFromDB();
-            int actual = myController.NumberOfMessages();
+            int actual = myController.NumberOfStaffMembers();
+
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
-        public void CreateNewMessagesTest()
+        public void DeleteStaffMemberShiftsTest()
         {
-
-            Controller myController = new Controller();
-            int expected = myController.NumberOfMessages() + 1;
-            myController.CreateNewMessage("Hey we are unit testing messages", 10);
-            myController.GetAllFromDB();
-            int actual = myController.NumberOfMessages();
-
-            Assert.AreEqual(expected, actual);
+            
         }
+        
     }
 }
