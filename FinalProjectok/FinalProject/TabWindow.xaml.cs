@@ -129,16 +129,8 @@ namespace FinalProject
             IShift cbShift =(IShift) myWindow.lbShiftType.SelectedItem;
             IShift myshifts = (IShift)shiftWindow.lbShiftType.SelectedItem;
             myController.Selectedshift = myshifts;
-            if (myController.Selectedshift != null)
-            { tempShiftId = myController.Selectedshift.ShiftId; }
-            if (tempShiftId != -1)
-            {
-                myController.AddNewShiftDateInDB(tempDateId, tempStaffId, tempShiftId);
-
-            }
-            
-            myController.GetAllFromDB();
-            DrawButtons();
+            int tempId = myController.Selectedshift.ShiftId;
+            myController.AddNewShiftDateInDB(tempDateId, tempStaffId, tempId);
         }
         public void DrawButtons()
         {
@@ -280,8 +272,9 @@ namespace FinalProject
             }
         }
 
-        private void btnForward_Click(object sender, RoutedEventArgs e)
+        public btnForward_Click(object sender, RoutedEventArgs e)
         {
+           
             foreach (Button button in drawButtons)
             {
                 myGrid.Children.Remove(button);
@@ -313,8 +306,8 @@ namespace FinalProject
                     ColumnHeaderButtons[i].Content =
                         allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1));
                 }
+                
             }
-          
         }
 
         private void btnAddStaffMember_Click(object sender, RoutedEventArgs e)

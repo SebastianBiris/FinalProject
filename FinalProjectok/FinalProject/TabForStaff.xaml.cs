@@ -108,6 +108,7 @@ namespace FinalProject
 
             myController.DeleteMessage(tempId);
             MessageBox.Show("Message deleted");
+          
         }
         public List<DateTime> myWeekDates { get; set; }
         public List<IWeekList> allWeeksList = new List<IWeekList>();
