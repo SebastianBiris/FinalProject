@@ -12,6 +12,5 @@ namespace InterfaceLayer
        string ShiftType { get; }
        string ShiftDiscription { get; }
        double ShiftHours { get; }
-
     }
 }

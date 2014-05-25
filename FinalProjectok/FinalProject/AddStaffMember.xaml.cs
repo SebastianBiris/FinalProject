@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
 
-using  ControllerLayer;
+using ControllerLayer;
 using InterfaceLayer;
 
 namespace FinalProject
@@ -24,12 +24,12 @@ namespace FinalProject
     /// </summary>
     public partial class AddStaffMember : Window
     {
-       
+
 
         int title = -1;
         int role = -1;
 
-         Controller myController = new Controller();
+        Controller myController = new Controller();
         public AddStaffMember()
         {
             InitializeComponent();
@@ -49,17 +49,16 @@ namespace FinalProject
             }
         }
 
+        #region Save Btn
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-             string name = txtName1.Text;
+            string name = txtName1.Text;
             string cpr = txtCpr1.Text;
-           string email = txtEmail1.Text;
-           string password = txtPassword1.Text;
-           string phoneNo = txtPhoneNumber1.Text;
-            
-           string status = txtStatus1.Text;
-          
+            string email = txtEmail1.Text;
+            string password = txtPassword1.Text;
+            string phoneNo = txtPhoneNumber1.Text;
+            string status = txtStatus1.Text;
 
             if (cbRole.SelectedIndex == 0)
             {
@@ -77,7 +76,7 @@ namespace FinalProject
             {
                 role = 4;
             }
-            else 
+            else
             {
                 MessageBox.Show("Please pick a role");
                 return;
@@ -108,128 +107,119 @@ namespace FinalProject
                 return;
             }
 
-            myController.CreateStaffMember(name,cpr,phoneNo,email,password,status,title,role);
+            myController.CreateStaffMember(name, cpr, phoneNo, email, password, status, title, role);
             MessageBox.Show("Staff member saved");
-            this.Close();
         }
+        #endregion
 
-
-
+        #region Listbox Btn
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             {
                 IStaffMember lbStaffMember = (IStaffMember)listBoxStaff.SelectedItem;
                 myController.SelectedStaffMember = lbStaffMember;
-
                 txtCpr1.Text = lbStaffMember.Cpr;
                 txtEmail1.Text = lbStaffMember.Email;
                 txtName1.Text = lbStaffMember.StaffMemberName;
                 txtPassword1.Text = lbStaffMember.Password;
                 txtPhoneNumber1.Text = lbStaffMember.PhoneNumber;
-                
-                
                 txtStatus1.Text = lbStaffMember.StatusDescription;
-
             }
         }
+        #endregion
+
+        #region Update Btn
 
         private void btnUpdateStaff_Click(object sender, RoutedEventArgs e)
         {
             IStaffMember lbStaffMember = (IStaffMember)listBoxStaff.SelectedItem;
             myController.SelectedStaffMember = lbStaffMember;
-
             int staffId = myController.SelectedStaffMember.StaffMemeberId;
             string name = txtName1.Text;
             string cpr = txtCpr1.Text;
-           string email = txtEmail1.Text;
-           string password = txtPassword1.Text;
-           string phoneNo = txtPhoneNumber1.Text;
+            string email = txtEmail1.Text;
+            string password = txtPassword1.Text;
+            string phoneNo = txtPhoneNumber1.Text;
+            string status = txtStatus1.Text;
 
-            
-           string status = txtStatus1.Text;
+            if (txtName1.Text == "")
+            {
+                MessageBox.Show("Must Fill");
+                return;
+            }
+            if (cbRole.SelectedIndex == 0)
+            {
+                role = 1;
+            }
+            else if (cbRole.SelectedIndex == 1)
+            {
+                role = 2;
+            }
+            else if (cbRole.SelectedIndex == 2)
+            {
+                role = 3;
+            }
+            else if (cbRole.SelectedIndex == 3)
+            {
+                role = 4;
+            }
+            else
+            {
+                MessageBox.Show("Please pick a role");
+                return;
+            }
+            if (cbTitle.SelectedIndex == 0)
+            {
+                title = 1;
+            }
+            else if (cbTitle.SelectedIndex == 1)
+            {
+                title = 2;
+            }
+            else if (cbTitle.SelectedIndex == 2)
+            {
+                title = 3;
+            }
+            else if (cbTitle.SelectedIndex == 3)
+            {
+                title = 4;
+            }
+            else if (cbTitle.SelectedIndex == 4)
+            {
+                title = 5;
+            }
+            else
+            {
+                MessageBox.Show("Please pick a title");
+                return;
+            }
+            myController.UpdateStaffMember(staffId, name, cpr, phoneNo, email, password, status, title, role);
+            MessageBox.Show("Staff member updated");
+        }
+        #endregion
 
-           if (txtName1.Text == "")
-           {
-               MessageBox.Show("Must Fill");
-               return;
-           }
-           
-
-            
-           
-                if (cbRole.SelectedIndex == 0)
-                {
-                    role = 1;
-                }
-                else if (cbRole.SelectedIndex == 1)
-                {
-                    role = 2;
-                }
-                else if (cbRole.SelectedIndex == 2)
-                {
-                    role = 3;
-                }
-                else if (cbRole.SelectedIndex == 3)
-                {
-                    role = 4;
-                }
-                else
-                {
-                    MessageBox.Show("Please pick a role");
-                    return;
-                }
-                if (cbTitle.SelectedIndex == 0)
-                {
-                    title = 1;
-                }
-                else if (cbTitle.SelectedIndex == 1)
-                {
-                    title = 2;
-                }
-                else if (cbTitle.SelectedIndex == 2)
-                {
-                    title = 3;
-                }
-                else if (cbTitle.SelectedIndex == 3)
-                {
-                    title = 4;
-                }
-                else if (cbTitle.SelectedIndex == 4)
-                {
-                    title = 5;
-                }
-                else
-                {
-                    MessageBox.Show("Please pick a title");
-                    return;
-                }
-                myController.UpdateStaffMember(staffId,name, cpr, phoneNo, email, password, status, title, role);
-                MessageBox.Show("Staff member updated");
-                this.Close();
-            
-                }
-
+        #region btn Delete
         private void btnDeleteStaff_Click(object sender, RoutedEventArgs e)
         {
             int tempId = -1;
-            
+
             IStaffMember lbStaffMember = (IStaffMember)listBoxStaff.SelectedItem;
             myController.SelectedStaffMember = lbStaffMember;
-            
+
             tempId = myController.SelectedStaffMember.StaffMemeberId;
             if (tempId != -1)
             {
-                  myController.DeleteStaffMember(tempId);
-            MessageBox.Show("Staff Member has been deleted");
+                myController.DeleteStaffMember(tempId);
+                MessageBox.Show("Staff Member has been deleted");
             }
             else
             {
                 MessageBox.Show("Staff Member has not been deleted successfully");
             }
-          
-
         }
+        #endregion
 
+        #region Clear btn
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
             txtCpr1.Clear();
@@ -242,22 +232,25 @@ namespace FinalProject
             cbTitle.ItemsSource = null;
             txtName1.Focus();
         }
+        #endregion
 
+        #region btnClose
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             System.Environment.Exit(1);
         }
+        #endregion
     }
 }
-          
 
-             
-                 
-               
-               
-            
 
-               
- 
+
+
+
+
+
+
+
+
 

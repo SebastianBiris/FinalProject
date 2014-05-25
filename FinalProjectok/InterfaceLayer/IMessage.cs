@@ -12,6 +12,5 @@ namespace InterfaceLayer
         int MessageId { get; }
         int StaffMemberId { get; }
         string InboxMessage { get; }
-
     }
 }

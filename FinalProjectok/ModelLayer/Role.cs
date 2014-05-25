@@ -8,19 +8,15 @@ using InterfaceLayer;
 
 namespace ModelLayer
 {
-    public class Role:IRole
+    public class Role : IRole
     {
         string _roleType;
         int _id;
 
-        
-       
-
-        public Role(string roleType,int id)
+        public Role(string roleType, int id)
         {
             _roleType = roleType;
             _id = id;
-           
         }
 
         #region Properties //MAL
@@ -29,7 +25,7 @@ namespace ModelLayer
         {
             get { return _roleType; }
             set { _roleType = value; }
-         }
+        }
         public int Id
         {
             get { return _id; }
@@ -37,13 +33,5 @@ namespace ModelLayer
         }
 
         #endregion
-       
-        #region Methods //**Sebi**
-        //public void addStaffMemberinRole(StaffMember anStaffMember)
-        //{
-        //    myStaffMember.Add(anStaffMember);
-        //}
-        #endregion
-
     }
 }

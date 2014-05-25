@@ -35,11 +35,9 @@ namespace FinalProject
         {
             InitializeComponent();
             txtUserId.Focus();
-
-
-
         }
 
+        #region Login btn
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             TabWindow myTab = new TabWindow();
@@ -75,11 +73,10 @@ namespace FinalProject
             myTabForStaff.ListBoxRequests.ItemsSource = myList;
             myTabWindow.ListBoxRequests.ItemsSource = myList;
 
+            myTabForStaff.listBoxStaffInfo2.ItemsSource = theStaffmeber;
+            myTabForStaff.listBoxContactStaff.ItemsSource = theStaffmeber;
+            myTabForStaff.dataGridContactInfo.ItemsSource = theStaffmeber;
 
-            myTabForStaff.listBoxStaffInfo2.ItemsSource = theStaffmeber; 
-           myTabForStaff.listBoxContactStaff.ItemsSource = theStaffmeber;
-           myTabForStaff.dataGridContactInfo.ItemsSource = theStaffmeber;
-            
 
             if (tempCpr == "1")
             {
@@ -87,24 +84,27 @@ namespace FinalProject
                 myTabWindow.Show();
             }
 
-            else if(tempCpr!= "")
-             {   this.Close();
-           myTabForStaff.Show();}
+            else if (tempCpr != "")
+            {
+                this.Close();
+                myTabForStaff.Show();
+            }
             else
             {
                 MessageBox.Show("Invalid user or password.Please try again.");
             }
-              if (tempCpr != "2")
+            if (tempCpr != "2")
             {
                 myTabForStaff.btnManageSchedule.Visibility = Visibility.Hidden;
             }
         }
 
+        #endregion
+
         private void btnForgotPassword_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             w.Show();
-           
         }
 
     }

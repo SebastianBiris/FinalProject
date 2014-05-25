@@ -11,8 +11,4 @@ namespace InterfaceLayer
         string Position { get; }
 
     }
-         
-    
-
-    
 }

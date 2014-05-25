@@ -8,7 +8,7 @@ using InterfaceLayer;
 
 namespace ModelLayer
 {
-  public  class Shift:IShift
+    public class Shift : IShift
     {
         int _shiftId;
         string _shiftType;
@@ -67,22 +67,24 @@ namespace ModelLayer
         {
             get { return (IStaffMember)myStaffMember; }
         }
-        #endregion
-
-        #region Methods //**Sebi**
-     
-        public double calculateActualHours()
-        {
-            WorkingHours myWorkingHours = new WorkingHours(2);
-            double actualHoursWorked1 =myWorkingHours.ActualHoursWorked;
-            double actualHoursInShift;
-            actualHoursInShift = _shiftHours - actualHoursWorked1;
-            return actualHoursInShift;
-        }
-        #endregion
         public override string ToString()
         {
             return ShiftType;
         }
+        #endregion
+
+        #region Methods //**Sebi**
+
+        public double calculateActualHours()
+        {
+            WorkingHours myWorkingHours = new WorkingHours(2);
+            double actualHoursWorked1 = myWorkingHours.ActualHoursWorked;
+            double actualHoursInShift;
+            actualHoursInShift = _shiftHours - actualHoursWorked1;
+            return actualHoursInShift;
+        }
+
+        #endregion
+
     }
 }

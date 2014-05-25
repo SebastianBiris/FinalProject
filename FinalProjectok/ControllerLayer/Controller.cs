@@ -50,7 +50,17 @@ namespace ControllerLayer
         }
 
         #region Methods
-
+        public void GetAllFromDB()
+        {
+            staffMembers = myDataAccessDb.GetStaffMembersFromDB();
+            shift = myDataAccessDb.ViewShiftFromDB();
+            workingHours = myDataAccessDb.ViewWorkingHoursFromDB();
+            titles = myDataAccessDb.ViewTitlesFromDB();
+            roles = myDataAccessDb.ViewRoleFromDb();
+            messages = myDataAccessDb.ViewMessagesFromDB();
+            shiftDates = myDataAccessDb.ViewAssignedShiftDatesFromDB();
+            shiftIds = myDataAccessDb.ViewShiftDatesFromDB();
+        }
         //chris
         public void CreateStaffMember(string staffMemberName, string cpr, string phoneNumber, string email, string password, string statusDescription, int titleId, int roleId)
         {
@@ -93,9 +103,7 @@ namespace ControllerLayer
             myDataAccessDb.DeleteMessage(messageId);
 
         }
-
         //Majd
- 
         public void DeleteStaffMember(int staffMemberId)
         {
             myDataAccessDb.DeleteStaffMember(staffMemberId);
@@ -128,43 +136,7 @@ namespace ControllerLayer
         {
             return messages.Count;
         }
-
-        #endregion
-      
-        //Majd
-
-        public IStaffMember SelectedStaffMember
-        {
-            get { return (IStaffMember)selectedStaffMember; }
-            set { selectedStaffMember = (StaffMember)value; }
-        }
-
-        //Chris
-        public IMessage SelectedMessage
-        {
-            get { return selectedMessage; }
-            set { selectedMessage = (Message)value; }
-        }
-
-        public IShiftDate SelectedShiftDate
-        {
-            get { return selectedShiftDate; }
-            set { selectedShiftDate = value; }
-        }
-
-        public void GetAllFromDB()
-        {
-            staffMembers = myDataAccessDb.GetStaffMembersFromDB();
-            shift = myDataAccessDb.ViewShiftFromDB();
-            workingHours = myDataAccessDb.ViewWorkingHoursFromDB();
-            titles = myDataAccessDb.ViewTitlesFromDB();
-            roles = myDataAccessDb.ViewRoleFromDb();
-            messages = myDataAccessDb.ViewMessagesFromDB();
-            shiftDates = myDataAccessDb.ViewAssignedShiftDatesFromDB();
-            shiftIds = myDataAccessDb.ViewShiftDatesFromDB();
-        }
-
-        public void GetDay(string day) 
+        public void GetDay(string day)
         {
             myIWeekList.GetDay(day);
         }
@@ -172,7 +144,6 @@ namespace ControllerLayer
         public int GetWeeksOfYear()
         {
             Week currentWeek = new Week();
-
             return currentWeek.GetWeekOfYear();
         }
         public DateTime GetWeeks(int year, DayOfWeek thursday)
@@ -181,18 +152,13 @@ namespace ControllerLayer
             return Week.GetWeekOneDayOne(year, thursday);
         }
 
-
         public IWeekList GetWeekList(int year, DateTime day1, DateTime day2, DateTime day3, DateTime day4, DateTime day5, DateTime day6, DateTime day7)
         {
-
             myWeekList1 = new WeekList(year, day1, day2, day3, day4, day5, day6, day7);
             return myWeekList1;
         }
-        public List<IWeekList> MyWeekList
-        {
-            get { return myWeekList; }
-            set { myWeekList = value; }
-        }
+        #endregion
+
         #region Properties //**Sebi**
 
 
@@ -322,6 +288,32 @@ namespace ControllerLayer
                 }
                 return resultList;
             }
+        }
+        //Majd
+
+        public IStaffMember SelectedStaffMember
+        {
+            get { return (IStaffMember)selectedStaffMember; }
+            set { selectedStaffMember = (StaffMember)value; }
+        }
+
+        //Chris
+        public IMessage SelectedMessage
+        {
+            get { return selectedMessage; }
+            set { selectedMessage = (Message)value; }
+        }
+
+        public IShiftDate SelectedShiftDate
+        {
+            get { return selectedShiftDate; }
+            set { selectedShiftDate = value; }
+        }
+
+        public List<IWeekList> MyWeekList
+        {
+            get { return myWeekList; }
+            set { myWeekList = value; }
         }
 
         #endregion

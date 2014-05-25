@@ -8,7 +8,7 @@ using InterfaceLayer;
 
 namespace ModelLayer
 {
-   public class WeekList :IWeekList
+    public class WeekList : IWeekList
     {
         public DateTime _day1, _day2, _day3, _day4, _day5, _day6, _day7;
         int _year;
@@ -22,22 +22,22 @@ namespace ModelLayer
             _day4 = day4;
             _day5 = day5;
             _day6 = day6;
-            _day7 = day7;      
+            _day7 = day7;
         }
 
         #region method GetDay // **Sebi**
 
 
-public DateTime GetDay(string day)
-{
-if (day=="Day1")
+        public DateTime GetDay(string day)
+        {
+            if (day == "Day1")
             {
                 return _day1;
             }
             else if (day == "Day2")
             {
                 return _day2;
-                
+
             }
             else if (day == "Day3")
             {
@@ -59,22 +59,22 @@ if (day=="Day1")
                 return _day6;
 
             }
-            else 
+            else
             {
                 return _day7;
 
             }
 
-            
+
         }
 
-#endregion
+        #endregion
 
         #region Properties // **Sebi**
         public int Year
         {
             get { return _year; }
-           private set { _year = value; }
+            private set { _year = value; }
         }
 
         public DateTime Day1

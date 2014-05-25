@@ -116,14 +116,13 @@ namespace ModelLayer
            get { return _titleId; }
            set { _titleId = value; }
        }
-
-       #endregion
-
        public override string ToString()
        {
            return StaffMemberName;
        }
       
+       #endregion
+
        #region Methods //**Sebi**
         public void AddShiftDate(ShiftDate anShiftDate)
         {

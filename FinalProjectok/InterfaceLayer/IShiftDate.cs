@@ -17,7 +17,5 @@ namespace InterfaceLayer
         string StaffMemberName { get; }
         DateTime ActualDate { get; }
         string ShiftType { get; }
-
-     
     }
 }

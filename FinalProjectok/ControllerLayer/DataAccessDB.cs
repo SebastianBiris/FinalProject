@@ -12,21 +12,19 @@ using InterfaceLayer;
 
 namespace ControllerLayer
 {
-   public class DataAccessDB
+    public class DataAccessDB
     {
-       const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
+        const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
         SqlConnection con;
         SqlCommand cmd;
-
-
 
         public DataAccessDB()
         {
             con = new SqlConnection(DB_CONNECTION);
-            cmd=new SqlCommand();
+            cmd = new SqlCommand();
             cmd.Connection = con;
             cmd.CommandType = CommandType.StoredProcedure;
-     }
+        }
 
 
         #region View Title from DB
@@ -49,7 +47,7 @@ namespace ControllerLayer
                 {
                     position = dataReader["position"].ToString();
                     titleId = int.Parse(dataReader["titleID"].ToString());
-                    returnTitlesList.Add(new Title(position,titleId));
+                    returnTitlesList.Add(new Title(position, titleId));
                 }
                 return returnTitlesList;
             }
@@ -64,10 +62,10 @@ namespace ControllerLayer
                 {
                     dataReader.Close();
                 }
-                    if (con.State == ConnectionState.Open)
-                     {
-                        con.Close();
-                     }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
             }
         }
         #endregion
@@ -96,7 +94,7 @@ namespace ControllerLayer
                 {
                     roleType = dataReader["roleType"].ToString();
                     roleId = int.Parse(dataReader["roleID"].ToString());
-                    returnRolesList.Add(new Role(roleType,roleId));
+                    returnRolesList.Add(new Role(roleType, roleId));
                 }
                 return returnRolesList;
             }
@@ -163,9 +161,9 @@ namespace ControllerLayer
         }
         #endregion
 
-	    #region View Contact Info By STaff From DB //**Sebi**
-	
-	/*
+        #region View Contact Info By STaff From DB //**Sebi**
+
+        /*
 	        public List<StaffMember> ViewContactInfoByStaff()
 	        {
 	             SqlDataReader dataReader = null;
@@ -220,8 +218,8 @@ namespace ControllerLayer
         #endregion
 
         #region View Shift From DB //**Sebi**
-   
-     public List<Shift>  ViewShiftFromDB()
+
+        public List<Shift> ViewShiftFromDB()
         {
             SqlDataReader dataReader = null;
             int shiftId;
@@ -258,84 +256,84 @@ namespace ControllerLayer
                 {
                     dataReader.Close();
                 }
-                    if (con.State == ConnectionState.Open)
-                     {
-                        con.Close();
-                     }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
             }
-        }  
-    
-    #endregion
+        }
 
-     #region View Contact Info from DB //Chris 13.05
+        #endregion
 
-     public List<StaffMember> GetStaffMembersFromDB()
-     {
-         SqlDataReader dataReader = null;
-         string cpr;
-         int staffMemberId;
-         string phoneNumber;
-         string password;
-         string staffMemberName;
-         string email;
-         string statusDescription;
-        string position;
-        string roleType;
-        // int messageId;
-        // string message;
+        #region View Contact Info from DB //Chris 13.05
 
-        // List<Message>returnMessagesList = new List<Message>();
-         List<StaffMember> returnStaffMembersList = new List<StaffMember>();
-         cmd.Parameters.Clear();
-         cmd.CommandText = "SP_ViewContactInfo2";
+        public List<StaffMember> GetStaffMembersFromDB()
+        {
+            SqlDataReader dataReader = null;
+            string cpr;
+            int staffMemberId;
+            string phoneNumber;
+            string password;
+            string staffMemberName;
+            string email;
+            string statusDescription;
+            string position;
+            string roleType;
+            // int messageId;
+            // string message;
 
-         try
-         {
-             con.Open();
-             dataReader = cmd.ExecuteReader();
-             while (dataReader.Read())
-             {
-                 staffMemberName = dataReader["staffMemberName"].ToString();
-                 phoneNumber = dataReader["phoneNo"].ToString();
-                 email = dataReader["email"].ToString();
-                 staffMemberId = int.Parse(dataReader["staffMemberID"].ToString());
-                 cpr = dataReader["cpr"].ToString();
-                 password = dataReader["staffPassword"].ToString();
-                 statusDescription = dataReader["statusDescription"].ToString();
-                 roleType = dataReader["roleType"].ToString();
-                position = dataReader["position"].ToString();
-                // returnMessagesList.Add(new Message(messageId,message,staffMemberId));
-                 returnStaffMembersList.Add(new StaffMember(staffMemberId, staffMemberName, cpr, phoneNumber, email, password, statusDescription, position, roleType));
-                 
-             }
-             return returnStaffMembersList;
-         }
-         catch (SqlException ex)
-         {
-             throw ex;
-         }
-         finally
-         {
-             if (dataReader != null)
-             {
-                 dataReader.Close();
-             }
-             if (con.State == ConnectionState.Open)
-             {
-                 con.Close();
-             }
-         }
-     }
-     #endregion
+            // List<Message>returnMessagesList = new List<Message>();
+            List<StaffMember> returnStaffMembersList = new List<StaffMember>();
+            cmd.Parameters.Clear();
+            cmd.CommandText = "SP_ViewContactInfo2";
 
-     #region Add New Staff Member to DB // chris 13.05
-     public int AddNewStaffMemberInDB(string staffMemberName, string cpr, string phoneNumber, string email,
-                                     string password, string statusDescription, int titleId, int roleId)
+            try
+            {
+                con.Open();
+                dataReader = cmd.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    staffMemberName = dataReader["staffMemberName"].ToString();
+                    phoneNumber = dataReader["phoneNo"].ToString();
+                    email = dataReader["email"].ToString();
+                    staffMemberId = int.Parse(dataReader["staffMemberID"].ToString());
+                    cpr = dataReader["cpr"].ToString();
+                    password = dataReader["staffPassword"].ToString();
+                    statusDescription = dataReader["statusDescription"].ToString();
+                    roleType = dataReader["roleType"].ToString();
+                    position = dataReader["position"].ToString();
+                    // returnMessagesList.Add(new Message(messageId,message,staffMemberId));
+                    returnStaffMembersList.Add(new StaffMember(staffMemberId, staffMemberName, cpr, phoneNumber, email, password, statusDescription, position, roleType));
+
+                }
+                return returnStaffMembersList;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (dataReader != null)
+                {
+                    dataReader.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+        }
+        #endregion
+
+        #region Add New Staff Member to DB // chris 13.05
+        public int AddNewStaffMemberInDB(string staffMemberName, string cpr, string phoneNumber, string email,
+                                        string password, string statusDescription, int titleId, int roleId)
         {
             cmd.CommandText = "SP_CreateNewStaffMember";
             cmd.Parameters.Clear();
 
-            SqlParameter par = new SqlParameter("@staffmemberID",SqlDbType.Int);
+            SqlParameter par = new SqlParameter("@staffmemberID", SqlDbType.Int);
             par.Value = -1;
             par.Direction = ParameterDirection.Output;
             cmd.Parameters.Add(par);
@@ -344,7 +342,7 @@ namespace ControllerLayer
             cmd.Parameters.AddWithValue("@phoneNo", phoneNumber);
             cmd.Parameters.AddWithValue("@email", email);
             cmd.Parameters.AddWithValue("@staffPassword", password);
-            cmd.Parameters.AddWithValue("@statusDescription",statusDescription);
+            cmd.Parameters.AddWithValue("@statusDescription", statusDescription);
             cmd.Parameters.AddWithValue("@titleID", titleId);
             cmd.Parameters.AddWithValue("@roleID", roleId);
             try
@@ -367,320 +365,320 @@ namespace ControllerLayer
         }
         #endregion
 
-     #region View Inbox Messages from DB
+        #region View Inbox Messages from DB
 
-       public List<Message> ViewMessagesFromDB()
-       {
-           SqlDataReader dataReader = null;
+        public List<Message> ViewMessagesFromDB()
+        {
+            SqlDataReader dataReader = null;
 
-           int messageId, staffMemberId;
-           string message;
+            int messageId, staffMemberId;
+            string message;
 
-           List<Message> returnMessagesList = new List<Message>();
+            List<Message> returnMessagesList = new List<Message>();
 
-           cmd.Parameters.Clear();
-           cmd.CommandText = "SP_ViewMessages";
+            cmd.Parameters.Clear();
+            cmd.CommandText = "SP_ViewMessages";
 
-           try
-           {
-               con.Open();
-               dataReader = cmd.ExecuteReader();
-               while (dataReader.Read())
-               {
-                   messageId = (int.Parse(dataReader["messageId"].ToString())); 
-                   staffMemberId = (int.Parse(dataReader["staffMemberId"].ToString()));
-                   message = dataReader["newMessage"].ToString();
-                   returnMessagesList.Add(new Message(messageId, message, staffMemberId));
-               }
-               return returnMessagesList;
-           }
-           catch (SqlException ex)
-           {
+            try
+            {
+                con.Open();
+                dataReader = cmd.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    messageId = (int.Parse(dataReader["messageId"].ToString()));
+                    staffMemberId = (int.Parse(dataReader["staffMemberId"].ToString()));
+                    message = dataReader["newMessage"].ToString();
+                    returnMessagesList.Add(new Message(messageId, message, staffMemberId));
+                }
+                return returnMessagesList;
+            }
+            catch (SqlException ex)
+            {
 
-               throw ex;
-           }
-           finally
-           {
-               if(dataReader != null)
-               {
-                   dataReader.Close();
-               }
-               if (con.State == ConnectionState.Open)
-               {
-                   con.Close();
-               }
-           }
-       }
+                throw ex;
+            }
+            finally
+            {
+                if (dataReader != null)
+                {
+                    dataReader.Close();
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+        }
 
-     #endregion
+        #endregion
 
-       #region Add new Message to DB //chris & Majd 15.05
+        #region Add new Message to DB //chris & Majd 15.05
 
-       public int AddMessageInDB(string inboxMessage, int staffMemberId)
-       {
-           cmd.CommandText = "SP_SendMessage";
-           cmd.Parameters.Clear();
+        public int AddMessageInDB(string inboxMessage, int staffMemberId)
+        {
+            cmd.CommandText = "SP_SendMessage";
+            cmd.Parameters.Clear();
 
-           SqlParameter par = new SqlParameter("@messageId", SqlDbType.Int);
-           par.Value = -1;
-           par.Direction = ParameterDirection.Output;
-           cmd.Parameters.Add(par);
+            SqlParameter par = new SqlParameter("@messageId", SqlDbType.Int);
+            par.Value = -1;
+            par.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(par);
 
-           cmd.Parameters.AddWithValue("@newMessage", inboxMessage);
-           cmd.Parameters.AddWithValue("staffMemberId", staffMemberId);
-           try
-           {
-               con.Open();
-               cmd.ExecuteNonQuery();
-               return int.Parse(cmd.Parameters["@messageId"].Value.ToString());
-           }
-           catch (SqlException ex)
-           {
+            cmd.Parameters.AddWithValue("@newMessage", inboxMessage);
+            cmd.Parameters.AddWithValue("staffMemberId", staffMemberId);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return int.Parse(cmd.Parameters["@messageId"].Value.ToString());
+            }
+            catch (SqlException ex)
+            {
 
-               throw ex;
-           }
-           finally
-           {
-               if (con.State == ConnectionState.Open)
-               {
-                   con.Close();
-               }
-           }
-       }
+                throw ex;
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+        }
 
-       #endregion
+        #endregion
 
-       #region Add Staff Member Work Day  //chris 19.05
-       //constructor is inside shiftDate class
-       public void AddStaffMemberWorkDayInDB(int dateId, int staffMemberId, int shiftId)  // ????
-       {
-           cmd.CommandText = "SP_CreateStaffMemberWorkDay1";
-           cmd.Parameters.Clear();
-           cmd.Parameters.AddWithValue("@dateId", dateId);
-           cmd.Parameters.AddWithValue("@staffMemberId", staffMemberId);
-           cmd.Parameters.AddWithValue("@shiftId", shiftId);
-           try
-           {
-               con.Open();
-               cmd.ExecuteNonQuery();
-           }
-           catch (SqlException ex)
-           {
+        #region Add Staff Member Work Day  //chris 19.05
+        //constructor is inside shiftDate class
+        public void AddStaffMemberWorkDayInDB(int dateId, int staffMemberId, int shiftId)  // ????
+        {
+            cmd.CommandText = "SP_CreateStaffMemberWorkDay1";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@dateId", dateId);
+            cmd.Parameters.AddWithValue("@staffMemberId", staffMemberId);
+            cmd.Parameters.AddWithValue("@shiftId", shiftId);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
 
-               throw ex;
-           }
-           finally
-           {
-               if (con.State == ConnectionState.Open)
-               {
-                   con.Close();
-               }
-           }
-       }
-       #endregion
+                throw ex;
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+        }
+        #endregion
 
-       #region View Staff Member Shift Dates  //chris 19.05
+        #region View Staff Member Shift Dates  //chris 19.05
 
-       public List<ShiftDate> ViewAssignedShiftDatesFromDB()
-       {
-           SqlDataReader dataReader = null;
-           string staffMemberName;
-           DateTime actualDate;
-           string shiftType;
+        public List<ShiftDate> ViewAssignedShiftDatesFromDB()
+        {
+            SqlDataReader dataReader = null;
+            string staffMemberName;
+            DateTime actualDate;
+            string shiftType;
 
-           List<ShiftDate> returnShiftDateslist = new List<ShiftDate>();
-           cmd.Parameters.Clear();
-           cmd.CommandText = "SP_ViewAssignedShifts";
+            List<ShiftDate> returnShiftDateslist = new List<ShiftDate>();
+            cmd.Parameters.Clear();
+            cmd.CommandText = "SP_ViewAssignedShifts";
 
-           try
-           {
-               con.Open();
-               dataReader = cmd.ExecuteReader();
-               while (dataReader.Read())
-               {
-                   staffMemberName = (dataReader["staffMemberName"].ToString());
-                   shiftType = (dataReader["shiftType"].ToString());
-                   actualDate = (DateTime)dataReader["actualDate"];
-                   returnShiftDateslist.Add(new ShiftDate(staffMemberName, shiftType, actualDate));
-               }
-               return returnShiftDateslist;
-           }
-           catch (SqlException ex)
-           {
+            try
+            {
+                con.Open();
+                dataReader = cmd.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    staffMemberName = (dataReader["staffMemberName"].ToString());
+                    shiftType = (dataReader["shiftType"].ToString());
+                    actualDate = (DateTime)dataReader["actualDate"];
+                    returnShiftDateslist.Add(new ShiftDate(staffMemberName, shiftType, actualDate));
+                }
+                return returnShiftDateslist;
+            }
+            catch (SqlException ex)
+            {
 
-               throw ex;
-           }
-           finally
-           {
-               if (dataReader != null)
-               {
-                   dataReader.Close();
-               }
+                throw ex;
+            }
+            finally
+            {
+                if (dataReader != null)
+                {
+                    dataReader.Close();
+                }
 
-               if (con.State == ConnectionState.Open)
-               {
-                   con.Close();
-               }
-           }
-       }
-       #endregion
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+        }
+        #endregion
 
-       public List<ShiftDate> ViewShiftDatesFromDB()
-       {
-           SqlDataReader dataReader = null;
-           int dateId;
-           DateTime dateWorked;
-           int staffMemberId;
+        #region View shift dates IDs
 
-           List<ShiftDate> returnShiftDatesIdlist = new List<ShiftDate>();
-           cmd.Parameters.Clear();
-           cmd.CommandText = "SP_ViewStaffMemberWorkDay";
+        public List<ShiftDate> ViewShiftDatesFromDB()
+        {
+            SqlDataReader dataReader = null;
+            int dateId;
+            DateTime dateWorked;
+            int staffMemberId;
 
-           try
-           {
-               con.Open();
-               dataReader = cmd.ExecuteReader();
-               while (dataReader.Read())
-               {
-                   dateId = (int.Parse(dataReader["dateID"].ToString()));
-                   dateWorked = (DateTime)dataReader["actualDate"];
-                   returnShiftDatesIdlist.Add(new ShiftDate(dateId, dateWorked));
-               }
-               return returnShiftDatesIdlist;
-           }
-           catch (SqlException ex)
-           {
+            List<ShiftDate> returnShiftDatesIdlist = new List<ShiftDate>();
+            cmd.Parameters.Clear();
+            cmd.CommandText = "SP_ViewStaffMemberWorkDay";
 
-               throw ex;
-           }
-           finally
-           {
-               if (dataReader != null)
-               {
-                   dataReader.Close();
-               }
+            try
+            {
+                con.Open();
+                dataReader = cmd.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    dateId = (int.Parse(dataReader["dateID"].ToString()));
+                    dateWorked = (DateTime)dataReader["actualDate"];
+                    returnShiftDatesIdlist.Add(new ShiftDate(dateId, dateWorked));
+                }
+                return returnShiftDatesIdlist;
+            }
+            catch (SqlException ex)
+            {
 
-               if (con.State == ConnectionState.Open)
-               {
-                   con.Close();
-               }
-           }
-       }
-       #region Delete Messages From DB //majd 
-       public int DeleteMessage(int messageId1)
-       {
-           cmd.CommandText = "SP_DeleteMessage";
-           cmd.Parameters.Clear();
-           cmd.Parameters.AddWithValue("@messageId", messageId1);
+                throw ex;
+            }
+            finally
+            {
+                if (dataReader != null)
+                {
+                    dataReader.Close();
+                }
 
-           try
-           {
-               con.Open();
-               cmd.ExecuteNonQuery();
-               return int.Parse(cmd.Parameters["@messageId"].Value.ToString());
-           }
-           catch (SqlException ex)
-           {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+        }
+        #endregion
 
-               throw ex;
-           }
-           finally
-           {
-               if (con.State == ConnectionState.Open)
-               {
-                   con.Close();
-               }
-           }
-       }
-       #endregion
+        #region Delete Messages From DB //majd
+        public int DeleteMessage(int messageId1)
+        {
+            cmd.CommandText = "SP_DeleteMessage";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@messageId", messageId1);
 
-       #region Delete Staffmember From DB //majd
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return int.Parse(cmd.Parameters["@messageId"].Value.ToString());
+            }
+            catch (SqlException ex)
+            {
 
-       public string DeleteStaffMember(int staffMemberId)
-       {
-           cmd.CommandText = "SP_DeleteStaffMember";
-           cmd.Parameters.Clear();
-           cmd.Parameters.AddWithValue("@staffMemberID", staffMemberId);
-          
+                throw ex;
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+        }
+        #endregion
 
-           try
-           {
-               con.Open();
-               cmd.ExecuteNonQuery();
-               return (cmd.Parameters["@staffMemberID"].Value.ToString());
-           }
-           catch (SqlException ex)
-           {
+        #region Delete Staffmember From DB //majd
 
-               throw ex;
-           }
-           finally
-           {
-               if (con.State == ConnectionState.Open)
-               {
-                   con.Close();
-               }
-           }
-       }
-       #endregion
-    
-
-       #region UpDate StaffMember in DB// Majd
-       public int UpDateStaffMember(int staffMemberId,string staffMemberName, string cpr, string phoneNumber, string email,
-                                       string password, string statusDescription, int titleId, int roleId)
-       {
-           cmd.CommandText = "SP_UpdateStaffMember";
-           cmd.Parameters.Clear();        
-           
-           cmd.Parameters.AddWithValue("@staffmemberID",staffMemberId );
-           cmd.Parameters.AddWithValue("@staffMemberName", staffMemberName);
-           cmd.Parameters.AddWithValue("@cpr", cpr);  
-           cmd.Parameters.AddWithValue("@phoneNo", phoneNumber);
-           cmd.Parameters.AddWithValue("@email", email);
-           cmd.Parameters.AddWithValue("@staffPassword", password);
-           cmd.Parameters.AddWithValue("@statusDescription", statusDescription);
-           cmd.Parameters.AddWithValue("@titleID", titleId);
-           cmd.Parameters.AddWithValue("@roleID", roleId);
-           try
-           {
-               con.Open();
-               cmd.ExecuteNonQuery();
-               return int.Parse(cmd.Parameters["@staffmemberID"].Value.ToString());
-           }
-           catch (SqlException ex)
-           {
-               throw ex;
-           }
-           finally
-           {
-               if (con.State == ConnectionState.Open)
-               {
-                   con.Close();
-               }
-           }
-       }
-       #endregion
-
-      
-       public void ConnectToDB()
-     {
-         const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
-         SqlConnection con = new SqlConnection(DB_CONNECTION);
-         SqlCommand cmd = new SqlCommand();
-         con = new SqlConnection(DB_CONNECTION);
-         cmd = new SqlCommand();
-         cmd.Connection = con;
-         cmd.CommandType = CommandType.StoredProcedure;
-       }
+        public string DeleteStaffMember(int staffMemberId)
+        {
+            cmd.CommandText = "SP_DeleteStaffMember";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@staffMemberID", staffMemberId);
 
 
-       //internal int AddNewStaffMemberInDB(int staffMemberId, string staffMemberName, string cpr, string phoneNumber, string email, string password, string statusDescription, int titleId, int roleId)
-       //{
-       //    throw new NotImplementedException();
-       //}
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return (cmd.Parameters["@staffMemberID"].Value.ToString());
+            }
+            catch (SqlException ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+        }
+        #endregion
+
+        #region UpDate StaffMember in DB// Majd
+        public int UpDateStaffMember(int staffMemberId, string staffMemberName, string cpr, string phoneNumber, string email,
+                                        string password, string statusDescription, int titleId, int roleId)
+        {
+            cmd.CommandText = "SP_UpdateStaffMember";
+            cmd.Parameters.Clear();
+
+            cmd.Parameters.AddWithValue("@staffmemberID", staffMemberId);
+            cmd.Parameters.AddWithValue("@staffMemberName", staffMemberName);
+            cmd.Parameters.AddWithValue("@cpr", cpr);
+            cmd.Parameters.AddWithValue("@phoneNo", phoneNumber);
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@staffPassword", password);
+            cmd.Parameters.AddWithValue("@statusDescription", statusDescription);
+            cmd.Parameters.AddWithValue("@titleID", titleId);
+            cmd.Parameters.AddWithValue("@roleID", roleId);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                return int.Parse(cmd.Parameters["@staffmemberID"].Value.ToString());
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+        }
+        #endregion
+
+        #region Method to DB
+        public void ConnectToDB()
+        {
+            const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
+            SqlConnection con = new SqlConnection(DB_CONNECTION);
+            SqlCommand cmd = new SqlCommand();
+            con = new SqlConnection(DB_CONNECTION);
+            cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.StoredProcedure;
+        }
+
+        #endregion
+
     }
 }
 
-  
+
 
 

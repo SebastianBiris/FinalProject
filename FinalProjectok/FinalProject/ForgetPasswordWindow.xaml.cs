@@ -26,14 +26,12 @@ namespace FinalProject
     public partial class ForgetPasswordWindow : Window
     {
         Controller myController = new Controller();
-       
+
 
         public ForgetPasswordWindow()
         {
             InitializeComponent();
-          
             txtforgotPassword.Focus();
-            
         }
 
         private void btnSendPassword_Click(object sender, RoutedEventArgs e)
@@ -48,7 +46,6 @@ namespace FinalProject
                     tempPassword = myStaffMember.Password;
                     tempEmail = myStaffMember.Email;
                 }
-             
             }
             if (tempEmail != "")
             {
@@ -68,17 +65,14 @@ namespace FinalProject
                 mm.BodyEncoding = Encoding.UTF8;
                 mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
                 MessageBox.Show("Your Password has been sent to this email " + txtforgotPassword.Text);
-
             }
             else { MessageBox.Show("Invalid email"); }
-          
-}
-
+        }
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             System.Environment.Exit(1);
         }
-            
+
     }
 }
