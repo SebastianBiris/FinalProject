@@ -136,6 +136,12 @@ namespace ControllerLayer
         {
             return messages.Count;
         }
+
+
+        public int NumberOfShiftDate()
+        {
+            return shiftDates.Count;
+        }
         public void GetDay(string day)
         {
             myIWeekList.GetDay(day);
