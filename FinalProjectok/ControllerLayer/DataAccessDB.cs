@@ -29,6 +29,9 @@ namespace ControllerLayer
 
         #region View Title from DB
         // Chris
+        /*
+         * create a list with titles
+         */ 
         public List<Title> ViewTitlesFromDB()
         {
             SqlDataReader dataReader = null;
@@ -72,7 +75,9 @@ namespace ControllerLayer
 
         #region View Role From DB
         //MAL
-
+        /*
+         * create a list with roles
+         */ 
         public List<Role> ViewRoleFromDb()
         {
             SqlDataReader dataReader = null;
@@ -119,7 +124,9 @@ namespace ControllerLayer
 
         #region View Working Hours From DB
         //MAL
-
+        /*
+         * create a list with working hours
+         */ 
         public List<WorkingHours> ViewWorkingHoursFromDB()
         {
             SqlDataReader dataReader = null;
@@ -161,64 +168,11 @@ namespace ControllerLayer
         }
         #endregion
 
-        #region View Contact Info By STaff From DB //**Sebi**
-
+        #region View Shift From DB 
+        //**Sebi**
         /*
-	        public List<StaffMember> ViewContactInfoByStaff()
-	        {
-	             SqlDataReader dataReader = null;
-	            string staffMemberName,phoneNo,email,password,statusDescription,position,role;
-	            int staffMemberId,cpr,roleId,titleId;
-	            List<StaffMember> returnStaffMemberList = new List<StaffMember>();
-                List<Title> returnTitle = new List<Title>();
-                List<Role> returnRole = new List<Role>();
-	            cmd.Parameters.Clear();
-	            cmd.CommandText = "SP_ViewContactInfo";
-            try
-            {
-                con.Open();
-                dataReader = cmd.ExecuteReader();
-
-                while (dataReader.Read())
-                {
-                    staffMemberName = dataReader["staffMemberName"].ToString();
-                    phoneNo = dataReader["phoneNoe"].ToString();
-                    email = dataReader["email"].ToString();
-                    staffMemberId = int.Parse(dataReader["staffMemberId"].ToString());
-                    cpr = int.Parse(dataReader["cpr"].ToString());
-                    password = dataReader["password"].ToString();
-                    statusDescription = dataReader["statusDescription"].ToString();
-                    roleId = int.Parse(dataReader["roleID"].ToString());
-                    titleId = int.Parse(dataReader["titleID"].ToString());
-                    position = dataReader["position"].ToString();
-                    role = dataReader["role"].ToString();
-                    returnRole.Add(new Role(role,roleId));
-                    returnTitle.Add(new Title(position,titleId));
-                  returnStaffMemberList.Add(new StaffMember(staffMemberId,staffMemberName,cpr,phoneNo,email,password,statusDescription,returnTitle,returnRole));
-                }
-                return returnStaffMemberList;
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                if (dataReader != null)
-                {
-                    dataReader.Close();
-                }
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-            }
-        }
-        */
-        #endregion
-
-        #region View Shift From DB //**Sebi**
-
+         * create a list with shifts
+         */ 
         public List<Shift> ViewShiftFromDB()
         {
             SqlDataReader dataReader = null;
@@ -265,8 +219,11 @@ namespace ControllerLayer
 
         #endregion
 
-        #region View Contact Info from DB //Chris 13.05
-
+        #region View Contact Info from DB 
+        //Chris 13.05
+        /*
+         * create a list with information about staff members for cantacting them
+         */ 
         public List<StaffMember> GetStaffMembersFromDB()
         {
             SqlDataReader dataReader = null;
@@ -326,7 +283,11 @@ namespace ControllerLayer
         }
         #endregion
 
-        #region Add New Staff Member to DB // chris 13.05
+        #region Add New Staff Member to DB 
+        // chris 13.05
+        /*
+         * adds information about a new staff member into database
+         */ 
         public int AddNewStaffMemberInDB(string staffMemberName, string cpr, string phoneNumber, string email,
                                         string password, string statusDescription, int titleId, int roleId)
         {
@@ -366,7 +327,9 @@ namespace ControllerLayer
         #endregion
 
         #region View Inbox Messages from DB
-
+        /*
+         * create a list with messages
+         */ 
         public List<Message> ViewMessagesFromDB()
         {
             SqlDataReader dataReader = null;
@@ -412,8 +375,11 @@ namespace ControllerLayer
 
         #endregion
 
-        #region Add new Message to DB //chris & Majd 15.05
-
+        #region Add new Message to DB 
+        //chris & Majd 15.05
+        /*
+         * saves in database a message sent fron staff member to another one
+         */ 
         public int AddMessageInDB(string inboxMessage, int staffMemberId)
         {
             cmd.CommandText = "SP_SendMessage";
@@ -448,8 +414,12 @@ namespace ControllerLayer
 
         #endregion
 
-        #region Add Staff Member Work Day  //chris 19.05
+        #region Add Staff Member Work Day  
+        //chris 19.05
         //constructor is inside shiftDate class
+        /*
+         * assigns a working day and a shift to a staff member
+         */ 
         public void AddStaffMemberWorkDayInDB(int dateId, int staffMemberId, int shiftId)  // ????
         {
             cmd.CommandText = "SP_CreateStaffMemberWorkDay1";
@@ -477,8 +447,11 @@ namespace ControllerLayer
         }
         #endregion
 
-        #region View Staff Member Shift Dates  //chris 19.05
-
+        #region View Staff Member Shift Dates 
+        //chris 19.05
+        /*
+         * fill the list with assigned shifts for a staff member for a week day
+         */ 
         public List<ShiftDate> ViewAssignedShiftDatesFromDB()
         {
             SqlDataReader dataReader = null;
@@ -524,7 +497,9 @@ namespace ControllerLayer
         #endregion
 
         #region View shift dates IDs
-
+        /*
+         * adds in a list dates for shifts from database
+         */ 
         public List<ShiftDate> ViewShiftDatesFromDB()
         {
             SqlDataReader dataReader = null;
@@ -567,7 +542,11 @@ namespace ControllerLayer
         }
         #endregion
 
-        #region Delete Messages From DB //majd
+        #region Delete Messages From DB 
+        //majd
+        /*
+         * deletes messages from inbox 
+         */ 
         public int DeleteMessage(int messageId1)
         {
             cmd.CommandText = "SP_DeleteMessage";
@@ -595,8 +574,11 @@ namespace ControllerLayer
         }
         #endregion
 
-        #region Delete Staffmember From DB //majd
-
+        #region Delete Staffmember From DB
+        //majd
+        /*
+         * deletes a staff member informations from database
+         */ 
         public string DeleteStaffMember(int staffMemberId)
         {
             cmd.CommandText = "SP_DeleteStaffMember";
@@ -625,7 +607,11 @@ namespace ControllerLayer
         }
         #endregion
 
-        #region UpDate StaffMember in DB// Majd
+        #region UpDate StaffMember in DB
+        // Majd
+        /*
+         * updates a staff member informations
+         */ 
         public int UpDateStaffMember(int staffMemberId, string staffMemberName, string cpr, string phoneNumber, string email,
                                         string password, string statusDescription, int titleId, int roleId)
         {
@@ -662,6 +648,10 @@ namespace ControllerLayer
         #endregion
 
         #region Connect to DB
+        /*
+         * connection to eal database
+         * we have to change this to our local database
+         */ 
         public void ConnectToDB()
         {
             const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
@@ -674,7 +664,6 @@ namespace ControllerLayer
         }
 
         #endregion
-
     }
 }
 
