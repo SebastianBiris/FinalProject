@@ -376,14 +376,14 @@ namespace FinalProject
          */ 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-            txtName.Clear();
-            txtCpr.Clear();
-            txtEmail.Clear();
-            txtPassword.Clear();
-            txtPhoneNumber.Clear();
-            txtRole.Clear();
-            txtStatus.Clear();
-            txtTilte.Clear();
+            txtName.DataContext="";
+            txtCpr.DataContext = "";
+            txtEmail.DataContext = "";
+            txtPassword.DataContext = "";
+            txtPhoneNumber.DataContext = "";
+            txtRole.DataContext = "";
+            txtStatus.DataContext = "";
+            txtTilte.DataContext = "";
             txtName.Focus();
         } 
         #endregion

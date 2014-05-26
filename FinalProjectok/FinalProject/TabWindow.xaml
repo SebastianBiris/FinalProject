@@ -58,19 +58,19 @@
                     <Label Content="Role:" HorizontalAlignment="Left" Margin="27,212,0,0" VerticalAlignment="Top" Width="73" Height="25" RenderTransformOrigin="0.493,1.64"/>
                     <Label Content="Status" HorizontalAlignment="Left" Margin="27,295,0,0" VerticalAlignment="Top" Width="73" Height="25" RenderTransformOrigin="0.493,1.64"/>
                     <Label Content="Title:" HorizontalAlignment="Left" Margin="27,253,0,0" VerticalAlignment="Top" Width="73" Height="25" RenderTransformOrigin="0.493,1.64"/>
-                    <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="157,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
-                    <TextBox x:Name="txtCpr" HorizontalAlignment="Left" Height="23" Margin="157,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
-                    <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Height="23" Margin="157,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
-                    <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="157,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
-                    <TextBox x:Name="txtPassword" HorizontalAlignment="Left" Height="23" Margin="157,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
-                    <TextBox x:Name="txtRole" HorizontalAlignment="Left" Height="23" Margin="157,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
-                    <TextBox x:Name="txtStatus" HorizontalAlignment="Left" Height="75" Margin="157,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
-                    <TextBox x:Name="txtTilte" HorizontalAlignment="Left" Height="24" Margin="157,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
                     <Button x:Name="btnAddStaffMember" Content="Manage Staff Members" HorizontalAlignment="Left" Margin="58,394,0,0" VerticalAlignment="Top" Width="134" RenderTransformOrigin="0.213,0" Click="btnAddStaffMember_Click"/>
 
 
                     <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="501,394,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="0.213,0" Click="btnClear_Click"/>
                     <ListBox x:Name="listboxStaff" HorizontalAlignment="Left" Height="360" Margin="384,12,0,0" VerticalAlignment="Top" Width="188" SelectionChanged="listboxStaff_SelectionChanged"/>
+                    <TextBlock x:Name="txtName" HorizontalAlignment="Left" Margin="157,17,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="167" Height="30"/>
+                    <TextBlock x:Name="txtCpr" HorizontalAlignment="Left" Margin="157,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" Height="34"/>
+                    <TextBlock x:Name="txtPhoneNumber" HorizontalAlignment="Left" Margin="157,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" Height="34"/>
+                    <TextBlock x:Name="txtEmail" HorizontalAlignment="Left" Margin="157,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="1.24,0.562" Width="167" Height="36"/>
+                    <TextBlock x:Name="txtPassword" HorizontalAlignment="Left" Margin="157,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" Height="38"/>
+                    <TextBlock x:Name="txtRole" HorizontalAlignment="Left" Margin="157,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" Height="35"/>
+                    <TextBlock x:Name="txtTilte" HorizontalAlignment="Left" Margin="157,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" Height="38"/>
+                    <TextBlock x:Name="txtStatus" HorizontalAlignment="Left" Margin="157,319,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" Height="53"/>
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="574"/>
