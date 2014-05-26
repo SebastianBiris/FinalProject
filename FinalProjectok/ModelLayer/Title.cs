@@ -11,12 +11,12 @@ namespace ModelLayer
    public class Title : ITitle
     {
         string _position;
-        int _id;
+        int _titleId;
 
-        public Title(string position, int id)
+        public Title(string position, int titleId)
         {
             _position = position;
-            _id = id;
+            _titleId = titleId;
         }
         #region Properties // MAL
 
@@ -25,10 +25,10 @@ namespace ModelLayer
             get { return _position; }
             set { _position = value; }
         }
-       public int Id
+       public int TitleId
         {
-            get { return _id; }
-            set { _id = value; }
+            get { return _titleId; }
+            set { _titleId = value; }
         }
         #endregion
        
