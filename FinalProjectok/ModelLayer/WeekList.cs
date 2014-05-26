@@ -25,8 +25,12 @@ namespace ModelLayer
             _day7 = day7;
         }
 
-        #region method GetDay // **Sebi**
-
+        #region method GetDay
+        // **Sebi**
+       
+        /*
+         * gets the current day of week and returns the actual date
+         */ 
 
         public DateTime GetDay(string day)
         {
@@ -70,7 +74,8 @@ namespace ModelLayer
 
         #endregion
 
-        #region Properties // **Sebi**
+        #region Properties
+        // **Sebi**
         public int Year
         {
             get { return _year; }

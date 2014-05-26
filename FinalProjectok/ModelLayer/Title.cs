@@ -18,7 +18,8 @@ namespace ModelLayer
             _position = position;
             _id = id;
         }
-        #region Properties // MAL
+        #region Properties 
+       // MAL
 
         public string Position
         {
@@ -32,12 +33,6 @@ namespace ModelLayer
         }
         #endregion
        
-        #region Methods //**Sebi**
-        //public void addSaffMemberinTitle(StaffMember anStaffMember)
-        //{
-        //    myStaffMember.Add(anStaffMember);
-        //}
-        #endregion
 
     }
 }

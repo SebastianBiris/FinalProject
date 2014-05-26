@@ -17,7 +17,13 @@ namespace ModelLayer
             return GetWeekOneDayOne(year, firstDayOfWeek);
         }
 
-        # region Method  //**Sebi**
+        # region Method 
+        //**Sebi**
+
+        /*
+         * calculates the first day in the frst week of year
+         */ 
+
         public static DateTime GetWeekOneDayOne(int year, DayOfWeek firstDayOfWeek)
         {
             DateTime date = new DateTime(year, 1, 1);
@@ -33,6 +39,11 @@ namespace ModelLayer
             { date = date.AddDays(7 * System.Math.Sign(weekOfYear - 1) - 3); }
             return date;
         }
+
+        /*
+         * calculates the current week of the year
+         */ 
+
         public int GetWeekOfYear()
         {
             CultureInfo currentCulture = CultureInfo.CurrentCulture;

@@ -33,7 +33,8 @@ namespace ModelLayer
             myStaffMember.AddShift(this);
         }
 
-        #region Properties //MAL
+        #region Properties
+        //MAL
 
         public int ShiftId
         {
@@ -73,8 +74,11 @@ namespace ModelLayer
         }
         #endregion
 
-        #region Methods //**Sebi**
-
+        #region Methods
+        //**Sebi**
+        /*
+         * calculates the real worked hours for a staff member
+         */ 
         public double calculateActualHours()
         {
             WorkingHours myWorkingHours = new WorkingHours(2);

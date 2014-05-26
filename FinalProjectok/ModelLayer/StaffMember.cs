@@ -58,7 +58,8 @@ namespace ModelLayer
           //  myInboxMessages = new List<Message>(); 
         }
        
-        #region Properties //MAL
+        #region Properties 
+       //MAL
         public string Cpr
         {
             get { return _cpr; }
@@ -123,12 +124,18 @@ namespace ModelLayer
       
        #endregion
 
-       #region Methods //**Sebi**
+       #region Methods 
+       //**Sebi**
+       /*
+         * adds shifts dates to a list for a staff member
+         */ 
         public void AddShiftDate(ShiftDate anShiftDate)
         {
             myShiftDate.Add(anShiftDate);
         }
-
+        /*
+          * adds a shifts in a list for a staff member
+          */ 
         public void AddShift(Shift anShift)
         {
             myShift.Add(anShift);

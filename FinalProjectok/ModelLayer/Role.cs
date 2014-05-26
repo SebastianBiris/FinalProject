@@ -19,7 +19,8 @@ namespace ModelLayer
             _id = id;
         }
 
-        #region Properties //MAL
+        #region Properties
+        //MAL
 
         public string RoleType
         {

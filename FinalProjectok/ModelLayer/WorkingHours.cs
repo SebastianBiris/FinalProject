@@ -16,9 +16,8 @@ namespace ModelLayer
             _actualHoursWorked = actualHoursWorked;
         }
  
- #region Properties //MAL
-
-     
+ #region Properties 
+        //MAL
 
      public double ActualHoursWorked
      {
