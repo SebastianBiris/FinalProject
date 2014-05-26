@@ -52,6 +52,9 @@ namespace FinalProject
         }
 
         #region SubmitMailButton
+        /*
+         * submit a request for a shift change
+         */ 
         private void btnSubmitMail_Click(object sender, RoutedEventArgs e)
         {
             IStaffMember lbStaffMember2 = (IStaffMember) listBoxContactStaff.SelectedItem;
@@ -76,6 +79,9 @@ namespace FinalProject
         #endregion
 
         #region Send Mail To a StaffMember
+        /*
+         * sends a email to a staff member choosed with a shift change request
+         */
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
              IStaffMember lbStaffMember2 = (IStaffMember) listBoxStaffInfo2.SelectedItem;
@@ -100,6 +106,9 @@ namespace FinalProject
         #endregion
 
         #region Submit ShiftChange
+        /*
+         * submit the message to staff member
+         */
         private void btnSubmitShiftChange_Click(object sender, RoutedEventArgs e)
         {
             int tempId = 6;
@@ -112,6 +121,9 @@ namespace FinalProject
         #endregion
 
         #region Clear Changed Shift
+        /*
+         * clears the request
+         */
         private void btnClearShiftChange_Click(object sender, RoutedEventArgs e)
         {
             txtShiftChangeRequest.Clear();
@@ -119,6 +131,9 @@ namespace FinalProject
         #endregion
 
         #region Delete Shift
+        /*
+         *Deletes a message from inbox
+         */ 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             int tempId = -1;
@@ -138,6 +153,9 @@ namespace FinalProject
         public List<IShiftDate> myIShift = new List<IShiftDate>();
 
         #region FillTheWeeks
+        /*
+         * fills a list with dates for each week
+         */
         public void FillTheWeeks()
         {
             int offset = 0;
@@ -170,6 +188,9 @@ namespace FinalProject
         #endregion
 
         #region GetWeek
+        /*
+         * get the current week
+         */ 
         public void GetWeek()
         {
             WeekNow = myController.GetWeeksOfYear();
@@ -178,6 +199,10 @@ namespace FinalProject
         #endregion
 
         #region DrawButtons
+        /*
+         * drws buttons for each cell
+         * fill the button with the right content
+         */
         public void DrawButtons()
         {
             int dateCounter = -9;
@@ -268,6 +293,10 @@ namespace FinalProject
         #endregion
 
         #region PreviousWeek Button
+        /*
+         * shows the previous week
+         * we have to refresh the matrix with last week schedule content somehow
+         */ 
         private void btnPrevious_Click(object sender, RoutedEventArgs e)
         {
 
@@ -306,6 +335,10 @@ namespace FinalProject
         #endregion
 
         #region NextWeek Button
+        /*
+         * shows the next week schedule
+         * we have to refresh the matrix with the next week schedule content somehow
+         */ 
         private void btnForward_Click(object sender, RoutedEventArgs e)
         {
             foreach (Button button in drawButtons)
@@ -345,6 +378,9 @@ namespace FinalProject
         #endregion
 
         #region Manage Schedule
+        /*
+         * opens the manage schedule window
+         */ 
         private void btnManageSchedule_Click(object sender, RoutedEventArgs e)
         {
             ManageSchedule myWindow = new ManageSchedule();
@@ -354,6 +390,10 @@ namespace FinalProject
         #endregion
 
         #region Close Button
+        /*
+         * program is still running after closing the window
+         * stops the debugging when the window is closed
+         */
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

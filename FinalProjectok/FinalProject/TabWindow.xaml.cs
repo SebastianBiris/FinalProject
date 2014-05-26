@@ -60,6 +60,9 @@ namespace FinalProject
         public List<IShiftDate> myIShift = new List<IShiftDate>();
 
         #region FillTheWeeks
+        /*
+         * fills a list with dates for each week
+         */
         public void FillTheWeeks()
         {
             int offset = 0;
@@ -92,6 +95,9 @@ namespace FinalProject
         #endregion
 
         #region GetWeek
+        /*
+         * get the current week
+         */ 
         public void GetWeek()
         {
             WeekNow = myController.GetWeeksOfYear();
@@ -100,6 +106,9 @@ namespace FinalProject
         #endregion
 
         #region MachingData
+        /*
+         * open a widow for saving shift and saves data in the main matrix
+         */ 
         public void MachingTheData(object sender, MouseButtonEventArgs e)
         {
             Assign_Shift myWindow = new Assign_Shift();
@@ -150,6 +159,11 @@ namespace FinalProject
         #endregion
 
         #region Draw Buttons
+        /*
+         * create the matrix
+         * put the values in the right cell
+         *  drows the button with cells content
+         */ 
         public void DrawButtons()
         {
             int dateCounter = -9;
@@ -258,6 +272,10 @@ namespace FinalProject
         #endregion
 
         #region PrviousWeek Button
+        /*
+         * shows the previous week
+         * we have to refresh the matrix with last week schedule content somehow
+         */ 
         private void btnPrevious_Click(object sender, RoutedEventArgs e)
         {
 
@@ -296,6 +314,10 @@ namespace FinalProject
         #endregion
 
         #region NextWeek Button
+        /*
+         * shows the next week schedule
+         * we have to refresh the matrix with the next week schedule content somehow
+         */ 
         private void btnForward_Click(object sender, RoutedEventArgs e)
         {
 
@@ -337,6 +359,9 @@ namespace FinalProject
         #endregion
 
         #region AddStaffMember
+        /*
+         * open a staff member window
+         */ 
         private void btnAddStaffMember_Click(object sender, RoutedEventArgs e)
         {
             AddStaffMember nuWin = new AddStaffMember();
@@ -346,7 +371,9 @@ namespace FinalProject
         #endregion
 
         #region Clear Button
-
+        /*
+         * clear informations for a staff member 
+         */ 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
             txtName.Clear();
@@ -362,6 +389,9 @@ namespace FinalProject
         #endregion
 
         #region Show in List Box
+        /*
+         * shows the information for a staff member
+         */ 
         private void listboxStaff_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             IStaffMember lbStaffMember = (IStaffMember)listboxStaff.SelectedItem;
@@ -380,6 +410,9 @@ namespace FinalProject
         #endregion
 
         #region Delete
+        /*
+         * deletes message
+         */ 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             int tempId = -1;
@@ -395,6 +428,9 @@ namespace FinalProject
         #endregion
 
         #region RemoveButtons
+        /*
+         * removes buttons from cells
+         */ 
         public void RemoveButtons()
         {
             for (int i = drawButtons.Count - 1; i >= 0; i--)
@@ -407,6 +443,9 @@ namespace FinalProject
         #endregion
 
         #region Send Message
+        /*
+         *sends a message to a staff member 
+         */
         private void btnSend1_Click(object sender, RoutedEventArgs e)
         {
             IStaffMember lbStaffMember2 = (IStaffMember)listBoxStaffInfo.SelectedItem;
@@ -422,6 +461,10 @@ namespace FinalProject
         #endregion
 
         #region Close Window
+        /*
+         * program is still running after closing the window
+         * stops the debugging when the window is closed
+         */
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

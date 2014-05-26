@@ -25,7 +25,9 @@ namespace FinalProject
         Controller myController = new Controller();
         List<IShift> myIshift = new List<IShift>();
         TabWindow myWindow = new TabWindow();
-   
+   /*
+    * assigns a shift to a staff member on the choosed date
+    */ 
         public Assign_Shift()
         {
             InitializeComponent();

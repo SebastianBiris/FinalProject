@@ -50,7 +50,9 @@ namespace FinalProject
         }
 
         #region Save Btn
-
+        /**
+         ** save a new staff member
+         **/ 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             string name = txtName1.Text;
@@ -113,6 +115,9 @@ namespace FinalProject
         #endregion
 
         #region Listbox Btn
+        /*
+         * shows staff member info
+         */
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             {
@@ -129,7 +134,9 @@ namespace FinalProject
         #endregion
 
         #region Update Btn
-
+        /*
+         * update staff member infos
+         */
         private void btnUpdateStaff_Click(object sender, RoutedEventArgs e)
         {
             IStaffMember lbStaffMember = (IStaffMember)listBoxStaff.SelectedItem;
@@ -199,6 +206,9 @@ namespace FinalProject
         #endregion
 
         #region btn Delete
+        /*
+         * delete a staff member
+         */
         private void btnDeleteStaff_Click(object sender, RoutedEventArgs e)
         {
             int tempId = -1;
@@ -220,6 +230,10 @@ namespace FinalProject
         #endregion
 
         #region Clear btn
+        /*
+         * clear infos about a staff member
+         */ 
+
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
             txtCpr1.Clear();
@@ -235,6 +249,10 @@ namespace FinalProject
         #endregion
 
         #region btnClose
+        /*
+         * whe we close the window , the program is still working
+         * stops the debugging
+         */ 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

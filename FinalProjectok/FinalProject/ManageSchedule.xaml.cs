@@ -55,6 +55,9 @@ namespace FinalProject
         public List<IShiftDate> myIShift = new List<IShiftDate>();
 
         #region FillWeeks
+        /*
+         * fills a list with dates for each week
+         */ 
         public void FillTheWeeks()
         {
             int offset = 0;
@@ -87,6 +90,9 @@ namespace FinalProject
         #endregion
 
         #region GetWeek
+        /*
+         * get the current week
+         */ 
         public void GetWeek()
         {
             WeekNow = myController.GetWeeksOfYear();
@@ -95,6 +101,9 @@ namespace FinalProject
         #endregion
 
         #region MachingData
+        /*
+         * open a widow for saving shift and saves data in the main matrix
+         */ 
         public void MachingTheData(object sender, MouseButtonEventArgs e)
         {
             Assign_Shift myWindow = new Assign_Shift();
@@ -145,7 +154,11 @@ namespace FinalProject
         #endregion
 
         #region DrawButtons
-
+        /*
+         * create the matrix
+         * put the values in the right cell
+         *  drows the button with cells content
+         */ 
         public void DrawButtons()
         {
             int dateCounter = -9;
@@ -254,6 +267,10 @@ namespace FinalProject
         #endregion
 
         #region PreviousButton
+        /*
+         * shows the previous week
+         * we have to refresh the matrix with last week schedule content somehow
+         */ 
         private void btnPrevious_Click(object sender, RoutedEventArgs e)
         {
 
@@ -292,6 +309,10 @@ namespace FinalProject
         #endregion
 
         #region NextButton
+        /*
+         * shows the next week schedule
+         * we have to refresh the matrix with the next week schedule content somehow
+         */ 
         private void btnForward_Click(object sender, RoutedEventArgs e)
         {
             foreach (Button button in drawButtons)
@@ -331,6 +352,9 @@ namespace FinalProject
         #endregion
 
         #region Save Button
+        /*
+         * save the data for schedule
+         */ 
         private void saveBtn_Click(object sender, RoutedEventArgs e)
         {
             TabForStaff myWindow = new TabForStaff();
@@ -341,6 +365,10 @@ namespace FinalProject
         #endregion
 
         #region Close Button
+        /*
+         * program is still running after closing the window
+         * stops the debugging when the window is closed
+         */
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

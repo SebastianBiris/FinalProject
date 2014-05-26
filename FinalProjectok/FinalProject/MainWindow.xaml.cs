@@ -38,6 +38,11 @@ namespace FinalProject
         }
 
         #region Login btn
+        /*
+         * when someone is logging in checks is the username and passowrd are correct
+         * is looking for staff member's role
+         * checks if the staff member has any email
+         */ 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             TabWindow myTab = new TabWindow();
@@ -105,6 +110,9 @@ namespace FinalProject
 
         #endregion
 
+        /*
+         * open window for forgot password
+         */ 
         private void btnForgotPassword_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

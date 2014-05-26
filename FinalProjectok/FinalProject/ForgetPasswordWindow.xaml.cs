@@ -33,7 +33,10 @@ namespace FinalProject
             InitializeComponent();
             txtforgotPassword.Focus();
         }
-
+        #region Send Password
+        /*
+         * sends the password via email
+         */ 
         private void btnSendPassword_Click(object sender, RoutedEventArgs e)
         {
             string tempEmail = "";
@@ -68,11 +71,19 @@ namespace FinalProject
             }
             else { MessageBox.Show("Invalid email"); }
         }
+        #endregion
+
+        #region Close Button
+        /*
+         * when the window is closed ,program is stil running
+         * stops debugging the program
+         */ 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             System.Environment.Exit(1);
-        }
+        } 
+        #endregion
 
     }
 }
