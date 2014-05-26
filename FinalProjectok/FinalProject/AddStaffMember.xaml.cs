@@ -129,6 +129,8 @@ namespace FinalProject
                 txtPassword1.Text = lbStaffMember.Password;
                 txtPhoneNumber1.Text = lbStaffMember.PhoneNumber;
                 txtStatus1.Text = lbStaffMember.StatusDescription;
+                cbTitle.DataContext = lbStaffMember.Position;
+                cbRole.DataContext = lbStaffMember.RoleType;
             }
         }
         #endregion
