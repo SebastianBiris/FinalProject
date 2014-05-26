@@ -61,6 +61,7 @@ namespace ControllerLayer
             shiftDates = myDataAccessDb.ViewAssignedShiftDatesFromDB();
             shiftIds = myDataAccessDb.ViewShiftDatesFromDB();
         }
+        #region CreateStaffMember
         //chris
         public void CreateStaffMember(string staffMemberName, string cpr, string phoneNumber, string email, string password, string statusDescription, int titleId, int roleId)
         {
@@ -78,9 +79,10 @@ namespace ControllerLayer
                 throw new Exception("Data wasn`t saved correctly");
             }
         }
-
-        //chris & Majd 15.05
-
+        #endregion
+        
+        #region CreateMessage
+//chris & Majd 15.05
         public void CreateNewMessage(string inboxMessage, int staffMemberId)
         {
             int messageId;
@@ -96,37 +98,44 @@ namespace ControllerLayer
                 throw ex;
             }
         }
+        #endregion
 
+        #region DeleteMessage
         //MAjd
         public void DeleteMessage(int messageId)
         {
             myDataAccessDb.DeleteMessage(messageId);
 
         }
+        #endregion
+
+        #region DeleteStaffMember
         //Majd
         public void DeleteStaffMember(int staffMemberId)
         {
             myDataAccessDb.DeleteStaffMember(staffMemberId);
         }
+        #endregion
+
+        #region UpdateStaffMember
+
         public void UpdateStaffMember(int staffMemberID, string staffMemberName, string cpr, string phoneNumber, string email, string password, string statusDescription, int titleId, int roleId)
         {
             myDataAccessDb.UpDateStaffMember(staffMemberID, staffMemberName, cpr, phoneNumber, email, password, statusDescription, titleId, roleId);
         }
+#endregion
 
+        #region AddNewShiftDateinDB
         //chris 19.05 
         public void AddNewShiftDateInDB(int dateId, int staffMemberId, int shiftId)
         {
             selectedShiftDate = new ShiftDate(dateId, staffMemberId, shiftId);
             myDataAccessDb.AddStaffMemberWorkDayInDB(dateId, staffMemberId, shiftId);
         }
+        #endregion
 
-        //public void AddNewShiftDate(int dateId, DateTime dateWorked, IStaffMember sm, int staffId) //????? GUI Layer
-        //{
-        //    ShiftDate nuShiftDate = new ShiftDate(dateId, dateWorked, (StaffMember)sm, staffId);
-        //    shiftDates.Add(nuShiftDate);
-        //}
+        #region NumberOf
 
-        //25.05
         public int NumberOfStaffMembers()
         {
             return staffMembers.Count;
@@ -142,6 +151,9 @@ namespace ControllerLayer
         {
             return shiftDates.Count;
         }
+        #endregion
+
+        #region GetDay/GetWeeksOfyear/GetWeeks/GetWeekList
         public void GetDay(string day)
         {
             myIWeekList.GetDay(day);
@@ -163,6 +175,8 @@ namespace ControllerLayer
             myWeekList1 = new WeekList(year, day1, day2, day3, day4, day5, day6, day7);
             return myWeekList1;
         }
+        #endregion
+
         #endregion
 
         #region Properties //**Sebi**
