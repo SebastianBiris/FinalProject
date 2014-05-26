@@ -51,7 +51,7 @@ namespace FinalProject
             
         }
 
-        
+        #region SubmitMailButton
         private void btnSubmitMail_Click(object sender, RoutedEventArgs e)
         {
             IStaffMember lbStaffMember2 = (IStaffMember) listBoxContactStaff.SelectedItem;
@@ -73,8 +73,9 @@ namespace FinalProject
            
         }
 
+        #endregion
 
-
+        #region Send Mail To a StaffMember
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
              IStaffMember lbStaffMember2 = (IStaffMember) listBoxStaffInfo2.SelectedItem;
@@ -96,9 +97,9 @@ namespace FinalProject
                 MessageBox.Show("Did not send. You must also select a staff member");
             }
         }
+        #endregion
 
-
-
+        #region Submit ShiftChange
         private void btnSubmitShiftChange_Click(object sender, RoutedEventArgs e)
         {
             int tempId = 6;
@@ -108,12 +109,16 @@ namespace FinalProject
             MessageBox.Show("Your message was sent successfully.");
             txtShiftChangeRequest.Clear();
         }
+        #endregion
 
+        #region Clear Changed Shift
         private void btnClearShiftChange_Click(object sender, RoutedEventArgs e)
         {
             txtShiftChangeRequest.Clear();
         }
+        #endregion
 
+        #region Delete Shift
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             int tempId = -1;
@@ -127,10 +132,12 @@ namespace FinalProject
             MessageBox.Show("Message deleted");
           
         }
+        #endregion
         public List<DateTime> myWeekDates { get; set; }
         public List<IWeekList> allWeeksList = new List<IWeekList>();
         public List<IShiftDate> myIShift = new List<IShiftDate>();
 
+        #region FillTheWeeks
         public void FillTheWeeks()
         {
             int offset = 0;
@@ -160,13 +167,17 @@ namespace FinalProject
             }
 
         }
+        #endregion
 
+        #region GetWeek
         public void GetWeek()
         {
             WeekNow = myController.GetWeeksOfYear();
 
         }
-       
+        #endregion
+
+        #region DrawButtons
         public void DrawButtons()
         {
             int dateCounter = -9;
@@ -254,7 +265,9 @@ namespace FinalProject
                 }
             }
         }
+        #endregion
 
+        #region PreviousWeek Button
         private void btnPrevious_Click(object sender, RoutedEventArgs e)
         {
 
@@ -290,7 +303,9 @@ namespace FinalProject
                 }
             }
         }
+        #endregion
 
+        #region NextWeek Button
         private void btnForward_Click(object sender, RoutedEventArgs e)
         {
             foreach (Button button in drawButtons)
@@ -326,84 +341,25 @@ namespace FinalProject
                 }
             }
 
-        }
+        } 
+        #endregion
 
-     
-      
-
-        public void TestingStuff()
-        {
-
-            ////chris 19.05 and sebastian 20.05   ****TESTING (adding to lists)
-            //    IStaffMember lbStaffMember2 = (IStaffMember)listBoxContactStaff.SelectedItem;
-            //    myController.SelectedStaffMember = lbStaffMember2;
-
-            //    List<IShiftDate> tempList =new List<IShiftDate>();
-            //    tempList = myController.ShiftDates;
-
-            //    List<IShift>tempShifts = new List<IShift>();
-            //    tempShifts = myController.Shifts;
-
-            //    int dateId = 0 ;
-            //    int staffId = myController.SelectedStaffMember.StaffMemeberId;
-            //    DateTime dateWorked = DateTime.Today.Date;
-            //    int shiftId = 1;
-
-            //    if (myController.SelectedStaffMember != null)
-            //    {
-
-            //        foreach (IShift myShift in tempShifts)
-            //    {
-            //         if (myShift.ShiftType == "E")
-            //         {
-            //             shiftId = myShift.ShiftId;
-            //         }
-            //     }
-            //        //chris & sebastian 20.05
-            //        bool t = false;  //***Stop flag doesn't work like this in a foreach..
-            //        foreach (IShiftDate myshiftDate in tempList)
-            //        {
-            //            if (dateWorked == myshiftDate.DateWorked && t==false)
-            //            {
-            //                dateId = myshiftDate.DateId;
-            //                t = true;
-            //            myController.AddNewShiftDateInDB(dateId,staffId,shiftId);
-            //            }
-            //        }
-            //        MessageBox.Show("You added a staff member work day");
-
-            //    }
-            //if (myController.SelectedStaffMember != null)
-            //{
-            //    myController.AddNewShiftDate(dateId,dateWorked,myController.SelectedStaffMember,staffId);
-            // //   myController.AddNewShiftDate(dateId, dateWorked, staffId);
-
-            // MessageBox.Show("Added correctly");
-            //    foreach (IShiftDate sd in myController.ShiftDates)
-            //    {
-            //        MessageBox.Show(sd.ToString());
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("No good");
-            //}
-        }
-
+        #region Manage Schedule
         private void btnManageSchedule_Click(object sender, RoutedEventArgs e)
         {
             ManageSchedule myWindow = new ManageSchedule();
             myWindow.ShowDialog();
         }
+        
+        #endregion
 
+        #region Close Button
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             System.Environment.Exit(1);
-        }
-
-    
-    
-      
+        } 
+        #endregion
+  
     }
 }

@@ -59,6 +59,7 @@ namespace FinalProject
         public List<IWeekList> allWeeksList = new List<IWeekList>();
         public List<IShiftDate> myIShift = new List<IShiftDate>();
 
+        #region FillTheWeeks
         public void FillTheWeeks()
         {
             int offset = 0;
@@ -87,13 +88,18 @@ namespace FinalProject
                 YearOffSet++;
             }
 
-        }
+        } 
+        #endregion
 
+        #region GetWeek
         public void GetWeek()
         {
             WeekNow = myController.GetWeeksOfYear();
 
-        }
+        } 
+        #endregion
+
+        #region MachingData
         public void MachingTheData(object sender, MouseButtonEventArgs e)
         {
             Assign_Shift myWindow = new Assign_Shift();
@@ -104,12 +110,13 @@ namespace FinalProject
             shiftWindow.ShowDialog();
             var getSelectedButton = (Button)sender;
             string str = getSelectedButton.Name;
-          
+
             int tempRowNr1 = Convert.ToInt16(str[1] - 48);
             int tempRowNr2 = Convert.ToInt16(str[2] - 48);
             if (tempRowNr1 * 10 + tempRowNr2 < 27)
-            { RowNumber = tempRowNr1 * 10 + tempRowNr2;
-              ColumnNumber = Convert.ToInt16(str[4] - 48);
+            {
+                RowNumber = tempRowNr1 * 10 + tempRowNr2;
+                ColumnNumber = Convert.ToInt16(str[4] - 48);
             }
             else
             {
@@ -126,7 +133,7 @@ namespace FinalProject
                 if (Matrix[RowNumber, 0] == myStaff.StaffMemberName)
                 { tempStaffId = myStaff.StaffMemeberId; }
             }
-            IShift cbShift =(IShift) myWindow.lbShiftType.SelectedItem;
+            IShift cbShift = (IShift)myWindow.lbShiftType.SelectedItem;
             IShift myshifts = (IShift)shiftWindow.lbShiftType.SelectedItem;
             myController.Selectedshift = myshifts;
             if (myController.Selectedshift != null)
@@ -139,13 +146,16 @@ namespace FinalProject
 
             myController.GetAllFromDB();
             DrawButtons();
-        }
+        } 
+        #endregion
+
+        #region Draw Buttons
         public void DrawButtons()
         {
             int dateCounter = -9;
             for (int i = 0; i <= 26; i++)
             {
-               
+
                 for (int j = 0; j <= 7; j++)
                 {
                     dateCounter++;
@@ -155,7 +165,7 @@ namespace FinalProject
                         Matrix[i, j] = allWeeksList[myController.GetWeeksOfYear() - 1].GetDay(dayHack).ToShortDateString();
                         myWeekDates.Add(allWeeksList[myController.GetWeeksOfYear() - 1].GetDay(dayHack));
                     }
-                    else if (i == 0 && j != 0 && j!=8 && j!=9)
+                    else if (i == 0 && j != 0 && j != 8 && j != 9)
                     {
                         Matrix[i, j] = days[j];
                     }
@@ -168,15 +178,16 @@ namespace FinalProject
                             Matrix[i, j] = myController.StaffMembers[nr].StaffMemberName;
                         }
                     }
-                    else if(i>1&&j>0)
+                    else if (i > 1 && j > 0)
                     {
-                        for (int a = 0; a < myController.ShiftDates.Count;a++ )
-                        { if (Matrix[i, 0] == myController.ShiftDates[a].StaffMemberName && Matrix[1, j] == myController.ShiftDates[a].ActualDate.ToShortDateString())
+                        for (int a = 0; a < myController.ShiftDates.Count; a++)
+                        {
+                            if (Matrix[i, 0] == myController.ShiftDates[a].StaffMemberName && Matrix[1, j] == myController.ShiftDates[a].ActualDate.ToShortDateString())
                             {
                                 Matrix[i, j] = myController.ShiftDates[a].ShiftType;
                             }
                         }
-                        
+
                     }
                 }
             }
@@ -185,65 +196,68 @@ namespace FinalProject
                 myGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(2, GridUnitType.Auto) });
                 myGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(2, GridUnitType.Auto) });
                 for (int j = 0; j <= 7; j++)
-                {   if (i == 1 && j != 0)
                 {
-                    Button cellButtons = new Button
+                    if (i == 1 && j != 0)
                     {
-                        Height = 20,
-                        Width = 70,
-                        Background = new SolidColorBrush(Colors.Azure),
-                        Foreground = new SolidColorBrush(Colors.Black),
-                        IsEnabled = true,
-                        Content = Matrix[i,j],
-                        HorizontalContentAlignment = HorizontalAlignment.Center,
-                        VerticalContentAlignment = VerticalAlignment.Center,
-                    };
-                    cellButtons.SetValue(Grid.RowProperty, i);
-                    cellButtons.SetValue(Grid.ColumnProperty, j);
-                    myGrid.Children.Add(cellButtons);
-                    ColumnHeaderButtons.Add(cellButtons);          
+                        Button cellButtons = new Button
+                        {
+                            Height = 20,
+                            Width = 70,
+                            Background = new SolidColorBrush(Colors.Azure),
+                            Foreground = new SolidColorBrush(Colors.Black),
+                            IsEnabled = true,
+                            Content = Matrix[i, j],
+                            HorizontalContentAlignment = HorizontalAlignment.Center,
+                            VerticalContentAlignment = VerticalAlignment.Center,
+                        };
+                        cellButtons.SetValue(Grid.RowProperty, i);
+                        cellButtons.SetValue(Grid.ColumnProperty, j);
+                        myGrid.Children.Add(cellButtons);
+                        ColumnHeaderButtons.Add(cellButtons);
                     }
-                    else if(i<= myController.StaffMembers.Count+1&& !(j != 0  && i != 0 && i != 1))
-                {
-                    Button cellButtons = new Button
+                    else if (i <= myController.StaffMembers.Count + 1 && !(j != 0 && i != 0 && i != 1))
                     {
-                        Height = 20,
-                        Width = 70,
-                        Background = new SolidColorBrush(Colors.Azure),
-                        Foreground = new SolidColorBrush(Colors.Black),
-                        IsEnabled = true,
-                        Content = Matrix[i,j],
-                        HorizontalContentAlignment = HorizontalAlignment.Center,
-                        VerticalContentAlignment = VerticalAlignment.Center,
-                    };
-                    cellButtons.SetValue(Grid.RowProperty, i);
-                    cellButtons.SetValue(Grid.ColumnProperty, j);
-                    myGrid.Children.Add(cellButtons);
-                   
-                 }
-                else if (j != 0  && i != 0 && i != 1&&i<= myController.StaffMembers.Count+1)
-                {
-                    Button cellButtons = new Button
+                        Button cellButtons = new Button
+                        {
+                            Height = 20,
+                            Width = 70,
+                            Background = new SolidColorBrush(Colors.Azure),
+                            Foreground = new SolidColorBrush(Colors.Black),
+                            IsEnabled = true,
+                            Content = Matrix[i, j],
+                            HorizontalContentAlignment = HorizontalAlignment.Center,
+                            VerticalContentAlignment = VerticalAlignment.Center,
+                        };
+                        cellButtons.SetValue(Grid.RowProperty, i);
+                        cellButtons.SetValue(Grid.ColumnProperty, j);
+                        myGrid.Children.Add(cellButtons);
+
+                    }
+                    else if (j != 0 && i != 0 && i != 1 && i <= myController.StaffMembers.Count + 1)
                     {
-                        Height = 20,
-                        Width = 70,
-                        Background = new SolidColorBrush(Colors.Azure),
-                        Foreground = new SolidColorBrush(Colors.Black),
-                        IsEnabled = true,
-                        Content = Matrix[i, j],
-                        HorizontalContentAlignment = HorizontalAlignment.Center,
-                        VerticalContentAlignment = VerticalAlignment.Center,
-                    };
-                    cellButtons.SetValue(Grid.RowProperty, i);
-                    cellButtons.SetValue(Grid.ColumnProperty, j);
-                    myGrid.Children.Add(cellButtons);
-                    cellButtons.MouseDoubleClick += MachingTheData;
-                    cellButtons.Name = "R" + i + "C" + j;
+                        Button cellButtons = new Button
+                        {
+                            Height = 20,
+                            Width = 70,
+                            Background = new SolidColorBrush(Colors.Azure),
+                            Foreground = new SolidColorBrush(Colors.Black),
+                            IsEnabled = true,
+                            Content = Matrix[i, j],
+                            HorizontalContentAlignment = HorizontalAlignment.Center,
+                            VerticalContentAlignment = VerticalAlignment.Center,
+                        };
+                        cellButtons.SetValue(Grid.RowProperty, i);
+                        cellButtons.SetValue(Grid.ColumnProperty, j);
+                        myGrid.Children.Add(cellButtons);
+                        cellButtons.MouseDoubleClick += MachingTheData;
+                        cellButtons.Name = "R" + i + "C" + j;
                     }
                 }
             }
-        }
+        } 
+        #endregion
 
+        #region PrviousWeek Button
         private void btnPrevious_Click(object sender, RoutedEventArgs e)
         {
 
@@ -265,7 +279,7 @@ namespace FinalProject
                 for (int i = 0; i < 7; i++)
                 {
                     myWeekDates.Add(allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
-                    mybutton.Content =allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
+                    mybutton.Content = allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
                 }
             }
             else
@@ -275,14 +289,16 @@ namespace FinalProject
                 for (int i = 0; i < 7; i++)
                 {
                     myWeekDates.Add(allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
-                   ColumnHeaderButtons[i].Content =allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
+                    ColumnHeaderButtons[i].Content = allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
                 }
             }
-        }
+        } 
+        #endregion
 
+        #region NextWeek Button
         private void btnForward_Click(object sender, RoutedEventArgs e)
         {
-           
+
             foreach (Button button in drawButtons)
             {
                 myGrid.Children.Remove(button);
@@ -314,16 +330,22 @@ namespace FinalProject
                     ColumnHeaderButtons[i].Content =
                         allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1));
                 }
-                
+
             }
         }
+        
+        #endregion
 
+        #region AddStaffMember
         private void btnAddStaffMember_Click(object sender, RoutedEventArgs e)
         {
             AddStaffMember nuWin = new AddStaffMember();
             this.Close();
             nuWin.Show();
-        }
+        } 
+        #endregion
+
+        #region Clear Button
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
@@ -336,8 +358,10 @@ namespace FinalProject
             txtStatus.Clear();
             txtTilte.Clear();
             txtName.Focus();
-        }
+        } 
+        #endregion
 
+        #region Show in List Box
         private void listboxStaff_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             IStaffMember lbStaffMember = (IStaffMember)listboxStaff.SelectedItem;
@@ -352,11 +376,12 @@ namespace FinalProject
             txtRole.Text = lbStaffMember.RoleType;
             txtStatus.Text = lbStaffMember.StatusDescription;
             txtTilte.Text = lbStaffMember.Position;
-        }
+        } 
+        #endregion
 
+        #region Delete
         private void btnDelete_Click(object sender, RoutedEventArgs e)
-        { 
-            
+        {
             int tempId = -1;
 
             IMessage lbMessage = (IMessage)ListBoxRequests.SelectedItem;
@@ -366,9 +391,10 @@ namespace FinalProject
 
             myController.DeleteMessage(tempId);
             MessageBox.Show("Message deleted");
+        } 
+        #endregion
 
-        }
-
+        #region RemoveButtons
         public void RemoveButtons()
         {
             for (int i = drawButtons.Count - 1; i >= 0; i--)
@@ -377,10 +403,12 @@ namespace FinalProject
                 myGrid.Children.Remove(btn);
                 drawButtons.RemoveAt(i);
             }
-        }
+        } 
+        #endregion
 
+        #region Send Message
         private void btnSend1_Click(object sender, RoutedEventArgs e)
-        {   
+        {
             IStaffMember lbStaffMember2 = (IStaffMember)listBoxStaffInfo.SelectedItem;
             myController.SelectedStaffMember = lbStaffMember2;
 
@@ -390,16 +418,16 @@ namespace FinalProject
             myController.CreateNewMessage(tempMessage, tempStaffId);
             MessageBox.Show("Your message was sent successfully.");
             txtRespon.Clear();
-        }
+        } 
+        #endregion
 
+        #region Close Window
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             System.Environment.Exit(1);
-        }
+        } 
+        #endregion
 
     }
-
-
-
 }

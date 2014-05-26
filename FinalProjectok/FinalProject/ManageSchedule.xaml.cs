@@ -54,6 +54,7 @@ namespace FinalProject
         public List<IWeekList> allWeeksList = new List<IWeekList>();
         public List<IShiftDate> myIShift = new List<IShiftDate>();
 
+        #region FillWeeks
         public void FillTheWeeks()
         {
             int offset = 0;
@@ -83,12 +84,17 @@ namespace FinalProject
             }
 
         }
+        #endregion
 
+        #region GetWeek
         public void GetWeek()
         {
             WeekNow = myController.GetWeeksOfYear();
 
         }
+        #endregion
+
+        #region MachingData
         public void MachingTheData(object sender, MouseButtonEventArgs e)
         {
             Assign_Shift myWindow = new Assign_Shift();
@@ -136,6 +142,10 @@ namespace FinalProject
             myController.GetAllFromDB();
             DrawButtons();
         }
+        #endregion
+
+        #region DrawButtons
+
         public void DrawButtons()
         {
             int dateCounter = -9;
@@ -241,7 +251,9 @@ namespace FinalProject
                 }
             }
         }
+        #endregion
 
+        #region PreviousButton
         private void btnPrevious_Click(object sender, RoutedEventArgs e)
         {
 
@@ -277,7 +289,9 @@ namespace FinalProject
                 }
             }
         }
+        #endregion
 
+        #region NextButton
         private void btnForward_Click(object sender, RoutedEventArgs e)
         {
             foreach (Button button in drawButtons)
@@ -314,6 +328,9 @@ namespace FinalProject
             }
 
         }
+        #endregion
+
+        #region Save Button
         private void saveBtn_Click(object sender, RoutedEventArgs e)
         {
             TabForStaff myWindow = new TabForStaff();
@@ -321,11 +338,14 @@ namespace FinalProject
             this.Close();
           
         }
+        #endregion
 
+        #region Close Button
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             System.Environment.Exit(1);
         }
+        #endregion
     }
 }
