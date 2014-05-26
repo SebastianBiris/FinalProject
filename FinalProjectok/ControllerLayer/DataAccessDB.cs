@@ -530,7 +530,7 @@ namespace ControllerLayer
             SqlDataReader dataReader = null;
             int dateId;
             DateTime dateWorked;
-            int staffMemberId;
+    
 
             List<ShiftDate> returnShiftDatesIdlist = new List<ShiftDate>();
             cmd.Parameters.Clear();
