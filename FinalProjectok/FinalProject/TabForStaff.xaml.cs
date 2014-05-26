@@ -57,12 +57,20 @@ namespace FinalProject
             IStaffMember lbStaffMember2 = (IStaffMember) listBoxContactStaff.SelectedItem;
             myController.SelectedStaffMember = lbStaffMember2;
 
-            int tempStaffId = myController.SelectedStaffMember.StaffMemeberId;
-            string message = txtContactStaff.Text;
+            if (myController.SelectedStaffMember != null)
+            {
+                 int tempStaffId = myController.SelectedStaffMember.StaffMemeberId;
+                 string message = txtContactStaff.Text;
 
-            myController.CreateNewMessage(message,tempStaffId);
-            MessageBox.Show("Your message was sent successfully.");
-            txtContactStaff.Clear();
+                 myController.CreateNewMessage(message,tempStaffId);
+                 MessageBox.Show("Your message was sent successfully.");
+                 txtContactStaff.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Did not send. You must also select a staff member");
+            }
+           
         }
 
 
@@ -72,12 +80,21 @@ namespace FinalProject
              IStaffMember lbStaffMember2 = (IStaffMember) listBoxStaffInfo2.SelectedItem;
             myController.SelectedStaffMember = lbStaffMember2;
 
-            int tempStaffId = myController.SelectedStaffMember.StaffMemeberId;
-            string tempMessage = txtRespon.Text;
+            
            
-          myController.CreateNewMessage(tempMessage,tempStaffId);
-            MessageBox.Show("Your message was sent successfully.");
-                txtRespon.Clear();
+            if(myController.SelectedStaffMember != null)
+            { 
+                int tempStaffId = myController.SelectedStaffMember.StaffMemeberId;
+                string tempMessage = txtRespon.Text;
+
+                myController.CreateNewMessage(tempMessage,tempStaffId);
+                 MessageBox.Show("Your message was sent successfully.");
+                 txtRespon.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Did not send. You must also select a staff member");
+            }
         }
 
 
