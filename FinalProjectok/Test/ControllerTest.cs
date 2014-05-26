@@ -15,13 +15,6 @@ namespace Test
     {
 
         [TestMethod]
-        public void DbConnection()   //????
-        {
-            DataAccessDB myDb = new DataAccessDB();
-
-        }
-
-        [TestMethod]
         public void DeleteStaffMemberTest()
         {
             Controller myController = new Controller();
@@ -75,13 +68,21 @@ namespace Test
         {
             Controller myController = new Controller();
 
-            string expected2 = "34532";
-            string expected = "Amypip@gmail.com";
+            string expectedCpr = "34532";
+            string expectedEmail = "Amypip@gmail.com";
+            string expectedPhoneNumber = "42254628";
+            string expectedPassword = "bwervr";
+            string expectedStatusDescription = "part time. Weekends only";
+      
             myController.UpdateStaffMember(48, "Amy Johnson", "34532", "42254628", "Amypip@gmail.com", "bwervr", "part time. Weekends only", 2, 2);
             myController.GetAllFromDB();
 
-            Assert.AreEqual(expected, myController.StaffMembers[1].Email);
-            Assert.AreEqual(expected2, myController.StaffMembers[1].Cpr);
+            Assert.AreEqual(expectedEmail, myController.StaffMembers[1].Email);
+            Assert.AreEqual(expectedCpr, myController.StaffMembers[1].Cpr);
+            Assert.AreEqual(expectedPhoneNumber, myController.StaffMembers[1].PhoneNumber);
+            Assert.AreEqual(expectedPassword, myController.StaffMembers[1].Password);
+            Assert.AreEqual(expectedStatusDescription, myController.StaffMembers[1].StatusDescription);
+          
         }
         [TestMethod]
         public void AddNewShiftDateInDBTest()
@@ -95,5 +96,38 @@ namespace Test
 
             Assert.AreEqual(expectedListNo, actual, "this is for checking the count");
         }
+        [TestMethod]
+        public void NumbersOfStaffmembersTest()
+         {
+            Controller myController = new Controller();
+            int expected = myController.NumberOfStaffMembers();
+            int actual = myController.StaffMembers.Count;
+            Assert.AreEqual(expected, actual);
+         }
+        [TestMethod]
+        public void NumbersOfMessagesTest()
+        {
+            Controller myController = new Controller();
+            int expected = myController.NumberOfMessages();
+            int actual = myController.Messages.Count;
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NumbersOfStaffmembersTest()
+        {
+            Controller myController = new Controller();
+            int expected = myController.NumberOfStaffMembers();
+            int actual = myController.StaffMembers.Count;
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NumbersOfShiftDatesTest()
+        {
+            Controller myController = new Controller();
+            int expected = myController.NumberOfShiftDate();
+            int actual = myController.ShiftDates.Count;
+            Assert.AreEqual(expected, actual);
+        }
+        
     }
 }

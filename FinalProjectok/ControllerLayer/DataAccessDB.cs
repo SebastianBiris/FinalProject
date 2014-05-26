@@ -652,15 +652,26 @@ namespace ControllerLayer
          * connection to eal database
          * we have to change this to our local database
          */ 
-        public void ConnectToDB()
+        public bool ConnectToDB()
         {
-            const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
-            SqlConnection con = new SqlConnection(DB_CONNECTION);
-            SqlCommand cmd = new SqlCommand();
-            con = new SqlConnection(DB_CONNECTION);
-            cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandType = CommandType.StoredProcedure;
+            bool flag;
+            try
+            {
+                const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
+                SqlConnection con = new SqlConnection(DB_CONNECTION);
+                SqlCommand cmd = new SqlCommand();
+                con = new SqlConnection(DB_CONNECTION);
+                cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandType = CommandType.StoredProcedure;
+                 flag = true;
+                 return flag;
+            }
+            catch
+            {
+                flag = false;
+                return flag;
+            }
         }
 
         #endregion

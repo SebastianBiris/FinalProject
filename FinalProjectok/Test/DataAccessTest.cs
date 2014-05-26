@@ -16,15 +16,11 @@ namespace Test
     public class DataAccessTest
     {
           [TestMethod]
-        public void ViewStaffMember()
+        public void ConnectToDb()
         {
              DataAccessDB myDb = new DataAccessDB();
-
+            
+              Assert.IsTrue(myDb.ConnectToDB());
         }
-
-              
-       
-
-
     }
 }
