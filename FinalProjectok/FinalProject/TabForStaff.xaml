@@ -4,7 +4,7 @@
         Title="TabForStaff" Height="566.94" Width="786.418" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,-8,-3">
         <TabControl HorizontalAlignment="Left" Height="550" Margin="10,2,0,-12" VerticalAlignment="Top" Width="776">
-            <TabItem x:Name="contactInfoStaff" Header="Contacts" Margin="71,0,-71,0">
+            <TabItem x:Name="contactInfoStaff" Header="Contacts" Margin="61,0,-61,0">
                 <Grid Background="#FFC7C3C3">
                     <DataGrid x:Name="dataGridContactInfo" HorizontalAlignment="Left" Margin="0,40,0,0" VerticalAlignment="Top" Height="202" Width="670" AutoGenerateColumns="False">
                         <DataGrid.Columns>
@@ -35,7 +35,7 @@
 
 
             </TabItem>
-            <TabItem x:Name="makeRequestStaff" Header="Make Request" Margin="70,0,-70,0">
+            <TabItem x:Name="makeRequestStaff" Header="Make Request" Margin="60,0,-59,0">
                 <Grid>
                     <Border BorderBrush="#FFD83117" BorderThickness="1" HorizontalAlignment="Left" Height="191" Margin="5,64,0,0" VerticalAlignment="Top" Width="349" Background="#FFEAACA9"/>
                     <TextBlock HorizontalAlignment="Left" Margin="5,19,0,0" TextWrapping="Wrap" Text="                                   Request time off" VerticalAlignment="Top" Height="26" Width="340" FontWeight="Bold" Background="#FFECE8E8"/>
@@ -99,7 +99,7 @@
                     </Button>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="inboxStaff" Header="Inbox" Margin="70,0,-74,-2">
+            <TabItem x:Name="inboxStaff" Header="Inbox" Margin="57,0,-61,0" Height="18" VerticalAlignment="Top">
                 <TabItem.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                         <GradientStop Color="#FFF0F0F0" Offset="0"/>

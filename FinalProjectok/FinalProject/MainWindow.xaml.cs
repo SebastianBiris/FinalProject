@@ -86,19 +86,21 @@ namespace FinalProject
                 myTabWindow.Show();
             }
 
-            else if (tempCpr != "")
+            else if (myMember == "Employee" || myMember=="Leader" || myMember=="Schedule leader")
             {
+                if (myMember != "Schedule leader")
+                {
+                    myTabForStaff.btnManageSchedule.Visibility = Visibility.Hidden;
+                }
+
                 this.Close();
                 myTabForStaff.Show();
             }
-            else
+            else 
             {
                 MessageBox.Show("Invalid user or password.Please try again.");
             }
-            if (myMember== "Schedule leader")
-            {
-                myTabForStaff.btnManageSchedule.Visibility = Visibility.Hidden;
-            }
+           
         }
 
         #endregion
