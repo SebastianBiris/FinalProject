@@ -43,6 +43,7 @@ namespace FinalProject
             TabWindow myTab = new TabWindow();
             TabForStaff myTabForStaff = new TabForStaff();
             int tempId = -1;
+            string myMember = "";
             string tempCpr = "";
             string tempName = "";
             List<IStaffMember> theStaffmeber = new List<IStaffMember>();
@@ -51,6 +52,7 @@ namespace FinalProject
             {
                 if (myStaffMember.Cpr == txtUserId.Text && myStaffMember.Password == passPassword.Password)
                 {
+                    myMember = myStaffMember.RoleType;
                     tempId = myStaffMember.StaffMemeberId;
                     tempName = myStaffMember.StaffMemberName;
                     tempCpr = myStaffMember.Cpr;
@@ -78,7 +80,7 @@ namespace FinalProject
             myTabForStaff.dataGridContactInfo.ItemsSource = theStaffmeber;
 
 
-            if (tempCpr == "1")
+            if (myMember=="Owner")
             {
                 this.Close();
                 myTabWindow.Show();
@@ -93,7 +95,7 @@ namespace FinalProject
             {
                 MessageBox.Show("Invalid user or password.Please try again.");
             }
-            if (tempCpr != "2")
+            if (myMember== "Schedule leader")
             {
                 myTabForStaff.btnManageSchedule.Visibility = Visibility.Hidden;
             }
