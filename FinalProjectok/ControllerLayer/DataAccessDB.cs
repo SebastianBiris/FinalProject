@@ -661,7 +661,7 @@ namespace ControllerLayer
         }
         #endregion
 
-        #region Method to DB
+        #region Connect to DB
         public void ConnectToDB()
         {
             const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
