@@ -120,11 +120,11 @@ namespace ControllerLayer
             myDataAccessDb.AddStaffMemberWorkDayInDB(dateId, staffMemberId, shiftId);
         }
 
-        public void AddNewShiftDate(int dateId, DateTime dateWorked, IStaffMember sm, int staffId) //????? GUI Layer
-        {
-            ShiftDate nuShiftDate = new ShiftDate(dateId, dateWorked, (StaffMember)sm, staffId);
-            shiftDates.Add(nuShiftDate);
-        }
+        //public void AddNewShiftDate(int dateId, DateTime dateWorked, IStaffMember sm, int staffId) //????? GUI Layer
+        //{
+        //    ShiftDate nuShiftDate = new ShiftDate(dateId, dateWorked, (StaffMember)sm, staffId);
+        //    shiftDates.Add(nuShiftDate);
+        //}
 
         //25.05
         public int NumberOfStaffMembers()

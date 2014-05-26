@@ -530,7 +530,6 @@ namespace ControllerLayer
             SqlDataReader dataReader = null;
             int dateId;
             DateTime dateWorked;
-    
 
             List<ShiftDate> returnShiftDatesIdlist = new List<ShiftDate>();
             cmd.Parameters.Clear();
