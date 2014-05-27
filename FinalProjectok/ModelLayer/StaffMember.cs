@@ -127,14 +127,14 @@ namespace ModelLayer
        #region Methods 
        //**Sebi**
        /*
-         * adds shifts dates to a list for a staff member
+         * adds a shiftdate to a list for a staff member
          */ 
         public void AddShiftDate(ShiftDate anShiftDate)
         {
             myShiftDate.Add(anShiftDate);
         }
         /*
-          * adds a shifts in a list for a staff member
+          * adds a shift in a list for a staff member
           */ 
         public void AddShift(Shift anShift)
         {
