@@ -31,18 +31,19 @@ namespace FinalProject
         public Assign_Shift()
         {
             InitializeComponent();
+            FillShiftList();
+           
+        }
 
-            myWindow.DrawButtons();
+        private void FillShiftList()
+        {  
             foreach (IShift myShift in myController.Shift)
             {
                 myIshift.Add(myShift);
-
                 lbShiftType.ItemsSource = myIshift;
-                
-      
             }
+        
         }
-
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {

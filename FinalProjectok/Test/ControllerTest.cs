@@ -77,11 +77,11 @@ namespace Test
             myController.UpdateStaffMember(48, "Amy Johnson", "34532", "42254628", "Amypip@gmail.com", "bwervr", "part time. Weekends only", 2, 2);
             myController.GetAllFromDB();
 
-            Assert.AreEqual(expectedEmail, myController.StaffMembers[1].Email);
-            Assert.AreEqual(expectedCpr, myController.StaffMembers[1].Cpr);
-            Assert.AreEqual(expectedPhoneNumber, myController.StaffMembers[1].PhoneNumber);
-            Assert.AreEqual(expectedPassword, myController.StaffMembers[1].Password);
-            Assert.AreEqual(expectedStatusDescription, myController.StaffMembers[1].StatusDescription);
+            Assert.AreEqual(expectedEmail, myController.StaffMembers[0].Email);
+            Assert.AreEqual(expectedCpr, myController.StaffMembers[0].Cpr);
+            Assert.AreEqual(expectedPhoneNumber, myController.StaffMembers[0].PhoneNumber);
+            Assert.AreEqual(expectedPassword, myController.StaffMembers[0].Password);
+            Assert.AreEqual(expectedStatusDescription, myController.StaffMembers[0].StatusDescription);
           
         }
         [TestMethod]
@@ -112,14 +112,14 @@ namespace Test
             int actual = myController.Messages.Count;
             Assert.AreEqual(expected, actual);
         }
-        [TestMethod]
-        public void NumbersOfStaffmembersTest()
-        {
-            Controller myController = new Controller();
-            int expected = myController.NumberOfStaffMembers();
-            int actual = myController.StaffMembers.Count;
-            Assert.AreEqual(expected, actual);
-        }
+        //[TestMethod]
+        //public void NumbersOfStaffmembersTest()
+        //{
+        //    Controller myController = new Controller();
+        //    int expected = myController.NumberOfStaffMembers();
+        //    int actual = myController.StaffMembers.Count;
+        //    Assert.AreEqual(expected, actual);
+        //}
         [TestMethod]
         public void NumbersOfShiftDatesTest()
         {

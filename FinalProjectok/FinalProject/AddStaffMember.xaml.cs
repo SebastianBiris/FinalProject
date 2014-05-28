@@ -36,8 +36,8 @@ namespace FinalProject
 
             listBoxStaff.ItemsSource = null;
             listBoxStaff.ItemsSource = myController.StaffMembers;
-            cbRole.ItemsSource = null;
-            cbTitle.ItemsSource = null;
+            //cbRole.ItemsSource = null;
+            //cbTitle.ItemsSource = null;
 
             foreach (IRole roles in myController.Roles)
             {
@@ -129,8 +129,8 @@ namespace FinalProject
                 txtPassword1.Text = lbStaffMember.Password;
                 txtPhoneNumber1.Text = lbStaffMember.PhoneNumber;
                 txtStatus1.Text = lbStaffMember.StatusDescription;
-                cbTitle.DataContext = lbStaffMember.Position;
-                cbRole.DataContext = lbStaffMember.RoleType;
+                cbTitle.Text=lbStaffMember.Position;
+                cbRole.Text = lbStaffMember.RoleType;
             }
         }
         #endregion
