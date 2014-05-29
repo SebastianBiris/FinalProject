@@ -33,10 +33,11 @@ namespace FinalProject
         DateTime SelectDateTime1 = DateTime.Now.AddDays(0);
         int WeekNow { get; set; }
         int offSetForYearChange;
-        public List<Button> drawButtons = new List<Button>();
+        public List<Button> drawnButtons = new List<Button>();
         public List<Button> ColumnHeaderButtons { get; set; }
         public List<string> days = new List<string> { "", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
         int nr = -1;
+        string[] array;
        const int i = 27, j = 8;
        string[,] Matrix= new string [i,j];
        
@@ -45,6 +46,7 @@ namespace FinalProject
             InitializeComponent();
             myController = new Controller();
             myWeekDates = new List<DateTime>();
+            array = new string[7];
             ColumnHeaderButtons = new List<Button>();
             lbWeekNo.Content = myController.GetWeeksOfYear();
             lbYearNo.Content = DateTime.Now.Year;
@@ -52,6 +54,12 @@ namespace FinalProject
             GetWeek();
             listboxStaff.ItemsSource = null;
             listboxStaff.ItemsSource = myController.StaffMembers;
+            for (int i = 0; i < 7; i++)
+            {
+                string dayHack = "Day" + (i + 1);
+                array[i] = allWeeksList[myController.GetWeeksOfYear() - 1].GetDay(dayHack).ToShortDateString();
+                myWeekDates.Add(allWeeksList[myController.GetWeeksOfYear() - 1].GetDay(dayHack));
+            }
             DrawButtons();
 
         }
@@ -176,7 +184,7 @@ namespace FinalProject
                     if (i == 1 && j != 0)
                     {
                         string dayHack = "Day" + dateCounter;
-                        Matrix[i, j] = allWeeksList[myController.GetWeeksOfYear() - 1].GetDay(dayHack).ToShortDateString();
+                        Matrix[i, j] = array[j - 1];
                         myWeekDates.Add(allWeeksList[myController.GetWeeksOfYear() - 1].GetDay(dayHack));
                     }
                     else if (i == 0 && j != 0 && j != 8 && j != 9)
@@ -228,6 +236,7 @@ namespace FinalProject
                         cellButtons.SetValue(Grid.ColumnProperty, j);
                         myGrid.Children.Add(cellButtons);
                         ColumnHeaderButtons.Add(cellButtons);
+                        drawnButtons.Add(cellButtons);
                     }
                     else if (i <= myController.StaffMembers.Count + 1 && !(j != 0 && i != 0 && i != 1))
                     {
@@ -241,10 +250,12 @@ namespace FinalProject
                             Content = Matrix[i, j],
                             HorizontalContentAlignment = HorizontalAlignment.Center,
                             VerticalContentAlignment = VerticalAlignment.Center,
+                        
                         };
                         cellButtons.SetValue(Grid.RowProperty, i);
                         cellButtons.SetValue(Grid.ColumnProperty, j);
                         myGrid.Children.Add(cellButtons);
+                        drawnButtons.Add(cellButtons);
 
                     }
                     else if (j != 0 && i != 0 && i != 1 && i <= myController.StaffMembers.Count + 1)
@@ -264,6 +275,7 @@ namespace FinalProject
                         cellButtons.SetValue(Grid.ColumnProperty, j);
                         myGrid.Children.Add(cellButtons);
                         cellButtons.MouseDoubleClick += MachingTheData;
+                        drawnButtons.Add(cellButtons);
                         cellButtons.Name = "R" + i + "C" + j;
                     }
                 }
@@ -278,13 +290,8 @@ namespace FinalProject
          */ 
         private void btnPrevious_Click(object sender, RoutedEventArgs e)
         {
-
-            foreach (Button button in drawButtons)
-            {
-                myGrid.Children.Remove(button);
-            }
-            Button mybutton = new Button();
-            drawButtons.Clear();
+            RemoveButtons();
+            drawnButtons.Clear();
             myWeekDates.Clear();
             int tempWeekNo = (int)lbWeekNo.Content;
             int yearNo = (int)lbYearNo.Content;
@@ -297,7 +304,7 @@ namespace FinalProject
                 for (int i = 0; i < 7; i++)
                 {
                     myWeekDates.Add(allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
-                    mybutton.Content = allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
+                    array[i]= allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
                 }
             }
             else
@@ -307,9 +314,10 @@ namespace FinalProject
                 for (int i = 0; i < 7; i++)
                 {
                     myWeekDates.Add(allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
-                    ColumnHeaderButtons[i].Content = allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
+                    array[i] = allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
                 }
             }
+            DrawButtons();
         } 
         #endregion
 
@@ -320,12 +328,8 @@ namespace FinalProject
          */ 
         private void btnForward_Click(object sender, RoutedEventArgs e)
         {
-
-            foreach (Button button in drawButtons)
-            {
-                myGrid.Children.Remove(button);
-            }
-            drawButtons.Clear();
+            RemoveButtons();
+            drawnButtons.Clear();
             myWeekDates.Clear();
             int tempweekNo = (int)lbWeekNo.Content;
             int YearNo = (int)lbYearNo.Content;
@@ -338,7 +342,7 @@ namespace FinalProject
                 for (int i = 0; i < 7; i++)
                 {
                     myWeekDates.Add(allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
-                    ColumnHeaderButtons[i].Content = allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
+                    array[i] = allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
                 }
             }
             else
@@ -349,11 +353,11 @@ namespace FinalProject
                 {
                     myWeekDates.Add(
                         allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)));
-                    ColumnHeaderButtons[i].Content =
-                        allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1));
+                    array[i] =allWeeksList[(int)lbWeekNo.Content + offSetForYearChange - 1].GetDay("Day" + (i + 1)).ToShortDateString();
                 }
 
             }
+            DrawButtons();
         }
         
         #endregion
@@ -433,11 +437,17 @@ namespace FinalProject
          */ 
         public void RemoveButtons()
         {
-            for (int i = drawButtons.Count - 1; i >= 0; i--)
+            for (int i = 0; i <= 26; i++)
             {
-                Button btn = drawButtons[i];
-                myGrid.Children.Remove(btn);
-                drawButtons.RemoveAt(i);
+
+                for (int j = 0; j <= 7; j++)
+                { Matrix[i, j] = null; }
+
+            }
+            nr = -1;
+            foreach (var button in drawnButtons)
+            {
+                myGrid.Children.Remove(button);
             }
         } 
         #endregion
