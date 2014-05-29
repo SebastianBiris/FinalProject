@@ -34,7 +34,6 @@ namespace FinalProject
         int WeekNow { get; set; }
         int offSetForYearChange;
         public List<Button> drawnButtons = new List<Button>();
-        public List<Button> ColumnHeaderButtons { get; set; }
         public List<string> days = new List<string> { "", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
         int nr = -1;
         string[] array;
@@ -47,7 +46,6 @@ namespace FinalProject
             myController = new Controller();
             myWeekDates = new List<DateTime>();
             array = new string[7];
-            ColumnHeaderButtons = new List<Button>();
             lbWeekNo.Content = myController.GetWeeksOfYear();
             lbYearNo.Content = DateTime.Now.Year;
             FillTheWeeks();
@@ -235,7 +233,6 @@ namespace FinalProject
                         cellButtons.SetValue(Grid.RowProperty, i);
                         cellButtons.SetValue(Grid.ColumnProperty, j);
                         myGrid.Children.Add(cellButtons);
-                        ColumnHeaderButtons.Add(cellButtons);
                         drawnButtons.Add(cellButtons);
                     }
                     else if (i <= myController.StaffMembers.Count + 1 && !(j != 0 && i != 0 && i != 1))
