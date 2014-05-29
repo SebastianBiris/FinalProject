@@ -52,21 +52,15 @@ namespace FinalProject
             }
             if (tempEmail != "")
             {
-
                 SmtpClient staff = new SmtpClient();
                 staff.Port = 587;
                 staff.Host = "smtp.gmail.com";
                 staff.EnableSsl = true;
                 staff.Timeout = 10000;
-                staff.DeliveryMethod = SmtpDeliveryMethod.Network;
-                staff.UseDefaultCredentials = false;
                 staff.Credentials = new NetworkCredential("gertrudssystem@gmail.com", "HappyPuppy");
-
-                MailMessage mm = new MailMessage("gertrudssystem@gmail.com ", txtforgotPassword.Text, "Forgotten Password", "Your Password is " + tempPassword);
-                staff.Send(mm);
-                mm.IsBodyHtml = true;
-                mm.BodyEncoding = Encoding.UTF8;
-                mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+                MailMessage myMailMessage = new MailMessage("gertrudssystem@gmail.com ", txtforgotPassword.Text,
+                "Forgotten Password", "Your Password is " + tempPassword);
+                staff.Send(myMailMessage);
                 MessageBox.Show("Your Password has been sent to this email " + txtforgotPassword.Text);
             }
             else { MessageBox.Show("Invalid email"); }
