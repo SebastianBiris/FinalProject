@@ -85,10 +85,10 @@ namespace FinalProject
             for (int j = 0; j < 5; j++)
             {
                 int year = 2014 + YearOffSet;
-                DateTime firstDayOfTheFirstWeekOfTheYear = myController.GetWeeks(year, DayOfWeek.Thursday);
+                DateTime firstDayOfTheFirstWeekOfTheYear = myController.GetWeeks(year, DayOfWeek.Monday);
                 for (int i = 0; i < 54; i++)
                 {
-                    DateTime first = myController.GetWeeks((year + 1), DayOfWeek.Thursday);
+                    DateTime first = myController.GetWeeks((year + 1), DayOfWeek.Monday);
                     DateTime second = firstDayOfTheFirstWeekOfTheYear.AddDays(1 + offset);
                     if (first <= second)
                     {
