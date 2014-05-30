@@ -46,15 +46,24 @@ namespace FinalProject
             lbYearNo.Content = DateTime.Now.Year;
             FillTheWeeks();
             GetWeek();
-            for (int i = 0; i < 7; i++)
+            GetCurrentWeekDates();
+            DrawButtons();
+            
+        }
+        #region GetCurrentWeekDates
+        /*
+         * sebastian - i create a method to get the current dates for each week apart 
+         */
+        public void GetCurrentWeekDates()
+        {
+           for (int i = 0; i < 7; i++)
             {
                 string dayHack = "Day" + (i + 1);
                 array[i] = allWeeksList[myController.GetWeeksOfYear() - 1].GetDay(dayHack).ToShortDateString();
                 myWeekDates.Add(allWeeksList[myController.GetWeeksOfYear() - 1].GetDay(dayHack));
             }
-            DrawButtons();
-            
         }
+        #endregion
 
         #region SubmitMailButton
         /*
