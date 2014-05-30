@@ -22,8 +22,6 @@ namespace FinalProject
     public partial class TabForStaff : Window   //Majd & Chris
     {
         Controller myController;
-        int RowNumber=-1;
-        int ColumnNumber=-1;
         int YearOffSet;
         DateTime SelectDateTime1 = DateTime.Now.AddDays(0);
         int WeekNow { get; set; }
