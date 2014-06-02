@@ -12,7 +12,7 @@ namespace ModelLayer
     {
         DateTime _dateWorked;
         int _dateId;
-        int _staffMemberId;  //chris 19.05
+        int _staffMemberId;  
         int _shiftId;
         StaffMember myStaffMember;
         string _staffMemberName;

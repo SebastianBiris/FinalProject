@@ -22,7 +22,7 @@ namespace FinalProject
     /// <summary>
     /// Interaction logic for AddStaffMember.xaml
     /// </summary>
-    public partial class AddStaffMember : Window
+    public partial class AddStaffMember : Window        //Majd  and  Chris
     {
 
 

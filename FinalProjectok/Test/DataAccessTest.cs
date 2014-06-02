@@ -13,7 +13,7 @@ namespace Test
     /// Summary description for DataAccessTest
     /// </summary>
     [TestClass]
-    public class DataAccessTest
+    public class DataAccessTest         //Sebastian and majd
     {
           [TestMethod]
         public void ConnectToDb()

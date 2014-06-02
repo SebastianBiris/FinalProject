@@ -20,7 +20,7 @@ namespace FinalProject
     /// <summary>
     /// Interaction logic for Assign_Shift.xaml
     /// </summary>
-    public partial class Assign_Shift : Window
+    public partial class Assign_Shift : Window          // Florin  and  Sebastian
     {
         Controller myController = new Controller();
         List<IShift> myIshift = new List<IShift>();

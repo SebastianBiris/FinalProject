@@ -9,7 +9,7 @@ using InterfaceLayer;
 
 namespace ControllerLayer
 {
-    public class Controller
+    public class Controller         //Majd, Chris, Florin, Sebastian
     {
 
         List<Shift> shift;

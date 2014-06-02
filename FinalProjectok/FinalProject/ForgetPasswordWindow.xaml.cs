@@ -23,7 +23,7 @@ namespace FinalProject
     /// <summary>
     /// Interaction logic for ForgetPasswordWindow.xaml
     /// </summary>
-    public partial class ForgetPasswordWindow : Window
+    public partial class ForgetPasswordWindow : Window      //Florin  and  Majd
     {
         Controller myController = new Controller();
 

@@ -22,7 +22,7 @@ namespace FinalProject
     /// <summary>
     /// Interaction logic for TabWindow.xaml
     /// </summary>
-    public partial class TabWindow : Window
+    public partial class TabWindow : Window     //Florin  and  Sebastian
     {
 
 
@@ -413,7 +413,8 @@ namespace FinalProject
          * shows the information for a staff member
          */ 
         private void listboxStaff_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        {//Majd
+
             IStaffMember lbStaffMember = (IStaffMember)listboxStaff.SelectedItem;
             myController.SelectedStaffMember = lbStaffMember;
 
@@ -473,7 +474,8 @@ namespace FinalProject
          *sends a message to a staff member 
          */
         private void btnSend1_Click(object sender, RoutedEventArgs e)
-        {
+        {//Chris
+            
             IStaffMember lbStaffMember2 = (IStaffMember)listBoxStaffInfo.SelectedItem;
             myController.SelectedStaffMember = lbStaffMember2;
 

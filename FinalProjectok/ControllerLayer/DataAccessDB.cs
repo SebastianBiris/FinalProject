@@ -12,7 +12,7 @@ using InterfaceLayer;
 
 namespace ControllerLayer
 {
-    public class DataAccessDB
+    public class DataAccessDB           //Majd, Chris, Sebastian, Florin
     {
         const string DB_CONNECTION = @"Data Source =ealdb1.eal.local;User ID=ejl13_usr;Password=Baz1nga13";
         SqlConnection con;

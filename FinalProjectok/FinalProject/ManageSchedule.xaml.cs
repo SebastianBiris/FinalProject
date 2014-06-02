@@ -20,7 +20,7 @@ namespace FinalProject
     /// <summary>
     /// Interaction logic for ManageSchedule.xaml
     /// </summary>
-    public partial class ManageSchedule : Window
+    public partial class ManageSchedule : Window        // Sebastian  and  Florin
     {
 
         Controller myController;
