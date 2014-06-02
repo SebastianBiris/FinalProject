@@ -148,16 +148,24 @@ namespace FinalProject
                 RowNumber = Convert.ToInt16(str[1] - 48);
                 ColumnNumber = Convert.ToInt16(str[3] - 48);
             }
-            foreach (IShiftDate myShift in myController.ShiftIds)
-            {
-                if (Matrix[1, ColumnNumber] == myShift.DateWorked.ToShortDateString())
-                { tempDateId = myShift.DateId; }
-            }
-            foreach (IStaffMember myStaff in myController.StaffMembers)
-            {
-                if (Matrix[RowNumber, 0] == myStaff.StaffMemberName)
-                { tempStaffId = myStaff.StaffMemeberId; }
-            }
+            //foreach (IShiftDate myShift in myController.ShiftIds)
+                for (int i = 0; i <= myController.ShiftIds.Count;i++ )
+                {
+                    IShiftDate myShift = myController.ShiftIds[i];
+                    if (Matrix[1, ColumnNumber] == myShift.DateWorked.ToShortDateString())
+                    { tempDateId = myShift.DateId;
+                    i = myController.ShiftIds.Count+1;
+                    }
+                }
+               // foreach (IStaffMember myStaff in myController.StaffMembers)
+                    for (int i = 0; i <= myController.StaffMembers.Count;i++ )
+                    {
+                        IStaffMember myStaff = myController.StaffMembers[i];
+                        if (Matrix[RowNumber, 0] == myStaff.StaffMemberName)
+                        { tempStaffId = myStaff.StaffMemeberId;
+                        i = myController.StaffMembers.Count+1 ;
+                        }
+                    }
             IShift cbShift = (IShift)myWindow.lbShiftType.SelectedItem;
             IShift myshifts = (IShift)shiftWindow.lbShiftType.SelectedItem;
             myController.Selectedshift = myshifts;
@@ -210,11 +218,12 @@ namespace FinalProject
                     }
                     else if (i > 1 && j > 0)
                     {
-                        for (int a = 0; a < myController.ShiftDates.Count; a++)
+                        for (int a = myController.ShiftDates.Count-1; a >-1; a--)
                         {
                             if (Matrix[i, 0] == myController.ShiftDates[a].StaffMemberName && Matrix[1, j] == myController.ShiftDates[a].ActualDate.ToShortDateString())
                             {
                                 Matrix[i, j] = myController.ShiftDates[a].ShiftType;
+                                a = 0;
                             }
                         }
 

@@ -53,29 +53,35 @@ namespace FinalProject
             string tempName = "";
             List<IStaffMember> theStaffmeber = new List<IStaffMember>();
             List<IMessage> myList = new List<IMessage>();
-            foreach (IStaffMember myStaffMember in myController.StaffMembers)
-            {
-                if (myStaffMember.Cpr == txtUserId.Text && myStaffMember.Password == passPassword.Password)
+          //  foreach (IStaffMember myStaffMember in myController.StaffMembers)
+                for (int i = 0; i <= myController.StaffMembers.Count;i++ )
                 {
-                    myMember = myStaffMember.RoleType;
-                    tempId = myStaffMember.StaffMemeberId;
-                    tempName = myStaffMember.StaffMemberName;
-                    tempCpr = myStaffMember.Cpr;
-                }
-                if (myStaffMember.Cpr != txtUserId.Text)
-                {
-                    theStaffmeber.Add(myStaffMember);
-                }
-            }
-
-            foreach (IMessage myMessage in myController.Messages)
-            {
-                if (myMessage.StaffMemberId == tempId)
-                {
-                    myList.Add(myMessage);
+                    IStaffMember myStaffMember = myController.StaffMembers[i];
+                    if (myStaffMember.Cpr == txtUserId.Text && myStaffMember.Password == passPassword.Password)
+                    {
+                        myMember = myStaffMember.RoleType;
+                        tempId = myStaffMember.StaffMemeberId;
+                        tempName = myStaffMember.StaffMemberName;
+                        tempCpr = myStaffMember.Cpr;
+                        i=myController.StaffMembers.Count+1;
+                    }
+                    if (myStaffMember.Cpr != txtUserId.Text)
+                    {
+                        theStaffmeber.Add(myStaffMember);
+                    }
                 }
 
-            }
+               // foreach (IMessage myMessage in myController.Messages)
+                    for (int i = 0; i < myController.Messages.Count;i++ )
+                    {
+                        IMessage myMessage = myController.Messages[i];
+                        if (myMessage.StaffMemberId == tempId)
+                        {
+                            myList.Add(myMessage);
+                            i = myController.Messages.Count ;
+                        }
+
+                    }
             myTabWindow.listBoxStaffInfo.ItemsSource = theStaffmeber;
             myTabForStaff.ListBoxRequests.ItemsSource = myList;
             myTabWindow.ListBoxRequests.ItemsSource = myList;
