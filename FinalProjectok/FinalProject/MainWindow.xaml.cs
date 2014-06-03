@@ -71,14 +71,12 @@ namespace FinalProject
                     }
                 }
 
-               // foreach (IMessage myMessage in myController.Messages)
-                    for (int i = 0; i < myController.Messages.Count;i++ )
+                foreach (IMessage myMessage in myController.Messages)
                     {
-                        IMessage myMessage = myController.Messages[i];
                         if (myMessage.StaffMemberId == tempId)
                         {
                             myList.Add(myMessage);
-                            i = myController.Messages.Count ;
+                    
                         }
 
                     }
