@@ -76,7 +76,7 @@ namespace FinalProject
         #endregion
 
         #region FillTheWeeks
-        /*
+        /* Florin and Sebastian
          * fills a list with dates for each week
          */
         public void FillTheWeeks()
@@ -111,7 +111,7 @@ namespace FinalProject
         #endregion
 
         #region GetWeek
-        /*
+        /*Florin
          * get the current week
          */ 
         public void GetWeek()
@@ -122,7 +122,7 @@ namespace FinalProject
         #endregion
 
         #region MachingData
-        /*
+        /*Florin
          * open a widow for saving shift and saves data in the main matrix
          */ 
         public void MachingTheData(object sender, MouseButtonEventArgs e)
@@ -183,7 +183,7 @@ namespace FinalProject
         #endregion
 
         #region Draw Buttons
-        /*
+        /*Florin and Sebastian
          * create the matrix
          * put the values in the right cell
          *  drows the button with cells content
@@ -300,7 +300,7 @@ namespace FinalProject
         #endregion
 
         #region PrviousWeek Button
-        /*
+        /* Florin and Sebastian 
          * shows the previous week
          * we have to refresh the matrix with last week schedule content somehow
          */ 
@@ -338,7 +338,7 @@ namespace FinalProject
         #endregion
 
         #region NextWeek Button
-        /*
+        /*Florin and Sebastian
          * shows the next week schedule
          * we have to refresh the matrix with the next week schedule content somehow
          */ 
@@ -431,7 +431,7 @@ namespace FinalProject
         #endregion
 
         #region Delete
-        /*
+        /*Majd
          * deletes message
          */ 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -449,7 +449,7 @@ namespace FinalProject
         #endregion
 
         #region RemoveButtons
-        /*
+        /*Florin
          * removes buttons from cells
          */ 
         public void RemoveButtons()
@@ -470,7 +470,7 @@ namespace FinalProject
         #endregion
 
         #region Send Message
-        /*
+        /*Chris
          *sends a message to a staff member 
          */
         private void btnSend1_Click(object sender, RoutedEventArgs e)

@@ -34,7 +34,7 @@ namespace FinalProject
             txtforgotPassword.Focus();
         }
         #region Send Password
-        /*
+        /*Florin and Majd
          * sends the password via email
          */ 
         private void btnSendPassword_Click(object sender, RoutedEventArgs e)

@@ -36,8 +36,7 @@ namespace FinalProject
 
             listBoxStaff.ItemsSource = null;
             listBoxStaff.ItemsSource = myController.StaffMembers;
-            //cbRole.ItemsSource = null;
-            //cbTitle.ItemsSource = null;
+         
 
             foreach (IRole roles in myController.Roles)
             {
@@ -50,7 +49,7 @@ namespace FinalProject
         }
 
         #region Save Btn
-        /**
+        /**Chris
          ** save a new staff member
          **/ 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -115,7 +114,7 @@ namespace FinalProject
         #endregion
 
         #region Listbox Btn
-        /*
+        /*Majd
          * shows staff member info
          */
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -136,7 +135,7 @@ namespace FinalProject
         #endregion
 
         #region Update Btn
-        /*
+        /*Majd
          * update staff member infos
          */
         private void btnUpdateStaff_Click(object sender, RoutedEventArgs e)
@@ -208,7 +207,7 @@ namespace FinalProject
         #endregion
 
         #region btn Delete
-        /*
+        /*Majd
          * delete a staff member
          */
         private void btnDeleteStaff_Click(object sender, RoutedEventArgs e)

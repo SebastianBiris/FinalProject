@@ -327,7 +327,7 @@ namespace ControllerLayer
         #endregion
 
         #region View Inbox Messages from DB
-        /*
+        /*Chris
          * create a list with messages
          */ 
         public List<Message> ViewMessagesFromDB()
@@ -448,7 +448,7 @@ namespace ControllerLayer
         #endregion
 
         #region View Staff Member Shift Dates 
-        //chris 19.05
+        //Florin
         /*
          * fill the list with assigned shifts for a staff member for a week day
          */ 
@@ -497,7 +497,7 @@ namespace ControllerLayer
         #endregion
 
         #region View shift dates IDs
-        /*
+        /*Florin
          * adds in a list dates for shifts from database
          */ 
         public List<ShiftDate> ViewShiftDatesFromDB()

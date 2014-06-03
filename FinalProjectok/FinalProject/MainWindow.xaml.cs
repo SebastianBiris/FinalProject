@@ -44,7 +44,7 @@ namespace FinalProject
          * checks if the staff member has any email
          */ 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
-        {
+        { //Florin
             TabWindow myTab = new TabWindow();
             TabForStaff myTabForStaff = new TabForStaff();
             int tempId = -1;
@@ -70,7 +70,7 @@ namespace FinalProject
                         theStaffmeber.Add(myStaffMember);
                     }
                 }
-
+            //Majd
                 foreach (IMessage myMessage in myController.Messages)
                     {
                         if (myMessage.StaffMemberId == tempId)

@@ -20,12 +20,12 @@ namespace FinalProject
     /// <summary>
     /// Interaction logic for Assign_Shift.xaml
     /// </summary>
-    public partial class Assign_Shift : Window          // Florin  and  Sebastian
+    public partial class Assign_Shift : Window          // Florin  
     {
         Controller myController = new Controller();
         List<IShift> myIshift = new List<IShift>();
         TabWindow myWindow = new TabWindow();
-   /*
+   /*Florin
     * assigns a shift to a staff member on the choosed date
     */ 
         public Assign_Shift()

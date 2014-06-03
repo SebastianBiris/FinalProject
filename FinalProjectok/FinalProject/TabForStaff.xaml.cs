@@ -66,7 +66,7 @@ namespace FinalProject
         #endregion
 
         #region SubmitMailButton
-        /*
+        /*Chris
          * submit a request for a shift change
          */ 
         private void btnSubmitMail_Click(object sender, RoutedEventArgs e)
@@ -93,7 +93,7 @@ namespace FinalProject
         #endregion
 
         #region Send Mail To a StaffMember
-        /*
+        /*Majd
          * sends a email to a staff member choosed with a shift change request
          */
         private void btnSend_Click(object sender, RoutedEventArgs e)
@@ -120,7 +120,7 @@ namespace FinalProject
         #endregion
 
         #region Submit ShiftChange
-        /*
+        /*Chris
          * submit the message to staff member
          */
         private void btnSubmitShiftChange_Click(object sender, RoutedEventArgs e)
@@ -145,7 +145,7 @@ namespace FinalProject
         #endregion
 
         #region Delete Shift
-        /*
+        /*Majd
          *Deletes a message from inbox
          */ 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -167,7 +167,7 @@ namespace FinalProject
         public List<IShiftDate> myIShift = new List<IShiftDate>();
 
         #region FillTheWeeks
-        /*
+        /* Florin and Sebastian
          * fills a list with dates for each week
          */
         public void FillTheWeeks()
@@ -202,7 +202,7 @@ namespace FinalProject
         #endregion
 
         #region GetWeek
-        /*
+        /*Florin
          * get the current week
          */ 
         public void GetWeek()
@@ -213,7 +213,7 @@ namespace FinalProject
         #endregion
 
         #region DrawButtons
-        /*
+        /* Florin and Sebastian
          * drws buttons for each cell
          * fill the button with the right content
          */
@@ -328,7 +328,7 @@ namespace FinalProject
         #endregion
 
         #region PreviousWeek Button
-        /*
+        /* Florin and Sebastian
          * shows the previous week
          * we have to refresh the matrix with last week schedule content somehow
          */
@@ -366,7 +366,7 @@ namespace FinalProject
         #endregion
 
         #region NextWeek Button
-        /*
+        /* Florin and Sebastian 
          * shows the next week schedule
          * we have to refresh the matrix with the next week schedule content somehow
          */
@@ -430,7 +430,7 @@ namespace FinalProject
         #endregion
 
         #region RemoveButtons
-        /*
+        /*Florin
          * removes buttons from cells
          */
         public void RemoveButtons()

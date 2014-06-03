@@ -137,6 +137,7 @@ namespace ControllerLayer
 
         #region UpdateStaffMember
         /*
+         * Majd
          * Updates information about a staff member in fb
          */ 
         public void UpdateStaffMember(int staffMemberID, string staffMemberName, string cpr, string phoneNumber, string email, string password, string statusDescription, int titleId, int roleId)
@@ -146,7 +147,7 @@ namespace ControllerLayer
 #endregion
 
         #region AddNewShiftDateinDB
-        //chris 19.05 
+        //Florin
         /*
          * adds a date for a shift in db
          */ 
@@ -158,7 +159,7 @@ namespace ControllerLayer
         #endregion
 
         #region NumberOf
-        /*
+        /*Chris
          * we count the lenght fot staff member list, messages list and shiftdates list
          * are used for unit testing 
          */ 
@@ -180,14 +181,14 @@ namespace ControllerLayer
         #endregion
 
         #region GetDay/GetWeeksOfyear/GetWeeks/GetWeekList
-        /*
+        /*Chris
          * gets the current day in the current week
          */ 
         public void GetDay(string day)
         {
             myIWeekList.GetDay(day);
         }
-        /*
+        /*Chris
          * calculates the current week in the current year
          */ 
         public int GetWeeksOfYear()
@@ -195,7 +196,7 @@ namespace ControllerLayer
             Week currentWeek = new Week();
             return currentWeek.GetWeekOfYear();
         }
-        /*
+        /*Sebastian
          * gets all the weeks of a year
          */
         public DateTime GetWeeks(int year, DayOfWeek thursday)
@@ -203,7 +204,7 @@ namespace ControllerLayer
             thursday = DayOfWeek.Thursday;
             return Week.GetWeekOneDayOne(year, thursday);
         }
-        /*
+        /*Sebastian
          * I use it to return a list of weeks accesing the interface
          */ 
         public IWeekList GetWeekList(int year, DateTime day1, DateTime day2, DateTime day3, DateTime day4, DateTime day5, DateTime day6, DateTime day7)

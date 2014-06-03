@@ -71,7 +71,7 @@ namespace FinalProject
         #endregion
 
         #region FillWeeks
-        /*
+        /* Sebastian
          * fills a list with dates for each week
          */ 
         public void FillTheWeeks()
@@ -107,7 +107,7 @@ namespace FinalProject
         #endregion
 
         #region GetWeek
-        /*
+        /*Florin
          * get the current week
          */ 
         public void GetWeek()
@@ -118,7 +118,7 @@ namespace FinalProject
         #endregion
 
         #region MachingData
-        /*
+        /*Florin
          * open a widow for saving shift and saves data in the main matrix
          */
         public void MachingTheData(object sender, MouseButtonEventArgs e)
@@ -181,7 +181,7 @@ namespace FinalProject
         #endregion
 
         #region DrawButtons
-        /*
+        /*Florin and Sebastian
          * create the matrix
          * put the values in the right cell
          *  drows the button with cells content
@@ -298,7 +298,7 @@ namespace FinalProject
         #endregion
 
         #region PreviousButton
-        /*
+        /*Florin and Sebastian
          * shows the previous week
          * we have to refresh the matrix with last week schedule content somehow
          */
@@ -336,7 +336,7 @@ namespace FinalProject
         #endregion
 
         #region NextButton
-        /*
+        /*Florin and Sebastian
          * shows the next week schedule
          * we have to refresh the matrix with the next week schedule content somehow
          */
@@ -376,7 +376,7 @@ namespace FinalProject
         #endregion
 
         #region Save Button
-        /*
+        /*Florin
          * save the data for schedule
          */ 
         private void saveBtn_Click(object sender, RoutedEventArgs e)
@@ -401,7 +401,7 @@ namespace FinalProject
         #endregion
 
         #region RemoveButtons
-        /*
+        /*Florin
          * removes buttons from cells
          */
         public void RemoveButtons()
