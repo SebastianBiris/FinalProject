@@ -89,14 +89,6 @@ namespace Test
             int actual = myController.Messages.Count;
             Assert.AreEqual(expected, actual);
         }
-        //[TestMethod]
-        //public void NumbersOfStaffmembersTest()
-        //{
-        //    Controller myController = new Controller();
-        //    int expected = myController.NumberOfStaffMembers();
-        //    int actual = myController.StaffMembers.Count;
-        //    Assert.AreEqual(expected, actual);
-        //}
         [TestMethod]
         public void NumbersOfShiftDatesTest()
         {
