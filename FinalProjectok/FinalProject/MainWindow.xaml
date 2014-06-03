@@ -5,7 +5,7 @@
         
         ">
     <Window.Background>
-        <ImageBrush ImageSource="Image/images.jpg"/>
+        <ImageBrush ImageSource="Image/IMG_2097.jpg"/>
     </Window.Background>
     <Grid>
         <Label x:Name="lblName" Content="UserId:" HorizontalAlignment="Left" Margin="41,29,0,0" VerticalAlignment="Top" Height="27" Width="74" FontWeight="Bold">
