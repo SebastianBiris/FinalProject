@@ -53,17 +53,17 @@ namespace FinalProject
             string tempName = "";
             List<IStaffMember> theStaffmeber = new List<IStaffMember>();
             List<IMessage> myList = new List<IMessage>();
-          //  foreach (IStaffMember myStaffMember in myController.StaffMembers)
-                for (int i = 0; i <= myController.StaffMembers.Count;i++ )
+            foreach (IStaffMember myStaffMember in myController.StaffMembers)
+               
                 {
-                    IStaffMember myStaffMember = myController.StaffMembers[i];
+                   
                     if (myStaffMember.Cpr == txtUserId.Text && myStaffMember.Password == passPassword.Password)
                     {
                         myMember = myStaffMember.RoleType;
                         tempId = myStaffMember.StaffMemeberId;
                         tempName = myStaffMember.StaffMemberName;
                         tempCpr = myStaffMember.Cpr;
-                        i=myController.StaffMembers.Count+1;
+                       
                     }
                     if (myStaffMember.Cpr != txtUserId.Text)
                     {
