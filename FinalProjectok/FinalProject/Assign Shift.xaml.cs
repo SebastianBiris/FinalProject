@@ -14,7 +14,6 @@ using System.Windows.Shapes;
 
 using ControllerLayer;
 using InterfaceLayer;
-
 namespace FinalProject
 {
     /// <summary>
@@ -32,9 +31,7 @@ namespace FinalProject
         {
             InitializeComponent();
             FillShiftList();
-           
         }
-
         private void FillShiftList()
         {  
             foreach (IShift myShift in myController.Shift)
@@ -44,13 +41,11 @@ namespace FinalProject
             }
         
         }
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
            
             this.Hide();
         }
-
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

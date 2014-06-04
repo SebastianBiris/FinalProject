@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<!-- Select a Product Configuration -->
+		<InstallShieldProductConfiguration>Express</InstallShieldProductConfiguration>
+		<!-- Select a Visual Studio Configuration / InstallShield Release -->
+		<Configuration>Debug</Configuration>
+		<InstallShieldRelease>$(Configuration)</InstallShieldRelease>
+	</PropertyGroup>
+	<ItemGroup>
+		<!-- The InstallShieldProject item selects the project to build -->
+		<InstallShieldProject Include="$(MSBuildProjectDirectory)\$(MSBuildProjectName).isl"/>
+		<!-- The InstallShieldReleaseFlags sets Release Flags -->
+		<!--<InstallShieldReleaseFlags Include=""/>-->
+		<!-- The InstallShieldMergeModulePath specifies what directories are
+		searched for Merge Modules -->
+		<!--<InstallShieldMergeModulePath Include=""/>-->
+	</ItemGroup>
+	<ItemGroup>
+		<!-- The ProjectReference items refer to any Visual Studio solutions you want to automatically probe for Project Output Groups.  -->
+	</ItemGroup>
+	<ItemGroup>
+		<!-- The TaggedOutputs items allow you to explicitly add extra files to output groups. Each item must include both Name and OutputGroup, as well as TargetPath metadata values. -->
+		<!--<TaggedOutputs Include="C:\My Test Exe.exe">
+			<Name>My Test Project</Name>
+			<OutputGroup>Primary output</OutputGroup>
+			<TargetPath>My Test Exe.exe</TargetPath>
+		</TaggedOutputs> -->
+	</ItemGroup>
+	<Import Project="$(MSBuildExtensionsPath32)\InstallShield\2013Limited\InstallShield.targets"/>
+	<ItemGroup>
+		<ProjectReference Include="..\ControllerLayer\ControllerLayer.csproj">
+			<Name>ControllerLayer</Name>
+			<Project>{038B6098-B6AC-4C5D-9E85-F871A89A201F}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\FinalProject\GuiLayer.csproj">
+			<Name>GuiLayer</Name>
+			<Project>{BE421359-7221-46D5-8A50-5C0D3C51BE4C}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\InterfaceLayer\InterfaceLayer.csproj">
+			<Name>InterfaceLayer</Name>
+			<Project>{1A4D70A4-5C93-48CA-AF11-79C25CE14B92}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\ModelLayer\ModelLayer.csproj">
+			<Name>ModelLayer</Name>
+			<Project>{5DA153EB-7900-4D59-9BEC-2AB067380838}</Project>
+		</ProjectReference>
+	</ItemGroup>
+</Project>

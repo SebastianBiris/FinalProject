@@ -12,6 +12,7 @@ namespace Test
 {
     [TestClass]
     public class ControllerTest         //Sebastian  and  Chris
+    {class ControllerTest1
     {
 
         [TestMethod]
@@ -99,4 +100,4 @@ namespace Test
         }
         
     }
-}
+}}
